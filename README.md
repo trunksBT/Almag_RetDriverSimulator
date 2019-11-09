@@ -17,7 +17,7 @@ PLANNED REFACTOR AFTER FINISH
 - cmake 3.12.4
 - g++ 8.2.1 
 - gcc 8.2.1
-- libboost-all-dev 1.65
+- libboost-all-dev 1.71.0
 
 # How to run:  
 1.  
