@@ -3,8 +3,15 @@ UNBLOCKED_SCENARIOS > QUALITY
 SOME SMELLS > OVER-ENGINEERING  
 PLANNED REFACTOR AFTER FINISH  
 
-# UML:  
-To be integrated
+# UML_ActivityDiagram:  
+1. Install the https://code.visualstudio.com/download  
+2. Install the https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml  
+3. Open the docs/UML_DiagramOfSequence.wsd via Visual Studio Code  
+4. Click "Alt + D"  
+
+# UML_ClassDiagram:  
+1. Install the https://www.microsoft.com/pl-PL/download/details.aspx?id=51188  
+2. Open the docs/UML_DiagramOfClasses.vsdx via Visio Viewer  
 
 # Dependencies:
 - cmake 3.12.4
