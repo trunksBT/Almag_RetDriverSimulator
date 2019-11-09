@@ -1,0 +1,19 @@
+message("AlmagRetDriver ReleaseCMakeLists")
+
+add_executable(${PROJECT_NAME}
+    ${PROJECT_SOURCE_DIR}/src/main.cpp
+    ${COMMAND_PATTERN}
+    ${DATABASE}
+    ${UTILS}
+    ${USER_INTERFACE}
+    ${USER_INTERFACE_DATABASE}
+    ${HDLC}
+    ${USER_INTERFACE_ALMAG_COMMAND_VALIDATION}
+)
+
+target_link_libraries(${PROJECT_NAME}
+    ${Boost_LIBRARIES}
+    # /usr/lib/gcc/x86_64-linux-gnu/8/libstdc++fs.a # uncomment on UBUNTU, I know it sucks
+    /usr/lib64/libstdc++fs.a # uncomment on Manjaro, I know it sucks
+)
+

@@ -1,0 +1,20 @@
+3rdparty/*
+CMakeFiles/
+CMakeCache*
+Makefile
+cmake_install.cmake
+*.swl
+*.swm
+*.swn
+*.swo
+*.swp
+*.cpp~
+lib
+logs
+tags
+
+# Binaries
+Almag_RetDriver
+Almag_RetDriver_UT
+Almag_RetDriver_MT
+

@@ -1,0 +1,27 @@
+#pragma once
+
+#include <string>
+#include <vector>
+#include <HDLC/FrameBase.hpp>
+#include <HDLC/HDLCParameters.hpp>
+#include <HDLC/MessagesHelpers.hpp>
+
+class HDLCFrameBody
+{
+public:
+   virtual Hexes build() const = 0;
+   std::string getFrameFromSecondary() const;
+   virtual ~HDLCFrameBody() = default;
+
+protected:
+   HDLCFrameBody() = default;
+   explicit HDLCFrameBody(const std::string& value);
+
+   boost::optional<std::string> frameFromSecondary_;
+   boost::optional<Hex> address_;
+   boost::optional<BYTE_CONTROL> ctrl_;
+   boost::optional<FI> formatIdentifier_;
+   boost::optional<GI> groupIdentifier_;
+   boost::optional<Hex> groupLength_;
+   std::vector<HDLCParameters> parameters_;
+};
