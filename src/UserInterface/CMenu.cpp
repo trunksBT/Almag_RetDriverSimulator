@@ -115,7 +115,7 @@ ReturnCode CMenu::interpretDatabaseCommand(const Strings& userInput)
    }
    else if (databaseCommands::PUT == dbAction)
    {
-      if (validateUserInput(userInput, reqNumOfArgsFor::db::PU/T))
+      if (validateUserInput(userInput, reqNumOfArgsFor::db::PUT))
       {
          LOG(info)
             << userInput[0] << " "
