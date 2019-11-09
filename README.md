@@ -27,13 +27,13 @@ OR
 OR
 - cmake -DCMAKE_CXX_COMPILER="/usr/bin/g++" .
 OR
-- cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo // for using gdb
-OR  
-- make -j4 Almag_RetDriver && ./src/Almag_RetDriver  
+- cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo // for using gdb  
+2.  
+- bash runBinary.sh  
   
 # How to run tests:  
-- make -j4 Almag_RetDriver_MT && ./test/MT/Almag_RetDriver_MT  
-- make -j4 Almag_RetDriver_UT && ./test/UT/Almag_RetDriver_UT  
+- bash runUT.sh
+- bash runMT.sh  
 
 # Logger:  
 <Hour:Minute:Second.Milisec> severity [FileName::FunctionName:Line]  
