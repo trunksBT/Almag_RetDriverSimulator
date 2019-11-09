@@ -4,9 +4,7 @@ SOME SMELLS > OVER-ENGINEERING
 PLANNED REFACTOR AFTER FINISH  
 
 # UML:  
-Class Diagram - Main classes and as updated as possible :)  
-Sequence Diagram - How whole flow should look like  
-https://github.com/CopernicusSemestr5/Almag_RetDriver/tree/UML  
+To be integrated
 
 # Dependencies:
 - cmake 3.12.4
