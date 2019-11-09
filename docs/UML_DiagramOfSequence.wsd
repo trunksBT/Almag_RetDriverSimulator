@@ -3,7 +3,7 @@
 participant RetDriver
 participant Katherine
 
-== L1 Physical Layer ==
+== L1 Physical layer ==
 
 Katherine -> Katherine : supply RS-485 connection
 Katherine -> Katherine : supply DC 10-30V connection
@@ -17,7 +17,7 @@ loop 6 times every 300ms
     RetDriver -> Katherine : DummyScan
 end
 
-== L2 Transport Layer ==
+== L2 Data link layer ==
 
 RetDriver -> Katherine : AddressAssignment(PreviouslyDetectedTask)
 Katherine -> Katherine : **AddressAssignment**
@@ -28,7 +28,7 @@ Katherine -> Katherine : **Connected**
 RetDriver -> Katherine : XID::ReleaseVersion
 RetDriver -> Katherine : XID::AISGProtocolVersion
 
-== L7 Application Layer ==
+== L7 Application layer ==
 
 RetDriver -> Katherine : Calibrate
 
