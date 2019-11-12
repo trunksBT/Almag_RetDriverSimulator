@@ -8,17 +8,17 @@
 
 namespace test
 {
-class HDLCCommunicator : public IHDLCCommunicator
+class RoundTripHDLCCommunicatorStub : public IHDLCCommunicator
 {
 public:
-   explicit HDLCCommunicator();
+   explicit RoundTripHDLCCommunicatorStub();
 
    virtual bool send(
            const std::string &address, std::shared_ptr<HDLCFrameBody> frame);
 
    virtual boost::optional<HDLCFrame> receive(const std::string &address);
 
-   virtual ~HDLCCommunicator();
+   virtual ~RoundTripHDLCCommunicatorStub();
 
 private:
    std::shared_ptr<HDLCFrameBody> hdlcFrame_;

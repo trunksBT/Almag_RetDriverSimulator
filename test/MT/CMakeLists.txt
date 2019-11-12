@@ -9,7 +9,7 @@ set(MT_HappyPath
 
 set(MT_SadPath
     ${PROJECT_SOURCE_DIR}/test/MT/UIAndControllerIntegrationTestsSadPath.cpp
-        ../TestUtils/HDLCCommunicator.cpp ../TestUtils/HDLCCommunicator.hpp ../TestUtils/HexesUtils.cpp ../TestUtils/HexesUtils.hpp)
+        ../TestUtils/RoundTripHDLCCommunicatorStub.cpp ../TestUtils/RoundTripHDLCCommunicatorStub.hpp ../TestUtils/HexesUtils.cpp ../TestUtils/HexesUtils.hpp)
 
 add_executable(${PROJECT_TESTS_NAME}
     ${PROJECT_SOURCE_DIR}/test/main.cpp
