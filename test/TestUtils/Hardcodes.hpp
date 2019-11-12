@@ -11,7 +11,7 @@ namespace IOPaths
 {
 
 const std::filesystem::path ROOT_FOLDER_PATH = std::filesystem::current_path();
-const std::filesystem::path RELATIVE_PATH = "/../TestUtils/BuffersForIOTests";
+const std::filesystem::path RELATIVE_PATH = "/test/TestUtils/BuffersForIOTests";
 const std::filesystem::path TEST_BUFFERS_PATH = ROOT_FOLDER_PATH.string() + RELATIVE_PATH.string();
 
 const std::string BUFFER_TO_SEND_VAL_1 = TEST_BUFFERS_PATH.string() + "/ToSend1.txt"s;

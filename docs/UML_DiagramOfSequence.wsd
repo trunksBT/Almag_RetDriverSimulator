@@ -1,0 +1,37 @@
+@startuml
+
+participant RetDriver
+participant Katherine
+
+== L1 Physical layer ==
+
+Katherine -> Katherine : supply RS-485 connection
+Katherine -> Katherine : supply DC 10-30V connection
+
+note right Katherine
+Wait 3s for PowerUp
+end note
+Katherine -> Katherine : **NoAddress**
+
+loop 6 times every 300ms
+    RetDriver -> Katherine : DummyScan
+end
+
+== L2 Data link layer ==
+
+RetDriver -> Katherine : AddressAssignment(PreviouslyDetectedTask)
+Katherine -> Katherine : **AddressAssignment**
+RetDriver -> Katherine : SNRM
+Katherine -> RetDriver : UA
+Katherine -> Katherine : **Connected**
+
+RetDriver -> Katherine : XID::ReleaseVersion
+RetDriver -> Katherine : XID::AISGProtocolVersion
+
+== L7 Application layer ==
+
+RetDriver -> Katherine : Calibrate
+
+footer Katherine - most famous RET producent
+
+@enduml

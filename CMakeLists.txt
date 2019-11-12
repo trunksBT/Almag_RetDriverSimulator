@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.8)
 project (Almag_RetDriver)
 message(status "AlmagRetDriver MainCMakeLists")
 
-find_package(Boost 1.65 REQUIRED COMPONENTS log date_time)
+find_package(Boost 1.71.0 REQUIRED COMPONENTS log date_time)
 
 # options
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # create debug symbols
