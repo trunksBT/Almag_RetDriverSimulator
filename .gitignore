@@ -12,6 +12,7 @@ cmake_install.cmake
 lib
 logs
 tags
+.idea
 
 # Binaries
 Almag_RetDriver
