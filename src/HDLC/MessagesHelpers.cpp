@@ -33,7 +33,6 @@ std::string toString(const Hexes& value)
       stream << std::hex << static_cast<int>(it) << defaultVals::SPACE_AS_SEPARATOR;
    }
    return stream.str();
-}
-
+}  /// TODO remove the last space
 }
 

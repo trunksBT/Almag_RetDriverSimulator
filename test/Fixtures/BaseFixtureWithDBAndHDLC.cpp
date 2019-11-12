@@ -1,7 +1,8 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
+#include <TestUtils/RoundTripHDLCCommunicatorStub.hpp>
 
 BaseFixtureWithDBAndHDLC::BaseFixtureWithDBAndHDLC(const Database::ValueType inDB)
    : BaseFixtureWithDB(inDB)
-   , hdlcCommunicator_(HDLCCommunicator())
+   , hdlcCommunicator_(std::make_shared<test::RoundTripHDLCCommunicatorStub>())
 {}
 

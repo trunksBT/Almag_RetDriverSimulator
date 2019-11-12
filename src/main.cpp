@@ -17,7 +17,7 @@ int main()
 
    LOG(trace) << "BEGIN";
    Database db({});
-   HDLCCommunicator hdlcCommunicator;
+   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator = std::make_shared<HDLCCommunicator>();
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, hdlcCommunicator);
 
    CMenu ui_("AlmagRetDriverUI", "_", db, ctrl);

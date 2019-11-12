@@ -7,7 +7,7 @@ class IHDLCCommunicator;
 class Calibrate : public ICommand 
 {
 public:
-   Calibrate(IHDLCCommunicator& hdlcCommunicator, Strings userInput);
+   Calibrate(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
    virtual ~Calibrate() = default;
 
    virtual void execute() override;

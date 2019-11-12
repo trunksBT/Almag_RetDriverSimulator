@@ -17,7 +17,7 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 Calibrate::Calibrate(
-   IHDLCCommunicator& hdlcCommunicator, Strings userInput)
+        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
    : ICommand(userInput, hdlcCommunicator)
 {}
 
@@ -36,7 +36,7 @@ void Calibrate::executeImpl()
       .setControlByte(BYTE_CONTROL::RETAP)
       .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
 
-   hdlcCommunicator_.send(validatedUserInput_[IDX_OF_ADDRESS], 
+   hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
       std::make_shared<FrameI>(CalibratePrimFrame));
 
    LOG(trace) << "===============================================";

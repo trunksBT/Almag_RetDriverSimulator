@@ -9,6 +9,7 @@ cmake_install.cmake
 *.swo
 *.swp
 *.cpp~
+*.cbp
 lib
 logs
 tags

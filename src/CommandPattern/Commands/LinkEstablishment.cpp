@@ -17,7 +17,7 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 LinkEstablishment::LinkEstablishment(
-   IHDLCCommunicator& hdlcCommunicator, Strings userInput)
+   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
    : ICommand(userInput, hdlcCommunicator)
 {}
 
@@ -35,7 +35,7 @@ void LinkEstablishment::executeImpl()
    const auto LINK_ESTABLISHMENT_PRIM_FRAME = FrameSNRM()
       .setAddressByte(0x03);
 
-   hdlcCommunicator_.send(validatedUserInput_[IDX_OF_ADDRESS],
+   hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
       std::make_shared<FrameSNRM>(LINK_ESTABLISHMENT_PRIM_FRAME));
 
    LOG(trace) << "===============================================";

@@ -9,7 +9,7 @@
 
 using namespace command;
 
-StartPooling::StartPooling(IHDLCCommunicator& hdlcCommunicator)
+StartPooling::StartPooling(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator)
     : ICommand(hdlcCommunicator)
 {
     LOG(debug);

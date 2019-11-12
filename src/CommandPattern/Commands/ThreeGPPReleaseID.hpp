@@ -7,7 +7,7 @@ class IHDLCCommunicator;
 class ThreeGPPReleaseID : public ICommand 
 {
 public:
-   ThreeGPPReleaseID(IHDLCCommunicator& hdlcCommunicator, Strings userInput);
+   ThreeGPPReleaseID(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
    virtual ~ThreeGPPReleaseID() = default;
 
    virtual void execute() override;

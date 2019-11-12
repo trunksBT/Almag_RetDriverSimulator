@@ -18,7 +18,7 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 ThreeGPPReleaseID::ThreeGPPReleaseID(
-   IHDLCCommunicator& hdlcCommunicator, Strings userInput)
+   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
    : ICommand(userInput, hdlcCommunicator)
 {}
 
@@ -44,7 +44,7 @@ void ThreeGPPReleaseID::executeImpl()
          Hexes({ static_cast<Hex>(PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE) })
       ));
 
-   hdlcCommunicator_.send(validatedUserInput_[IDX_OF_ADDRESS], 
+   hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
       std::make_shared<FrameXID>(ThreeGPPReleaseIDPrimFrame));
 
    LOG(trace) << "===============================================";

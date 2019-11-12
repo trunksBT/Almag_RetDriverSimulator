@@ -7,7 +7,7 @@ class IHDLCCommunicator;
 class StartPooling : public ICommand 
 {
 public:
-    explicit StartPooling(IHDLCCommunicator& hdlcCommunicator);
+    explicit StartPooling(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
     virtual ~StartPooling();
 
     void execute() final override;

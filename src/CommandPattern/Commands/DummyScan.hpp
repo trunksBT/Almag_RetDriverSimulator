@@ -9,7 +9,7 @@ class DummyScan : public ICommand
 {
 public:
    DummyScan(
-      IHDLCCommunicator& hdlcCommunicator, 
+      std::shared_ptr<IHDLCCommunicator> hdlcCommunicator,
       Strings userInput, uint8_t numberOfExecutions);
 
    virtual ~DummyScan() = default;
