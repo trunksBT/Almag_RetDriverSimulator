@@ -75,31 +75,31 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
       CommandsToExpectedFrame{
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          DUMMY_SCAN_FRAME
-      }
+      },
 //      CommandsToExpectedFrame{
 //         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
 //         DUMMY_SCAN_FRAME
-//      },
-//      CommandsToExpectedFrame{
-//         {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         ADDRESS_ASSIGNMENT_FRAME
-//      },
-//      CommandsToExpectedFrame{
-//         {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         LINK_ESTABLISHMENT
-//      },
-//      CommandsToExpectedFrame{
-//         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         THREEGPP_RELEASE_ID
-//      },
-//      CommandsToExpectedFrame{
-//         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         AISG_PROTOCOL_VERSION
-//      },
-//      CommandsToExpectedFrame{
-//         {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         CALIBRATE_STR
-//      }
+//      },  /// TODO it looks like there must be used other way of message because there are 6 times the same msg
+      CommandsToExpectedFrame{
+         {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         ADDRESS_ASSIGNMENT_FRAME
+      },
+      CommandsToExpectedFrame{
+         {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         LINK_ESTABLISHMENT
+      },
+      CommandsToExpectedFrame{
+         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         THREEGPP_RELEASE_ID
+      },
+      CommandsToExpectedFrame{
+         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         AISG_PROTOCOL_VERSION
+      },
+      CommandsToExpectedFrame{
+         {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         CALIBRATE_STR
+      }
    )
 );
 
