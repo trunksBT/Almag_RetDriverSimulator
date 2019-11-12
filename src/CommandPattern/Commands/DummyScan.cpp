@@ -57,7 +57,7 @@ void DummyScan::executeImpl()
             Hexes({ 0xFF, 0xFF })));
 
       hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameXID>(dummyScanPrimFrame));
+         std::make_shared<FrameXID>(dummyScanPrimFrame));
 
       responseMessage_ += L1::DUMMY_SCAN + DELIMITER;
 

@@ -1,17 +1,14 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 
-#include <boost/optional.hpp>
-
 #include <UserInterface/CMenu.hpp>
 #include <Database/Objects/IOPaths.hpp>
-#include <HDLC/HDLCCommunicator.hpp>
-#include <CommandPattern/AlmagController.hpp>
 #include <CommandPattern/AlmagControllerNull.hpp>
 
 #include <Utils/Utils.hpp>
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
+#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 
 using namespace hardcodes::IOPaths;
 using namespace ui::databaseCommands;
@@ -23,12 +20,12 @@ class UIAndDatabaseIntegrationShould : public BaseFixtureWithDBAndHDLC
 {
 protected:
    UIAndDatabaseIntegrationShould()
-      : BaseFixtureWithDBAndHDLC({})
+      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ui_(std::make_unique<CMenu>(
          "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>()))
       {};
 
-    std::unique_ptr<CMenu> ui_;
+   std::unique_ptr<CMenu> ui_;
 };
 
 TEST_F(UIAndDatabaseIntegrationShould, Put_IOPaths_ByOT_BufferToSend_Once)

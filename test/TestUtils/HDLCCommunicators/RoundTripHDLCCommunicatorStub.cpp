@@ -3,6 +3,7 @@
 //
 
 #include "RoundTripHDLCCommunicatorStub.hpp"
+#include <Utils/Utils.hpp>
 
 namespace test
 {
@@ -28,4 +29,14 @@ boost::optional<HDLCFrame> RoundTripHDLCCommunicatorStub::receive(const std::str
    LOG(debug);
    return HDLCFrame(hdlcFrame_);
 }
+
+boost::optional<std::string> RoundTripHDLCCommunicatorStub::receiveStr(const std::string &address)
+{
+   if (const auto receivedHDLCFrame = receive(address))
+   {
+      return funs::toString(receivedHDLCFrame->build());
+   }
+   return {};
+}
+
 }  // namespace test

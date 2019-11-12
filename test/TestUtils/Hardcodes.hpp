@@ -18,6 +18,8 @@ const std::string BUFFER_TO_SEND_VAL_1 = TEST_BUFFERS_PATH.string() + "/ToSend1.
 const std::string BUFFER_TO_SEND_VAL_2 = TEST_BUFFERS_PATH.string() + "/ToSend2.txt"s;
 const std::string BUFFER_TO_SEND_VAL_3 = TEST_BUFFERS_PATH.string() + "/ToSend3.txt"s;
 
+const std::string ADDRESS_OF_PORT_FOR_ZERO_MQ = "/home/pkorycin/ZeroMqBuffer"s;
+
 }  // namespace IOPaths
 }  // namespace hardcodes
 

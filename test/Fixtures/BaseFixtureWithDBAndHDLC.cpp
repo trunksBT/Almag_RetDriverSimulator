@@ -1,8 +1,10 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
-#include <TestUtils/RoundTripHDLCCommunicatorStub.hpp>
+#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
+#include <TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp>
 
-BaseFixtureWithDBAndHDLC::BaseFixtureWithDBAndHDLC(const Database::ValueType inDB)
+BaseFixtureWithDBAndHDLC::BaseFixtureWithDBAndHDLC(
+        const Database::ValueType inDB, std::shared_ptr<IHDLCCommunicator> hdlcComm)
    : BaseFixtureWithDB(inDB)
-   , hdlcCommunicator_(std::make_shared<test::RoundTripHDLCCommunicatorStub>())
+   , hdlcCommunicator_(hdlcComm)
 {}
 

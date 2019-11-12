@@ -8,6 +8,7 @@
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
+#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 
 #include <Utils/Utils.hpp>
 
@@ -24,7 +25,7 @@ class AlmagControllerShouldPar:
 {
 protected:
     AlmagControllerShouldPar()
-      : BaseFixtureWithDBAndHDLC({})
+      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
     {};
 
