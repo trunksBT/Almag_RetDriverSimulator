@@ -17,6 +17,7 @@ public:
            const std::string &address, std::shared_ptr<HDLCFrameBody> frame);
 
    virtual boost::optional<HDLCFrame> receive(const std::string &address);
+   virtual boost::optional<std::string> receiveStr(const std::string &address);
 
    virtual ~RoundTripHDLCCommunicatorStub();
 

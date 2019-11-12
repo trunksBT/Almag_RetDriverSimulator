@@ -3,6 +3,7 @@
 #include <CommandPattern/AlmagController.hpp>
 #include <Utils/Utils.hpp>
 #include <TestUtils/Hardcodes.hpp>
+#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 
 using namespace command;
 using namespace hardcodes::IOPaths;
@@ -16,7 +17,7 @@ class UIAndControllerIntegrationShouldForSadPath : public BaseFixtureWithDBAndHD
 {
 protected:
    UIAndControllerIntegrationShouldForSadPath()
-      : BaseFixtureWithDBAndHDLC({})
+      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
    {};

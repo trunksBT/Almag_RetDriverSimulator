@@ -31,6 +31,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffunction-sections -fdata-sections") # 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-parameter") # disables warning about unused parameter 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,-lstdc++fs")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lzmq")
 
 message("** Boost Include: ${Boost_INCLUDE_DIR}")
 message("** Boost Libraries: ${Boost_LIBRARY_DIRS}")
@@ -84,8 +85,8 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParameters.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParameters.hpp
-        ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
-        ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
@@ -135,4 +136,3 @@ set(USER_INTERFACE_ALMAG_COMMAND_VALIDATION
 add_subdirectory(3rdparty/googletest/googlemock)
 add_subdirectory(test)
 add_subdirectory(src)
-

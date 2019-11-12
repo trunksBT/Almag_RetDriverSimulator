@@ -16,6 +16,7 @@
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
+#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 
 using namespace command;
 using namespace funs;
@@ -40,13 +41,13 @@ const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
 namespace mt
 {
 
-class UIAndControllerIntegrationShouldForHappyPathPar:
+class UI_Controller_RoundTripHDLC:
    public BaseFixtureWithDBAndHDLC,
    public ::testing::WithParamInterface<CommandsToExpectedFrame>
 {
 protected:
-   UIAndControllerIntegrationShouldForHappyPathPar()
-      : BaseFixtureWithDBAndHDLC({})
+   UI_Controller_RoundTripHDLC()
+      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
    {};
@@ -55,7 +56,7 @@ protected:
    CMenu ui_;
 };
 
-TEST_P(UIAndControllerIntegrationShouldForHappyPathPar, ExecuteCommandAndExpectSentFrame)
+TEST_P(UI_Controller_RoundTripHDLC, ExecuteCommandAndExpectSentFrame)
 {
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
@@ -69,7 +70,7 @@ TEST_P(UIAndControllerIntegrationShouldForHappyPathPar, ExecuteCommandAndExpectS
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
-   UIAndControllerIntegrationShouldForHappyPathPar,
+   UI_Controller_RoundTripHDLC,
    ::testing::Values(
       CommandsToExpectedFrame{
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
