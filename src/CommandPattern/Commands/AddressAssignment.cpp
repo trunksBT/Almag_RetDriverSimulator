@@ -18,7 +18,7 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 AddressAssignment::AddressAssignment(
-   IHDLCCommunicator& hdlcCommunicator, Strings userInput)
+        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
    : ICommand(userInput, hdlcCommunicator)
 {}
 
@@ -53,7 +53,7 @@ void AddressAssignment::executeImpl()
          Hexes({ static_cast<Hex>(DEVICE_TYPE::SRET) })
       ));
 
-   hdlcCommunicator_.send(validatedUserInput_[IDX_OF_ADDRESS], 
+   hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
       std::make_shared<FrameXID>(AddressAssignmentPrimFrame));
 
    LOG(trace) << "===============================================";

@@ -7,7 +7,7 @@ class IHDLCCommunicator;
 class AISGProtocolVersion : public ICommand 
 {
 public:
-   AISGProtocolVersion(IHDLCCommunicator& hdlcCommunicator, Strings userInput);
+   AISGProtocolVersion(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
    virtual ~AISGProtocolVersion() = default;
 
    virtual void execute() override;

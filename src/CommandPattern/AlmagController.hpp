@@ -20,12 +20,7 @@ class IHDLCCommunicator;
 class AlmagController : public IAlmagController
 {
 public:
-   AlmagController(Database& db, IHDLCCommunicator& hdlcCommunicator);
-
-   static AlmagController buildForTests(
-      Database& db, 
-      IHDLCCommunicator& hdlcCommunicator);
-
+   AlmagController(Database& db, std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
    virtual ~AlmagController();
 
    void addCommands(StringsMatrix validatedUserInput) final override;
@@ -40,7 +35,7 @@ private:
    void executeNextCommand();
 
    Database& db_;
-   IHDLCCommunicator& hdlcCommunicator_;
+   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator_;
    std::list<std::shared_ptr<ICommand>> commands_;
    std::string finalResultCode_;
 };

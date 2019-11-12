@@ -8,7 +8,7 @@ class IHDLCCommunicator;
 class AddressAssignment : public ICommand 
 {
 public:
-   AddressAssignment(IHDLCCommunicator& hdlcCommunicator, Strings userInput);
+   AddressAssignment(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
    virtual ~AddressAssignment() = default;
 
    virtual void execute() override;

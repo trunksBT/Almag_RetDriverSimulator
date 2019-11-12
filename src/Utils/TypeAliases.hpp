@@ -16,4 +16,3 @@ using MaybeStrings = boost::optional<std::vector<std::string>>;
 using ReturnCode = bool;
 
 #endif  // SRC_UTILS_TYPEALIASES
-

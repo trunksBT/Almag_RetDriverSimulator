@@ -17,7 +17,7 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 AISGProtocolVersion::AISGProtocolVersion(
-   IHDLCCommunicator& hdlcCommunicator, Strings userInput)
+        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
    : ICommand(userInput, hdlcCommunicator)
 {}
 
@@ -43,7 +43,7 @@ void AISGProtocolVersion::executeImpl()
          Hexes({ static_cast<Hex>(PV::AISG_2_0) })
       ));
 
-   hdlcCommunicator_.send(validatedUserInput_[IDX_OF_ADDRESS], 
+   hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
       std::make_shared<FrameXID>(AISGProtocolVersionPrimFrame));
 
    LOG(trace) << "===============================================";

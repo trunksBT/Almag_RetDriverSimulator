@@ -8,7 +8,7 @@ class IHDLCCommunicator;
 class LinkEstablishment : public ICommand 
 {
 public:
-   LinkEstablishment(IHDLCCommunicator& hdlcCommunicator, Strings userInput);
+   LinkEstablishment(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
    virtual ~LinkEstablishment() = default;
 
    virtual void execute() override;

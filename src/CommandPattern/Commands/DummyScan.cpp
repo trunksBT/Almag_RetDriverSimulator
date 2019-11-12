@@ -21,7 +21,7 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 DummyScan::DummyScan(
-   IHDLCCommunicator& hdlcCommunicator, Strings userInput, uint8_t numberOfExecutions)
+   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput, uint8_t numberOfExecutions)
    : ICommand(userInput, hdlcCommunicator)
    , numberOfExecutions_(numberOfExecutions)
 {
@@ -56,7 +56,7 @@ void DummyScan::executeImpl()
             0x02,
             Hexes({ 0xFF, 0xFF })));
 
-      hdlcCommunicator_.send(validatedUserInput_[IDX_OF_ADDRESS], 
+      hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
       std::make_shared<FrameXID>(dummyScanPrimFrame));
 
       responseMessage_ += L1::DUMMY_SCAN + DELIMITER;

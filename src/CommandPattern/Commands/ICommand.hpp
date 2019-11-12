@@ -19,13 +19,13 @@ public:
 
 protected:
    ICommand() = default;
-   explicit ICommand(IHDLCCommunicator& hdlcCommunicator);
-   ICommand(Strings userInput, IHDLCCommunicator& hdlcCommunicator);
+   explicit ICommand(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
+   ICommand(Strings userInput, std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
 
    using AlmagControllerInformer = boost::signals2::signal<void(void)>;
     
    Strings validatedUserInput_;
-   IHDLCCommunicator& hdlcCommunicator_;
+   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator_;
    AlmagControllerInformer informControllerAboutResult_;
 };
 

@@ -16,7 +16,7 @@
 using namespace command;
 using namespace defaultVals;
 
-AlmagController::AlmagController(Database& db, IHDLCCommunicator& hdlcCommunicator)
+AlmagController::AlmagController(Database& db, std::shared_ptr<IHDLCCommunicator> hdlcCommunicator)
     : db_(db)
     , hdlcCommunicator_(hdlcCommunicator)
     , finalResultCode_("")
@@ -32,12 +32,6 @@ AlmagController::~AlmagController()
 std::string AlmagController::getFinalResultCode()
 {
    return finalResultCode_;
-}
-
-AlmagController AlmagController::buildForTests(Database& db, IHDLCCommunicator& hdlcCommunicator)
-{
-    LOG(debug);
-    return AlmagController(db, hdlcCommunicator);
 }
 
 void AlmagController::addCommand(Strings validatedUserInput)
