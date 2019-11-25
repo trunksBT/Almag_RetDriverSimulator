@@ -7,6 +7,7 @@
 
 namespace test
 {
+
 RoundTripHDLCCommunicatorStub::RoundTripHDLCCommunicatorStub()
 {
    LOG(trace) << "MT_HDLC_ROUND_LOOP";

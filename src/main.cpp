@@ -1,5 +1,3 @@
-#include <filesystem>
-
 #include <CommandPattern/AlmagController.hpp>
 #include <Database/Database.hpp>
 #include <HDLC/HDLCCommunicator.hpp>
@@ -26,4 +24,3 @@ int main()
    LOG(trace) << "END";
    return 0;
 }
-

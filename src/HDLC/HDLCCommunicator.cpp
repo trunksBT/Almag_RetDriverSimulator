@@ -43,3 +43,9 @@ boost::optional<HDLCFrame> HDLCCommunicator::receive(const std::string& address)
    LOG(trace) << "END";
    return validatedFrame;
 }
+
+boost::optional<std::string> HDLCCommunicator::receiveStr(const std::string &address)
+{
+   LOG(error) << "NOT IMPLEMENTED YET";
+   return {};
+}
