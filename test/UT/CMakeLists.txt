@@ -17,7 +17,6 @@ add_executable(${PROJECT_TESTS_NAME}
 
     ${DATABASE}
     ${HDLC}
-    ${USER_INTERFACE_DATABASE}
     ${UTILS}
 )
 

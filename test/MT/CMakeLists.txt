@@ -15,7 +15,11 @@ set(MT_HappyPath
 )
 
 set(MT_SadPath
-    ${PROJECT_SOURCE_DIR}/test/MT/UIAndControllerIntegrationTestsSadPath.cpp ../TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp ../TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp ../TestUtils/HDLCCommunicators/ZeroMqUtils.cpp ../TestUtils/HDLCCommunicators/ZeroMqUtils.hpp)
+    ${PROJECT_SOURCE_DIR}/test/MT/UIAndControllerIntegrationTestsSadPath.cpp 
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp 
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp 
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.cpp 
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.hpp)
 
 
 add_executable(${PROJECT_TESTS_NAME}
@@ -28,9 +32,6 @@ add_executable(${PROJECT_TESTS_NAME}
     ${COMMAND_PATTERN}
     ${DATABASE}
     ${HDLC}
-    ${USER_INTERFACE_ALMAG_COMMAND_VALIDATION}
-    ${USER_INTERFACE_DATABASE}
-    ${USER_INTERFACE}
     ${UTILS}
     ${TEST_UTILS}
 )
