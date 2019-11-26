@@ -3,7 +3,6 @@
 
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
-#include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>

@@ -12,6 +12,7 @@ public:
     bool send(
       const std::string& address, std::shared_ptr<HDLCFrameBody> framePrim) override;
     boost::optional<HDLCFrame> receive(const std::string& address) override;
+    virtual boost::optional<std::string> receiveStr(const std::string &address) override;
  
 private:
    std::ifstream streamToReceive;

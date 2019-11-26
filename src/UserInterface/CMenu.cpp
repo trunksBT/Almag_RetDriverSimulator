@@ -151,4 +151,3 @@ bool CMenu::isAlmagControllerCommand(const std::string& zeroArgOfUserInput)
       zeroArgOfUserInput == command::L2::THREEGPP_RELEASE_ID or
       zeroArgOfUserInput == command::L2::AISG_PROTOCOL_VERSION;
 }
-

@@ -12,22 +12,22 @@
 class CMenu
 {
 public:
-	CMenu(const std::string& inMenuName, const std::string& inCommandName,
+   CMenu(const std::string& inMenuName, const std::string& inCommandName,
       Database& inDb, IAlmagControllerPtr almagCtrl);
 
-	virtual ~CMenu() = default;
+   virtual ~CMenu() = default;
 
-	bool run(const Strings& inArgs);
-	bool runPredefinedCommands(const StringsMatrix& inCommands);
+   bool run(const Strings& inArgs);
+   bool runPredefinedCommands(const StringsMatrix& inCommands);
 
 private:
 	ReturnCode runImpl(const Strings& userInput);
 
-	bool isAction(const std::string& zeroArgOfUserInput);
-	bool isDatabaseCommand(const std::string& zeroArgOfUserInput);
+   bool isAction(const std::string& zeroArgOfUserInput);
+   bool isDatabaseCommand(const std::string& zeroArgOfUserInput);
    bool isAlmagControllerCommand(const std::string& zeroArgOfUserInput);
 
-	ReturnCode interpretAction(const Strings& userInput);
+   ReturnCode interpretAction(const Strings& userInput);
    ReturnCode interpretDatabaseCommand(const Strings& userInput);
    ReturnCode interpretControllerCommand(const Strings& userInput); 
 
