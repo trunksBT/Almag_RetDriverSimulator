@@ -4,7 +4,7 @@ message(${CMAKE_CURRENT_SOURCE_DIR})
 set(UT
     ${PROJECT_SOURCE_DIR}/test/UT/DB/DBTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/CRC16Tests.cpp
-        ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameBodyTests.cpp
+    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameBodyTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/Utils/UserCommandParserTest.cpp
 )
@@ -13,7 +13,6 @@ add_executable(${PROJECT_TESTS_NAME}
     ${PROJECT_SOURCE_DIR}/test/main.cpp
     ${UT} 
     ${FIXTURES}
-    ${TEST_UTILS}
 
     ${DATABASE}
     ${HDLC}
