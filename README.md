@@ -1,4 +1,4 @@
-# This is simulator for AISG 2.0 RetDevice  
+# This is simulator for AISG 2.0 RetDriver
 
 # Checkout command  
 - SSH: git clone git@github.com:trunksBT/Almag_RetDriverSimulator.git --recursive  
