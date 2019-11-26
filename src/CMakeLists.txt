@@ -6,9 +6,7 @@ add_executable(${PROJECT_NAME}
     ${DATABASE}
     ${UTILS}
     ${USER_INTERFACE}
-    ${USER_INTERFACE_DATABASE}
     ${HDLC}
-    ${USER_INTERFACE_ALMAG_COMMAND_VALIDATION}
 )
 
 target_link_libraries(${PROJECT_NAME}
