@@ -1,3 +1,7 @@
+# Checkout command  
+- SSH: git clone git@github.com:trunksBT/Almag_RetDriverSimulator.git --recursive  
+- HTTPS: git clone https://github.com/trunksBT/Almag_RetDriverSimulator.git --recursive  
+
 # Almag_RetDriver
 UNBLOCKED_SCENARIOS > QUALITY  
 SOME SMELLS > OVER-ENGINEERING  
