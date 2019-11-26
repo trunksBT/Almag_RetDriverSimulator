@@ -44,12 +44,15 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 link_directories(${Boost_LIBRARY_DIRS})
 add_definitions( -DBOOST_ALL_DYN_LINK)
 
+# External libraries
+include_directories(${PROJECT_SOURCE_DIR}/externalLibraries)
+
 set(DATABASE
-    ${PROJECT_SOURCE_DIR}/src/Database/Database.cpp
-    ${PROJECT_SOURCE_DIR}/src/Database/Database.hpp
-    ${PROJECT_SOURCE_DIR}/src/Database/Objects/IOPaths.cpp
-    ${PROJECT_SOURCE_DIR}/src/Database/Objects/IOPaths.hpp
-    ${PROJECT_SOURCE_DIR}/src/Database/Utils/KeyWithValue.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
 )
 
 set(COMMAND_PATTERN
