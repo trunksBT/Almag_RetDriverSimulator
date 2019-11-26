@@ -7,6 +7,3 @@
 [submodule "externalLibraries/Database"]
 	path = externalLibraries/Database
 	url = git@github.com:trunksBT/Almag_Database.git
-[submodule "exteralLibraries/UserInterface"]
-	path = externalLibraries/UserInterface
-	url = git@github.com:trunksBT/Almag_UserInterface.git
