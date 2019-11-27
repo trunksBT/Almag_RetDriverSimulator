@@ -20,5 +20,5 @@ static const std::array<std::string, NUMBER_OF_CONSTRAINTS> values {{
    PUT,
 }};
 
-}  // namespace database
-}  // namespace constraints
+}
+}

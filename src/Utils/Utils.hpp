@@ -53,12 +53,6 @@ namespace actions
    static const std::string HELP_WHEN_UNKNOWN = " - not supported, please check command constraints, paste 'help' or 'exit'";
 }  // namespace actions
 
-namespace databaseCommands
-{
-	static const std::string GET = "get";
-	static const std::string PUT = "put";
-	static const std::string DELETE = "delete";
-}  // namespace databaseCommands
 }  // namespace ui
 
 namespace defaultVals
@@ -105,7 +99,7 @@ namespace dbObjects
 {
 namespace OT
 {
-constexpr std::string_view IO_PATHS = "IOPaths";
+const std::string_view IO_PATHS = "IOPaths";
 }  // namespace OT
 }  // dbObjects
 

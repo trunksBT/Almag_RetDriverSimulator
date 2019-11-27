@@ -4,8 +4,8 @@
 #include <UserInterface/CMenu.hpp>
 
 #include <Utils/Logger.hpp>
-#include <PluginCommandConstraints/AlmagConstraints.hpp>
-#include <PluginCommandConstraints/DatabaseConstraints.hpp>
+#include <PluginConstraints/AlmagConstraints.hpp>
+#include <PluginConstraints/DatabaseConstraints.hpp>
 #include <Utils/UserCommandParser.hpp>
 
 using namespace std;

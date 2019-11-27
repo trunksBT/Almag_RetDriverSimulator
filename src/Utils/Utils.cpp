@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <Utils/Logger.hpp>
-#include <PluginCommandConstraints/AlmagConstraints.hpp>
+#include <PluginConstraints/AlmagConstraints.hpp>
 
 using namespace defaultVals;
 using namespace constraints::almag;

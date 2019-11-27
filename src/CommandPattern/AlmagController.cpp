@@ -7,7 +7,7 @@
 #include <CommandPattern/Commands/LinkEstablishment.hpp>
 #include <CommandPattern/Commands/StartPooling.hpp>
 #include <CommandPattern/Commands/ThreeGPPReleaseID.hpp>
-#include <PluginCommandConstraints/AlmagConstraints.hpp>
+#include <PluginConstraints/AlmagConstraints.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
 #include <Utils/Logger.hpp>
@@ -140,4 +140,3 @@ void AlmagController::handleCommandsResult()
         executeNextCommand();
     }
 }
-

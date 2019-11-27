@@ -105,16 +105,17 @@ set(HDLC
 set(UTILS
     ${PROJECT_SOURCE_DIR}/src/Utils/Logger.cpp
     ${PROJECT_SOURCE_DIR}/src/Utils/Logger.hpp
-
     ${PROJECT_SOURCE_DIR}/src/Utils/UserCommandParser.cpp
     ${PROJECT_SOURCE_DIR}/src/Utils/UserCommandParser.hpp
-
     ${PROJECT_SOURCE_DIR}/src/Utils/Utils.hpp
     ${PROJECT_SOURCE_DIR}/src/Utils/Utils.cpp
+    ${PROJECT_SOURCE_DIR}/src/Utils/TypeAliases.hpp
+    ${PROJECT_SOURCE_DIR}/src/Utils/Functions.hpp
 )
 
 set(PLUGIN_COMMAND_CONSTRAINTS
-    ${PROJECT_SOURCE_DIR}/src/PluginCommandConstraints/AlmagConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginConstraints/AlmagConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginConstraints/DatabaseConstraints.hpp
 )
 
 set(USER_INTERFACE
