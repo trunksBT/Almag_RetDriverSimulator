@@ -38,7 +38,7 @@ bool validateUserInput(const Strings& userInput, uint32_t numberOfExpectedArgs)
    return true;
 }
 
-}  // namespace ui
+}
 
 std::string multiplyString(int times, const std::string& phrase)
 {

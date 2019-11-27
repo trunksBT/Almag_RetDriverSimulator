@@ -111,13 +111,14 @@ void AlmagController::addCommands(std::vector<std::shared_ptr<ICommand>> inComma
     }
 }
 
-void AlmagController::executeCommand()
+bool AlmagController::executeCommand()
 {
     LOG(debug);
     if (not commands_.empty())
     {
         commands_.front()->execute();
     }
+    return true;
 }
 
 void AlmagController::executeNextCommand()

@@ -18,9 +18,10 @@ void AlmagControllerNull::addCommands(StringsMatrix validatedUserInput)
    LOG(debug);
 }
 
-void AlmagControllerNull::executeCommand()
+bool AlmagControllerNull::executeCommand()
 {
    LOG(debug);
+   return true;
 }
 
 void AlmagControllerNull::handleCommandsResult()
@@ -32,4 +33,3 @@ std::string AlmagControllerNull::getFinalResultCode()
 {
    return defaultVals::FOR_STRING;
 }
-

@@ -17,14 +17,14 @@
 
 class IHDLCCommunicator;
 
-class AlmagController : public IAlmagController
+class AlmagController final: public IAlmagController
 {
 public:
    AlmagController(Database& db, std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
    virtual ~AlmagController();
 
    void addCommands(StringsMatrix validatedUserInput) final override;
-   void executeCommand() final override;
+   bool executeCommand() final override;
    void handleCommandsResult() final override;
    std::string getFinalResultCode() final override;
 

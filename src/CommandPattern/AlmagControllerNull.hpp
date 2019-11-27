@@ -9,7 +9,7 @@ public:
    virtual ~AlmagControllerNull();
 
    void addCommands(StringsMatrix validatedUserInput) final override;
-   void executeCommand() final override;
+   bool executeCommand() final override;
    void handleCommandsResult() final override;
    std::string getFinalResultCode() final override;
 };
