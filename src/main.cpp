@@ -5,10 +5,10 @@
 
 #include <Utils/Logger.hpp>
 #include <PluginCommandConstraints/AlmagConstraints.hpp>
+#include <PluginCommandConstraints/DatabaseConstraints.hpp>
 #include <Utils/UserCommandParser.hpp>
 
 using namespace std;
-using namespace constraints::almag;
 
 int main()
 {
@@ -21,14 +21,12 @@ int main()
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, hdlcCommunicator);
 
    CMenu ui_("AlmagRetDriverUI", "_", db, ctrl);
+
    ui_.setAlmagCommandsConstraints({
-                                    L1::DUMMY_SCAN,
-                                    L1::SET_LINK_SPEED,
-                                    L2::ADDRESS_ASSIGNMENT,
-                                    L2::LINK_ESTABLISHMENT,
-                                    L2::THREEGPP_RELEASE_ID,
-                                    L2::AISG_PROTOCOL_VERSION,
-                                    L7::CALIBRATE});
+      constraints::almag::values.begin(), constraints::almag::values.end()});
+   ui_.setDatabaseCommandsConstraints({
+      constraints::database::values.begin(), constraints::database::values.end()});
+
    ui_.run({});
 
    LOG(trace) << "END";
