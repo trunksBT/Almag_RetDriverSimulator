@@ -10,16 +10,15 @@
 #include <CommandPattern/AlmagController.hpp>
 
 #include <PluginConstraints/AlmagConstraints.hpp>
-#include <Utils/Logger.hpp>
-#include <Utils/Utils.hpp>
-#include <Utils/TypeAliases.hpp>
+#include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
+#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp>
 
-using namespace command;
 using namespace funs;
 using namespace constraints::almag;
 using namespace hardcodes::IOPaths;
@@ -48,7 +47,9 @@ protected:
    UI_Controller_ZeroMqHDLC()
       : BaseFixtureWithDBAndHDLC({}, std::make_shared<ZeroMqHDLCCommunicator>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
-      , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
+      , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
+            std::make_shared<AlmagCommandValidationManager>(db_),
+            std::make_unique<DatabaseCommandValidationManager>(db_))
    {
       ui_.setAlmagCommandsConstraints({
          constraints::almag::values.begin(), constraints::almag::values.end()});

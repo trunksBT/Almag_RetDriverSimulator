@@ -2,7 +2,10 @@
 #include <UserInterface/CMenu.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <CommandPattern/AlmagController.hpp>
+
 #include <PluginConstraints/AlmagConstraints.hpp>
+#include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
+#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
@@ -36,7 +39,10 @@ protected:
    UI_Controller_RoundTripHDLC()
       : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
-      , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
+      , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
+            std::make_shared<AlmagCommandValidationManager>(db_),
+            std::make_unique<DatabaseCommandValidationManager>(db_)
+      )
    {
       ui_.setAlmagCommandsConstraints({
          constraints::almag::values.begin(), constraints::almag::values.end()});

@@ -4,8 +4,12 @@
 #include <UserInterface/CMenu.hpp>
 
 #include <Utils/Logger.hpp>
+
 #include <PluginConstraints/AlmagConstraints.hpp>
 #include <PluginConstraints/DatabaseConstraints.hpp>
+#include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
+#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+
 #include <Utils/UserCommandParser.hpp>
 
 using namespace std;
@@ -20,14 +24,17 @@ int main()
    std::shared_ptr<IHDLCCommunicator> hdlcCommunicator = std::make_shared<HDLCCommunicator>();
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, hdlcCommunicator);
 
-   CMenu ui_("AlmagRetDriverUI", "_", db, ctrl);
+   CMenu ui{"AlmagRetDriverUI", "_", db, ctrl,
+      std::make_shared<AlmagCommandValidationManager>(db),
+      std::make_unique<DatabaseCommandValidationManager>(db)
+   };
 
-   ui_.setAlmagCommandsConstraints({
+   ui.setAlmagCommandsConstraints({
       constraints::almag::values.begin(), constraints::almag::values.end()});
-   ui_.setDatabaseCommandsConstraints({
+   ui.setDatabaseCommandsConstraints({
       constraints::database::values.begin(), constraints::database::values.end()});
 
-   ui_.run({});
+   ui.run({});
 
    LOG(trace) << "END";
    return 0;

@@ -5,7 +5,9 @@
 #include <CommandPattern/AlmagControllerNull.hpp>
 
 #include <PluginConstraints/DatabaseConstraints.hpp>
-#include <Utils/Utils.hpp>
+#include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
+#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
@@ -23,7 +25,10 @@ protected:
    UIAndDatabaseIntegrationShould()
       : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ui_(std::make_unique<CMenu>(
-         "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>()))
+         "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>(),
+         std::make_shared<AlmagCommandValidationManager>(db_),
+         std::make_unique<DatabaseCommandValidationManager>(db_))
+      )
    {
       ui_->setDatabaseCommandsConstraints({
           constraints::database::values.begin(), constraints::database::values.end()});
