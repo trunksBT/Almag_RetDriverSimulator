@@ -3,17 +3,16 @@
 #include <CommandPattern/AlmagController.hpp>
 #include <CommandPattern/AlmagControllerNull.hpp>
 #include <CommandPattern/IAlmagController.hpp>
-#include <CommandPattern/Commands/StartPooling.hpp>
-#include <CommandPattern/Commands/Calibrate.hpp>
 
+#include <PluginConstraints/AlmagConstraints.hpp>
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
-
 #include <Utils/Utils.hpp>
 
 using namespace command;
 using namespace defaultVals;
+using namespace constraints::almag;
 using namespace hardcodes::IOPaths;
 
 namespace mt

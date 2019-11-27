@@ -9,6 +9,7 @@
 
 #include <CommandPattern/AlmagController.hpp>
 
+#include <PluginConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 #include <Utils/TypeAliases.hpp>
@@ -20,12 +21,11 @@
 
 using namespace command;
 using namespace funs;
+using namespace constraints::almag;
 using namespace hardcodes::IOPaths;
-using namespace ui::databaseCommands;
 
 namespace
 {
-
 const std::string DUMMY_SCAN_FRAME = "7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e ";
 const std::string ADDRESS_ASSIGNMENT_FRAME = 
 "7e ff bf 81 f0 1b 1 13 41 4e "
@@ -35,8 +35,7 @@ const std::string LINK_ESTABLISHMENT = "7e 3 93 13 37 7e ";
 const std::string THREEGPP_RELEASE_ID = "7e 3 bf 81 f0 3 5 1 a 13 37 7e ";
 const std::string AISG_PROTOCOL_VERSION = "7e 3 bf 81 f0 3 14 1 2 13 37 7e ";
 const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
-
-}  // namespace
+}
 
 namespace mt
 {
@@ -103,5 +102,4 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    )
 );
 
-}  // namespace mt
-
+}

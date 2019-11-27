@@ -15,8 +15,7 @@ set(MT_HappyPath
 )
 
 set(MT_SadPath
-    ${PROJECT_SOURCE_DIR}/test/MT/UIAndControllerIntegrationTestsSadPath.cpp 
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp 
+        ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp 
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.cpp 
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.hpp)

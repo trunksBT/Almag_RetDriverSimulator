@@ -4,6 +4,7 @@
 #include <Database/Objects/IOPaths.hpp>
 #include <CommandPattern/AlmagControllerNull.hpp>
 
+#include <PluginConstraints/DatabaseConstraints.hpp>
 #include <Utils/Utils.hpp>
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
@@ -11,7 +12,7 @@
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 
 using namespace hardcodes::IOPaths;
-using namespace ui::databaseCommands;
+using namespace constraints::database;
 
 namespace mt
 {
@@ -24,7 +25,8 @@ protected:
       , ui_(std::make_unique<CMenu>(
          "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>()))
    {
-
+      ui_->setDatabaseCommandsConstraints({
+          constraints::database::values.begin(), constraints::database::values.end()});
    };
 
    std::unique_ptr<CMenu> ui_;
@@ -134,4 +136,3 @@ TEST_F(UIAndDatabaseIntegrationShould, Put_IOPaths_ByUK_BufferToSend_Twice_Diffe
 }
 
 }  // namespace mt
-
