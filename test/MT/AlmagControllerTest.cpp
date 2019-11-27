@@ -4,7 +4,7 @@
 #include <CommandPattern/AlmagControllerNull.hpp>
 #include <CommandPattern/IAlmagController.hpp>
 
-#include <PluginConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>

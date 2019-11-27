@@ -15,4 +15,3 @@ public:
 };
 
 using IAlmagControllerPtr = std::shared_ptr<IAlmagController>;
-

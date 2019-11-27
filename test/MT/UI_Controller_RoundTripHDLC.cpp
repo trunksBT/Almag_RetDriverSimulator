@@ -3,7 +3,7 @@
 #include <HDLC/MessagesHelpers.hpp>
 #include <CommandPattern/AlmagController.hpp>
 
-#include <PluginConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 

@@ -114,8 +114,8 @@ set(UTILS
 )
 
 set(PLUGIN_COMMAND_CONSTRAINTS
-    ${PROJECT_SOURCE_DIR}/src/PluginConstraints/AlmagConstraints.hpp
-    ${PROJECT_SOURCE_DIR}/src/PluginConstraints/DatabaseConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
 )
 
 set(USER_INTERFACE

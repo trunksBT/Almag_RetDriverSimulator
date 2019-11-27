@@ -2,7 +2,7 @@
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
-#include <PluginConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 
