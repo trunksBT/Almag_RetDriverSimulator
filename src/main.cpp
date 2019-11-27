@@ -7,7 +7,7 @@
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp>
-#include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
+#include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
 #include <Utils/UserCommandParser.hpp>

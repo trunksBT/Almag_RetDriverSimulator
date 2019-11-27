@@ -113,9 +113,11 @@ set(UTILS
     ${PROJECT_SOURCE_DIR}/src/Utils/Functions.hpp
 )
 
-set(PLUGIN_COMMAND_CONSTRAINTS
+set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
 )
 
 set(USER_INTERFACE
@@ -125,8 +127,6 @@ set(USER_INTERFACE
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/Database/CDatabaseCommand.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/Database/Brokers/Broker_IOPaths.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/Database/Brokers/Broker_IOPaths.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/DummyScanValidationStrategy.cpp

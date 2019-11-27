@@ -33,6 +33,7 @@ add_executable(${PROJECT_TESTS_NAME}
     ${HDLC}
     ${UTILS}
     ${USER_INTERFACE}
+    ${PLUGIN_SPECIFICS}
 )
 
 add_dependencies(${PROJECT_TESTS_NAME} gmock_main)

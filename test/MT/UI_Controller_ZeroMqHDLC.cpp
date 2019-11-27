@@ -10,7 +10,7 @@
 #include <CommandPattern/AlmagController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
-#include <UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp>
+#include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
