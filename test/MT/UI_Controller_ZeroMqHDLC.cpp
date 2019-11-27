@@ -49,7 +49,10 @@ protected:
       : BaseFixtureWithDBAndHDLC({}, std::make_shared<ZeroMqHDLCCommunicator>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
-   {};
+   {
+      ui_.setAlmagCommandsConstraints({
+         constraints::almag::values.begin(), constraints::almag::values.end()});
+   };
 
    AlmagControllerPtr ctrl_;
    CMenu ui_;
@@ -60,7 +63,6 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
    );
-
    const auto& receivedFromSecondaryHdlcFrame = hdlcCommunicator_->receiveStr(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(returnCode);

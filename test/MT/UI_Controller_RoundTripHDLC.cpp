@@ -38,14 +38,8 @@ protected:
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
    {
-//      ui_->setAlmagCommandsConstraints({command::CALIBRATE,
-//                                      command::START_POOLING,
-//                                      command::L1::DUMMY_SCAN,
-//                                      command::L1::SET_LINK_SPEED,
-//                                      command::L2::ADDRESS_ASSIGNMENT,
-//                                      command::L2::LINK_ESTABLISHMENT,
-//                                      command::L2::THREEGPP_RELEASE_ID,
-//                                      command::L2::AISG_PROTOCOL_VERSION});
+      ui_.setAlmagCommandsConstraints({
+         constraints::almag::values.begin(), constraints::almag::values.end()});
    };
 
    AlmagControllerPtr ctrl_;
@@ -57,7 +51,6 @@ TEST_P(UI_Controller_RoundTripHDLC, ExecuteCommandAndExpectSentFrame)
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
    );
-
    const auto& sentFrames = hdlcCommunicator_->receive(BUFFER_TO_SEND_VAL_1);
 
    ASSERT_TRUE(returnCode);
