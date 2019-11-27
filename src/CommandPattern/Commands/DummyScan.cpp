@@ -1,13 +1,13 @@
 #include <CommandPattern/Commands/DummyScan.hpp>
 
 #include <chrono>
-#include <filesystem>
 #include <thread>
 
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 
@@ -26,7 +26,7 @@ DummyScan::DummyScan(
    , numberOfExecutions_(numberOfExecutions)
 {
    responseMessage_.reserve( 
-      (L1::DUMMY_SCAN + DELIMITER).size() * numberOfExecutions_);
+      (constraints::almag::L1::DUMMY_SCAN + DELIMITER).size() * numberOfExecutions_);
 }
 
 void DummyScan::execute()
@@ -59,7 +59,7 @@ void DummyScan::executeImpl()
       hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
          std::make_shared<FrameXID>(dummyScanPrimFrame));
 
-      responseMessage_ += L1::DUMMY_SCAN + DELIMITER;
+      responseMessage_ += constraints::almag::L1::DUMMY_SCAN + DELIMITER;
 
       if (numberOfExecutions_ > 1)
       {
@@ -74,6 +74,5 @@ void DummyScan::executeImpl()
 
 std::string DummyScan::handleResponse()
 {
-   L1::DUMMY_SCAN + DELIMITER;
    return responseMessage_;
 }

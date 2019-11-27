@@ -50,7 +50,7 @@ namespace actions
 {
 	static const std::string EXIT = "exit";
 	static const std::string HELP = "help";
-   static const std::string HELP_WHEN_UNKNOWN = " - there is no such command, paste 'help' or 'exit'";
+   static const std::string HELP_WHEN_UNKNOWN = " - not supported, please check command constraints, paste 'help' or 'exit'";
 }  // namespace actions
 
 namespace databaseCommands
@@ -93,25 +93,6 @@ constexpr const char* SHUTDOWN = "SHUTDOWN";
 
 namespace command
 {
-namespace L1
-{
-   const std::string SET_LINK_SPEED = "SetLinkSpeed";
-   const std::string DUMMY_SCAN = "DummyScan";
-}  // namespace L1
-
-namespace L2
-{
-   const std::string ADDRESS_ASSIGNMENT = "AddressAssignment";
-   const std::string LINK_ESTABLISHMENT = "LinkEstablishment";
-   const std::string THREEGPP_RELEASE_ID = "3GPPReleaseID";
-   const std::string AISG_PROTOCOL_VERSION = "AISGProtocolVersion";
-}  // namespace L2
-
-namespace L7
-{
-   const std::string CALIBRATE = "Calibrate";
-}  // namespace L7
-
    const std::string START_POOLING = "StartPooling";
    const std::string START_POOLING_NULL = "StartPooling_NULL";
    const std::string CALIBRATE = "Calibrate";

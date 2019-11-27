@@ -7,7 +7,7 @@
 #include <CommandPattern/Commands/LinkEstablishment.hpp>
 #include <CommandPattern/Commands/StartPooling.hpp>
 #include <CommandPattern/Commands/ThreeGPPReleaseID.hpp>
-
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
 #include <Utils/Logger.hpp>
@@ -15,6 +15,7 @@
 
 using namespace command;
 using namespace defaultVals;
+using namespace constraints::almag;
 
 AlmagController::AlmagController(Database& db, std::shared_ptr<IHDLCCommunicator> hdlcCommunicator)
     : db_(db)

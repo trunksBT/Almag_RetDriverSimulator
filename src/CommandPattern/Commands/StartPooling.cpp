@@ -1,8 +1,6 @@
 #include "CommandPattern/Commands/StartPooling.hpp"
 
-#include <chrono>
 #include <thread>
-
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>

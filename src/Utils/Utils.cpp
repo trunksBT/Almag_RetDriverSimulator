@@ -2,8 +2,10 @@
 #include <sstream>
 #include <iostream>
 #include <Utils/Logger.hpp>
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 
 using namespace defaultVals;
+using namespace constraints::almag;
 
 namespace ui
 {
@@ -13,14 +15,14 @@ std::string actionHelp()
    std::stringstream stream;
    stream << "Executing Almag Commands " << END_LINE;
    stream << "L1" << END_LINE;
-   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << command::L1::SET_LINK_SPEED << " PathOfRS485Port" << END_LINE;
+   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << L1::SET_LINK_SPEED << " PathOfRS485Port" << END_LINE;
    stream << "L2" << END_LINE;
-   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << command::L2::ADDRESS_ASSIGNMENT << " PathOfRS485Port" << END_LINE;
-   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << command::L2::LINK_ESTABLISHMENT << " PathOfRS485Port" << END_LINE;
-   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << command::L2::THREEGPP_RELEASE_ID << " PathOfRS485Port" << END_LINE;
-   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << command::L2::AISG_PROTOCOL_VERSION << " PathOfRS485Port" << END_LINE;
+   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << L2::ADDRESS_ASSIGNMENT << " PathOfRS485Port" << END_LINE;
+   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << L2::LINK_ESTABLISHMENT << " PathOfRS485Port" << END_LINE;
+   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << L2::THREEGPP_RELEASE_ID << " PathOfRS485Port" << END_LINE;
+   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << L2::AISG_PROTOCOL_VERSION << " PathOfRS485Port" << END_LINE;
    stream << "L7" << END_LINE;
-   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << command::L7::CALIBRATE << " PathOfRS485Port" << END_LINE;
+   stream << INDENT_OF_SIZE_ONE << SPACE_AS_SEPARATOR << L7::CALIBRATE << " PathOfRS485Port" << END_LINE;
    return stream.str();
 }
 

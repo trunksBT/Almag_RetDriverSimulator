@@ -23,7 +23,9 @@ protected:
       : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ui_(std::make_unique<CMenu>(
          "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>()))
-      {};
+   {
+
+   };
 
    std::unique_ptr<CMenu> ui_;
 };

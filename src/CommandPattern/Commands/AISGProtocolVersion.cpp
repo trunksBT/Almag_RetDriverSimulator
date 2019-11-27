@@ -5,6 +5,7 @@
 #include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 
@@ -52,6 +53,6 @@ void AISGProtocolVersion::executeImpl()
 
 std::string AISGProtocolVersion::handleResponse()
 {
-   return L2::AISG_PROTOCOL_VERSION + DELIMITER;
+   return constraints::almag::L2::AISG_PROTOCOL_VERSION + DELIMITER;
 }
 

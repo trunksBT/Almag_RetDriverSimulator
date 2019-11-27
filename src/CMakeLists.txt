@@ -7,6 +7,7 @@ add_executable(${PROJECT_NAME}
     ${UTILS}
     ${USER_INTERFACE}
     ${HDLC}
+    ${PLUGIN_COMMAND_CONSTRAINTS}
 )
 
 target_link_libraries(${PROJECT_NAME}

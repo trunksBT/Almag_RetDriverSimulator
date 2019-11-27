@@ -5,6 +5,7 @@
 #include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 
@@ -45,6 +46,6 @@ void Calibrate::executeImpl()
 
 std::string Calibrate::handleResponse()
 {
-   return L7::CALIBRATE + DELIMITER;
+   return constraints::almag::L7::CALIBRATE + DELIMITER;
 }
 

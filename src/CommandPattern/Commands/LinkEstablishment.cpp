@@ -1,9 +1,8 @@
-#include <CommandPattern/Commands/LinkEstablishment.hpp>
-#include <filesystem>
-
+#include "CommandPattern/Commands/LinkEstablishment.hpp"
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 
@@ -43,6 +42,6 @@ void LinkEstablishment::executeImpl()
 
 std::string LinkEstablishment::handleResponse()
 {
-   return L2::LINK_ESTABLISHMENT + DELIMITER;
+   return constraints::almag::L2::LINK_ESTABLISHMENT + DELIMITER;
 }
 

@@ -50,7 +50,16 @@ protected:
       : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
       , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_)
-   {};
+   {
+//      ui_->setAlmagCommandsConstraints({command::CALIBRATE,
+//                                      command::START_POOLING,
+//                                      command::L1::DUMMY_SCAN,
+//                                      command::L1::SET_LINK_SPEED,
+//                                      command::L2::ADDRESS_ASSIGNMENT,
+//                                      command::L2::LINK_ESTABLISHMENT,
+//                                      command::L2::THREEGPP_RELEASE_ID,
+//                                      command::L2::AISG_PROTOCOL_VERSION});
+   };
 
    AlmagControllerPtr ctrl_;
    CMenu ui_;

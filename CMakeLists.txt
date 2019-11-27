@@ -113,6 +113,10 @@ set(UTILS
     ${PROJECT_SOURCE_DIR}/src/Utils/Utils.cpp
 )
 
+set(PLUGIN_COMMAND_CONSTRAINTS
+    ${PROJECT_SOURCE_DIR}/src/PluginCommandConstraints/AlmagConstraints.hpp
+)
+
 set(USER_INTERFACE
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CMenu.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CMenu.hpp

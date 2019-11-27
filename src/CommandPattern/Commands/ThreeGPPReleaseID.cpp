@@ -1,11 +1,9 @@
-#include <CommandPattern/Commands/ThreeGPPReleaseID.hpp>
-#include <filesystem>
-
+#include "CommandPattern/Commands/ThreeGPPReleaseID.hpp"
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
-
+#include <PluginCommandConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
 
@@ -53,6 +51,6 @@ void ThreeGPPReleaseID::executeImpl()
 
 std::string ThreeGPPReleaseID::handleResponse()
 {
-   return L2::THREEGPP_RELEASE_ID + DELIMITER;
+   return constraints::almag::L2::THREEGPP_RELEASE_ID + DELIMITER;
 }
 

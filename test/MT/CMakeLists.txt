@@ -33,7 +33,7 @@ add_executable(${PROJECT_TESTS_NAME}
     ${DATABASE}
     ${HDLC}
     ${UTILS}
-    ${TEST_UTILS}
+    ${USER_INTERFACE}
 )
 
 add_dependencies(${PROJECT_TESTS_NAME} gmock_main)
