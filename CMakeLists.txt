@@ -129,6 +129,7 @@ set(USER_INTERFACE
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/AlmagCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/DummyScanValidationStrategy.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/DummyScanValidationStrategy.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/ICmdValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/ICommandValidationStrategy.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/ICommandValidationStrategy.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CtrlCommandsValidators/NullValidationStrategy.cpp
