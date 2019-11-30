@@ -49,8 +49,8 @@ include_directories(${PROJECT_SOURCE_DIR}/externalLibraries)
 
 set(DATABASE
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
 )
@@ -69,8 +69,9 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ICommand.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ICommand.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFacade.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/StartPooling.cpp
@@ -102,15 +103,21 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
 )
 
-set(UTILS
+set(LOGGER
     ${PROJECT_SOURCE_DIR}/src/Utils/Logger.cpp
     ${PROJECT_SOURCE_DIR}/src/Utils/Logger.hpp
+)
+
+set(UTILS
     ${PROJECT_SOURCE_DIR}/src/Utils/UserCommandParser.cpp
     ${PROJECT_SOURCE_DIR}/src/Utils/UserCommandParser.hpp
-    ${PROJECT_SOURCE_DIR}/src/Utils/Utils.hpp
-    ${PROJECT_SOURCE_DIR}/src/Utils/Utils.cpp
-    ${PROJECT_SOURCE_DIR}/src/Utils/TypeAliases.hpp
-    ${PROJECT_SOURCE_DIR}/src/Utils/Functions.hpp
+)
+
+set(EXTERNAL_LIBRARIES_UTILS
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/TypeAliases.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.hpp
 )
 
 set(PLUGIN_SPECIFICS
@@ -118,6 +125,8 @@ set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFacade.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFacade.hpp
 )
 
 set(USER_INTERFACE

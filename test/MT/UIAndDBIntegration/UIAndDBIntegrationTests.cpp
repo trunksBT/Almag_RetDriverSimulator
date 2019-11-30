@@ -23,7 +23,7 @@ class UIAndDatabaseIntegrationShould : public BaseFixtureWithDBAndHDLC
 {
 protected:
    UIAndDatabaseIntegrationShould()
-      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
+      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
       , ui_(std::make_unique<CMenu>(
          "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>(),
          std::make_shared<AlmagCommandValidationManager>(db_),

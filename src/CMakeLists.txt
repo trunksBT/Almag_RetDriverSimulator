@@ -5,6 +5,8 @@ add_executable(${PROJECT_NAME}
     ${COMMAND_PATTERN}
     ${DATABASE}
     ${UTILS}
+    ${EXTERNAL_LIBRARIES_UTILS}
+    ${LOGGER}
     ${USER_INTERFACE}
     ${HDLC}
     ${PLUGIN_SPECIFICS}

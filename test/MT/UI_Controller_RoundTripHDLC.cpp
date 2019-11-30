@@ -10,6 +10,7 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
+#include <PluginSpecifics/RetDriverCommandFacade.hpp>
 
 using namespace funs;
 using namespace hardcodes::IOPaths;
@@ -26,6 +27,7 @@ const std::string LINK_ESTABLISHMENT = "7e 3 93 13 37 7e ";
 const std::string THREEGPP_RELEASE_ID = "7e 3 bf 81 f0 3 5 1 a 13 37 7e ";
 const std::string AISG_PROTOCOL_VERSION = "7e 3 bf 81 f0 3 14 1 2 13 37 7e ";
 const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
+constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 }
 
 namespace mt
@@ -37,8 +39,8 @@ class UI_Controller_RoundTripHDLC:
 {
 protected:
    UI_Controller_RoundTripHDLC()
-      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
-      , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
+      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
+      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_)
@@ -57,7 +59,8 @@ TEST_P(UI_Controller_RoundTripHDLC, ExecuteCommandAndExpectSentFrame)
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
    );
-   const auto& sentFrames = hdlcCommunicator_->receive(BUFFER_TO_SEND_VAL_1);
+   const auto& sentFrames = hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR)
+           ->receive(BUFFER_TO_SEND_VAL_1);
 
    ASSERT_TRUE(returnCode);
    ASSERT_TRUE(sentFrames);

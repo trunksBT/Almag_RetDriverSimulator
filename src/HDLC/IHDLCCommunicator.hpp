@@ -17,3 +17,4 @@ public:
     virtual ~IHDLCCommunicator() = default;
 };
 
+using IHDLCCommunicatorPtr = std::shared_ptr<IHDLCCommunicator>;

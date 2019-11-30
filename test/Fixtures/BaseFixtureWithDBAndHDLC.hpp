@@ -7,7 +7,7 @@
 class BaseFixtureWithDBAndHDLC : public BaseFixtureWithDB
 {
 protected:
-    BaseFixtureWithDBAndHDLC(const Database::ValueType inDB, std::shared_ptr<IHDLCCommunicator> hdlcComm);
-    std::shared_ptr<IHDLCCommunicator> hdlcCommunicator_;
+    BaseFixtureWithDBAndHDLC(const Database::ValueType inDB, std::vector<IHDLCCommunicatorPtr> hdlcComm);
+    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators_;
 };
 
