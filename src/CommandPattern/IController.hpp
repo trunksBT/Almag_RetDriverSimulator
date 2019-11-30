@@ -3,10 +3,10 @@
 #include <memory>
 #include <Utils/TypeAliases.hpp>
 
-class IAlmagController
+class IController
 {
 public:
-   virtual ~IAlmagController() = default;
+   virtual ~IController() = default;
 
    virtual void addCommands(StringsMatrix validatedUserInput) = 0;
    virtual bool executeCommand() = 0;
@@ -14,4 +14,4 @@ public:
    virtual std::string getFinalResultCode() = 0;
 };
 
-using IAlmagControllerPtr = std::shared_ptr<IAlmagController>;
+using IAlmagControllerPtr = std::shared_ptr<IController>;

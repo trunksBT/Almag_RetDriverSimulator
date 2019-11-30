@@ -6,7 +6,7 @@
 #include <boost/optional.hpp>
 
 #include <Database/Database.hpp>
-#include <CommandPattern/IAlmagController.hpp>
+#include <CommandPattern/IController.hpp>
 #include <CommandPattern/ICommand.hpp>
 #include <CommandPattern/ICommandFacade.hpp>
 
@@ -18,7 +18,7 @@
 
 class IHDLCCommunicator;
 
-class AlmagController final: public IAlmagController
+class AlmagController final: public IController
 {
 public:
    AlmagController(Database& db, std::shared_ptr<ICommandFacade> commandFacade);

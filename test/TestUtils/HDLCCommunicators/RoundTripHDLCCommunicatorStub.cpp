@@ -40,4 +40,4 @@ boost::optional<std::string> RoundTripHDLCCommunicatorStub::receiveStr(const std
    return {};
 }
 
-}  // namespace test
+}

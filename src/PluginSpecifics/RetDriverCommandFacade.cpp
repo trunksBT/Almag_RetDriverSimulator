@@ -25,9 +25,9 @@ RetDriverCommandFacade::RetDriverCommandFacade(std::vector<IHDLCCommunicatorPtr>
    , hdlcCommunicators_{hdlcCommunicators}
 {}
 
-ICommandPtr RetDriverCommandFacade::interpretAndCreateCommand(std::vector<std::string> validatedUserInput)
+ICommandPtr RetDriverCommandFacade::interpretAndCreateCommand(std::vector<std::string> validatedInput)
 {
-   const auto& commandName = validatedUserInput[IDX_OF_COMMAND_OR_ACTION_NAME];
+   const auto& commandName = validatedInput[IDX_OF_COMMAND_OR_ACTION_NAME];
 
    if (START_POOLING == commandName)
    {
@@ -38,38 +38,38 @@ ICommandPtr RetDriverCommandFacade::interpretAndCreateCommand(std::vector<std::s
    {
       return std::make_shared<DummyScan>(
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
-              validatedUserInput, NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND);
+              validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND);
    }
    else if (L1::SET_LINK_SPEED == commandName)
    {
       return std::make_shared<DummyScan>(
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
-              validatedUserInput, NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS);
+              validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS);
    }
    else if (L2::ADDRESS_ASSIGNMENT == commandName)
    {
       return std::make_shared<AddressAssignment>(
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedUserInput);
+              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::LINK_ESTABLISHMENT == commandName)
    {
       return std::make_shared<LinkEstablishment>(
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedUserInput);
+              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::THREEGPP_RELEASE_ID == commandName)
    {
       return std::make_shared<ThreeGPPReleaseID>(
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedUserInput);
+              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::AISG_PROTOCOL_VERSION == commandName)
    {
       return std::make_shared<AISGProtocolVersion>(
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedUserInput);
+              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L7::CALIBRATE == commandName)
    {
       return std::make_shared<Calibrate>(
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedUserInput);
+              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else
    {

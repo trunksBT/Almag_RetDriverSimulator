@@ -2,7 +2,7 @@
 
 #include <CommandPattern/AlmagController.hpp>
 #include <CommandPattern/AlmagControllerNull.hpp>
-#include <CommandPattern/IAlmagController.hpp>
+#include <CommandPattern/IController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFacade.hpp>
