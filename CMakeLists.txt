@@ -69,8 +69,8 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ICommand.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ICommand.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/StartPooling.cpp

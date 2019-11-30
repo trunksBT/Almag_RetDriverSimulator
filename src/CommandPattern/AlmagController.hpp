@@ -7,7 +7,7 @@
 
 #include <Database/Database.hpp>
 #include <CommandPattern/IAlmagController.hpp>
-#include <CommandPattern/Commands/ICommand.hpp>
+#include <CommandPattern/ICommand.hpp>
 
 #include <Utils/TypeAliases.hpp>
 

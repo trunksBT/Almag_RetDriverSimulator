@@ -1,5 +1,6 @@
 #include "CommandPattern/AlmagController.hpp"
 
+#include <CommandPattern/ICommand.hpp>
 #include <CommandPattern/Commands/AISGProtocolVersion.hpp>
 #include <CommandPattern/Commands/AddressAssignment.hpp>
 #include <CommandPattern/Commands/Calibrate.hpp>

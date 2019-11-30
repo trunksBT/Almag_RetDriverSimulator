@@ -1,6 +1,6 @@
 #pragma once
 
-#include <CommandPattern/Commands/ICommand.hpp>
+#include <CommandPattern/ICommand.hpp>
 #include <Utils/TypeAliases.hpp>
 
 class IHDLCCommunicator;
