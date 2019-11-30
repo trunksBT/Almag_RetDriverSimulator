@@ -29,3 +29,4 @@ protected:
    AlmagControllerInformer informControllerAboutResult_;
 };
 
+using ICommandPtr = std::shared_ptr<ICommand>;

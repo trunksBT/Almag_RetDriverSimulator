@@ -6,5 +6,7 @@
 
 class ICommandFacade
 {
-   ICommand interprateAndCreateCommand(std::vector<std::string> validatedUserInput);
+public:
+   virtual ICommandPtr interpretAndCreateCommand(std::vector<std::string> validatedUserInput) = 0;
+   virtual ~ICommandFacade() = default;
 };

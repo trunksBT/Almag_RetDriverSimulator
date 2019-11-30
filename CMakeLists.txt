@@ -71,6 +71,7 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFacade.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/StartPooling.cpp
@@ -124,6 +125,8 @@ set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFacade.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFacade.hpp
 )
 
 set(USER_INTERFACE
