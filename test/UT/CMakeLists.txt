@@ -17,6 +17,8 @@ add_executable(${PROJECT_TESTS_NAME}
     ${DATABASE}
     ${HDLC}
     ${UTILS}
+    ${EXTERNAL_LIBRARIES_UTILS}
+    ${LOGGER}
 )
 
 add_dependencies(${PROJECT_TESTS_NAME} gmock_main)

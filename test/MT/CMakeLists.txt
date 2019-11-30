@@ -15,7 +15,7 @@ set(MT_HappyPath
 )
 
 set(MT_SadPath
-        ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp 
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.cpp 
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.hpp)
@@ -32,6 +32,8 @@ add_executable(${PROJECT_TESTS_NAME}
     ${DATABASE}
     ${HDLC}
     ${UTILS}
+    ${EXTERNAL_LIBRARIES_UTILS}
+    ${LOGGER}
     ${USER_INTERFACE}
     ${PLUGIN_SPECIFICS}
 )
