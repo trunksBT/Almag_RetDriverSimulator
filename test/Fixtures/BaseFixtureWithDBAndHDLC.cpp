@@ -3,8 +3,7 @@
 #include <TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp>
 
 BaseFixtureWithDBAndHDLC::BaseFixtureWithDBAndHDLC(
-        const Database::ValueType inDB, std::shared_ptr<IHDLCCommunicator> hdlcComm)
+        const Database::ValueType inDB, std::vector<IHDLCCommunicatorPtr> hdlcComm)
    : BaseFixtureWithDB(inDB)
-   , hdlcCommunicator_(hdlcComm)
+   , hdlcCommunicators_{hdlcComm}
 {}
-

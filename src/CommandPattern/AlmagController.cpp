@@ -32,11 +32,11 @@ std::string AlmagController::getFinalResultCode()
 void AlmagController::addCommand(Strings validatedUserInput)
 {
    LOG(debug);
-   std::shared_ptr<ICommand> receivedFromUserCommand = commandFacade_->interpretAndCreateCommand(validatedUserInput);
+   std::shared_ptr<ICommand> receivedCmd = commandFacade_->interpretAndCreateCommand(validatedUserInput);
 
-   if (receivedFromUserCommand)
+   if (receivedCmd)
    {
-      addCommands({ receivedFromUserCommand });
+      addCommands({receivedCmd });
    }
 }
 
@@ -85,7 +85,6 @@ void AlmagController::handleCommandsResult()
     {
         const std::shared_ptr<ICommand> currentCommand = commands_.front();
         finalResultCode_ += currentCommand->handleResponse();
-
         executeNextCommand();
     }
 }

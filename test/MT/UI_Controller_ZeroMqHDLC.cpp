@@ -11,6 +11,7 @@
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
+#include <PluginSpecifics/RetDriverCommandFacade.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
@@ -34,6 +35,7 @@ const std::string LINK_ESTABLISHMENT = "7e 3 93 13 37 7e ";
 const std::string THREEGPP_RELEASE_ID = "7e 3 bf 81 f0 3 5 1 a 13 37 7e ";
 const std::string AISG_PROTOCOL_VERSION = "7e 3 bf 81 f0 3 14 1 2 13 37 7e ";
 const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
+constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 }
 
 namespace mt
@@ -45,8 +47,8 @@ class UI_Controller_ZeroMqHDLC:
 {
 protected:
    UI_Controller_ZeroMqHDLC()
-      : BaseFixtureWithDBAndHDLC({}, std::make_shared<ZeroMqHDLCCommunicator>())
-      , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
+      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<ZeroMqHDLCCommunicator>()})
+      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_))
@@ -64,7 +66,8 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
    );
-   const auto& receivedFromSecondaryHdlcFrame = hdlcCommunicator_->receiveStr(ADDRESS_OF_PORT_FOR_ZERO_MQ);
+   const auto& receivedFromSecondaryHdlcFrame = hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR)
+           ->receiveStr(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(returnCode);
    ASSERT_TRUE(receivedFromSecondaryHdlcFrame);

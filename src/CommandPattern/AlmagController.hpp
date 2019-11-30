@@ -42,4 +42,3 @@ private:
 };
 
 using AlmagControllerPtr = std::shared_ptr<AlmagController>;
-

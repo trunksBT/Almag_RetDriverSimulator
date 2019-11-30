@@ -5,6 +5,8 @@
 #include <CommandPattern/IAlmagController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/RetDriverCommandFacade.hpp>
+
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
@@ -24,8 +26,8 @@ class AlmagControllerShouldPar:
 {
 protected:
     AlmagControllerShouldPar()
-      : BaseFixtureWithDBAndHDLC({}, std::make_shared<test::RoundTripHDLCCommunicatorStub>())
-      , ctrl_(std::make_shared<AlmagController>(db_, hdlcCommunicator_))
+      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
+      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_)))
     {};
 
     IAlmagControllerPtr ctrl_;
