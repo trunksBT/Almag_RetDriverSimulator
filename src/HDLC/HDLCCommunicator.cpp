@@ -8,15 +8,16 @@
 using namespace funs;
 
 bool HDLCCommunicator::send(
-   const std::string& address, std::shared_ptr<HDLCFrameBody> framePrim) 
+   const std::string& address, const std::vector<HDLCFrameBodyPtr>& frames)
 {
    LOG(trace) << "BEGIN";
 
-   const auto hdlcFrame = HDLCFrame(framePrim);
    streamToSend.open(address);
-   streamToSend << toString(hdlcFrame.build());
+   for (const auto& frame : frames)
+   {
+      streamToSend << toString(HDLCFrame(frame).build());
+   }
    streamToSend.close();
-
    LOG(trace) << "END";
    return true;
 }  // ofsFile << std::hex << std::uppercase << result.checksum() << std::flush;

@@ -1,11 +1,18 @@
 set(PROJECT_TESTS_NAME Almag_RetDriver_MT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
-set(TEST_UTILS
+set(TESTUTILS_COMMUNICATORS
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.cpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HexesUtils.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HexesUtils.hpp)
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqPubSubCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqPubSubCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.hpp
+)
 
 set(MT_HappyPath
     ${PROJECT_SOURCE_DIR}/test/MT/AlmagControllerTest.cpp
@@ -14,19 +21,12 @@ set(MT_HappyPath
     ${PROJECT_SOURCE_DIR}/test/MT/UI_Controller_ZeroMqHDLC.cpp
 )
 
-set(MT_SadPath
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp 
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.cpp 
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.hpp)
-
-
 add_executable(${PROJECT_TESTS_NAME}
     ${PROJECT_SOURCE_DIR}/test/main.cpp
     ${FIXTURES}
     ${MT_HappyPath}
-    ${MT_SadPath}
-    ${TEST_UTILS}
+    ${TESTUTILS}
+    ${TESTUTILS_COMMUNICATORS}
 
     ${COMMAND_PATTERN}
     ${DATABASE}

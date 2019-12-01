@@ -18,7 +18,7 @@
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
-#include <TestUtils/HDLCCommunicators/ZeroMqHDLCCommunicator.hpp>
+#include <TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.hpp>
 
 using namespace funs;
 using namespace constraints::almag;
@@ -47,11 +47,14 @@ class UI_Controller_ZeroMqHDLC:
 {
 protected:
    UI_Controller_ZeroMqHDLC()
-      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<ZeroMqHDLCCommunicator>()})
-      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_)))
-      , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
+      : BaseFixtureWithDBAndHDLC({}, {
+         std::make_shared<ZMqReqRespCommunicator>(),
+         std::make_shared<ZMqPubSubCommunicator>()})
+      , ctrl_{std::make_shared<AlmagController>(
+              db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_))}
+      , ui_{"AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
-            std::make_unique<DatabaseCommandValidationManager>(db_))
+            std::make_unique<DatabaseCommandValidationManager>(db_)}
    {
       ui_.setAlmagCommandsConstraints({
          constraints::almag::values.begin(), constraints::almag::values.end()});
@@ -81,10 +84,10 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          DUMMY_SCAN_FRAME
       },
-//      CommandsToExpectedFrame{
-//         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         DUMMY_SCAN_FRAME
-//      },  /// TODO it looks like there must be used other way of message because there are 6 times the same msg
+      CommandsToExpectedFrame{
+         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         DUMMY_SCAN_FRAME
+      },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          ADDRESS_ASSIGNMENT_FRAME

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include <vector>
 #include <HDLC/FrameBase.hpp>
 #include <HDLC/HDLCParameters.hpp>
@@ -25,3 +26,5 @@ protected:
    boost::optional<Hex> groupLength_;
    std::vector<HDLCParameters> parameters_;
 };
+
+using HDLCFrameBodyPtr = std::shared_ptr<HDLCFrameBody>;
