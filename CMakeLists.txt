@@ -94,7 +94,8 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
-
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameInterpreter.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.cpp
