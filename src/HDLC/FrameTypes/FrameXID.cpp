@@ -2,6 +2,8 @@
 
 using namespace funs;
 
+FRAME_TYPE FrameXID::GET_TYPE=FRAME_TYPE::XID;
+
 FrameXID::FrameXID()
    : HDLCFrameBody()
 {

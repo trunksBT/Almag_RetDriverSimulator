@@ -2,6 +2,8 @@
 
 using namespace funs;
 
+FRAME_TYPE FrameI::GET_TYPE=FRAME_TYPE::I;
+
 FrameI::FrameI()
    : HDLCFrameBody()
 {

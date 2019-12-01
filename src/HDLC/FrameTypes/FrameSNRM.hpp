@@ -13,5 +13,6 @@ public:
 
    Hexes build() const;
    FRAME_TYPE getType() const override;
+   static FRAME_TYPE GET_TYPE;
 };
 

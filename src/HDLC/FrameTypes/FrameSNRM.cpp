@@ -2,6 +2,8 @@
 
 using namespace funs;
 
+FRAME_TYPE FrameSNRM::GET_TYPE=FRAME_TYPE::SNRM;
+
 FrameSNRM::FrameSNRM()
    : HDLCFrameBody()
 {
