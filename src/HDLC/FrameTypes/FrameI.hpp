@@ -13,6 +13,7 @@ public:
    FrameI& setProcedureCode(PROCEDURE_CODE value);
 
    Hexes build() const;
+   FRAME_TYPE getType() const override;
 
 private:
    boost::optional<PROCEDURE_CODE> procedureCode_;

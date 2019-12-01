@@ -13,6 +13,7 @@ public:
    virtual Hexes build() const = 0;
    std::string getFrameFromSecondary() const;
    virtual ~HDLCFrameBody() = default;
+   virtual FRAME_TYPE getType() const = 0;
 
 protected:
    HDLCFrameBody() = default;

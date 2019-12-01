@@ -12,5 +12,6 @@ public:
    FrameSNRM& setControlByte(BYTE_CONTROL value);
 
    Hexes build() const;
+   FRAME_TYPE getType() const override;
 };
 

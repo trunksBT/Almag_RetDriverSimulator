@@ -4,7 +4,9 @@ using namespace funs;
 
 FrameI::FrameI()
    : HDLCFrameBody()
-{}
+{
+   setControlByte(BYTE_CONTROL::RETAP);
+}
 
 FrameI::FrameI(const std::string& value)
    : HDLCFrameBody(value)
@@ -61,3 +63,7 @@ Hexes FrameI::build() const
    return retVal;
 }
 
+FRAME_TYPE FrameI::getType() const
+{
+   return FRAME_TYPE::I;
+}

@@ -46,3 +46,7 @@ Hexes FrameSNRM::build() const
    return retVal;
 }
 
+FRAME_TYPE FrameSNRM::getType() const
+{
+   return FRAME_TYPE::SNRM;
+}

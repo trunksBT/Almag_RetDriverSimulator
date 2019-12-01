@@ -16,5 +16,6 @@ public:
    FrameXID& addParameters(HDLCParameters value);
 
    Hexes build() const;
+   FRAME_TYPE getType() const override;
 };
 

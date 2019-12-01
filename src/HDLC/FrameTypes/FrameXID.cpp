@@ -113,3 +113,8 @@ Hexes FrameXID::build() const
    LOG(info) << "HDLC': " << funs::toString(retVal);
    return retVal;
 }
+
+FRAME_TYPE FrameXID::getType() const
+{
+   return FRAME_TYPE::XID;
+}
