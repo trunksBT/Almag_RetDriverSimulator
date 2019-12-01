@@ -4,7 +4,7 @@
 
 using namespace funs;
 
-HDLCFrame::HDLCFrame(std::shared_ptr<HDLCFrameBody> hdlcPrimFrame)
+HDLCFrame::HDLCFrame(HDLCFrameBodyPtr hdlcPrimFrame)
    : hdlcPrimFrame_(hdlcPrimFrame)
 {}
 

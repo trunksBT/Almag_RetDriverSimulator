@@ -1,7 +1,3 @@
-//
-// Created by pkorycin on 12.11.2019.
-//
-
 #include "RoundTripHDLCCommunicatorStub.hpp"
 #include <Utils/Utils.hpp>
 
@@ -18,26 +14,45 @@ RoundTripHDLCCommunicatorStub::~RoundTripHDLCCommunicatorStub()
    LOG(trace) << "MT_HDLC_ROUND_LOOP";
 }
 
-bool RoundTripHDLCCommunicatorStub::send(const std::string &address, std::shared_ptr<HDLCFrameBody> frame)
+bool RoundTripHDLCCommunicatorStub::send(
+        const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames)
 {
    LOG(debug);
-   hdlcFrame_ = frame;
+   hdlcFrames_.clear();
+   hdlcFrames_.reserve(frames.size());
+   for (const auto& frame : frames)
+   {
+      hdlcFrames_.push_back(frame);
+   }
    return true;
 }
 
-boost::optional<HDLCFrame> RoundTripHDLCCommunicatorStub::receive(const std::string &address)
+bool RoundTripHDLCCommunicatorStub::send(const std::string &address, HDLCFrameBodyPtr frame)
 {
-   LOG(debug);
-   return HDLCFrame(hdlcFrame_);
+   send(address, std::vector<HDLCFrameBodyPtr>{{frame}});
+   return true;
+}
+
+std::queue<HDLCFrame> RoundTripHDLCCommunicatorStub::receive(const std::string &address)
+{
+   std::queue<HDLCFrame> retVal;
+   for (const auto& hdlcFrameBody : hdlcFrames_)
+   {
+      retVal.push(HDLCFrame(hdlcFrameBody));
+   }
+   hdlcFrames_.clear();
+   return retVal;
 }
 
 boost::optional<std::string> RoundTripHDLCCommunicatorStub::receiveStr(const std::string &address)
 {
-   if (const auto receivedHDLCFrame = receive(address))
+   std::string retVal;
+   for (const auto& hdlcFrame : hdlcFrames_)
    {
-      return funs::toString(receivedHDLCFrame->build());
+      retVal += funs::toString(hdlcFrame->build());
    }
-   return {};
+   hdlcFrames_.clear();
+   return retVal;
 }
 
 }

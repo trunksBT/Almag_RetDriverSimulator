@@ -22,7 +22,12 @@ bool HDLCCommunicator::send(
    return true;
 }  // ofsFile << std::hex << std::uppercase << result.checksum() << std::flush;
 
-boost::optional<HDLCFrame> HDLCCommunicator::receive(const std::string& address)
+bool HDLCCommunicator::send(const std::string& address, HDLCFrameBodyPtr frame)
+{
+   return send(address, std::vector<HDLCFrameBodyPtr>{{frame}});
+}
+
+std::queue<HDLCFrame> HDLCCommunicator::receive(const std::string& address)
 {
    LOG(trace) << "BEGIN";
    LOG(debug) << "Addres to open: " << address;
@@ -42,7 +47,7 @@ boost::optional<HDLCFrame> HDLCCommunicator::receive(const std::string& address)
    // here should be validation of received frame
 
    LOG(trace) << "END";
-   return validatedFrame;
+   return {};  // TODO
 }
 
 boost::optional<std::string> HDLCCommunicator::receiveStr(const std::string &address)

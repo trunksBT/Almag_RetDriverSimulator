@@ -26,21 +26,26 @@ void ZMqPubSubCommunicator::setupSend(const std::string& address)
 {
    LOG(debug) << "on " << address;
    requestSocket_.bind("ipc://" + address);
-   s_send(requestSocket_, address, zmq::send_flags::sndmore);
+//   s_send(requestSocket_, address, zmq::send_flags::sndmore);
 }
 
-void ZMqPubSubCommunicator::receiveSetup(const std::string& address)
+void ZMqPubSubCommunicator::setupReceive(const std::string& address)
 {
    requestSocket_.connect(address);
-   requestSocket_.setsockopt(zmq::socket_type::sub, address.data(), IS_ON);
+   requestSocket_.setsockopt(ZMQ_SUBSCRIBE, address.data(), IS_ON);
 }
 
-bool ZMqPubSubCommunicator::send(const std::string& address, const std::vector<HDLCFrameBody>& frames)
+bool ZMqPubSubCommunicator::send(const std::string& address, HDLCFrameBodyPtr frame)
+{
+   return send(address, std::vector<HDLCFrameBodyPtr>{{frame}});
+}
+
+bool ZMqPubSubCommunicator::send(const std::string& address, const std::vector<HDLCFrameBodyPtr>& frames)
 {
    bool sentState = true;
-   for (int msgCount = 0; msgCount < frames.size(), msgCount++)
+   for (unsigned msgCount = 0; msgCount < frames.size(); msgCount++)
    {
-      const std::string sentMessage = funs::toString(frame.at(msgCount)->build());
+      const std::string sentMessage = funs::toString(frames.at(msgCount)->build());
       LOG(debug) << "Sending on " << address << " " << sentMessage;
       if (isLastMessage(msgCount, frames.size()))
       {
@@ -54,10 +59,10 @@ bool ZMqPubSubCommunicator::send(const std::string& address, const std::vector<H
    return sentState;
 }
 
-boost::optional<HDLCFrame> ZMqPubSubCommunicator::receive(const std::string &address)
+std::queue<HDLCFrame> ZMqPubSubCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
-   LOG(info) << "Received Message: " << message;
+   LOG(error) << "Received Message: " << message;
    return {};//HDLCFrame(HDLCFrameBody(message));  /// TODO
 }
 

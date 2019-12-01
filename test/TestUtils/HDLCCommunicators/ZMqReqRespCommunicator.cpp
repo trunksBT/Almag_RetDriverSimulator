@@ -23,10 +23,15 @@ void ZMqReqRespCommunicator::setupSend(const std::string& address)
    requestSocket_.connect("ipc://" + address);
 }
 
-void ZMqReqRespCommunicator::receiveSetup(const std::string& address)
+void ZMqReqRespCommunicator::setupReceive(const std::string& address)
 {
    LOG(debug) << "from " << address;
    responseSocket_.bind ("ipc://" + address);
+}
+
+bool ZMqReqRespCommunicator::send(const std::string &address, HDLCFrameBodyPtr frame)
+{
+   return send(address, std::vector<HDLCFrameBodyPtr>{{frame}});
 }
 
 bool ZMqReqRespCommunicator::send(
@@ -42,10 +47,10 @@ bool ZMqReqRespCommunicator::send(
    return sentState;
 }
 
-boost::optional<HDLCFrame> ZMqReqRespCommunicator::receive(const std::string &address)
+std::queue<HDLCFrame> ZMqReqRespCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
-   LOG(info) << "Received Message: " << message;
+   LOG(error) << "Received Message: " << message;
    return {};//HDLCFrame(HDLCFrameBody(message));  /// TODO
 }
 

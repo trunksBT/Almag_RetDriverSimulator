@@ -19,6 +19,7 @@
 #include <TestUtils/UniqueKeys.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.hpp>
+#include <TestUtils/HDLCCommunicators/ZMqPubSubCommunicator.hpp>
 
 using namespace funs;
 using namespace constraints::almag;
@@ -73,8 +74,8 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
            ->receiveStr(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(returnCode);
-   ASSERT_TRUE(receivedFromSecondaryHdlcFrame);
-   ASSERT_THAT(receivedFromSecondaryHdlcFrame.get(), StrEq(GetParam().expectedHdlcFrame));
+   ASSERT_TRUE(receivedFromSecondaryHdlcFrame);  // TODO
+   ASSERT_THAT(receivedFromSecondaryHdlcFrame.get(), StrEq(GetParam().expectedHdlcFrame));  // TODO
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
@@ -110,5 +111,4 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
       }
    )
 );
-
 }

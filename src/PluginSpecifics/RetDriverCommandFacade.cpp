@@ -23,7 +23,14 @@ constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND = 1;
 RetDriverCommandFacade::RetDriverCommandFacade(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
    : ICommandFacade()
    , hdlcCommunicators_{hdlcCommunicators}
-{}
+{
+   LOG(trace);
+}
+
+RetDriverCommandFacade::~RetDriverCommandFacade()
+{
+   LOG(trace);
+}
 
 ICommandPtr RetDriverCommandFacade::interpretAndCreateCommand(std::vector<std::string> validatedInput)
 {
