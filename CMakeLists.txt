@@ -118,6 +118,7 @@ set(EXTERNAL_LIBRARIES_UTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/TypeAliases.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.hpp
 )
 

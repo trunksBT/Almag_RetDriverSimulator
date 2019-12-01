@@ -32,7 +32,7 @@ TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
            .setAddressByte(0x03)
            .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
 
-   ASSERT_EQ(FRAME_TYPE::I, CALIBRATE_PRIM_FRAME.getType());
+   ASSERT_EQ(frameInterpreter->, CALIBRATE_PRIM_FRAME.getType());
 }
 
 INSTANTIATE_TEST_CASE_P(InstantiationName,
