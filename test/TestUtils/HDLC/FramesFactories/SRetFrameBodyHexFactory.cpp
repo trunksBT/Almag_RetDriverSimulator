@@ -1,44 +1,81 @@
 #include "SRetFrameBodyHexFactory.hpp"
-
-namespace
-{
-const std::string_view CALIBRATE_STR{ "3 fe 31 " };
-const std::string_view LINK_ESTABLISHMENT{ "3 93 " };
-const std::string_view DUMMY_SCAN_FRAME{ "ff bf 81 f0 8 1 2 33 33 3 2 ff ff " };
-const std::string_view ADDRESS_ASSIGNMENT_FRAME{
-        "ff bf 81 f0 1b 1 13 41 4e "
-        "30 30 30 30 43 4e 31 30 31 32 "
-        "33 33 32 32 34 36 31 2 1 3 4 1 1 " };
-const std::string THREEGPP_RELEASE_ID = "3 bf 81 f0 3 5 1 a ";
-const std::string_view AISG_PROTOCOL_VERSION{ "3 bf 81 f0 3 14 1 2 " };
-}
+#include <HDLC/MessagesHelpers.hpp>
 
 Hexes SRetFrameBodyHexFactory::get_FrameI_Calibrate()
 {
-   throw std::runtime_error("Not implemented yet");
+   return std::vector<Hex>{{
+       0x03,
+       BYTE_CONTROL::RETAP,
+       PROCEDURE_CODE::CALIBRATE_SRET
+   }};
 }
 
 Hexes SRetFrameBodyHexFactory::get_FrameXID_DummyScan()
 {
-   throw std::runtime_error("Not implemented yet");
+   return std::vector<Hex>{{
+       ADDR_ALLSTATIONS,
+       BYTE_CONTROL::XID,
+       FI::ADDR_ASSIGNMENT,
+       GI::ADDRESS_ASSIGNMENT,
+
+       0x08,
+       XID_PARAMS_ID::UNIQUE_ID, 0x02, 0x33, 0x33,
+       XID_PARAMS_ID::BIT_MASK, 0x02, 0xFF, 0xFF
+   }};
 }
 
 Hexes SRetFrameBodyHexFactory::get_FrameSNRM_LinkEstablishment()
 {
-   throw std::runtime_error("Not implemented yet");
+   return std::vector<Hex>{{
+       0x03,
+       BYTE_CONTROL::SNRM
+   }};
 }
 
 Hexes SRetFrameBodyHexFactory::get_FrameXID_AddressAssignment()
 {
-   throw std::runtime_error("Not implemented yet");
+   return std::vector<Hex>{{
+       ADDR_ALLSTATIONS,
+       BYTE_CONTROL::XID,
+       FI::ADDR_ASSIGNMENT,
+       GI::ADDRESS_ASSIGNMENT,
+       0x1B,
+
+       XID_PARAMS_ID::UNIQUE_ID, 0x13,
+       0x41, 0x4E, 0x30, 0x30, 0x30, 0x30, 0x43, 0x4E, 0x31, 0x30,
+       0x31, 0x32, 0x33, 0x33, 0x32, 0x32, 0x34, 0x36, 0x31,
+
+       XID_PARAMS_ID::ASSIGNED_ADDRESS, 0x01, 0x03,
+
+       XID_PARAMS_ID::DEVICE_TYPE, 0x01,
+       DEVICE_TYPE::SRET,
+   }};
 }
 
 Hexes SRetFrameBodyHexFactory::get_FrameXID_3GPPReleaseId()
 {
-   throw std::runtime_error("Not implemented yet");
+   return std::vector<Hex>{{
+       0x03,
+       BYTE_CONTROL::XID,
+       FI::ADDR_ASSIGNMENT,
+       GI::ADDRESS_ASSIGNMENT,
+
+       0x03,
+       XID_PARAMS_ID::THREEGPP_RELEASE_ID, 0x01,
+       PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE
+    }};
 }
 
 Hexes SRetFrameBodyHexFactory::get_FrameXID_AISGProtocolVersion()
 {
-   throw std::runtime_error("Not implemented yet");
+   return std::vector<Hex>{{
+       0x03,
+       BYTE_CONTROL::XID,
+       FI::ADDR_ASSIGNMENT,
+       GI::ADDRESS_ASSIGNMENT,
+
+       0x03,
+       XID_PARAMS_ID::AISG_PROTOCOL_VERSION, 0x01,
+       PV::AISG_2_0
+   }};
 }

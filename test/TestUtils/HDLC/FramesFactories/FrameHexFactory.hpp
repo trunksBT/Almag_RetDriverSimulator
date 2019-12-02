@@ -15,4 +15,4 @@ public:
    virtual ~FrameHexFactory() = default;
 };
 
-using FrameStrFactoryPtr = std::shared_ptr<FrameHexFactory>;
+using FrameHexFactoryPtr = std::shared_ptr<FrameHexFactory>;

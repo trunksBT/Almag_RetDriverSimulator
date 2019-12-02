@@ -3,14 +3,17 @@
 #include <HDLC/HDLCFrameInterpreter.hpp>
 #include <HDLC/FrameTypes/FrameI.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
+#include <TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetFrameBodyHexFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.hpp>
 
 using testing::Eq;
 
 namespace
 {
-FrameStrFactoryPtr retDevice = std::make_shared<SRetFrameBodyStrFactory>();
+FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetFrameBodyHexFactory>();
+FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetFrameBodyStrFactory>();
 }
 
 class HDLCFrameInterpreterTests:
@@ -33,14 +36,10 @@ TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
 INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
    HDLCFrameInterpreterTests,
    ::testing::Values(
-         ExpectedFrameType_ExpectedValue_ReceivedString{
-         FrameI::GET_TYPE,
-         std::vector<Hex>({
-            0x03,
-            BYTE_CONTROL::RETAP,
-            PROCEDURE_CODE::CALIBRATE_SRET
-         }),
-         retDevice->get_FrameI_Calibrate().data()
-      }
+       ExpectedFrameType_ExpectedValue_ReceivedString{
+               FrameI::GET_TYPE,
+               retDeviceHexFactory->get_FrameI_Calibrate(),
+               retDeviceStr->get_FrameI_Calibrate().data()
+       }
    )
 );
