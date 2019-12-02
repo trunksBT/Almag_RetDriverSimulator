@@ -1,15 +1,14 @@
 #include <HDLC/HDLCParameters.hpp>
 
 HDLCParameters::HDLCParameters()
-        : parId(static_cast<XID_PARAMS_ID>(ZERO)), parLength(ZERO), parValue({})
+    : parId(ZERO), parLength(ZERO), parValue({})
 {}
 
-HDLCParameters::HDLCParameters(XID_PARAMS_ID inParId, Hex inParLength, Hexes inParValue)
-        : parId(inParId), parLength(inParLength), parValue(inParValue)
+HDLCParameters::HDLCParameters(Hex inParId, Hex inParLength, Hexes inParValue)
+    : parId(inParId), parLength(inParLength), parValue(inParValue)
 {}
 
-HDLCParameters HDLCParameters::build(
-        XID_PARAMS_ID inParId, Hex inParLength, Hexes inParValue)
+HDLCParameters HDLCParameters::build(Hex inParId, Hex inParLength, Hexes inParValue)
 {
    if (inParLength != inParValue.size())
    {

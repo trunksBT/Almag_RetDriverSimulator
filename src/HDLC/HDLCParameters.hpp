@@ -9,12 +9,12 @@ struct HDLCParameters
 {
 private:
    HDLCParameters();
-   HDLCParameters(XID_PARAMS_ID inParId, Hex inParLength, Hexes inParValue);
+   HDLCParameters(Hex inParId, Hex inParLength, Hexes inParValue);
 
 public:
-   static HDLCParameters build(XID_PARAMS_ID inParId, Hex inParLength, Hexes inParValue);
+   static HDLCParameters build(Hex inParId, Hex inParLength, Hexes inParValue);
 
-   XID_PARAMS_ID parId;
+   Hex parId;
    Hex parLength;
    Hexes parValue;
 };

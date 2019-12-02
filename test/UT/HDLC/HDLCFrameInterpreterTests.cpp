@@ -49,10 +49,15 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
           retDeviceHexFactory->get_FrameSNRM_LinkEstablishment(),
           retDeviceStr->get_FrameSNRM_LinkEstablishment().data()
        },
+//       ExpectedFrameType_ExpectedValue_ReceivedString{
+//          FrameXID::GET_TYPE,
+//          retDeviceHexFactory->get_FrameXID_DummyScan(),
+//          retDeviceStr->get_FrameXID_DummyScan().data()
+//       },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
-          retDeviceHexFactory->get_FrameXID_DummyScan(),
-          retDeviceStr->get_FrameXID_DummyScan().data()
-        }
+          retDeviceHexFactory->get_FrameXID_AddressAssignment(),
+          retDeviceStr->get_FrameXID_AddressAssignment().data()
+       }
    )
 );
