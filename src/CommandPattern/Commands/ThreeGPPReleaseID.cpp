@@ -34,7 +34,7 @@ void ThreeGPPReleaseID::executeImpl()
    const auto ThreeGPPReleaseIDPrimFrame = FrameXID()
       .setAddressByte(0x03)
       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDR_ASSIGNMENT)
+      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
       .setGroupLengthByte(0x03)
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::THREEGPP_RELEASE_ID,
@@ -53,4 +53,3 @@ std::string ThreeGPPReleaseID::handleResponse()
 {
    return constraints::almag::L2::THREEGPP_RELEASE_ID + DELIMITER;
 }
-

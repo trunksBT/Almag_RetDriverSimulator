@@ -1,4 +1,4 @@
-#include "RetDriverCommandFacade.hpp"
+#include "RetDriverCommandFactory.hpp"
 #include <CommandPattern/Commands/AISGProtocolVersion.hpp>
 #include <CommandPattern/Commands/AddressAssignment.hpp>
 #include <CommandPattern/Commands/Calibrate.hpp>
@@ -16,23 +16,24 @@ namespace
 const std::string START_POOLING = "StartPooling";
 constexpr int IDX_OF_COMMAND_OR_ACTION_NAME = 0;
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
+constexpr int IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR = 1;
 constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
 constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND = 1;
 }
 
-RetDriverCommandFacade::RetDriverCommandFacade(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
-   : ICommandFacade()
+RetDriverCommandFactory::RetDriverCommandFactory(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
+   : ICommandFactory()
    , hdlcCommunicators_{hdlcCommunicators}
 {
    LOG(trace);
 }
 
-RetDriverCommandFacade::~RetDriverCommandFacade()
+RetDriverCommandFactory::~RetDriverCommandFactory()
 {
    LOG(trace);
 }
 
-ICommandPtr RetDriverCommandFacade::interpretAndCreateCommand(std::vector<std::string> validatedInput)
+ICommandPtr RetDriverCommandFactory::interpretAndCreateCommand(std::vector<std::string> validatedInput)
 {
    const auto& commandName = validatedInput[IDX_OF_COMMAND_OR_ACTION_NAME];
 

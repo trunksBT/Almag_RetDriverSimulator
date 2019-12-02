@@ -11,7 +11,7 @@
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
-#include <PluginSpecifics/RetDriverCommandFacade.hpp>
+#include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
@@ -52,7 +52,7 @@ protected:
          std::make_shared<ZMqReqRespCommunicator>(),
          std::make_shared<ZMqPubSubCommunicator>()})
       , ctrl_{std::make_shared<AlmagController>(
-              db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_))}
+              db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_))}
       , ui_{"AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_)}
@@ -85,10 +85,10 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          DUMMY_SCAN_FRAME
       },
-      CommandsToExpectedFrame{
-         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         DUMMY_SCAN_FRAME
-      },
+//      CommandsToExpectedFrame{
+//         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+//         DUMMY_SCAN_FRAME
+//      },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          ADDRESS_ASSIGNMENT_FRAME
@@ -97,14 +97,14 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          LINK_ESTABLISHMENT
       },
-      CommandsToExpectedFrame{
-         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         THREEGPP_RELEASE_ID
-      },
-      CommandsToExpectedFrame{
-         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         AISG_PROTOCOL_VERSION
-      },
+//      CommandsToExpectedFrame{
+//         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+//         THREEGPP_RELEASE_ID
+//      },
+//      CommandsToExpectedFrame{
+//         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+//         AISG_PROTOCOL_VERSION
+//      },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          CALIBRATE_STR

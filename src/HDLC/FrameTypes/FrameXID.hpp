@@ -9,9 +9,9 @@ public:
    explicit FrameXID(const std::string& value);
 
    FrameXID& setAddressByte(Hex value);
-   FrameXID& setControlByte(BYTE_CONTROL value);
-   FrameXID& setFormatIdentifierByte(FI value);
-   FrameXID& setGroupIdentifierByte(GI value);
+   FrameXID& setControlByte(Hex value);
+   FrameXID& setFormatIdentifierByte(Hex value);
+   FrameXID& setGroupIdentifierByte(Hex value);
    FrameXID& setGroupLengthByte(Hex value);
    FrameXID& addParameters(HDLCParameters value);
 

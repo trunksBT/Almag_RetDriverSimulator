@@ -10,7 +10,7 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
-#include <PluginSpecifics/RetDriverCommandFacade.hpp>
+#include <PluginSpecifics/RetDriverCommandFactory.hpp>
 
 using namespace funs;
 using namespace hardcodes::IOPaths;
@@ -40,7 +40,7 @@ class UI_Controller_RoundTripHDLC:
 protected:
    UI_Controller_RoundTripHDLC()
       : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
-      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_)))
+      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_)
@@ -86,14 +86,14 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
          LINK_ESTABLISHMENT 
       },
-      CommandsToExpectedFrame{
-         {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-         THREEGPP_RELEASE_ID 
-      },
-      CommandsToExpectedFrame{
-         {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
-         AISG_PROTOCOL_VERSION 
-      },
+//      CommandsToExpectedFrame{
+//         {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
+//         THREEGPP_RELEASE_ID
+//      },
+//      CommandsToExpectedFrame{
+//         {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
+//         AISG_PROTOCOL_VERSION
+//      },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
          CALIBRATE_STR

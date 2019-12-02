@@ -22,8 +22,8 @@ protected:
    boost::optional<std::string> frameFromSecondary_;
    boost::optional<Hex> address_;
    boost::optional<Hex> ctrl_;
-   boost::optional<FI> formatIdentifier_;
-   boost::optional<GI> groupIdentifier_;
+   boost::optional<Hex> formatIdentifier_;
+   boost::optional<Hex> groupIdentifier_;
    boost::optional<Hex> groupLength_;
    std::vector<HDLCParameters> parameters_;
 };

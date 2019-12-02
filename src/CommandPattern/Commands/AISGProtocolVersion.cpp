@@ -36,7 +36,7 @@ void AISGProtocolVersion::executeImpl()
    const auto AISGProtocolVersionPrimFrame = FrameXID()
       .setAddressByte(0x03)
       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDR_ASSIGNMENT)
+      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
       .setGroupLengthByte(0x03)
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::AISG_PROTOCOL_VERSION,

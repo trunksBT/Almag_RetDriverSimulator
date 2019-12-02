@@ -15,7 +15,7 @@ TEST_F(HDLCFrameTests, Transceive_DummyScan)
    const auto hdlcPrimFrame = FrameXID()
       .setAddressByte(ADDR_ALLSTATIONS)
       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDR_ASSIGNMENT)
+      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
       .setGroupLengthByte(0x08)
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::UNIQUE_ID,
@@ -32,12 +32,12 @@ TEST_F(HDLCFrameTests, Transceive_DummyScan)
          std::vector<Hex>({
             START_STOP_FLAG,
             ADDR_ALLSTATIONS,
-            static_cast<Hex>(BYTE_CONTROL::XID),
-            static_cast<Hex>(FI::ADDR_ASSIGNMENT),
-            static_cast<Hex>(GI::ADDR_ASSIGNMENT),
+            BYTE_CONTROL::XID,
+            FI::ADDR_ASSIGNMENT,
+            GI::ADDRESS_ASSIGNMENT,
             0x08,
-            static_cast<Hex>(XID_PARAMS_ID::UNIQUE_ID), 0x02, 0x33, 0x33,
-            static_cast<Hex>(XID_PARAMS_ID::BIT_MASK), 0x02, 0xFF, 0xFF,
+            XID_PARAMS_ID::UNIQUE_ID, 0x02, 0x33, 0x33,
+            XID_PARAMS_ID::BIT_MASK, 0x02, 0xFF, 0xFF,
             CRC.at(0), CRC.at(1),
             START_STOP_FLAG
          })));

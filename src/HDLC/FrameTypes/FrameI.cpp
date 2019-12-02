@@ -28,12 +28,6 @@ FrameI& FrameI::setControlByte(Hex value)
 
 FrameI& FrameI::setProcedureCode(Hex value)
 {
-   procedureCodeHex_ = value;
-   return *this;
-}
-
-FrameI& FrameI::setProcedureCode(PROCEDURE_CODE value)
-{
    procedureCode_ = value;
    return *this;
 }
@@ -59,13 +53,13 @@ Hexes FrameI::build() const
    retVal.push_back(*ctrl_);
    printHex("CTRL: ", *ctrl_);
 
-   if (not procedureCodeHex_)
+   if (not procedureCode_)
    {
       LOG(error) << "Empty procedureCode byte, returning empty frame";
       return {};
    }
-   retVal.push_back(*procedureCodeHex_);
-   printHex("PROC: ", *procedureCodeHex_);
+   retVal.push_back(*procedureCode_);
+   printHex("PROC: ", *procedureCode_);
 
    LOG(info) << "HDLC': " << funs::toString(retVal);
    return retVal;

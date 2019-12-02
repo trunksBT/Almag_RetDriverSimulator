@@ -37,7 +37,7 @@ void AddressAssignment::executeImpl()
    const auto AddressAssignmentPrimFrame = FrameXID()
       .setAddressByte(0xFF)
       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDR_ASSIGNMENT)
+      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
       .setGroupLengthByte(0x1B)
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::UNIQUE_ID,

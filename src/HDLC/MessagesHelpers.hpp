@@ -14,17 +14,17 @@ enum BYTE_CONTROL : Hex
     RETAP = 0xFE
 };
 
-enum class FI : Hex
+enum FI : Hex
 {
     ADDR_ASSIGNMENT = 0x81
 };
 
-enum class GI : Hex
+enum GI : Hex
 {
-    ADDR_ASSIGNMENT = 0xF0
+    ADDRESS_ASSIGNMENT = 0xF0
 };
 
-enum class PV : Hex
+enum PV : Hex
 {
     THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE = 0x0A,
     AISG_2_0= 0x02
@@ -35,7 +35,7 @@ enum class IDX_OF : int
     GL = 4
 };
 
-enum class XID_PARAMS_ID : Hex
+enum XID_PARAMS_ID : Hex
 {
     UNIQUE_ID = 0x01,
     ASSIGNED_ADDRESS = 0x02,
@@ -45,12 +45,12 @@ enum class XID_PARAMS_ID : Hex
     AISG_PROTOCOL_VERSION = 0x14
 };
 
-enum class DEVICE_TYPE : Hex
+enum DEVICE_TYPE : Hex
 {
     SRET = 0x01
 };
 
-enum class PROCEDURE_CODE : Hex
+enum PROCEDURE_CODE : Hex
 {
    CALIBRATE_SRET = 0x31
 };
