@@ -16,6 +16,7 @@ namespace
 const std::string START_POOLING = "StartPooling";
 constexpr int IDX_OF_COMMAND_OR_ACTION_NAME = 0;
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
+constexpr int IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR = 1;
 constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
 constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND = 1;
 }

@@ -22,19 +22,19 @@ FrameXID& FrameXID::setAddressByte(Hex value)
    return *this;
 }
 
-FrameXID& FrameXID::setControlByte(BYTE_CONTROL value)
+FrameXID& FrameXID::setControlByte(Hex value)
 {
    ctrl_ = value;
    return *this;
 }
 
-FrameXID& FrameXID::setFormatIdentifierByte(FI value)
+FrameXID& FrameXID::setFormatIdentifierByte(Hex value)
 {
    formatIdentifier_ = value;
    return *this;
 }
 
-FrameXID& FrameXID::setGroupIdentifierByte(GI value)
+FrameXID& FrameXID::setGroupIdentifierByte(Hex value)
 {
    groupIdentifier_ = value;
    return *this;

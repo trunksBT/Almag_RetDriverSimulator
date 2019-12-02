@@ -86,14 +86,14 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
          LINK_ESTABLISHMENT 
       },
-      CommandsToExpectedFrame{
-         {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-         THREEGPP_RELEASE_ID 
-      },
-      CommandsToExpectedFrame{
-         {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
-         AISG_PROTOCOL_VERSION 
-      },
+//      CommandsToExpectedFrame{
+//         {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
+//         THREEGPP_RELEASE_ID
+//      },
+//      CommandsToExpectedFrame{
+//         {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
+//         AISG_PROTOCOL_VERSION
+//      },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
          CALIBRATE_STR

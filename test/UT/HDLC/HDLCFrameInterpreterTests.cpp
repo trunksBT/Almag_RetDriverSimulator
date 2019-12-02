@@ -30,7 +30,7 @@ TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
              interpretedFrame->build());
 }
 
-INSTANTIATE_TEST_CASE_P(InstantiationName,
+INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
    HDLCFrameInterpreterTests,
    ::testing::Values(
          ExpectedFrameType_ExpectedValue_ReceivedString{
@@ -38,7 +38,7 @@ INSTANTIATE_TEST_CASE_P(InstantiationName,
          std::vector<Hex>({
             0x03,
             BYTE_CONTROL::RETAP,
-            static_cast<Hex>(PROCEDURE_CODE::CALIBRATE_SRET)
+            PROCEDURE_CODE::CALIBRATE_SRET
          }),
          retDevice->get_FrameI_Calibrate().data()
       }

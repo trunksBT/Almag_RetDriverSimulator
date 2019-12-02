@@ -45,7 +45,7 @@ void DummyScan::executeImpl()
       const auto dummyScanPrimFrame = FrameXID()
          .setAddressByte(ADDR_ALLSTATIONS)
          .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-         .setGroupIdentifierByte(GI::ADDR_ASSIGNMENT)
+         .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
          .setGroupLengthByte(0x08)
          .addParameters(HDLCParameters::build(
             XID_PARAMS_ID::UNIQUE_ID,
