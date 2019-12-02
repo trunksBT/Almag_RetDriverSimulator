@@ -4,7 +4,6 @@
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/FrameTypes/FrameI.hpp>
 #include <HDLC/FrameTypes/FrameXID.hpp>
-#include <boost/variant.hpp>
 
 using testing::Eq;
 
@@ -29,8 +28,9 @@ protected:
 
 TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
 {
+   const auto interpretedFrame = frameInterpreter.apply(GetParam().receivedString);
    ASSERT_EQ(GetParam().expectedFrameType,
-           frameInterpreter.apply(GetParam().receivedString)->getType());
+             interpretedFrame->getType());
 }
 
 INSTANTIATE_TEST_CASE_P(InstantiationName,

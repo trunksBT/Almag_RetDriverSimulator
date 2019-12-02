@@ -148,7 +148,7 @@ TEST_F(HDLCFrameBodyTests, Transceive_L7_Calibrate)
 {
    const auto CALIBRATE_PRIM_FRAME = FrameI()
       .setAddressByte(0x03)
-      .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
+      .setProcedureCode(static_cast<Hex>(PROCEDURE_CODE::CALIBRATE_SRET));
 
    ASSERT_THAT(CALIBRATE_PRIM_FRAME.build(), Eq(
          std::vector<Hex>({

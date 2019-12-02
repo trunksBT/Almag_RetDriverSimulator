@@ -20,3 +20,4 @@ public:
    static FRAME_TYPE GET_TYPE;
 };
 
+using FrameXIDPtr = std::shared_ptr<FrameXID>;

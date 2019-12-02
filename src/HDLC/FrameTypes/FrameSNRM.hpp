@@ -16,3 +16,4 @@ public:
    static FRAME_TYPE GET_TYPE;
 };
 
+using FrameSNRMPtr = std::unique_ptr<FrameSNRM>;
