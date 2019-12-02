@@ -3,10 +3,10 @@
 #include <string>
 #include <HDLC/HDLCFrameBody.hpp>
 
-class HDLCFrameInterpreter
+class HDLCFrameBodyInterpreter
 {
 public:
-   HDLCFrameInterpreter();
-   ~HDLCFrameInterpreter();
+   HDLCFrameBodyInterpreter();
+   ~HDLCFrameBodyInterpreter();
    HDLCFrameBodyPtr apply(const std::string& receivedPlainFrame);
 };
