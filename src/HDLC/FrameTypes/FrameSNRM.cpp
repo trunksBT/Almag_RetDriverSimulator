@@ -2,6 +2,8 @@
 
 using namespace funs;
 
+FRAME_TYPE FrameSNRM::GET_TYPE=FRAME_TYPE::SNRM;
+
 FrameSNRM::FrameSNRM()
    : HDLCFrameBody()
 {
@@ -46,3 +48,7 @@ Hexes FrameSNRM::build() const
    return retVal;
 }
 
+FRAME_TYPE FrameSNRM::getType() const
+{
+   return FRAME_TYPE::SNRM;
+}

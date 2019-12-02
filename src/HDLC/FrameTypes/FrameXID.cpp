@@ -2,6 +2,8 @@
 
 using namespace funs;
 
+FRAME_TYPE FrameXID::GET_TYPE=FRAME_TYPE::XID;
+
 FrameXID::FrameXID()
    : HDLCFrameBody()
 {
@@ -112,4 +114,9 @@ Hexes FrameXID::build() const
 
    LOG(info) << "HDLC': " << funs::toString(retVal);
    return retVal;
+}
+
+FRAME_TYPE FrameXID::getType() const
+{
+   return FRAME_TYPE::XID;
 }

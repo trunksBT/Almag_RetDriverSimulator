@@ -1,27 +1,26 @@
-//
-// Created by pkorycin on 12.11.2019.
-//
-
 #pragma once
 
 #include <HDLC/IHDLCCommunicator.hpp>
+#include <queue>
 
 namespace test
 {
-class RoundTripHDLCCommunicatorStub : public IHDLCCommunicator
+class RoundTripHDLCCommunicatorStub final: public IHDLCCommunicator
 {
 public:
    explicit RoundTripHDLCCommunicatorStub();
 
-   virtual bool send(
-           const std::string &address, std::shared_ptr<HDLCFrameBody> frame);
-
-   virtual boost::optional<HDLCFrame> receive(const std::string &address);
-   virtual boost::optional<std::string> receiveStr(const std::string &address);
+   void setupSend(const std::string& address) override {};
+   void setupReceive(const std::string& address) override {};
+   bool send(
+           const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames) override;
+   bool send(const std::string &address, HDLCFrameBodyPtr frame) override;
+   std::queue<HDLCFrame> receive(const std::string &address) override;
+   boost::optional<std::string> receiveStr(const std::string &address) override;
 
    virtual ~RoundTripHDLCCommunicatorStub();
 
 private:
-   std::shared_ptr<HDLCFrameBody> hdlcFrame_;
+   std::vector<HDLCFrameBodyPtr> hdlcFrames_;
 };
 }  // namespace test

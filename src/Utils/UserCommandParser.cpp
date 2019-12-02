@@ -6,9 +6,9 @@
 #include <boost/tokenizer.hpp>
 #include <boost/optional.hpp>
 #include <boost/optional/optional_io.hpp>
-
 #include <Utils/Utils.hpp>
 #include <Utils/Logger.hpp>
+#include <Utils/Functions.hpp>
 
 using tokenizer = boost::tokenizer<boost::char_separator<char>>;
 using namespace defaultVals;
@@ -23,10 +23,7 @@ namespace
 
 Strings UserCommandParser::performLexer(std::string inCommand)
 {
-    boost::char_separator<char> sep(defaultVals::SEPARATOR);
-    tokenizer tokens(inCommand, sep);
-    Strings retVal(tokens.begin(), tokens.end());
-    return retVal;
+   return funs::lex(inCommand, defaultVals::SEPARATOR);
 }
 
 Strings UserCommandParser::receiveAndLex()

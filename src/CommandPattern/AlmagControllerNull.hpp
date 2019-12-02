@@ -1,8 +1,8 @@
 #pragma once
 
-#include <CommandPattern/IAlmagController.hpp>
+#include <CommandPattern/IController.hpp>
 
-class AlmagControllerNull : public IAlmagController
+class AlmagControllerNull : public IController
 {
 public:
    AlmagControllerNull();

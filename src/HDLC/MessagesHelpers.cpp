@@ -16,12 +16,10 @@ void printFrame(const char* msg, const Hexes& input)
 {
    std::stringstream stream;
    stream << msg;
-
    for (const auto& it : input)
    {
       stream << std::hex << static_cast<int>(it) << " ";
    }
-
    LOG(trace) << stream.str();
 }
 

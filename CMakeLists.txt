@@ -60,7 +60,7 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagController.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagControllerNull.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagControllerNull.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IAlmagController.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IController.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AISGProtocolVersion.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AISGProtocolVersion.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AddressAssignment.cpp
@@ -94,7 +94,8 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
-
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameInterpreter.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.cpp
@@ -117,6 +118,7 @@ set(EXTERNAL_LIBRARIES_UTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/TypeAliases.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.hpp
 )
 

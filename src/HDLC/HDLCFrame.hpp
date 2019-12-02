@@ -6,7 +6,7 @@
 class HDLCFrame
 {
 public:
-   explicit HDLCFrame(std::shared_ptr<HDLCFrameBody> inFrame);
+   explicit HDLCFrame(HDLCFrameBodyPtr inFrame);
 
    Hexes build() const;
    std::string getFrameFromSecondary() const;

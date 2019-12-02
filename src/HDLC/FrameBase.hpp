@@ -13,6 +13,7 @@ public:
    std::string toString() const;  // only to use after build
    virtual Hexes build() = 0;
 
+
    virtual ~FrameBase() = default;
 
 public: 

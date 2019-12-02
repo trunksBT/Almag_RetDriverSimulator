@@ -32,7 +32,6 @@ void Calibrate::executeImpl()
    LOG(trace) << "BEGIN";
    const auto CalibratePrimFrame = FrameI()
       .setAddressByte(0x03)
-      .setControlByte(BYTE_CONTROL::RETAP)
       .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],

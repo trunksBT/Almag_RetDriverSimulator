@@ -36,7 +36,7 @@ void AlmagController::addCommand(Strings validatedUserInput)
 
    if (receivedCmd)
    {
-      addCommands({receivedCmd });
+      addCommands({receivedCmd});
    }
 }
 
