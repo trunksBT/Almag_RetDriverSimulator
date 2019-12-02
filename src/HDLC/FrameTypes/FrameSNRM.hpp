@@ -9,7 +9,7 @@ public:
    explicit FrameSNRM(const std::string& value);
 
    FrameSNRM& setAddressByte(Hex value);
-   FrameSNRM& setControlByte(BYTE_CONTROL value);
+   FrameSNRM& setControlByte(Hex value);
 
    Hexes build() const;
    FRAME_TYPE getType() const override;

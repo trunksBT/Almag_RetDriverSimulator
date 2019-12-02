@@ -22,7 +22,7 @@ FrameSNRM& FrameSNRM::setAddressByte(Hex value)
    return *this;
 }
 
-FrameSNRM& FrameSNRM::setControlByte(BYTE_CONTROL value)
+FrameSNRM& FrameSNRM::setControlByte(Hex value)
 {
    ctrl_ = value;
    return *this;
