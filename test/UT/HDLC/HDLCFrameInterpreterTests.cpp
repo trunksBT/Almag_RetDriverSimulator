@@ -14,7 +14,7 @@ FrameStrFactoryPtr retDevice = std::make_shared<SRetFrameBodyStrFactory>();
 }
 
 class HDLCFrameInterpreterTests:
-   public ::testing::TestWithParam<StringToRecognizedFrameType>
+   public ::testing::TestWithParam<ExpectedFrameType_ExpectedValue_ReceivedString>
 {
 protected:
    HDLCFrameInterpreter frameInterpreter;
@@ -33,7 +33,7 @@ TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
 INSTANTIATE_TEST_CASE_P(InstantiationName,
    HDLCFrameInterpreterTests,
    ::testing::Values(
-      StringToRecognizedFrameType{
+         ExpectedFrameType_ExpectedValue_ReceivedString{
          FrameI::GET_TYPE,
          std::vector<Hex>({
             0x03,

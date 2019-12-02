@@ -8,7 +8,7 @@ struct CommandsToExpectedFrame
    const std::string expectedHdlcFrame;
 };
 
-struct StringToRecognizedFrameType
+struct ExpectedFrameType_ExpectedValue_ReceivedString
 {
    const FRAME_TYPE expectedFrameType;
    const Hexes expectedHexes;
