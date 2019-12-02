@@ -152,6 +152,8 @@ TEST_F(HDLCFrameBodyTests, Transceive_L7_Calibrate)
 
    ASSERT_THAT(CALIBRATE_PRIM_FRAME.build(), Eq(
          std::vector<Hex>({
-            0x03, 0xFE, 0x31
+            0x03,
+            BYTE_CONTROL::RETAP,
+            static_cast<Hex>(PROCEDURE_CODE::CALIBRATE_SRET)
          })));
 }

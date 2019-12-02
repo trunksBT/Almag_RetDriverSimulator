@@ -16,6 +16,7 @@ const std::string CALIBRATE_STR = "3 fe 31 ";
 struct StringToRecognizedFrameType
 {
    const FRAME_TYPE expectedFrameType;
+   const Hexes expectedHexes;
    const std::string receivedString;
 };
 
@@ -29,8 +30,11 @@ protected:
 TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
 {
    const auto interpretedFrame = frameInterpreter.apply(GetParam().receivedString);
+
    ASSERT_EQ(GetParam().expectedFrameType,
              interpretedFrame->getType());
+   ASSERT_EQ(GetParam().expectedHexes,
+             interpretedFrame->build());
 }
 
 INSTANTIATE_TEST_CASE_P(InstantiationName,
@@ -38,6 +42,11 @@ INSTANTIATE_TEST_CASE_P(InstantiationName,
    ::testing::Values(
       StringToRecognizedFrameType{
          FrameI::GET_TYPE,
+         std::vector<Hex>({
+            0x03,
+            BYTE_CONTROL::RETAP,
+            static_cast<Hex>(PROCEDURE_CODE::CALIBRATE_SRET)
+         }),
          CALIBRATE_STR
       }
    )
