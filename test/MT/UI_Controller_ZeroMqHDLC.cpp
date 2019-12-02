@@ -18,8 +18,8 @@
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
-#include <TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.hpp>
-#include <TestUtils/HDLCCommunicators/ZMqPubSubCommunicator.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp>
 
 using namespace funs;
 using namespace constraints::almag;

@@ -1,5 +1,5 @@
 #include "ZMqReqRespCommunicator.hpp"
-#include <TestUtils/HDLCCommunicators/ZeroMqUtils.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp>
 
 namespace
 {

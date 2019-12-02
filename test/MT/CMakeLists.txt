@@ -2,16 +2,16 @@ set(PROJECT_TESTS_NAME Almag_RetDriver_MT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(TESTUTILS_COMMUNICATORS
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqPubSubCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqPubSubCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZMqReqRespCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLCCommunicators/ZeroMqUtils.hpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.cpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.cpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
+    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
 )
 
 set(MT_HappyPath

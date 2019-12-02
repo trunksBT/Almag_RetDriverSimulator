@@ -11,7 +11,7 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
-#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 
 using namespace hardcodes::IOPaths;
 using namespace constraints::database;
