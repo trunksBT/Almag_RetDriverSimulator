@@ -19,9 +19,12 @@ constexpr unsigned IDX_OF_FORMAT_ID_BYTE = 2;
 constexpr unsigned IDX_OF_GROUP_ID_BYTE = 3;
 constexpr unsigned IDX_OF_GROUP_LENGTH_BYTE = 4;
 constexpr unsigned IDX_OF_HDLC_PARAMETERS_START = 5;
+constexpr unsigned IDX_OF_SUBGROUP_PAR_ID = 0;
+constexpr unsigned IDX_OF_SUBGROUP_LENGTH_BYTE = 1;
+constexpr unsigned IDX_OF_SUBGROUP_VALUES_START = 2;
 constexpr int HEX_BASE = 16;
 
-HexInt toHex(const std::string receivedByteStr)
+HexInt toHexInt(const std::string receivedByteStr)
 {
    std::istringstream byteStrStream{receivedByteStr};
    HexInt byteHex;
@@ -41,92 +44,124 @@ Strings slice(const Strings& inVec, int idxOfStart, int length)
    return Strings{first, last};
 }
 
-HexesInt toHexes(const Strings& plainFrames, int idxOfStart, int idxOfEnd)
+HexesInt toHexesInt(const Strings& plainFrames)
 {
-   HexesInt retVal;
-   for (std::size_t i = idxOfStart; i<idxOfEnd; i++)
+   std::vector<HexInt> retVal;
+   for (const auto& it : plainFrames)
    {
-      retVal.push_back(toHex(plainFrames.at(i)));
+      retVal.push_back(toHexInt(it));
    }
    return retVal;
 }
 
-//
-//unsigned toInt(const std::string receivedGroupLengthByteStr)
-//{
-//   std::istringstream byteStrStream;
-//   unsigned groupLengthInt;
-//   byteStrStream << std::hex << static_cast<int>(receivedGroupLengthByteStr);
-//   return byteHex;
-//}
-
-std::vector<HDLCParameters> getHdlcParameters(
-        const Strings& receivedPlanFrame, unsigned idxOfGroupStart)
+Hexes toHexes(const HexesInt& plainFrames)
 {
-   std::vector<HDLCParameters> retVal;
-   const auto groupLength = toInt(receivedPlanFrame.at(IDX_OF_GROUP_LENGTH_BYTE));
-   LOG(debug) << "Group length: " << groupLength;
-
-   for (int i = idxOfGroupStart; i < receivedPlanFrame.size(); i++)
+   std::vector<Hex> retVal;
+   for (const auto& it : plainFrames)
    {
-      LOG(debug) << "Str i = " << receivedPlanFrame.at(i);
-      LOG(debug) << "Str i+1 = " << receivedPlanFrame.at(i+1);
-      LOG(debug) << "int i = " << toInt(receivedPlanFrame.at(i));
-      LOG(debug) << "int i+1 = " << toInt(receivedPlanFrame.at(i+1));
-      int subGroupLength = toInt(receivedPlanFrame.at(i+1));
-      LOG(debug) << "SubGroup length:" << subGroupLength;
-//      retVal.push_back(HDLCParameters.build(
-//         toHex(receivedPlanFrame.at(i)),
-//         toHex(receivedPlanFrame.at(i+1)),
-//         toHexes(receivedPlanFrame, i+2, )
-//              ))
+      retVal.push_back(it);
    }
-//   receivedPlainFrame.at(idxOfGroupStart)
-   return {};
+   return retVal;
 }
 
 HDLCFrameBodyPtr interpretBodyFrameI(const Strings& receivedPlainFrame)
 {
    const auto retFrame = FrameI()
-       .setAddressByte(toHex(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
-       .setControlByte(toHex(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)))
-       .setProcedureCode(toHex(receivedPlainFrame.at(IDX_OF_PROC_BYTE)));
+       .setAddressByte(toHexInt(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
+       .setControlByte(toHexInt(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)))
+       .setProcedureCode(toHexInt(receivedPlainFrame.at(IDX_OF_PROC_BYTE)));
    return std::make_shared<FrameI>(retFrame);
 }
 
 HDLCFrameBodyPtr interpretBodyFrameSNRM(const Strings& receivedPlainFrame)
 {
    const auto retFrame = FrameSNRM()
-       .setAddressByte(toHex(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
-       .setControlByte(toHex(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)));
+       .setAddressByte(toHexInt(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
+       .setControlByte(toHexInt(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)));
    return std::make_shared<FrameSNRM>(retFrame);
 }
 
 HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
 {
    auto retFrame = FrameXID()
-       .setAddressByte(toHex(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
-       .setControlByte(toHex(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)))
-       .setFormatIdentifierByte(toHex(receivedPlainFrame.at(IDX_OF_FORMAT_ID_BYTE)))
-       .setGroupIdentifierByte(toHex(receivedPlainFrame.at(IDX_OF_GROUP_ID_BYTE)));
+       .setAddressByte(toHexInt(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
+       .setControlByte(toHexInt(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)))
+       .setFormatIdentifierByte(toHexInt(receivedPlainFrame.at(IDX_OF_FORMAT_ID_BYTE)))
+       .setGroupIdentifierByte(toHexInt(receivedPlainFrame.at(IDX_OF_GROUP_ID_BYTE)))
+       .setGroupLengthByte(toHexInt(receivedPlainFrame.at(IDX_OF_GROUP_LENGTH_BYTE)));
 
+   std::vector<HDLCParameters> parameters;
    LOG(trace) << "SLICING Vec start";
    const auto groupLength = toInt(receivedPlainFrame.at(IDX_OF_GROUP_LENGTH_BYTE));
    LOG(debug) << "Group length: " << groupLength;
    const auto slicedVector = slice(receivedPlainFrame, IDX_OF_HDLC_PARAMETERS_START, groupLength);
+   Strings subGroup;
+   LOG(trace) << "{";
+   int i = 0;
    for (const auto& it : slicedVector)
    {
       LOG(trace) << it;
    }
+   LOG(trace) << "}";
+
+   {
+      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
+      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
+      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
+      LOG(trace) << "ParId: " << parId;
+      LOG(trace) << "ParLen: " << parLen;
+      LOG(trace) << "ParVals: ";
+      LOG(trace) << "{";
+      for (const auto& it : parVals)
+      {
+         LOG(trace) << it;
+      }
+      LOG(trace) << "}";
+      i+=(parLen+2);
+      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   }
+   {
+      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
+      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
+      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
+      LOG(trace) << "ParId: " << parId;
+      LOG(trace) << "ParLen: " << parLen;
+      LOG(trace) << "ParVals: ";
+      LOG(trace) << "{";
+      for (const auto& it : parVals)
+      {
+         LOG(trace) << it;
+      }
+      LOG(trace) << "}";
+      i+=(parLen+2);
+      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   }
+   {
+      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
+      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
+      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
+      LOG(trace) << "ParId: " << parId;
+      LOG(trace) << "ParLen: " << parLen;
+      LOG(trace) << "ParVals: ";
+      LOG(trace) << "{";
+      for (const auto& it : parVals)
+      {
+         LOG(trace) << it;
+      }
+      LOG(trace) << "}";
+      i+=(parLen+2);
+      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   }
+   LOG(trace) << "}";
    LOG(trace) << "SLICING Vec end";
 
-//   for (const auto& hdlcParameters : getHdlcParameters(slice(receivedPlainFrame IDX_OF_HDLC_PARAMETERS_START))
-//      retFrame.addParameters(hdlcParameters);
+   for (const auto& hdlcParameters : parameters)
+      retFrame.addParameters(hdlcParameters);
 
    return std::make_shared<FrameXID>(retFrame);
 }
 
-}
+}  // namespace
 
 HDLCFrameBodyInterpreter::HDLCFrameBodyInterpreter()
 {
@@ -142,9 +177,7 @@ HDLCFrameBodyPtr HDLCFrameBodyInterpreter::apply(const std::string& receivedPlai
 {
    const std::vector<std::string> lexedInput{ lex(receivedPlainFrame, SPACE) };
    LOG(info) << "Input: " << toString(lexedInput);
-   HexInt ctrlByte = toHex(lexedInput.at(IDX_OF_CTRL_BYTE));
-
-//   printFrame("Interpreted frame: ", interpretedFrame->build());
+   HexInt ctrlByte = toHexInt(lexedInput.at(IDX_OF_CTRL_BYTE));
 
    if (BYTE_CONTROL::RETAP == ctrlByte)
    {
@@ -158,6 +191,7 @@ HDLCFrameBodyPtr HDLCFrameBodyInterpreter::apply(const std::string& receivedPlai
    {
       return interpretBodyFrameXID(lexedInput);
    }
+   
    LOG(error) << "Frame of unknown type";
    return {};
 }
