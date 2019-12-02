@@ -21,8 +21,7 @@ protected:
 
    boost::optional<std::string> frameFromSecondary_;
    boost::optional<Hex> address_;
-   boost::optional<BYTE_CONTROL> ctrl_;
-   boost::optional<Hex> ctrlHex_; // TODO
+   boost::optional<Hex> ctrl_;
    boost::optional<FI> formatIdentifier_;
    boost::optional<GI> groupIdentifier_;
    boost::optional<Hex> groupLength_;

@@ -9,7 +9,6 @@ public:
    explicit FrameI(const std::string& value);
 
    FrameI& setAddressByte(Hex value);
-   FrameI& setControlByte(BYTE_CONTROL value);
    FrameI& setControlByte(Hex value);
    FrameI& setProcedureCode(PROCEDURE_CODE value);
    FrameI& setProcedureCode(Hex value);

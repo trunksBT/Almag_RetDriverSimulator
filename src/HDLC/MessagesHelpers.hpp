@@ -7,7 +7,7 @@ const Hex ZERO = 0x00;
 const Hex ADDR_ALLSTATIONS = 0xFF;
 const Hexes CRC = { 0x13, 0x37 };
 
-enum class BYTE_CONTROL : Hex
+enum BYTE_CONTROL : Hex
 {
     XID = 0xBF,
     SNRM = 0x93,
