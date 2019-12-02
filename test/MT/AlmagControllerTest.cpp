@@ -9,7 +9,7 @@
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
-#include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <Utils/Utils.hpp>
 
 using namespace command;

@@ -2,6 +2,7 @@
 #include <sstream>
 #include <HDLC/FrameTypes/FrameI.hpp>
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/FrameTypes/FrameXID.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Functions.hpp>
@@ -40,6 +41,17 @@ HDLCFrameBodyPtr interpretBodyFrameSNRM(const Strings& receivedPlainFrame)
    return std::make_shared<FrameSNRM>(retFrame);
 }
 
+HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
+{
+   const auto retFrame = FrameXID()
+       .setAddressByte(toHex(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
+       .setControlByte(toHex(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)));
+//       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+//       .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+//       .setGroupLengthByte(0x08)
+   return std::make_shared<FrameXID>(retFrame);
+}
+
 }
 
 HDLCFrameBodyInterpreter::HDLCFrameBodyInterpreter()
@@ -68,4 +80,10 @@ HDLCFrameBodyPtr HDLCFrameBodyInterpreter::apply(const std::string& receivedPlai
    {
       return interpretBodyFrameSNRM(lexedInput);
    }
+   else if (BYTE_CONTROL::XID == ctrlByte)
+   {
+      return interpretBodyFrameXID(lexedInput);
+   }
+   LOG(error) << "Frame of unknown type";
+   return {};
 }

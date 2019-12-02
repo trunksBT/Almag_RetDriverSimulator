@@ -3,6 +3,7 @@
 #include <HDLC/HDLCFrameBodyInterpreter.hpp>
 #include <HDLC/FrameTypes/FrameI.hpp>
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/FrameTypes/FrameXID.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
@@ -17,6 +18,7 @@ FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetFrameBodyHexFactor
 FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetFrameBodyStrFactory>();
 }
 
+
 class HDLCFrameInterpreterTests:
    public ::testing::TestWithParam<ExpectedFrameType_ExpectedValue_ReceivedString>
 {
@@ -24,7 +26,7 @@ protected:
    HDLCFrameBodyInterpreter frameInterpreter;
 };
 
-TEST_P(HDLCFrameInterpreterTests, InterpretFrameSNRM)
+TEST_P(HDLCFrameInterpreterTests, InterpretFrame)
 {
    const auto interpretedFrame = frameInterpreter.apply(GetParam().receivedString);
 
@@ -46,6 +48,11 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
           FrameSNRM::GET_TYPE,
           retDeviceHexFactory->get_FrameSNRM_LinkEstablishment(),
           retDeviceStr->get_FrameSNRM_LinkEstablishment().data()
-       }
+       },
+       ExpectedFrameType_ExpectedValue_ReceivedString{
+          FrameXID::GET_TYPE,
+          retDeviceHexFactory->get_FrameXID_DummyScan(),
+          retDeviceStr->get_FrameXID_DummyScan().data()
+        }
    )
 );
