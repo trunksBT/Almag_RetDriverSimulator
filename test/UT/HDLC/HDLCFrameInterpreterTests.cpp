@@ -1,24 +1,17 @@
 #include <gmock/gmock.h>
 
 #include <HDLC/HDLCFrameInterpreter.hpp>
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/FrameTypes/FrameI.hpp>
-#include <HDLC/FrameTypes/FrameXID.hpp>
+#include <TestUtils/StructsForParametrizedTests.hpp>
+#include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.hpp>
 
 using testing::Eq;
 
 namespace
 {
-const std::string LINK_ESTABLISHMENT = "3 93 ";
-const std::string CALIBRATE_STR = "3 fe 31 ";
+FrameStrFactoryPtr retDevice = std::make_shared<SRetFrameBodyStrFactory>();
 }
-
-struct StringToRecognizedFrameType
-{
-   const FRAME_TYPE expectedFrameType;
-   const Hexes expectedHexes;
-   const std::string receivedString;
-};
 
 class HDLCFrameInterpreterTests:
    public ::testing::TestWithParam<StringToRecognizedFrameType>
@@ -47,7 +40,7 @@ INSTANTIATE_TEST_CASE_P(InstantiationName,
             BYTE_CONTROL::RETAP,
             static_cast<Hex>(PROCEDURE_CODE::CALIBRATE_SRET)
          }),
-         CALIBRATE_STR
+         retDevice->get_FrameI_Calibrate().data()
       }
    )
 );

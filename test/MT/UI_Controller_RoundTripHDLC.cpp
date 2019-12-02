@@ -10,7 +10,7 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLCCommunicators/RoundTripHDLCCommunicatorStub.hpp>
-#include <PluginSpecifics/RetDriverCommandFacade.hpp>
+#include <PluginSpecifics/RetDriverCommandFactory.hpp>
 
 using namespace funs;
 using namespace hardcodes::IOPaths;
@@ -40,7 +40,7 @@ class UI_Controller_RoundTripHDLC:
 protected:
    UI_Controller_RoundTripHDLC()
       : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
-      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_)))
+      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_)

@@ -7,7 +7,7 @@
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp>
-#include <PluginSpecifics/RetDriverCommandFacade.hpp>
+#include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
@@ -25,7 +25,7 @@ int main()
    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators {{
       std::make_shared<HDLCCommunicator>(),
    }};
-   std::shared_ptr<ICommandFacade> commandFacade = std::make_shared<RetDriverCommandFacade>(hdlcCommunicators);
+   std::shared_ptr<ICommandFactory> commandFacade = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFacade);
 
    CMenu ui{"AlmagRetDriverUI", "_", db, ctrl,

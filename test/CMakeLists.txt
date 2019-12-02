@@ -19,5 +19,11 @@ set(TESTUTILS
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HexesUtils.hpp
 )
 
+set(TESTUTILS_HDLC_FRAMESFACTORIES
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp
+        ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.cpp
+        ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.hpp
+)
+
 add_subdirectory(MT)
 add_subdirectory(UT)

@@ -8,7 +8,7 @@
 #include <Database/Database.hpp>
 #include <CommandPattern/IController.hpp>
 #include <CommandPattern/ICommand.hpp>
-#include <CommandPattern/ICommandFacade.hpp>
+#include <CommandPattern/ICommandFactory.hpp>
 
 #include <Utils/TypeAliases.hpp>
 
@@ -21,7 +21,7 @@ class IHDLCCommunicator;
 class AlmagController final: public IController
 {
 public:
-   AlmagController(Database& db, std::shared_ptr<ICommandFacade> commandFacade);
+   AlmagController(Database& db, std::shared_ptr<ICommandFactory> commandFacade);
    virtual ~AlmagController();
 
    void addCommands(StringsMatrix validatedUserInput) final override;
@@ -36,7 +36,7 @@ private:
    void executeNextCommand();
 
    Database& db_;
-   std::shared_ptr<ICommandFacade> commandFacade_;
+   std::shared_ptr<ICommandFactory> commandFacade_;
    std::list<std::shared_ptr<ICommand>> commands_;
    std::string finalResultCode_;
 };

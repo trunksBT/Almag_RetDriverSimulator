@@ -11,7 +11,7 @@
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
-#include <PluginSpecifics/RetDriverCommandFacade.hpp>
+#include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
@@ -52,7 +52,7 @@ protected:
          std::make_shared<ZMqReqRespCommunicator>(),
          std::make_shared<ZMqPubSubCommunicator>()})
       , ctrl_{std::make_shared<AlmagController>(
-              db_, std::make_shared<RetDriverCommandFacade>(hdlcCommunicators_))}
+              db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_))}
       , ui_{"AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_)}
