@@ -14,5 +14,4 @@ public:
    virtual std::string_view get_FrameXID_AISGProtocolVersion() = 0;
    virtual ~FrameStrFactory() = default;
 };
-
 using FrameStrFactoryPtr = std::shared_ptr<FrameStrFactory>;
