@@ -26,6 +26,11 @@ using namespace hardcodes::IOPaths;
 
 namespace
 {
+constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
+}
+
+namespace hdlcFrames
+{
 const std::string DUMMY_SCAN_FRAME = "7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e ";
 const std::string ADDRESS_ASSIGNMENT_FRAME = 
 "7e ff bf 81 f0 1b 1 13 41 4e "
@@ -35,7 +40,6 @@ const std::string LINK_ESTABLISHMENT = "7e 3 93 13 37 7e ";
 const std::string THREEGPP_RELEASE_ID = "7e 3 bf 81 f0 3 5 1 a 13 37 7e ";
 const std::string AISG_PROTOCOL_VERSION = "7e 3 bf 81 f0 3 14 1 2 13 37 7e ";
 const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
-constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 }
 
 namespace mt
@@ -82,7 +86,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    ::testing::Values(
       CommandsToExpectedFrame{
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         DUMMY_SCAN_FRAME
+         hdlcFrames::DUMMY_SCAN_FRAME
       },
 //      CommandsToExpectedFrame{
 //         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
@@ -90,23 +94,23 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
 //      },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         ADDRESS_ASSIGNMENT_FRAME
+         hdlcFrames::ADDRESS_ASSIGNMENT_FRAME
       },
       CommandsToExpectedFrame{
          {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         LINK_ESTABLISHMENT
+         hdlcFrames::LINK_ESTABLISHMENT
       },
-//      CommandsToExpectedFrame{
-//         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         THREEGPP_RELEASE_ID
-//      },
-//      CommandsToExpectedFrame{
-//         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         AISG_PROTOCOL_VERSION
-//      },
+      CommandsToExpectedFrame{
+         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         hdlcFrames::THREEGPP_RELEASE_ID
+      },
+      CommandsToExpectedFrame{
+         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+         hdlcFrames::AISG_PROTOCOL_VERSION
+      },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         CALIBRATE_STR
+         hdlcFrames::CALIBRATE_STR
       }
    )
 );
