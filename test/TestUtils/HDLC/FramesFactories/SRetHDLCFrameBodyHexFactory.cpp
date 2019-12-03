@@ -1,7 +1,7 @@
-#include "SRetFrameBodyHexFactory.hpp"
+#include "SRetHDLCFrameBodyHexFactory.hpp"
 #include <HDLC/MessagesHelpers.hpp>
 
-Hexes SRetFrameBodyHexFactory::get_FrameI_Calibrate()
+Hexes SRetHDLCFrameBodyHexFactory::get_FrameI_Calibrate()
 {
    return std::vector<Hex>{{
        0x03,
@@ -10,7 +10,7 @@ Hexes SRetFrameBodyHexFactory::get_FrameI_Calibrate()
    }};
 }
 
-Hexes SRetFrameBodyHexFactory::get_FrameXID_DummyScan()
+Hexes SRetHDLCFrameBodyHexFactory::get_FrameXID_DummyScan()
 {
    return std::vector<Hex>{{
        ADDR_ALLSTATIONS,
@@ -24,7 +24,7 @@ Hexes SRetFrameBodyHexFactory::get_FrameXID_DummyScan()
    }};
 }
 
-Hexes SRetFrameBodyHexFactory::get_FrameSNRM_LinkEstablishment()
+Hexes SRetHDLCFrameBodyHexFactory::get_FrameSNRM_LinkEstablishment()
 {
    return std::vector<Hex>{{
        0x03,
@@ -32,7 +32,7 @@ Hexes SRetFrameBodyHexFactory::get_FrameSNRM_LinkEstablishment()
    }};
 }
 
-Hexes SRetFrameBodyHexFactory::get_FrameXID_AddressAssignment()
+Hexes SRetHDLCFrameBodyHexFactory::get_FrameXID_AddressAssignment()
 {
    return std::vector<Hex>{{
        ADDR_ALLSTATIONS,
@@ -52,7 +52,7 @@ Hexes SRetFrameBodyHexFactory::get_FrameXID_AddressAssignment()
    }};
 }
 
-Hexes SRetFrameBodyHexFactory::get_FrameXID_3GPPReleaseId()
+Hexes SRetHDLCFrameBodyHexFactory::get_FrameXID_3GPPReleaseId()
 {
    return std::vector<Hex>{{
        0x03,
@@ -66,7 +66,7 @@ Hexes SRetFrameBodyHexFactory::get_FrameXID_3GPPReleaseId()
     }};
 }
 
-Hexes SRetFrameBodyHexFactory::get_FrameXID_AISGProtocolVersion()
+Hexes SRetHDLCFrameBodyHexFactory::get_FrameXID_AISGProtocolVersion()
 {
    return std::vector<Hex>{{
        0x03,

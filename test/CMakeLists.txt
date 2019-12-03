@@ -24,10 +24,10 @@ set(TESTUTILS
 set(TESTUTILS_HDLC_FRAMESFACTORIES
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetFrameBodyHexFactory.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetFrameBodyHexFactory.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.hpp
 )
 
 add_subdirectory(MT)
