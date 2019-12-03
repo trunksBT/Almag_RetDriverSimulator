@@ -6,6 +6,7 @@
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Functions.hpp>
+#include <slcurses.h>
 
 using namespace funs;
 
@@ -81,6 +82,25 @@ HDLCFrameBodyPtr interpretBodyFrameSNRM(const Strings& receivedPlainFrame)
    return std::make_shared<FrameSNRM>(retFrame);
 }
 
+int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, const Strings &slicedVector, int i)
+{
+   auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
+   auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
+   auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
+   LOG(trace) << "ParId: " << parId;
+   LOG(trace) << "ParLen: " << parLen;
+   LOG(trace) << "ParVals: ";
+   LOG(trace) << "{";
+   for (const auto& it : parVals)
+   {
+      LOG(trace) << it;
+   }
+   LOG(trace) << "}";
+   i+=(parLen+2);
+   parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   return i;
+}
+
 HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
 {
    auto retFrame = FrameXID()
@@ -104,54 +124,10 @@ HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
    }
    LOG(trace) << "}";
 
-   {
-      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-      LOG(trace) << "ParId: " << parId;
-      LOG(trace) << "ParLen: " << parLen;
-      LOG(trace) << "ParVals: ";
-      LOG(trace) << "{";
-      for (const auto& it : parVals)
-      {
-         LOG(trace) << it;
-      }
-      LOG(trace) << "}";
-      i+=(parLen+2);
-      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   }
-   {
-      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-      LOG(trace) << "ParId: " << parId;
-      LOG(trace) << "ParLen: " << parLen;
-      LOG(trace) << "ParVals: ";
-      LOG(trace) << "{";
-      for (const auto& it : parVals)
-      {
-         LOG(trace) << it;
-      }
-      LOG(trace) << "}";
-      i+=(parLen+2);
-      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   }
-   {
-      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-      LOG(trace) << "ParId: " << parId;
-      LOG(trace) << "ParLen: " << parLen;
-      LOG(trace) << "ParVals: ";
-      LOG(trace) << "{";
-      for (const auto& it : parVals)
-      {
-         LOG(trace) << it;
-      }
-      LOG(trace) << "}";
-      i+=(parLen+2);
-      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   }
+   i = addHdlcParametersAndReturnPosition(parameters, slicedVector, i);
+   i = addHdlcParametersAndReturnPosition(parameters, slicedVector, i);
+   i = addHdlcParametersAndReturnPosition(parameters, slicedVector, i);
+
    LOG(trace) << "}";
    LOG(trace) << "SLICING Vec end";
 
@@ -160,6 +136,8 @@ HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
 
    return std::make_shared<FrameXID>(retFrame);
 }
+
+
 
 }  // namespace
 
