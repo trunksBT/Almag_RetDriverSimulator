@@ -1,23 +1,14 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
-
 #include <UserInterface/CMenu.hpp>
-#include <CommandPattern/Commands/DummyScan.hpp>
-
-#include <HDLC/HDLCCommunicator.hpp>
-#include <HDLC/HDLCFrameBody.hpp>
-#include <HDLC/MessagesHelpers.hpp>
-
+#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 #include <CommandPattern/AlmagController.hpp>
-
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
-#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
-
 #include <TestUtils/Hardcodes.hpp>
-#include <TestUtils/ObjectTypes.hpp>
-#include <TestUtils/UniqueKeys.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
+#include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp>
 
@@ -27,19 +18,7 @@ using namespace hardcodes::IOPaths;
 namespace
 {
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
-}
-
-namespace hdlcFrames
-{
-const std::string DUMMY_SCAN_FRAME = "7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e ";
-const std::string ADDRESS_ASSIGNMENT_FRAME = 
-"7e ff bf 81 f0 1b 1 13 41 4e "
-"30 30 30 30 43 4e 31 30 31 32 "
-"33 33 32 32 34 36 31 2 1 3 4 1 1 13 37 7e ";
-const std::string LINK_ESTABLISHMENT = "7e 3 93 13 37 7e ";
-const std::string THREEGPP_RELEASE_ID = "7e 3 bf 81 f0 3 5 1 a 13 37 7e ";
-const std::string AISG_PROTOCOL_VERSION = "7e 3 bf 81 f0 3 14 1 2 13 37 7e ";
-const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
+FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCFrameStrFactory>();
 }
 
 namespace mt
@@ -77,8 +56,8 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
            ->receiveStr(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(returnCode);
-   ASSERT_TRUE(receivedFromSecondaryHdlcFrame);  // TODO
-   ASSERT_THAT(receivedFromSecondaryHdlcFrame.get(), StrEq(GetParam().expectedHdlcFrame));  // TODO
+   ASSERT_TRUE(receivedFromSecondaryHdlcFrame);
+   ASSERT_THAT(receivedFromSecondaryHdlcFrame.get(), StrEq(GetParam().expectedHdlcFrame));
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
@@ -86,31 +65,32 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    ::testing::Values(
       CommandsToExpectedFrame{
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrames::DUMMY_SCAN_FRAME
+         retDeviceStrFactory->get_FrameXID_DummyScan().data()
       },
 //      CommandsToExpectedFrame{
 //         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         hdlcFrames::DUMMY_SCAN_FRAME
+//          multiplyString(
+//              NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, retDeviceStrFactory->get_FrameXID_DummyScan().data())
 //      },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrames::ADDRESS_ASSIGNMENT_FRAME
+         retDeviceStrFactory->get_FrameXID_AddressAssignment().data()
       },
       CommandsToExpectedFrame{
          {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrames::LINK_ESTABLISHMENT
+         retDeviceStrFactory->get_FrameSNRM_LinkEstablishment().data()
       },
       CommandsToExpectedFrame{
          {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrames::THREEGPP_RELEASE_ID
+         retDeviceStrFactory->get_FrameXID_3GPPReleaseId().data()
       },
       CommandsToExpectedFrame{
          {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrames::AISG_PROTOCOL_VERSION
+         retDeviceStrFactory->get_FrameXID_AISGProtocolVersion().data()
       },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrames::CALIBRATE_STR
+         retDeviceStrFactory->get_FrameI_Calibrate().data()
       }
    )
 );

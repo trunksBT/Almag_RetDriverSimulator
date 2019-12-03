@@ -7,15 +7,15 @@
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetFrameBodyHexFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetFrameBodyStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
 
 using testing::Eq;
 
 namespace
 {
-FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetFrameBodyHexFactory>();
-FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetFrameBodyStrFactory>();
+FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetHDLCFrameBodyHexFactory>();
+FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetHDLCFrameBodyStrFactory>();
 }
 
 

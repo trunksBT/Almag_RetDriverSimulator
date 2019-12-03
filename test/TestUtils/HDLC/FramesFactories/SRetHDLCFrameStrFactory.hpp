@@ -2,7 +2,7 @@
 
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 
-class SRetFrameBodyStrFactory final : public FrameStrFactory
+class SRetHDLCFrameStrFactory final : public FrameStrFactory
 {
 public:
    std::string_view get_FrameI_Calibrate() override;
@@ -11,5 +11,5 @@ public:
    std::string_view get_FrameXID_AddressAssignment() override;
    std::string_view get_FrameXID_3GPPReleaseId() override;
    std::string_view get_FrameXID_AISGProtocolVersion() override;
-   virtual ~SRetFrameBodyStrFactory() = default;
+   virtual ~SRetHDLCFrameStrFactory() = default;
 };

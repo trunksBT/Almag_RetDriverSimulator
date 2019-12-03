@@ -2,16 +2,16 @@ set(PROJECT_TESTS_NAME Almag_RetDriver_MT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(TESTUTILS_COMMUNICATORS
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.cpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.cpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
-    ../TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
 )
 
 set(MT_HappyPath
@@ -27,6 +27,7 @@ add_executable(${PROJECT_TESTS_NAME}
     ${MT_HappyPath}
     ${TESTUTILS}
     ${TESTUTILS_COMMUNICATORS}
+    ${TESTUTILS_HDLC_FRAMESFACTORIES}
 
     ${COMMAND_PATTERN}
     ${DATABASE}
