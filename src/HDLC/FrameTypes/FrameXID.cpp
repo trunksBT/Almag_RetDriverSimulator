@@ -101,7 +101,7 @@ Hexes FrameXID::build() const
    for (const auto& it : parameters_)
    {
       retVal.push_back(it.parId);
-      LOG(trace) << "--------------";
+      LOG(debug) << "--------------";
       printHex("PI: ", it.parId);
 
       retVal.push_back(it.parLength);
@@ -109,7 +109,7 @@ Hexes FrameXID::build() const
 
       retVal.insert( retVal.end(), it.parValue.begin(), it.parValue.end() );
       printFrame("PV: ", it.parValue);
-      LOG(trace) << "--------------";
+      LOG(debug) << "--------------";
    }
 
    LOG(info) << "HDLC': " << toString(retVal);
