@@ -5,6 +5,7 @@
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+#include <Utils/Utils.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
@@ -30,6 +31,7 @@ const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
 namespace
 {
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
+constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
 }
 
 namespace mt
@@ -75,10 +77,10 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
          hdlcFrames::DUMMY_SCAN_FRAME
       },
-//      CommandsToExpectedFrame{
-//         {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
-//         hdlcFrames::DUMMY_SCAN_FRAME
-//      },
+      CommandsToExpectedFrame{
+         {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
+         multiplyString(NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, hdlcFrames::DUMMY_SCAN_FRAME)
+      },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
          hdlcFrames::ADDRESS_ASSIGNMENT_FRAME

@@ -21,8 +21,6 @@ bool RoundTripHDLCCommunicatorStub::send(
         const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames)
 {
    LOG(debug);
-   hdlcFrames_.clear();
-   hdlcFrames_.reserve(frames.size());
    for (const auto& frame : frames)
    {
       printFrame("Frame: ", frame->build());
