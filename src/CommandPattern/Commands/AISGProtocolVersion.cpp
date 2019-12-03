@@ -10,7 +10,6 @@
 #include <Utils/Utils.hpp>
 
 using namespace command;
-using namespace funs;
 
 namespace
 {
@@ -41,7 +40,7 @@ void AISGProtocolVersion::executeImpl()
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
          0x01,
-         Hexes({ static_cast<Hex>(PV::AISG_2_0) })
+         Hexes({ PV::AISG_2_0 })
       ));
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],

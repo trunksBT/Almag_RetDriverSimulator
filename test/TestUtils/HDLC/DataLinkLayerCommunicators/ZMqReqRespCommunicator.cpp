@@ -1,5 +1,8 @@
 #include "ZMqReqRespCommunicator.hpp"
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp>
+#include <Utils/PrintUtils.hpp>
+
+using namespace printUtils;
 
 namespace
 {
@@ -40,7 +43,7 @@ bool ZMqReqRespCommunicator::send(
    bool sentState = true;
    for (const auto& frame : frames)
    {
-      const std::string sentMessage = funs::toString(frame->build());
+      const std::string sentMessage = toString(frame->build());
       LOG(debug) << "Sending on " << address << " " << sentMessage;
       sentState &= s_send(requestSocket_, sentMessage);
    }

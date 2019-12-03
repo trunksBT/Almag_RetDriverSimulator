@@ -1,6 +1,7 @@
 #include <HDLC/FrameTypes/FrameI.hpp>
+#include <Utils/PrintUtils.hpp>
 
-using namespace funs;
+using namespace printUtils;
 
 FRAME_TYPE FrameI::GET_TYPE=FRAME_TYPE::I;
 
@@ -61,7 +62,7 @@ Hexes FrameI::build() const
    retVal.push_back(*procedureCode_);
    printHex("PROC: ", *procedureCode_);
 
-   LOG(info) << "HDLC': " << funs::toString(retVal);
+   LOG(info) << "HDLC': " << toString(retVal);
    return retVal;
 }
 

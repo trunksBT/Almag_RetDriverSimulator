@@ -11,7 +11,6 @@
 #include <Utils/Utils.hpp>
 
 using namespace command;
-using namespace funs;
 
 namespace
 {
@@ -51,7 +50,7 @@ void AddressAssignment::executeImpl()
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::DEVICE_TYPE,
          0x01,
-         Hexes({ static_cast<Hex>(DEVICE_TYPE::SRET) })
+         Hexes({ DEVICE_TYPE::SRET })
       ));
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],

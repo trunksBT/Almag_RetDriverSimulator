@@ -1,6 +1,7 @@
 #include <HDLC/FrameTypes/FrameXID.hpp>
+#include <Utils/PrintUtils.hpp>
 
-using namespace funs;
+using namespace printUtils;
 
 FRAME_TYPE FrameXID::GET_TYPE=FRAME_TYPE::XID;
 
@@ -70,24 +71,24 @@ Hexes FrameXID::build() const
       LOG(error) << "Empty control byte, returning empty frame";
       return {};
    }
-   retVal.push_back(static_cast<Hex>(*ctrl_));
-   printHex("CTRL: ", static_cast<Hex>(*ctrl_));
+   retVal.push_back(*ctrl_);
+   printHex("CTRL: ", *ctrl_);
 
    if (not formatIdentifier_)
    {
       LOG(error) << "Empty format identifier byte, returning empty frame";
       return {};
    }
-   retVal.push_back(static_cast<Hex>(*formatIdentifier_));
-   printHex("FI: ", static_cast<Hex>(*formatIdentifier_));
+   retVal.push_back(*formatIdentifier_);
+   printHex("FI: ", *formatIdentifier_);
 
    if (not groupIdentifier_)
    {
       LOG(error) << "Empty group identifier byte, returning empty frame";
       return {};
    }
-   retVal.push_back(static_cast<Hex>(*groupIdentifier_));
-   printHex("GI: ", static_cast<Hex>(*groupIdentifier_));
+   retVal.push_back(*groupIdentifier_);
+   printHex("GI: ", *groupIdentifier_);
 
    if (not groupLength_)
    {
@@ -99,20 +100,19 @@ Hexes FrameXID::build() const
 
    for (const auto& it : parameters_)
    {
-      retVal.push_back(static_cast<Hex>(it.parId));
-      LOG(trace) << "--------------";
-      printHex("PI: ", static_cast<Hex>(it.parId));
+      retVal.push_back(it.parId);
+      LOG(debug) << "--------------";
+      printHex("PI: ", it.parId);
 
       retVal.push_back(it.parLength);
-      printHex("PL: ", static_cast<Hex>(it.parLength));
+      printHex("PL: ", it.parLength);
 
-      retVal.insert( retVal.end(),
-         it.parValue.begin(), it.parValue.end() );
+      retVal.insert( retVal.end(), it.parValue.begin(), it.parValue.end() );
       printFrame("PV: ", it.parValue);
-      LOG(trace) << "--------------";
+      LOG(debug) << "--------------";
    }
 
-   LOG(info) << "HDLC': " << funs::toString(retVal);
+   LOG(info) << "HDLC': " << toString(retVal);
    return retVal;
 }
 

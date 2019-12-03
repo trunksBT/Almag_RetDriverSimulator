@@ -6,7 +6,9 @@
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Functions.hpp>
+#include <Utils/PrintUtils.hpp>
 
+using namespace printUtils;
 using namespace funs;
 
 namespace
@@ -22,6 +24,7 @@ constexpr unsigned IDX_OF_HDLC_PARAMETERS_START = 5;
 constexpr unsigned IDX_OF_SUBGROUP_PAR_ID = 0;
 constexpr unsigned IDX_OF_SUBGROUP_LENGTH_BYTE = 1;
 constexpr unsigned IDX_OF_SUBGROUP_VALUES_START = 2;
+constexpr unsigned OFFSET_FOR_IDX_OF_SUBGROUP_VALUES = 2;
 constexpr int HEX_BASE = 16;
 
 HexInt toHexInt(const std::string receivedByteStr)
@@ -81,6 +84,20 @@ HDLCFrameBodyPtr interpretBodyFrameSNRM(const Strings& receivedPlainFrame)
    return std::make_shared<FrameSNRM>(retFrame);
 }
 
+int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, const Strings &slicedVector, int i)
+{
+   auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
+   auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
+   auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
+   LOG(debug) << "ParId: " << parId;
+   LOG(debug) << "ParLen: " << parLen;
+   LOG(debug) << "ParVals: ";
+   printStrings(parVals);
+   i+=(parLen+OFFSET_FOR_IDX_OF_SUBGROUP_VALUES);
+   parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   return i;
+}
+
 HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
 {
    auto retFrame = FrameXID()
@@ -91,69 +108,12 @@ HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
        .setGroupLengthByte(toHexInt(receivedPlainFrame.at(IDX_OF_GROUP_LENGTH_BYTE)));
 
    std::vector<HDLCParameters> parameters;
-   LOG(trace) << "SLICING Vec start";
    const auto groupLength = toInt(receivedPlainFrame.at(IDX_OF_GROUP_LENGTH_BYTE));
-   LOG(debug) << "Group length: " << groupLength;
    const auto slicedVector = slice(receivedPlainFrame, IDX_OF_HDLC_PARAMETERS_START, groupLength);
-   Strings subGroup;
-   LOG(trace) << "{";
-   int i = 0;
-   for (const auto& it : slicedVector)
-   {
-      LOG(trace) << it;
-   }
-   LOG(trace) << "}";
+   unsigned int idxOfSubgroupStart = 0;
 
-   {
-      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-      LOG(trace) << "ParId: " << parId;
-      LOG(trace) << "ParLen: " << parLen;
-      LOG(trace) << "ParVals: ";
-      LOG(trace) << "{";
-      for (const auto& it : parVals)
-      {
-         LOG(trace) << it;
-      }
-      LOG(trace) << "}";
-      i+=(parLen+2);
-      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   }
-   {
-      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-      LOG(trace) << "ParId: " << parId;
-      LOG(trace) << "ParLen: " << parLen;
-      LOG(trace) << "ParVals: ";
-      LOG(trace) << "{";
-      for (const auto& it : parVals)
-      {
-         LOG(trace) << it;
-      }
-      LOG(trace) << "}";
-      i+=(parLen+2);
-      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   }
-   {
-      auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-      auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-      auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-      LOG(trace) << "ParId: " << parId;
-      LOG(trace) << "ParLen: " << parLen;
-      LOG(trace) << "ParVals: ";
-      LOG(trace) << "{";
-      for (const auto& it : parVals)
-      {
-         LOG(trace) << it;
-      }
-      LOG(trace) << "}";
-      i+=(parLen+2);
-      parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   }
-   LOG(trace) << "}";
-   LOG(trace) << "SLICING Vec end";
+   while (idxOfSubgroupStart != slicedVector.size())
+      idxOfSubgroupStart = addHdlcParametersAndReturnPosition(parameters, slicedVector, idxOfSubgroupStart);
 
    for (const auto& hdlcParameters : parameters)
       retFrame.addParameters(hdlcParameters);

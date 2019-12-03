@@ -54,13 +54,3 @@ enum PROCEDURE_CODE : Hex
 {
    CALIBRATE_SRET = 0x31
 };
-
-namespace funs
-{
-
-std::string toString(const Hexes& value);
-void printHex(const char* msg, Hex input);
-void printFrame(const char* msg, const Hexes& input);
-
-}
-

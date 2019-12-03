@@ -1,6 +1,7 @@
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <Utils/PrintUtils.hpp>
 
-using namespace funs;
+using namespace printUtils;
 
 FRAME_TYPE FrameSNRM::GET_TYPE=FRAME_TYPE::SNRM;
 
@@ -41,10 +42,10 @@ Hexes FrameSNRM::build() const
    retVal.push_back(*address_);
    printHex("ADDR: ", *address_);
 
-   retVal.push_back(static_cast<Hex>(*ctrl_));
-   printHex("CTRL: ", static_cast<Hex>(*ctrl_));
+   retVal.push_back(*ctrl_);
+   printHex("CTRL: ", *ctrl_);
 
-   LOG(info) << "HDLC': " << funs::toString(retVal);
+   LOG(info) << "HDLC': " << toString(retVal);
    return retVal;
 }
 
