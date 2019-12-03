@@ -71,7 +71,7 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
-        ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/StartPooling.cpp
@@ -120,6 +120,8 @@ set(EXTERNAL_LIBRARIES_UTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/TypeAliases.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/PrintUtils.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/PrintUtils.hpp
 )
 
 set(PLUGIN_SPECIFICS
@@ -127,8 +129,8 @@ set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
-        ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
-        ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.hpp
 )
 
 set(USER_INTERFACE

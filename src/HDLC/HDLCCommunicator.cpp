@@ -4,8 +4,9 @@
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 
 #include <Utils/Logger.hpp>
+#include <Utils/PrintUtils.hpp>
 
-using namespace funs;
+using namespace printUtils;
 
 bool HDLCCommunicator::send(
    const std::string& address, const std::vector<HDLCFrameBodyPtr>& frames)

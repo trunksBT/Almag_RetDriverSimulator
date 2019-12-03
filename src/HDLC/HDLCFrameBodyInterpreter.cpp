@@ -6,8 +6,9 @@
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/Logger.hpp>
 #include <Utils/Functions.hpp>
-#include <slcurses.h>
+#include <Utils/PrintUtils.hpp>
 
+using namespace printUtils;
 using namespace funs;
 
 namespace

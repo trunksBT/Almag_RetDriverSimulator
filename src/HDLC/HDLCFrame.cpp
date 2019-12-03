@@ -1,8 +1,8 @@
 #include <HDLC/HDLCFrame.hpp>
 #include <HDLC/MessagesHelpers.hpp>
-#include <boost/optional/optional_io.hpp>
+#include <Utils/PrintUtils.hpp>
 
-using namespace funs;
+using namespace printUtils;
 
 HDLCFrame::HDLCFrame(HDLCFrameBodyPtr hdlcPrimFrame)
    : hdlcPrimFrame_(hdlcPrimFrame)
@@ -26,7 +26,7 @@ Hexes HDLCFrame::build() const
    retVal.push_back(START_STOP_FLAG);
    printHex("STOP: ", START_STOP_FLAG);
 
-   LOG(debug) << "HDLC: " << funs::toString(retVal);
+   LOG(debug) << "HDLC: " << toString(retVal);
    return retVal; 
 }
 
