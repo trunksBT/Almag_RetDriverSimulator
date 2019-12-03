@@ -1,5 +1,8 @@
 #include "ZMqPubSubCommunicator.hpp"
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp>
+#include <Utils/PrintUtils.hpp>
+
+using namespace printUtils;
 
 namespace
 {
@@ -45,7 +48,7 @@ bool ZMqPubSubCommunicator::send(const std::string& address, const std::vector<H
    bool sentState = true;
    for (unsigned msgCount = 0; msgCount < frames.size(); msgCount++)
    {
-      const std::string sentMessage = funs::toString(frames.at(msgCount)->build());
+      const std::string sentMessage = toString(frames.at(msgCount)->build());
       LOG(debug) << "Sending on " << address << " " << sentMessage;
       if (isLastMessage(msgCount, frames.size()))
       {

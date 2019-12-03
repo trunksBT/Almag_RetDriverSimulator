@@ -13,7 +13,6 @@
 
 using namespace std::chrono_literals;
 using namespace command;
-using namespace funs;
 
 namespace
 {

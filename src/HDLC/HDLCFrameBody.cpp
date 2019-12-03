@@ -1,12 +1,9 @@
 #include <HDLC/HDLCFrameBody.hpp>
 
-#include <boost/optional/optional_io.hpp>
 #include <boost/range/join.hpp>
 
 #include <Utils/Logger.hpp>
 #include <Utils/Utils.hpp>
-
-using namespace funs;
 
 HDLCFrameBody::HDLCFrameBody(const std::string& value)
    : frameFromSecondary_(value)

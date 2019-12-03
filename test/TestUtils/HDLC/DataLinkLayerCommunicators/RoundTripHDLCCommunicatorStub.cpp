@@ -1,5 +1,8 @@
 #include "RoundTripHDLCCommunicatorStub.hpp"
 #include <Utils/Utils.hpp>
+#include <Utils/PrintUtils.hpp>
+
+using namespace printUtils;
 
 namespace test
 {
@@ -22,6 +25,7 @@ bool RoundTripHDLCCommunicatorStub::send(
    hdlcFrames_.reserve(frames.size());
    for (const auto& frame : frames)
    {
+      printFrame("Frame: ", frame->build());
       hdlcFrames_.push_back(frame);
    }
    return true;
@@ -49,7 +53,7 @@ boost::optional<std::string> RoundTripHDLCCommunicatorStub::receiveStr(const std
    std::string retVal;
    for (const auto& hdlcFrame : hdlcFrames_)
    {
-      retVal += funs::toString(hdlcFrame->build());
+      retVal += toString(hdlcFrame->build());
    }
    hdlcFrames_.clear();
    return retVal;

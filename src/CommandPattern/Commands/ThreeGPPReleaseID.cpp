@@ -8,7 +8,6 @@
 #include <Utils/Utils.hpp>
 
 using namespace command;
-using namespace funs;
 
 namespace
 {
@@ -39,7 +38,7 @@ void ThreeGPPReleaseID::executeImpl()
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::THREEGPP_RELEASE_ID,
          0x01,
-         Hexes({ static_cast<Hex>(PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE) })
+         Hexes({ PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE })
       ));
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],

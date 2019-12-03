@@ -12,7 +12,6 @@
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 
-using namespace funs;
 using namespace hardcodes::IOPaths;
 using namespace constraints::almag;
 

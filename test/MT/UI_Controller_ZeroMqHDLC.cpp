@@ -21,7 +21,6 @@
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp>
 
-using namespace funs;
 using namespace constraints::almag;
 using namespace hardcodes::IOPaths;
 

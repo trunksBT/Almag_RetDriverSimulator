@@ -7,7 +7,6 @@
 #include <Utils/Utils.hpp>
 
 using namespace command;
-using namespace funs;
 
 namespace
 {
