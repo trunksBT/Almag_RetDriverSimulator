@@ -1,4 +1,4 @@
-#include "SRetFrameBodyStrFactory.hpp"
+#include "SRetHDLCFrameBodyStrFactory.hpp"
 
 namespace
 {
@@ -16,32 +16,32 @@ const std::string THREEGPP_RELEASE_ID = "3 bf 81 f0 3 5 1 a ";
 const std::string_view AISG_PROTOCOL_VERSION{ "3 bf 81 f0 3 14 1 2 " };
 }
 
-std::string_view SRetFrameBodyStrFactory::get_FrameI_Calibrate()
+std::string_view SRetHDLCFrameBodyStrFactory::get_FrameI_Calibrate()
 {
    return CALIBRATE_STR;
 }
 
-std::string_view SRetFrameBodyStrFactory::get_FrameSNRM_LinkEstablishment()
+std::string_view SRetHDLCFrameBodyStrFactory::get_FrameSNRM_LinkEstablishment()
 {
    return LINK_ESTABLISHMENT;
 }
 
-std::string_view SRetFrameBodyStrFactory::get_FrameXID_DummyScan()
+std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_DummyScan()
 {
    return DUMMY_SCAN_FRAME;
 }
 
-std::string_view SRetFrameBodyStrFactory::get_FrameXID_AddressAssignment()
+std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_AddressAssignment()
 {
    return ADDRESS_ASSIGNMENT_FRAME;
 }
 
-std::string_view SRetFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
+std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
 {
    return THREEGPP_RELEASE_ID;
 }
 
-std::string_view SRetFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()
+std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()
 {
    return AISG_PROTOCOL_VERSION;
 }

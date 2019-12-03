@@ -2,7 +2,7 @@
 
 #include <TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp>
 
-class SRetFrameBodyHexFactory final : public FrameHexFactory
+class SRetHDLCFrameBodyHexFactory final : public FrameHexFactory
 {
 public:
    Hexes get_FrameI_Calibrate() override;
@@ -11,5 +11,5 @@ public:
    Hexes get_FrameXID_AddressAssignment() override;
    Hexes get_FrameXID_3GPPReleaseId() override;
    Hexes get_FrameXID_AISGProtocolVersion() override;
-   virtual ~SRetFrameBodyHexFactory() = default;
+   virtual ~SRetHDLCFrameBodyHexFactory() = default;
 };

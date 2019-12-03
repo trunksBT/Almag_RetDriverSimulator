@@ -10,33 +10,23 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/MatcherUtils.hpp>
+#include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 
 using namespace hardcodes::IOPaths;
 using namespace constraints::almag;
 
-namespace hdlcFrames
-{
-const std::string DUMMY_SCAN_FRAME = "7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e ";
-const std::string ADDRESS_ASSIGNMENT_FRAME = 
-"7e ff bf 81 f0 1b 1 13 41 4e "
-"30 30 30 30 43 4e 31 30 31 32 "
-"33 33 32 32 34 36 31 2 1 3 4 1 1 13 37 7e ";
-const std::string LINK_ESTABLISHMENT = "7e 3 93 13 37 7e ";
-const std::string THREEGPP_RELEASE_ID = "7e 3 bf 81 f0 3 5 1 a 13 37 7e ";
-const std::string AISG_PROTOCOL_VERSION = "7e 3 bf 81 f0 3 14 1 2 13 37 7e ";
-const std::string CALIBRATE_STR = "7e 3 fe 31 13 37 7e ";
-}
 namespace
 {
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
+FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCFrameStrFactory>();
 }
 
 namespace mt
 {
-
 class UI_Controller_RoundTripHDLC:
    public BaseFixtureWithDBAndHDLC,
    public ::testing::WithParamInterface<CommandsToExpectedFrame>
@@ -75,31 +65,32 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    ::testing::Values(
       CommandsToExpectedFrame{
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
-         hdlcFrames::DUMMY_SCAN_FRAME
+         retDeviceStrFactory->get_FrameXID_DummyScan().data()
       },
       CommandsToExpectedFrame{
          {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
-         multiplyString(NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, hdlcFrames::DUMMY_SCAN_FRAME)
+         multiplyString(
+                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, retDeviceStrFactory->get_FrameXID_DummyScan().data())
       },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
-         hdlcFrames::ADDRESS_ASSIGNMENT_FRAME
+         retDeviceStrFactory->get_FrameXID_AddressAssignment().data()
       },
       CommandsToExpectedFrame{
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
-         hdlcFrames::LINK_ESTABLISHMENT
+         retDeviceStrFactory->get_FrameSNRM_LinkEstablishment().data()
       },
       CommandsToExpectedFrame{
          {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-         hdlcFrames::THREEGPP_RELEASE_ID
+         retDeviceStrFactory->get_FrameXID_3GPPReleaseId().data()
       },
       CommandsToExpectedFrame{
          {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
-         hdlcFrames::AISG_PROTOCOL_VERSION
+         retDeviceStrFactory->get_FrameXID_AISGProtocolVersion().data()
       },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
-         hdlcFrames::CALIBRATE_STR
+         retDeviceStrFactory->get_FrameI_Calibrate().data()
       }
    )
 );

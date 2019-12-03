@@ -5,13 +5,13 @@
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetFrameBodyHexFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.hpp>
 
 using testing::Eq;
 
 namespace
 {
-FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetFrameBodyHexFactory>();
+FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetHDLCFrameBodyHexFactory>();
 }
 
 class HDLCFrameBodyTests : public testing::Test
