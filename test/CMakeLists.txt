@@ -17,6 +17,8 @@ set(TESTUTILS
     ${PROJECT_SOURCE_DIR}/test/TestUtils/UniqueKeys.hpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HexesUtils.cpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HexesUtils.hpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/MatcherUtils.cpp
+    ${PROJECT_SOURCE_DIR}/test/TestUtils/MatcherUtils.hpp
 )
 
 set(TESTUTILS_HDLC_FRAMESFACTORIES

@@ -90,7 +90,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
       },
 //      CommandsToExpectedFrame{
 //         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//         DUMMY_SCAN_FRAME
+//         hdlcFrames::DUMMY_SCAN_FRAME
 //      },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
