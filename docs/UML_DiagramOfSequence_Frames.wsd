@@ -1,0 +1,42 @@
+@startuml
+
+participant RetDriver
+participant Katherine
+
+== L1 Physical layer ==
+
+Katherine -> Katherine : supply RS-485 connection
+Katherine -> Katherine : supply DC 10-30V connection
+
+note right Katherine
+Wait 3s for PowerUp
+end note
+Katherine -> Katherine : **NoAddress**
+
+loop 6 times every 300ms
+    RetDriver -> Katherine : XID::DummyScan ("bf 81 f0 8 1 2 33 33 3 2 ff ff")
+end
+
+== L2 Data link layer ==
+
+RetDriver -> Katherine : XID::DeviceScan( \n\
+    "ff bf 81 f0 1b 1 13 41 4e " \n\
+    "30 30 30 30 43 4e 31 30 31 32 " \n\
+    "33 33 32 32 34 36 31 2 1 3 4 1 1)"
+Katherine -> Katherine : **AddressAssignment**
+RetDriver -> Katherine : SNRM ("03 93")
+Katherine -> RetDriver : UA ("03 73")
+Katherine -> Katherine : **Connected**
+
+RetDriver -> Katherine : XID::3GPPReleaseId ("3 bf 81 f0 03 05 01 08")
+Katherine -> RetDriver : XID::3GPPReleaseId ("3 bf 81 f0 03 05 01 08")
+RetDriver -> Katherine : XID::AisgProtocolVersion ("3 bf 81 f0 03 14 01 02")
+Katherine -> RetDriver : XID::AisgProtocolVersion ("3 bf 81 f0 03 14 01 02")
+
+== L7 Application layer ==
+
+RetDriver -> Katherine : Calibrate
+
+footer Katherine - most famous RET producent
+
+@enduml
