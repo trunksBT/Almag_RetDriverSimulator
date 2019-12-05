@@ -2,7 +2,7 @@
 
 #include <HDLC/HDLCFrameBody.hpp>
 
-class IHDLCReqFrameBodyFactory
+class IHDLCFrameBodyFactory
 {
 public:
    virtual Hexes get_FrameI_Calibrate() = 0;
@@ -12,6 +12,6 @@ public:
 //   virtual Hexes get_FrameXID_3GPPReleaseId() = 0;
 //   virtual Hexes get_FrameXID_AISGProtocolVersion() = 0;
 
-   virtual ~IHDLCReqFrameBodyFactory() = default;
+   virtual ~IHDLCFrameBodyFactory() = default;
 };
-using IHDLCFrameBodyFactoryPtr = std::shared_ptr<IHDLCReqFrameBodyFactory>;
+using IHDLCFrameBodyFactoryPtr = std::shared_ptr<IHDLCFrameBodyFactory>;

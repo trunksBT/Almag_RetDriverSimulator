@@ -1,7 +1,7 @@
 #pragma once
 
 #include <CommandPattern/ICommand.hpp>
-#include <CommandPattern/IHDLCReqFrameBodyFactory.hpp>
+#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
 class HDLCCommand : public ICommand

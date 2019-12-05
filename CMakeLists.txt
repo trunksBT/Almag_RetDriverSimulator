@@ -73,7 +73,7 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IHDLCReqFrameBodyFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IHDLCFrameBodyFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp

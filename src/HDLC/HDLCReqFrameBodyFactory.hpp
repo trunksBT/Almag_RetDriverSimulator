@@ -1,8 +1,8 @@
 #pragma once
 
-#include <CommandPattern/IHDLCReqFrameBodyFactory.hpp>
+#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
 
-class HDLCReqFrameBodyFactory : public IHDLCReqFrameBodyFactory
+class HDLCReqFrameBodyFactory : public IHDLCFrameBodyFactory
 {
 public:
 //   virtual Hexes get_FrameI_Calibrate() = 0;
