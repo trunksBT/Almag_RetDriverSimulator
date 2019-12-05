@@ -16,12 +16,12 @@ AlmagController::AlmagController(Database& db, ICommandFactoryPtr commandFactory
     , commandFactory_(commandFactory)
     , finalResultCode_("")
 {
-    LOG(debug);
+    LOG(trace);
 }
 
 AlmagController::~AlmagController()
 {
-    LOG(debug);
+    LOG(trace);
 }
 
 std::string AlmagController::getFinalResultCode()
