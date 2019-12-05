@@ -29,10 +29,7 @@ void Calibrate::execute()
 
 HDLCFrameBodyPtr Calibrate::getFrameBody()
 {
-   const auto calibrateFrameBody = FrameI()
-           .setAddressByte(0x03)
-           .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
-   return std::make_shared<FrameI>(calibrateFrameBody);
+   return hdlcFrameBodyFactory_->get_FrameI_Calibrate();
 }
 
 void Calibrate::executeImpl()

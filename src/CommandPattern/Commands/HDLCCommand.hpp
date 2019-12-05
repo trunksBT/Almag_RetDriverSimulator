@@ -11,13 +11,13 @@ public:
 
    virtual void execute() = 0;
    virtual std::string handleResponse() = 0;
-//   virtual IHDLCFrameBodyFactoryPtr getFrameBodyFactory() = 0;
 
 protected:
    explicit HDLCCommand(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
 
    IHDLCCommunicatorPtr hdlcCommunicator_;
    Strings validatedUserInput_;
+   IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory_;
 };
 
 using HDLCCommandPtr = std::shared_ptr<HDLCCommand>;

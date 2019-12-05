@@ -29,17 +29,7 @@ void ThreeGPPReleaseID::execute()
 
 HDLCFrameBodyPtr ThreeGPPReleaseID::getFrameBody()
 {
-   const auto threeGPPReleaseIDFrameBody = FrameXID()
-           .setAddressByte(0x03)
-           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-           .setGroupLengthByte(0x03)
-           .addParameters(HDLCParameters::build(
-                   XID_PARAMS_ID::THREEGPP_RELEASE_ID,
-                   0x01,
-                   Hexes({ PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE })
-           ));
-   return std::make_shared<FrameXID>(threeGPPReleaseIDFrameBody);
+   return hdlcFrameBodyFactory_->get_FrameXID_3GPPReleaseId();
 }
 
 void ThreeGPPReleaseID::executeImpl()

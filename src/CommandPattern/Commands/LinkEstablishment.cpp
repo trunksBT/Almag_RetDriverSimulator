@@ -26,9 +26,7 @@ void LinkEstablishment::execute()
 
 HDLCFrameBodyPtr LinkEstablishment::getFrameBody()
 {
-   const auto linkEstablishmentFrameBody = FrameSNRM()
-           .setAddressByte(0x03);
-   return std::make_shared<FrameSNRM>(linkEstablishmentFrameBody);
+   return hdlcFrameBodyFactory_->get_FrameSNRM_LinkEstablishment();
 }
 
 void LinkEstablishment::executeImpl()

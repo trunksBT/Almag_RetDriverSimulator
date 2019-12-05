@@ -31,17 +31,7 @@ void AISGProtocolVersion::execute()
 
 HDLCFrameBodyPtr AISGProtocolVersion::getFrameBody()
 {
-   const auto AISGProtocolVersionFrameBody = FrameXID()
-           .setAddressByte(0x03)
-           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-           .setGroupLengthByte(0x03)
-           .addParameters(HDLCParameters::build(
-                   XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
-                   0x01,
-                   Hexes({ PV::AISG_2_0 })
-           ));
-   return std::make_shared<FrameXID>(AISGProtocolVersionFrameBody);
+   return hdlcFrameBodyFactory_->get_FrameXID_AISGProtocolVersion();
 }
 
 void AISGProtocolVersion::executeImpl()
