@@ -24,7 +24,7 @@ void LinkEstablishment::execute()
    informControllerAboutResult_();
 }
 
-HDLCFrameBodyPtr LinkEstablishment::getFrameBody()
+HDLCFrameBodyPtr LinkEstablishment::getFrameBody() const
 {
    return hdlcFrameBodyFactory_->get_FrameSNRM_LinkEstablishment();
 }

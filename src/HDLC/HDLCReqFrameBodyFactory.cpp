@@ -34,7 +34,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_DummyScan() const
            .addParameters(HDLCParameters::build(
                    XID_PARAMS_ID::BIT_MASK,
                    0x02,
-                   Hexes({ 0xFF, 0xFF })));
+                   Hexes{{ 0xFF, 0xFF }}));
    return std::make_shared<FrameXID>(retFrame);
 }
 

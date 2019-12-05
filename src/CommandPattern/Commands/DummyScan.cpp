@@ -35,7 +35,7 @@ void DummyScan::execute()
    informControllerAboutResult_();
 }
 
-HDLCFrameBodyPtr DummyScan::getFrameBody()
+HDLCFrameBodyPtr DummyScan::getFrameBody() const
 {
    return hdlcFrameBodyFactory_->get_FrameXID_DummyScan();
 }

@@ -27,7 +27,7 @@ void Calibrate::execute()
    informControllerAboutResult_();
 }
 
-HDLCFrameBodyPtr Calibrate::getFrameBody()
+HDLCFrameBodyPtr Calibrate::getFrameBody() const
 {
    return hdlcFrameBodyFactory_->get_FrameI_Calibrate();
 }

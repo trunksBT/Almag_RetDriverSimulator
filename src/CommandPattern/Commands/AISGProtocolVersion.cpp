@@ -29,7 +29,7 @@ void AISGProtocolVersion::execute()
    informControllerAboutResult_();
 }
 
-HDLCFrameBodyPtr AISGProtocolVersion::getFrameBody()
+HDLCFrameBodyPtr AISGProtocolVersion::getFrameBody() const
 {
    return hdlcFrameBodyFactory_->get_FrameXID_AISGProtocolVersion();
 }

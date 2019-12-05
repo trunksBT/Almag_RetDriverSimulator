@@ -11,6 +11,7 @@ public:
 
    virtual void execute() = 0;
    virtual std::string handleResponse() = 0;
+   virtual HDLCFrameBodyPtr getFrameBody() const = 0;
 
 protected:
    explicit HDLCCommand(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);

@@ -30,7 +30,7 @@ void AddressAssignment::execute()
    informControllerAboutResult_();
 }
 
-HDLCFrameBodyPtr AddressAssignment::getFrameBody()
+HDLCFrameBodyPtr AddressAssignment::getFrameBody() const
 {
    return hdlcFrameBodyFactory_->get_FrameXID_AddressAssignment();
 }

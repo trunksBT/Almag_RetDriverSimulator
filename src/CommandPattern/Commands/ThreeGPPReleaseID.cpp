@@ -27,7 +27,7 @@ void ThreeGPPReleaseID::execute()
    informControllerAboutResult_();
 }
 
-HDLCFrameBodyPtr ThreeGPPReleaseID::getFrameBody()
+HDLCFrameBodyPtr ThreeGPPReleaseID::getFrameBody() const
 {
    return hdlcFrameBodyFactory_->get_FrameXID_3GPPReleaseId();
 }
