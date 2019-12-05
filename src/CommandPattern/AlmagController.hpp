@@ -21,7 +21,7 @@ class IHDLCCommunicator;
 class AlmagController final: public IController
 {
 public:
-   AlmagController(Database& db, std::shared_ptr<ICommandFactory> commandFacade);
+   AlmagController(Database& db, std::shared_ptr<IHDLCFrameBodyFactory> commandFacade);
    virtual ~AlmagController();
 
    void addCommands(StringsMatrix validatedUserInput) final override;
@@ -36,7 +36,7 @@ private:
    void executeNextCommand();
 
    Database& db_;
-   std::shared_ptr<ICommandFactory> commandFacade_;
+   std::shared_ptr<IHDLCFrameBodyFactory> commandFacade_;
    std::list<std::shared_ptr<ICommand>> commands_;
    std::string finalResultCode_;
 };

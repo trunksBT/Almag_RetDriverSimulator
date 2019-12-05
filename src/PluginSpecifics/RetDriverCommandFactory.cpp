@@ -4,7 +4,6 @@
 #include <CommandPattern/Commands/Calibrate.hpp>
 #include <CommandPattern/Commands/DummyScan.hpp>
 #include <CommandPattern/Commands/LinkEstablishment.hpp>
-#include <CommandPattern/Commands/StartPooling.hpp>
 #include <CommandPattern/Commands/ThreeGPPReleaseID.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
@@ -22,7 +21,7 @@ constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND = 1;
 }
 
 RetDriverCommandFactory::RetDriverCommandFactory(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
-   : ICommandFactory()
+   : IHDLCFrameBodyFactory()
    , hdlcCommunicators_{hdlcCommunicators}
 {
    LOG(trace);
@@ -37,12 +36,7 @@ ICommandPtr RetDriverCommandFactory::interpretAndCreateCommand(std::vector<std::
 {
    const auto& commandName = validatedInput[IDX_OF_COMMAND_OR_ACTION_NAME];
 
-   if (START_POOLING == commandName)
-   {
-      return std::make_shared<StartPooling>(
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR));
-   }
-   else if (L1::DUMMY_SCAN == commandName)
+   if (L1::DUMMY_SCAN == commandName)
    {
       return std::make_shared<DummyScan>(
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),

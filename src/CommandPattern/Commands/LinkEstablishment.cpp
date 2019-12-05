@@ -13,9 +13,8 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-LinkEstablishment::LinkEstablishment(
-   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
+LinkEstablishment::LinkEstablishment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
 {}
 
 void LinkEstablishment::execute()

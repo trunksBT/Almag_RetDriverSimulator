@@ -4,9 +4,9 @@
 #include <string>
 #include <CommandPattern/ICommand.hpp>
 
-class ICommandFactory
+class IHDLCFrameBodyFactory
 {
 public:
    virtual ICommandPtr interpretAndCreateCommand(std::vector<std::string> validatedUserInput) = 0;
-   virtual ~ICommandFactory() = default;
+   virtual ~IHDLCFrameBodyFactory() = default;
 };

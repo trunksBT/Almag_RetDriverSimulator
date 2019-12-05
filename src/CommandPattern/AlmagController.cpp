@@ -11,7 +11,7 @@ using namespace command;
 using namespace defaultVals;
 using namespace constraints::almag;
 
-AlmagController::AlmagController(Database& db, std::shared_ptr<ICommandFactory> commandFacade)
+AlmagController::AlmagController(Database& db, std::shared_ptr<IHDLCFrameBodyFactory> commandFacade)
     : db_(db)
     , commandFacade_(commandFacade)
     , finalResultCode_("")

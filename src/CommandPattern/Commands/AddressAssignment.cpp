@@ -17,10 +17,11 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-AddressAssignment::AddressAssignment(
-        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
-{}
+AddressAssignment::AddressAssignment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
+{
+   LOG(trace);
+}
 
 void AddressAssignment::execute()
 {

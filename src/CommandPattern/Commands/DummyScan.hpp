@@ -1,17 +1,11 @@
 #pragma once
 
-#include <CommandPattern/ICommand.hpp>
-#include <Utils/TypeAliases.hpp>
+#include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class IHDLCCommunicator;
-
-class DummyScan : public ICommand 
+class DummyScan : public HDLCCommand
 {
 public:
-   DummyScan(
-      std::shared_ptr<IHDLCCommunicator> hdlcCommunicator,
-      Strings userInput, uint8_t numberOfExecutions);
-
+   DummyScan(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput, uint8_t numberOfExecutions);
    virtual ~DummyScan() = default;
 
    void execute() override;

@@ -33,16 +33,6 @@ protected:
     IAlmagControllerPtr ctrl_;
 };
 
-TEST_F(AlmagControllerShouldPar, ForNullPattern_Execute_StartPooling_WithoutResult)
-{
-   ctrl_ = std::make_shared<AlmagControllerNull>();
-
-	ctrl_->addCommands({{ START_POOLING }});
-   ctrl_->executeCommand();
-
-   ASSERT_THAT(ctrl_->getFinalResultCode(), StrEq(defaultVals::FOR_STRING));
-}
-
 TEST_P(AlmagControllerShouldPar, Execute_Command_Expect_ResultCode)
 {
 	ctrl_->addCommands(GetParam().inCommands);
@@ -54,10 +44,6 @@ TEST_P(AlmagControllerShouldPar, Execute_Command_Expect_ResultCode)
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
    AlmagControllerShouldPar,
    ::testing::Values(
-      CommandsToExpectedFrame{
-         {{ START_POOLING }},
-         START_POOLING_NULL + DELIMITER
-      },
       CommandsToExpectedFrame{
 	      {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
          L1::DUMMY_SCAN + DELIMITER

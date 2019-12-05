@@ -1,13 +1,13 @@
 #pragma once
 
-#include <CommandPattern/ICommand.hpp>
+#include <CommandPattern/Commands/HDLCCommand.hpp>
 
 class IHDLCCommunicator;
 
-class AISGProtocolVersion : public ICommand 
+class AISGProtocolVersion : public HDLCCommand
 {
 public:
-   AISGProtocolVersion(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
+   AISGProtocolVersion(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
    virtual ~AISGProtocolVersion() = default;
 
    virtual void execute() override;

@@ -15,3 +15,4 @@ private:
    std::shared_ptr<HDLCFrameBody> hdlcPrimFrame_;
 };
 
+using HDLCFramePtr = std::shared_ptr<HDLCFrame>;

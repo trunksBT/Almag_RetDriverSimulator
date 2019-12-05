@@ -14,10 +14,11 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-ThreeGPPReleaseID::ThreeGPPReleaseID(
-   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
-{}
+ThreeGPPReleaseID::ThreeGPPReleaseID(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
+{
+   LOG(trace);
+}
 
 void ThreeGPPReleaseID::execute()
 {

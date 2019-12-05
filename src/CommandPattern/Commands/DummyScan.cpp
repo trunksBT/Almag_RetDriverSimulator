@@ -20,8 +20,8 @@ constexpr int IDX_OF_ADDRESS = 1;
 }
 
 DummyScan::DummyScan(
-   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput, uint8_t numberOfExecutions)
-   : ICommand(userInput, hdlcCommunicator)
+   IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput, uint8_t numberOfExecutions)
+   : HDLCCommand(hdlcCommunicator, userInput)
    , numberOfExecutions_(numberOfExecutions)
 {
    responseMessage_.reserve( 

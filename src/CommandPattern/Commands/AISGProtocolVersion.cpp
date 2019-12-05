@@ -16,10 +16,11 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-AISGProtocolVersion::AISGProtocolVersion(
-        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
-{}
+AISGProtocolVersion::AISGProtocolVersion(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
+{
+   LOG(trace);
+}
 
 void AISGProtocolVersion::execute()
 {

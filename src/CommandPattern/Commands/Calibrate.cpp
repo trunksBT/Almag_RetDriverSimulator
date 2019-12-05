@@ -14,10 +14,11 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-Calibrate::Calibrate(
-        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
-{}
+Calibrate::Calibrate(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
+{
+   LOG(trace);
+}
 
 void Calibrate::execute()
 {
