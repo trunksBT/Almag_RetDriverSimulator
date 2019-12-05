@@ -43,13 +43,14 @@ TEST_F(HDLCFrameBodyTests, Transceive_L2_XID_AddressAssignment)
       .setAddressByte(ADDR_ALLSTATIONS)
       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
       .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-      .setGroupLengthByte(0x1B)
+      .setGroupLengthByte(0x11)
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::UNIQUE_ID,
-         0x13,
+         0x09,
          Hexes{{
-            0x41, 0x4E, 0x30, 0x30, 0x30, 0x30, 0x43, 0x4E, 0x31, 0x30,
-            0x31, 0x32, 0x33, 0x33, 0x32, 0x32, 0x34, 0x36, 0x31 }}))
+            0x4E, 0x4B, 0x34, 0x36, 0x35,
+            0x30, 0x30, 0x30, 0x30
+         }}))
       .addParameters(HDLCParameters::build(
          XID_PARAMS_ID::ASSIGNED_ADDRESS,
          0x01,
