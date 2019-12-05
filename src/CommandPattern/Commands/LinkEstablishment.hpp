@@ -1,18 +1,16 @@
 #pragma once
 
-#include <CommandPattern/ICommand.hpp>
-#include <Utils/TypeAliases.hpp>
+#include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class IHDLCCommunicator;
-
-class LinkEstablishment : public ICommand 
+class LinkEstablishment : public HDLCCommand
 {
 public:
-   LinkEstablishment(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
+   LinkEstablishment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
    virtual ~LinkEstablishment() = default;
 
    virtual void execute() override;
    virtual std::string handleResponse() override;
+   HDLCFrameBodyPtr getFrameBody();
 
 protected:
    void executeImpl();

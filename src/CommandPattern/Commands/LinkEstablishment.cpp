@@ -13,9 +13,8 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-LinkEstablishment::LinkEstablishment(
-   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
+LinkEstablishment::LinkEstablishment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
 {}
 
 void LinkEstablishment::execute()
@@ -25,15 +24,17 @@ void LinkEstablishment::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr LinkEstablishment::getFrameBody()
+{
+   return hdlcFrameBodyFactory_->get_FrameSNRM_LinkEstablishment();
+}
+
 void LinkEstablishment::executeImpl()
 {
    LOG(trace) << "BEGIN";
 
-   const auto LINK_ESTABLISHMENT_PRIM_FRAME = FrameSNRM()
-      .setAddressByte(0x03);
-
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameSNRM>(LINK_ESTABLISHMENT_PRIM_FRAME));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";

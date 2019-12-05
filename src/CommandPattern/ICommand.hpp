@@ -6,8 +6,6 @@
 #include <boost/signals2.hpp>
 #include <Utils/TypeAliases.hpp>
 
-class IHDLCCommunicator;
-
 class ICommand
 {
 public:
@@ -19,13 +17,8 @@ public:
 
 protected:
    ICommand() = default;
-   explicit ICommand(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
-   ICommand(Strings userInput, std::shared_ptr<IHDLCCommunicator> hdlcCommunicator);
 
    using AlmagControllerInformer = boost::signals2::signal<void(void)>;
-    
-   Strings validatedUserInput_;
-   std::shared_ptr<IHDLCCommunicator> hdlcCommunicator_;
    AlmagControllerInformer informControllerAboutResult_;
 };
 

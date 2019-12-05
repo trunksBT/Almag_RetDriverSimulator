@@ -1,47 +1,32 @@
 #include "SRetHDLCFrameBodyStrFactory.hpp"
 
-namespace
+std::string SRetHDLCFrameBodyStrFactory::get_FrameI_Calibrate()
 {
-const std::string_view CALIBRATE_STR{ "3 fe 31 " };
-const std::string_view LINK_ESTABLISHMENT{ "3 93 " };
-const std::string_view DUMMY_SCAN_FRAME{ "ff bf 81 f0 8 1 2 33 33 3 2 ff ff " };
-const std::string_view ADDRESS_ASSIGNMENT_FRAME{
-   "ff bf 81 f0 "
-   "1b "
-   "1 13 41 4e 30 30 30 30 43 4e 31 30 31 32 33 33 32 32 34 36 31 "
-   "2 1 3 "
-   "4 1 1 "
-};
-const std::string THREEGPP_RELEASE_ID = "3 bf 81 f0 3 5 1 a ";
-const std::string_view AISG_PROTOCOL_VERSION{ "3 bf 81 f0 3 14 1 2 " };
+   return { "3 fe 31 " };
 }
 
-std::string_view SRetHDLCFrameBodyStrFactory::get_FrameI_Calibrate()
+std::string SRetHDLCFrameBodyStrFactory::get_FrameSNRM_LinkEstablishment()
 {
-   return CALIBRATE_STR;
+   return { "3 93 " };
 }
 
-std::string_view SRetHDLCFrameBodyStrFactory::get_FrameSNRM_LinkEstablishment()
+std::string SRetHDLCFrameBodyStrFactory::get_FrameXID_DummyScan()
 {
-   return LINK_ESTABLISHMENT;
+   return { "ff bf 81 f0 8 1 2 33 33 3 2 ff ff " };
 }
 
-std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_DummyScan()
+std::string SRetHDLCFrameBodyStrFactory::get_FrameXID_AddressAssignment()
 {
-   return DUMMY_SCAN_FRAME;
+   return {"ff bf 81 f0 11 1 9 4e 4b 34 "
+           "36 35 30 30 30 30 2 1 3 4 1 1 " };
 }
 
-std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_AddressAssignment()
+std::string SRetHDLCFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
 {
-   return ADDRESS_ASSIGNMENT_FRAME;
+   return { "3 bf 81 f0 3 5 1 a " };
 }
 
-std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
+std::string SRetHDLCFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()
 {
-   return THREEGPP_RELEASE_ID;
-}
-
-std::string_view SRetHDLCFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()
-{
-   return AISG_PROTOCOL_VERSION;
+   return { "3 bf 81 f0 3 14 1 2 " };
 }

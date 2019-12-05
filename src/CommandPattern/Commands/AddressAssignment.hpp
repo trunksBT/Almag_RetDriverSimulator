@@ -1,18 +1,16 @@
 #pragma once
 
-#include <CommandPattern/ICommand.hpp>
-#include <Utils/TypeAliases.hpp>
+#include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class IHDLCCommunicator;
-
-class AddressAssignment : public ICommand 
+class AddressAssignment : public HDLCCommand
 {
 public:
-   AddressAssignment(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
+   AddressAssignment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
    virtual ~AddressAssignment() = default;
 
    virtual void execute() override;
    virtual std::string handleResponse() override;
+   HDLCFrameBodyPtr getFrameBody();
 
 protected:
    void executeImpl();

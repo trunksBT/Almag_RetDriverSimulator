@@ -71,11 +71,12 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.cpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IHDLCFrameBodyFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/StartPooling.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/StartPooling.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ThreeGPPReleaseID.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ThreeGPPReleaseID.hpp
 )
@@ -96,6 +97,8 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCReqFrameBodyFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCReqFrameBodyFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.cpp

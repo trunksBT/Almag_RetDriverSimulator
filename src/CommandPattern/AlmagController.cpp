@@ -11,17 +11,17 @@ using namespace command;
 using namespace defaultVals;
 using namespace constraints::almag;
 
-AlmagController::AlmagController(Database& db, std::shared_ptr<ICommandFactory> commandFacade)
+AlmagController::AlmagController(Database& db, ICommandFactoryPtr commandFactory)
     : db_(db)
-    , commandFacade_(commandFacade)
+    , commandFactory_(commandFactory)
     , finalResultCode_("")
 {
-    LOG(debug);
+    LOG(trace);
 }
 
 AlmagController::~AlmagController()
 {
-    LOG(debug);
+    LOG(trace);
 }
 
 std::string AlmagController::getFinalResultCode()
@@ -32,7 +32,7 @@ std::string AlmagController::getFinalResultCode()
 void AlmagController::addCommand(Strings validatedUserInput)
 {
    LOG(debug);
-   std::shared_ptr<ICommand> receivedCmd = commandFacade_->interpretAndCreateCommand(validatedUserInput);
+   std::shared_ptr<ICommand> receivedCmd = commandFactory_->interpretAndCreateCommand(validatedUserInput);
 
    if (receivedCmd)
    {

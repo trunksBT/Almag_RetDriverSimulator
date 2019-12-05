@@ -14,10 +14,11 @@ namespace
 constexpr int IDX_OF_ADDRESS = 1;
 }
 
-Calibrate::Calibrate(
-        std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput)
-   : ICommand(userInput, hdlcCommunicator)
-{}
+Calibrate::Calibrate(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput)
+   : HDLCCommand(hdlcCommunicator, userInput)
+{
+   LOG(trace);
+}
 
 void Calibrate::execute()
 {
@@ -26,15 +27,17 @@ void Calibrate::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr Calibrate::getFrameBody()
+{
+   return hdlcFrameBodyFactory_->get_FrameI_Calibrate();
+}
+
 void Calibrate::executeImpl()
 {
    LOG(trace) << "BEGIN";
-   const auto CalibratePrimFrame = FrameI()
-      .setAddressByte(0x03)
-      .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameI>(CalibratePrimFrame));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";

@@ -25,8 +25,8 @@ int main()
    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators {{
       std::make_shared<HDLCCommunicator>(),
    }};
-   std::shared_ptr<ICommandFactory> commandFacade = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
-   AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFacade);
+   ICommandFactoryPtr commandFactory = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
+   AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFactory);
 
    CMenu ui{"AlmagRetDriverUI", "_", db, ctrl,
       std::make_shared<AlmagCommandValidationManager>(db),

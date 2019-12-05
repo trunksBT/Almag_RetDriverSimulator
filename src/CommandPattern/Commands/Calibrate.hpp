@@ -1,17 +1,16 @@
 #pragma once
 
-#include <CommandPattern/ICommand.hpp>
+#include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class IHDLCCommunicator;
-
-class Calibrate : public ICommand 
+class Calibrate : public HDLCCommand
 {
 public:
-   Calibrate(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
+   Calibrate(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
    virtual ~Calibrate() = default;
 
    virtual void execute() override;
    virtual std::string handleResponse() override;
+   HDLCFrameBodyPtr getFrameBody();
 
 protected:
    void executeImpl();

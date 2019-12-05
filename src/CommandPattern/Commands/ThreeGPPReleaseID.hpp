@@ -1,17 +1,16 @@
 #pragma once
 
-#include <CommandPattern/ICommand.hpp>
+#include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class IHDLCCommunicator;
-
-class ThreeGPPReleaseID : public ICommand 
+class ThreeGPPReleaseID : public HDLCCommand
 {
 public:
-   ThreeGPPReleaseID(std::shared_ptr<IHDLCCommunicator> hdlcCommunicator, Strings userInput);
+   ThreeGPPReleaseID(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
    virtual ~ThreeGPPReleaseID() = default;
 
    virtual void execute() override;
    virtual std::string handleResponse() override;
+   HDLCFrameBodyPtr getFrameBody();
 
 protected:
    void executeImpl();
