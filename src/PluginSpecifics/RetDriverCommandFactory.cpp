@@ -21,7 +21,7 @@ constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND = 1;
 }
 
 RetDriverCommandFactory::RetDriverCommandFactory(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
-   : IHDLCFrameBodyFactory()
+   : ICommandFactory()
    , hdlcCommunicators_{hdlcCommunicators}
 {
    LOG(trace);

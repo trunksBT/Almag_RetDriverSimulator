@@ -35,28 +35,32 @@ void DummyScan::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr DummyScan::getFrameBody()
+{
+   auto dummyScanFrameBody = FrameXID()
+       .setAddressByte(ADDR_ALLSTATIONS)
+       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+       .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+       .setGroupLengthByte(0x08)
+       .addParameters(HDLCParameters::build(
+           XID_PARAMS_ID::UNIQUE_ID,
+           0x02,
+           Hexes({ 0x33, 0x33 })))
+       .addParameters(HDLCParameters::build(
+           XID_PARAMS_ID::BIT_MASK,
+           0x02,
+           Hexes({ 0xFF, 0xFF })));
+   return std::make_shared<FrameXID>(dummyScanFrameBody);
+}
+
 void DummyScan::executeImpl()
 {
    LOG(trace) << "BEGIN";
    
    for (int i = 0; i<numberOfExecutions_; i++)
    {
-      const auto dummyScanPrimFrame = FrameXID()
-         .setAddressByte(ADDR_ALLSTATIONS)
-         .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-         .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-         .setGroupLengthByte(0x08)
-         .addParameters(HDLCParameters::build(
-            XID_PARAMS_ID::UNIQUE_ID,
-            0x02,
-            Hexes({ 0x33, 0x33 })))
-         .addParameters(HDLCParameters::build(
-            XID_PARAMS_ID::BIT_MASK,
-            0x02,
-            Hexes({ 0xFF, 0xFF })));
-
       hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-         std::make_shared<FrameXID>(dummyScanPrimFrame));
+                              getFrameBody());
 
       responseMessage_ += constraints::almag::L1::DUMMY_SCAN + DELIMITER;
 

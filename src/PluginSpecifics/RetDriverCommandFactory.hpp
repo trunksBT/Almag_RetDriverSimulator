@@ -3,7 +3,7 @@
 #include <CommandPattern/ICommandFactory.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
-class RetDriverCommandFactory final : public IHDLCFrameBodyFactory
+class RetDriverCommandFactory final : public ICommandFactory
 {
 public:
    explicit RetDriverCommandFactory(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators);

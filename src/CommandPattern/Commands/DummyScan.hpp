@@ -10,6 +10,7 @@ public:
 
    void execute() override;
    std::string handleResponse() override;
+   HDLCFrameBodyPtr getFrameBody();
 
 protected:
    void executeImpl();

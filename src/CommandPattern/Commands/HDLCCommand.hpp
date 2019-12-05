@@ -1,6 +1,7 @@
 #pragma once
 
 #include <CommandPattern/ICommand.hpp>
+#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
 class HDLCCommand : public ICommand
@@ -10,6 +11,7 @@ public:
 
    virtual void execute() = 0;
    virtual std::string handleResponse() = 0;
+//   virtual IHDLCFrameBodyFactoryPtr getFrameBodyFactory() = 0;
 
 protected:
    explicit HDLCCommand(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
