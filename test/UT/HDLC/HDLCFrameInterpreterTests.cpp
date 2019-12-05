@@ -42,32 +42,32 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameI::GET_TYPE,
           retDeviceHexFactory->get_FrameI_Calibrate(),
-          retDeviceStr->get_FrameI_Calibrate().data()
+          retDeviceStr->get_FrameI_Calibrate()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameSNRM::GET_TYPE,
           retDeviceHexFactory->get_FrameSNRM_LinkEstablishment(),
-          retDeviceStr->get_FrameSNRM_LinkEstablishment().data()
+          retDeviceStr->get_FrameSNRM_LinkEstablishment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
           retDeviceHexFactory->get_FrameXID_DummyScan(),
-          retDeviceStr->get_FrameXID_DummyScan().data()
+          retDeviceStr->get_FrameXID_DummyScan()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
           retDeviceHexFactory->get_FrameXID_AddressAssignment(),
-          retDeviceStr->get_FrameXID_AddressAssignment().data()
+          retDeviceStr->get_FrameXID_AddressAssignment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
           retDeviceHexFactory->get_FrameXID_3GPPReleaseId(),
-          retDeviceStr->get_FrameXID_3GPPReleaseId().data()
+          retDeviceStr->get_FrameXID_3GPPReleaseId()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
           retDeviceHexFactory->get_FrameXID_AISGProtocolVersion(),
-          retDeviceStr->get_FrameXID_AISGProtocolVersion().data()
+          retDeviceStr->get_FrameXID_AISGProtocolVersion()
        }
    )
 );

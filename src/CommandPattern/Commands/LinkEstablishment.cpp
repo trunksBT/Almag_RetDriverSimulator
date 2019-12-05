@@ -24,15 +24,19 @@ void LinkEstablishment::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr LinkEstablishment::getFrameBody()
+{
+   const auto linkEstablishmentFrameBody = FrameSNRM()
+           .setAddressByte(0x03);
+   return std::make_shared<FrameSNRM>(linkEstablishmentFrameBody);
+}
+
 void LinkEstablishment::executeImpl()
 {
    LOG(trace) << "BEGIN";
 
-   const auto LINK_ESTABLISHMENT_PRIM_FRAME = FrameSNRM()
-      .setAddressByte(0x03);
-
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameSNRM>(LINK_ESTABLISHMENT_PRIM_FRAME));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";

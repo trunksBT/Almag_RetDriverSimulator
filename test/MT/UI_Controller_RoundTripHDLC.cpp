@@ -65,32 +65,33 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    ::testing::Values(
       CommandsToExpectedFrame{
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_DummyScan().data()
+         retDeviceStrFactory->get_FrameXID_DummyScan()
       },
       CommandsToExpectedFrame{
          {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
          multiplyString(
-                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, retDeviceStrFactory->get_FrameXID_DummyScan().data())
+                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS,
+                 retDeviceStrFactory->get_FrameXID_DummyScan())
       },
       CommandsToExpectedFrame{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_AddressAssignment().data()
+         retDeviceStrFactory->get_FrameXID_AddressAssignment()
       },
       CommandsToExpectedFrame{
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameSNRM_LinkEstablishment().data()
+         retDeviceStrFactory->get_FrameSNRM_LinkEstablishment()
       },
       CommandsToExpectedFrame{
          {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_3GPPReleaseId().data()
+         retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
       },
       CommandsToExpectedFrame{
          {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_AISGProtocolVersion().data()
+         retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()
       },
       CommandsToExpectedFrame{
          {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameI_Calibrate().data()
+         retDeviceStrFactory->get_FrameI_Calibrate()
       }
    )
 );

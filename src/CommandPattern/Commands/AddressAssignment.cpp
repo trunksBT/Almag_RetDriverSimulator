@@ -30,32 +30,38 @@ void AddressAssignment::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr AddressAssignment::getFrameBody()
+{
+   const auto addressAssignmentFrameBody = FrameXID()
+       .setAddressByte(ADDR_ALLSTATIONS)
+       .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+       .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+       .setGroupLengthByte(0x11)
+       .addParameters(HDLCParameters::build(
+               XID_PARAMS_ID::UNIQUE_ID,
+               0x09,
+               Hexes{{
+                             0x4E, 0x4B, 0x34, 0x36, 0x35,
+                             0x30, 0x30, 0x30, 0x30
+                     }}))
+       .addParameters(HDLCParameters::build(
+               XID_PARAMS_ID::ASSIGNED_ADDRESS,
+               0x01,
+               Hexes{{ 0x03 }}))
+       .addParameters(HDLCParameters::build(
+               XID_PARAMS_ID::DEVICE_TYPE,
+               0x01,
+               Hexes{{ DEVICE_TYPE::SRET }}
+       ));
+   return std::make_shared<FrameXID>(addressAssignmentFrameBody);
+}
+
 void AddressAssignment::executeImpl()
 {
    LOG(trace) << "BEGIN";
-   
-   const auto AddressAssignmentPrimFrame = FrameXID()
-      .setAddressByte(0xFF)
-      .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-      .setGroupLengthByte(0x1B)
-      .addParameters(HDLCParameters::build(
-         XID_PARAMS_ID::UNIQUE_ID,
-         0x13,
-         Hexes({ 0x41, 0x4E, 0x30, 0x30, 0x30, 0x30, 0x43, 0x4E, 0x31, 0x30,
-                 0x31, 0x32, 0x33, 0x33, 0x32, 0x32, 0x34, 0x36, 0x31 })))
-      .addParameters(HDLCParameters::build(
-         XID_PARAMS_ID::ASSIGNED_ADDRESS,
-         0x01,
-         Hexes({ 0x03 })))
-      .addParameters(HDLCParameters::build(
-         XID_PARAMS_ID::DEVICE_TYPE,
-         0x01,
-         Hexes({ DEVICE_TYPE::SRET })
-      ));
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameXID>(AddressAssignmentPrimFrame));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";
