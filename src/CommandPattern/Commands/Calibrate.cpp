@@ -27,15 +27,20 @@ void Calibrate::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr Calibrate::getFrameBody()
+{
+   const auto calibrateFrameBody = FrameI()
+           .setAddressByte(0x03)
+           .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
+   return std::make_shared<FrameI>(calibrateFrameBody);
+}
+
 void Calibrate::executeImpl()
 {
    LOG(trace) << "BEGIN";
-   const auto CalibratePrimFrame = FrameI()
-      .setAddressByte(0x03)
-      .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
 
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameI>(CalibratePrimFrame));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";

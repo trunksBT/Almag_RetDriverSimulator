@@ -29,23 +29,27 @@ void AISGProtocolVersion::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr AISGProtocolVersion::getFrameBody()
+{
+   const auto AISGProtocolVersionFrameBody = FrameXID()
+           .setAddressByte(0x03)
+           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+           .setGroupLengthByte(0x03)
+           .addParameters(HDLCParameters::build(
+                   XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
+                   0x01,
+                   Hexes({ PV::AISG_2_0 })
+           ));
+   return std::make_shared<FrameXID>(AISGProtocolVersionFrameBody);
+}
+
 void AISGProtocolVersion::executeImpl()
 {
    LOG(trace) << "BEGIN";
 
-   const auto AISGProtocolVersionPrimFrame = FrameXID()
-      .setAddressByte(0x03)
-      .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-      .setGroupLengthByte(0x03)
-      .addParameters(HDLCParameters::build(
-         XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
-         0x01,
-         Hexes({ PV::AISG_2_0 })
-      ));
-
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameXID>(AISGProtocolVersionPrimFrame));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";

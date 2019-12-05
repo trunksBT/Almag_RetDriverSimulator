@@ -27,23 +27,27 @@ void ThreeGPPReleaseID::execute()
    informControllerAboutResult_();
 }
 
+HDLCFrameBodyPtr ThreeGPPReleaseID::getFrameBody()
+{
+   const auto threeGPPReleaseIDFrameBody = FrameXID()
+           .setAddressByte(0x03)
+           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+           .setGroupLengthByte(0x03)
+           .addParameters(HDLCParameters::build(
+                   XID_PARAMS_ID::THREEGPP_RELEASE_ID,
+                   0x01,
+                   Hexes({ PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE })
+           ));
+   return std::make_shared<FrameXID>(threeGPPReleaseIDFrameBody);
+}
+
 void ThreeGPPReleaseID::executeImpl()
 {
    LOG(trace) << "BEGIN";
 
-   const auto ThreeGPPReleaseIDPrimFrame = FrameXID()
-      .setAddressByte(0x03)
-      .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
-      .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
-      .setGroupLengthByte(0x03)
-      .addParameters(HDLCParameters::build(
-         XID_PARAMS_ID::THREEGPP_RELEASE_ID,
-         0x01,
-         Hexes({ PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE })
-      ));
-
    hdlcCommunicator_->send(validatedUserInput_[IDX_OF_ADDRESS],
-      std::make_shared<FrameXID>(ThreeGPPReleaseIDPrimFrame));
+                           getFrameBody());
 
    LOG(trace) << "===============================================";
    LOG(trace) << "END";
