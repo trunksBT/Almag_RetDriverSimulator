@@ -35,28 +35,14 @@ void ZMqReqRespCommunicator::setupReceive(const std::string& address)
 
 bool ZMqReqRespCommunicator::send(const std::string &address, HDLCFrameBodyPtr frame)
 {
-   return send(address, std::vector<HDLCFrameBodyPtr>{{frame}});
+   const std::string sentMessage = toString(frame->build());
+   LOG(debug) << "Sending on " << address << " " << sentMessage;
+   return s_send(requestSocket_, sentMessage);
 }
 
-bool ZMqReqRespCommunicator::send(
-        const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames)
-{
-   bool sentState = true;
-   for (const auto& frame : frames)
-   {
-      const std::string sentMessage = toString(frame->build());
-      LOG(debug) << "Sending on " << address << " " << sentMessage;
-      sentState &= s_send(requestSocket_, sentMessage);
-   }
-   return sentState;
-}
-
-MaybeHDLCFrame ZMqReqRespCommunicator::receive(const std::string &address)
+HDLCFramePtr ZMqReqRespCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
    LOG(debug) << "Received Message: " << message;
-
-   std::queue<HDLCFrame> receivedFrames;
-   receivedFrames.emplace(HDLCFrame(HDLCFrameBodyInterpreter().apply(message)));
-   return HDLCFrameBodyInterpreter().apply(message));
+   return std::make_shared<HDLCFrame>(HDLCFrameBodyInterpreter().apply(message));
 }

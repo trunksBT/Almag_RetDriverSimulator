@@ -68,6 +68,20 @@ Hexes toHexes(const HexesInt& plainFrames)
    return retVal;
 }
 
+int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, const Strings &slicedVector, int i)
+{
+   auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
+   auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
+   auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
+   LOG(debug) << "ParId: " << parId;
+   LOG(debug) << "ParLen: " << parLen;
+   LOG(debug) << "ParVals: ";
+   printStrings(parVals);
+   i+=(parLen+OFFSET_FOR_IDX_OF_SUBGROUP_VALUES);
+   parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   return i;
+}
+
 HDLCFrameBodyPtr interpretBodyFrameI(const Strings& receivedPlainFrame)
 {
    const auto retFrame = FrameI()
@@ -83,20 +97,6 @@ HDLCFrameBodyPtr interpretBodyFrameSNRM(const Strings& receivedPlainFrame)
        .setAddressByte(toHexInt(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
        .setControlByte(toHexInt(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)));
    return std::make_shared<FrameSNRM>(retFrame);
-}
-
-int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, const Strings &slicedVector, int i)
-{
-   auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
-   auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
-   auto parVals = slice(slicedVector, i + IDX_OF_SUBGROUP_VALUES_START, parLen);
-   LOG(debug) << "ParId: " << parId;
-   LOG(debug) << "ParLen: " << parLen;
-   LOG(debug) << "ParVals: ";
-   printStrings(parVals);
-   i+=(parLen+OFFSET_FOR_IDX_OF_SUBGROUP_VALUES);
-   parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
-   return i;
 }
 
 HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
@@ -154,5 +154,5 @@ HDLCFrameBodyPtr HDLCFrameBodyInterpreter::apply(const std::string& receivedPlai
    }
    
    LOG(error) << "Frame of unknown type";
-   return {};
+   return nullptr;
 }

@@ -11,11 +11,9 @@ public:
 
    Hexes build() const;
    HDLCFrameBodyPtr getFrameBody() const;
-   std::string getFrameFromSecondary() const;
 
 private: 
    HDLCFrameBodyPtr hdlcFrameBody_;
 };
 
-using MaybeHDLCFrame = boost::optional<HDLCFrame>;
 using HDLCFramePtr = std::shared_ptr<HDLCFrame>;

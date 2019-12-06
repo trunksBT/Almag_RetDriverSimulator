@@ -61,7 +61,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
       },
       CommandsToExpectedFrame{
 	      {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-         L2::THREEGPP_RELEASE_ID+ DELIMITER
+         L2::THREEGPP_RELEASE_ID + DELIMITER
       },
       CommandsToExpectedFrame{
 	      {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},

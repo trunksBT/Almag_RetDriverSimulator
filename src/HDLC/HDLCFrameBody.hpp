@@ -28,3 +28,4 @@ private:
 };
 
 using HDLCFrameBodyPtr = std::shared_ptr<HDLCFrameBody>;
+using MaybeHDLCFrameBodyPtr = boost::optional<HDLCFrameBodyPtr>;

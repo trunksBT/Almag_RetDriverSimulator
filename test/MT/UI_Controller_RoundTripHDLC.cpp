@@ -13,6 +13,8 @@
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
+#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <HDLC/HDLCReqFrameBodyFactory.hpp>
 
 using testing::Eq;
 using namespace hardcodes::IOPaths;
@@ -22,14 +24,14 @@ namespace
 {
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
-FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCFrameStrFactory>();
+IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 
 namespace mt
 {
 class UI_Controller_RoundTripHDLC:
    public BaseFixtureWithDBAndHDLC,
-   public ::testing::WithParamInterface<CommandsToExpectedFrame>
+   public ::testing::WithParamInterface<ReceivedCommand_ExpectedFrameHexes>
 {
 protected:
    UI_Controller_RoundTripHDLC()
@@ -57,41 +59,42 @@ TEST_P(UI_Controller_RoundTripHDLC, ExecuteCommandAndExpectSentFrame)
        ->receive(BUFFER_TO_SEND_VAL_1);
 
    ASSERT_TRUE(returnCode);
-   ASSERT_THAT(sentFrames, Eq(GetParam().expectedHdlcFrame));
+   ASSERT_TRUE(sentFrames);
+   ASSERT_THAT(sentFrames->build(), Eq(GetParam().expectedFrameHexes));
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    UI_Controller_RoundTripHDLC,
    ::testing::Values(
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_DummyScan()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build()
       },
-      CommandsToExpectedFrame{
-         {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
-         multiplyString(
-                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS,
-                 retDeviceStrFactory->get_FrameXID_DummyScan())
-      },
-      CommandsToExpectedFrame{
+//      ReceivedCommand_ExpectedFrameHexes{
+//         {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
+//         multiplyString(
+//                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS,
+//                 HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build())
+//      },
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_AddressAssignment()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()).build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameSNRM_LinkEstablishment()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()).build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()).build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()).build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
-         retDeviceStrFactory->get_FrameI_Calibrate()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameI_Calibrate()).build()
       }
    )
 );

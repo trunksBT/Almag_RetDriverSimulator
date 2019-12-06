@@ -29,7 +29,7 @@ namespace mt
 
 class UI_Controller_ZeroMqHDLC:
    public BaseFixtureWithDBAndHDLC,
-   public ::testing::WithParamInterface<ReceivedCommand_ExpectedFrameBodyHexes>
+   public ::testing::WithParamInterface<ReceivedCommand_ExpectedFrameHexes>
 {
 protected:
    UI_Controller_ZeroMqHDLC()
@@ -60,35 +60,35 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
 
    ASSERT_TRUE(returnCode);
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(GetParam().expectedFrameBodyHexes));
+   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(GetParam().expectedFrameHexes));
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    UI_Controller_ZeroMqHDLC,
    ::testing::Values(
-      ReceivedCommand_ExpectedFrameBodyHexes{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()
       },
 //    {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
 //       CANNOT IMPLEMENT THAT TEST AS APPLICATION IS ONE_THREADED
-      ReceivedCommand_ExpectedFrameBodyHexes{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()
       },
-      ReceivedCommand_ExpectedFrameBodyHexes{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()->build()
       },
-      ReceivedCommand_ExpectedFrameBodyHexes{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()
       },
-      ReceivedCommand_ExpectedFrameBodyHexes{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build()
       },
-      ReceivedCommand_ExpectedFrameBodyHexes{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()
       }
