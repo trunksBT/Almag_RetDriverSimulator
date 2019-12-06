@@ -5,16 +5,16 @@
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
-#include <TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
+#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <HDLC/HDLCReqFrameBodyFactory.hpp>
 
 using testing::Eq;
 
 namespace
 {
-FrameHexFactoryPtr retDeviceHexFactory = std::make_shared<SRetHDLCFrameBodyHexFactory>();
+IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetHDLCFrameBodyStrFactory>();
 }
 
@@ -41,32 +41,32 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
    ::testing::Values(
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameI::GET_TYPE,
-          retDeviceHexFactory->get_FrameI_Calibrate(),
+          hdlcFrameBodyFactory->get_FrameI_Calibrate()->build(),
           retDeviceStr->get_FrameI_Calibrate()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameSNRM::GET_TYPE,
-          retDeviceHexFactory->get_FrameSNRM_LinkEstablishment(),
+          hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()->build(),
           retDeviceStr->get_FrameSNRM_LinkEstablishment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
-          retDeviceHexFactory->get_FrameXID_DummyScan(),
+          hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build(),
           retDeviceStr->get_FrameXID_DummyScan()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
-          retDeviceHexFactory->get_FrameXID_AddressAssignment(),
+          hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build(),
           retDeviceStr->get_FrameXID_AddressAssignment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
-          retDeviceHexFactory->get_FrameXID_3GPPReleaseId(),
+          hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build(),
           retDeviceStr->get_FrameXID_3GPPReleaseId()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
-          retDeviceHexFactory->get_FrameXID_AISGProtocolVersion(),
+          hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build(),
           retDeviceStr->get_FrameXID_AISGProtocolVersion()
        }
    )

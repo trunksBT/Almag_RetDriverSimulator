@@ -10,7 +10,6 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp>
 

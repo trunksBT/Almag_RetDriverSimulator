@@ -23,11 +23,8 @@ set(TESTUTILS
 
 set(TESTUTILS_HDLC_FRAMESFACTORIES
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/FrameHexFactory.hpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.cpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyHexFactory.hpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.cpp
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp
 )
