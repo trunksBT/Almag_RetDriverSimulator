@@ -16,7 +16,6 @@ public:
    virtual bool send(const std::string& address, const std::vector<HDLCFrameBodyPtr>& frames) = 0;
    virtual bool send(const std::string& address, HDLCFrameBodyPtr frame) = 0;
    virtual std::queue<HDLCFrame> receive(const std::string& address) = 0;
-   virtual boost::optional<std::string> receiveStr(const std::string &address) = 0;
    virtual ~IHDLCCommunicator() = default;
 };
 

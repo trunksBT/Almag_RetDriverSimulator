@@ -9,10 +9,11 @@ public:
    explicit HDLCFrame(HDLCFrameBodyPtr inFrame);
 
    Hexes build() const;
+   HDLCFrameBodyPtr getFrameBody() const;
    std::string getFrameFromSecondary() const;
 
 private: 
-   std::shared_ptr<HDLCFrameBody> hdlcPrimFrame_;
+   HDLCFrameBodyPtr hdlcFrameBody_;
 };
 
 using HDLCFramePtr = std::shared_ptr<HDLCFrame>;

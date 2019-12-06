@@ -14,5 +14,4 @@ public:
    bool send(
            const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames) override;
    std::queue<HDLCFrame> receive(const std::string &address) override;
-   boost::optional<std::string> receiveStr(const std::string &address) override;
 };

@@ -8,8 +8,9 @@
 #include <Utils/Functions.hpp>
 #include <Utils/PrintUtils.hpp>
 
-using namespace printUtils;
+using namespace convert;
 using namespace funs;
+using namespace printUtils;
 
 namespace
 {

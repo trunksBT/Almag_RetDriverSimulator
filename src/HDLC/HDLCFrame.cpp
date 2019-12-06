@@ -1,11 +1,13 @@
 #include <HDLC/HDLCFrame.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/PrintUtils.hpp>
+#include <Utils/Functions.hpp>
 
+using namespace convert;
 using namespace printUtils;
 
 HDLCFrame::HDLCFrame(HDLCFrameBodyPtr hdlcPrimFrame)
-   : hdlcPrimFrame_(hdlcPrimFrame)
+   : hdlcFrameBody_(hdlcPrimFrame)
 {}
 
 Hexes HDLCFrame::build() const
@@ -15,7 +17,7 @@ Hexes HDLCFrame::build() const
    retVal.push_back(START_STOP_FLAG);
    printHex("START: ", START_STOP_FLAG);
 
-   const auto primFrame = hdlcPrimFrame_->build();
+   const auto primFrame = hdlcFrameBody_->build();
 
    retVal.insert( retVal.end(),
       primFrame.begin(), primFrame.end() );
@@ -32,6 +34,10 @@ Hexes HDLCFrame::build() const
 
 std::string HDLCFrame::getFrameFromSecondary() const
 {
-   return hdlcPrimFrame_->getFrameFromSecondary();
+   return hdlcFrameBody_->getFrameFromSecondary();
 }
 
+HDLCFrameBodyPtr HDLCFrame::getFrameBody() const
+{
+   return hdlcFrameBody_;
+}

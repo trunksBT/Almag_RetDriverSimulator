@@ -1,7 +1,9 @@
 #include "RoundTripHDLCCommunicatorStub.hpp"
 #include <Utils/Utils.hpp>
+#include <Utils/Functions.hpp>
 #include <Utils/PrintUtils.hpp>
 
+using namespace convert;
 using namespace printUtils;
 
 namespace test
@@ -41,17 +43,6 @@ std::queue<HDLCFrame> RoundTripHDLCCommunicatorStub::receive(const std::string &
    for (const auto& hdlcFrameBody : hdlcFrames_)
    {
       retVal.push(HDLCFrame(hdlcFrameBody));
-   }
-   hdlcFrames_.clear();
-   return retVal;
-}
-
-boost::optional<std::string> RoundTripHDLCCommunicatorStub::receiveStr(const std::string &address)
-{
-   std::string retVal;
-   for (const auto& hdlcFrame : hdlcFrames_)
-   {
-      retVal += toString(hdlcFrame->build());
    }
    hdlcFrames_.clear();
    return retVal;

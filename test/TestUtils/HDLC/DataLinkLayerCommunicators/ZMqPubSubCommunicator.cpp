@@ -1,8 +1,9 @@
 #include "ZMqPubSubCommunicator.hpp"
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp>
-#include <Utils/PrintUtils.hpp>
+#include <Utils/Functions.hpp>
+#include <HDLC/HDLCFrameBodyInterpreter.hpp>
 
-using namespace printUtils;
+using namespace convert;
 
 namespace
 {
@@ -66,12 +67,8 @@ std::queue<HDLCFrame> ZMqPubSubCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
    LOG(error) << "Received Message: " << message;
-   return {};//HDLCFrame(HDLCFrameBody(message));  /// TODO
-}
 
-boost::optional<std::string> ZMqPubSubCommunicator::receiveStr(const std::string &address)
-{
-   std::string message = s_recv(responseSocket_);
-   LOG(info) << "Received Message: " << message;
-   return "7e " + message + "13 37 7e ";
+   std::queue<HDLCFrame> receivedFrames;
+   receivedFrames.emplace(HDLCFrame(HDLCFrameBodyInterpreter().apply(message)));
+   return receivedFrames;
 }

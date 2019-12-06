@@ -1,6 +1,8 @@
 #include <HDLC/FrameTypes/FrameI.hpp>
+#include <Utils/Functions.hpp>
 #include <Utils/PrintUtils.hpp>
 
+using namespace convert;
 using namespace printUtils;
 
 FRAME_TYPE FrameI::GET_TYPE=FRAME_TYPE::I;

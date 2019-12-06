@@ -1,6 +1,8 @@
 #include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <Utils/PrintUtils.hpp>
+#include <Utils/Functions.hpp>
 
+using namespace convert;
 using namespace printUtils;
 
 FRAME_TYPE FrameSNRM::GET_TYPE=FRAME_TYPE::SNRM;
