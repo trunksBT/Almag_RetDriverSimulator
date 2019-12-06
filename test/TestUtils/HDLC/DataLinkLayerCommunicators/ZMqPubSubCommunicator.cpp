@@ -63,7 +63,7 @@ bool ZMqPubSubCommunicator::send(const std::string& address, const std::vector<H
    return sentState;
 }
 
-std::queue<HDLCFrame> ZMqPubSubCommunicator::receive(const std::string &address)
+MaybeHDLCFrame ZMqPubSubCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
    LOG(error) << "Received Message: " << message;

@@ -51,12 +51,12 @@ bool ZMqReqRespCommunicator::send(
    return sentState;
 }
 
-std::queue<HDLCFrame> ZMqReqRespCommunicator::receive(const std::string &address)
+MaybeHDLCFrame ZMqReqRespCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
    LOG(debug) << "Received Message: " << message;
 
    std::queue<HDLCFrame> receivedFrames;
    receivedFrames.emplace(HDLCFrame(HDLCFrameBodyInterpreter().apply(message)));
-   return receivedFrames;
+   return HDLCFrameBodyInterpreter().apply(message));
 }

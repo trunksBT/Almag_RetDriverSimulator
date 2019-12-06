@@ -1,12 +1,15 @@
-#include <HDLC/HDLCCommunicator.hpp>
-
-#include <HDLC/MessagesHelpers.hpp>
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
-
+#include "HDLC/HDLCCommunicator.hpp"
 #include <Utils/Logger.hpp>
-#include <Utils/PrintUtils.hpp>
 
-using namespace printUtils;
+void HDLCCommunicator::setupSend(const std::string& address)
+{
+   LOG(warning) << "Empty communicator";
+}
+
+void HDLCCommunicator::setupReceive(const std::string& address)
+{
+   LOG(warning) << "Empty communicator";
+}
 
 bool HDLCCommunicator::send(
    const std::string& address, const std::vector<HDLCFrameBodyPtr>& frames)
@@ -21,7 +24,7 @@ bool HDLCCommunicator::send(const std::string& address, HDLCFrameBodyPtr frame)
    return true;
 }
 
-std::queue<HDLCFrame> HDLCCommunicator::receive(const std::string& address)
+MaybeHDLCFrame HDLCCommunicator::receive(const std::string& address)
 {
    LOG(warning) << "Empty communicator";
    return {};

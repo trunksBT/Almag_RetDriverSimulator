@@ -15,11 +15,11 @@ public:
    bool send(
            const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames) override;
    bool send(const std::string &address, HDLCFrameBodyPtr frame) override;
-   std::queue<HDLCFrame> receive(const std::string &address) override;
+   MaybeHDLCFrame receive(const std::string &address) override;
 
    virtual ~RoundTripHDLCCommunicatorStub();
 
 private:
-   std::vector<HDLCFrameBodyPtr> hdlcFrames_;
+   std::queue<HDLCFrameBodyPtr> hdlcFrames_;
 };
 }  // namespace test

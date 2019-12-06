@@ -1,7 +1,6 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 
 #include <CommandPattern/AlmagController.hpp>
-#include <CommandPattern/AlmagControllerNull.hpp>
 #include <CommandPattern/IController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>

@@ -5,7 +5,7 @@
 
 class ZMqCommunicator : public IHDLCCommunicator
 {
-public:
+protected:
    ZMqCommunicator(int numOfIoThreads,
       zmq::socket_type requestType, zmq::socket_type responseType);
 
@@ -14,7 +14,7 @@ public:
    virtual bool send(const std::string& address, HDLCFrameBodyPtr frame) = 0;
    virtual bool send(
            const std::string& address, const std::vector<HDLCFrameBodyPtr>& frames) = 0;
-   virtual std::queue<HDLCFrame> receive(const std::string& address) = 0;
+   virtual MaybeHDLCFrame receive(const std::string& address) = 0;
 
    virtual ~ZMqCommunicator();
 

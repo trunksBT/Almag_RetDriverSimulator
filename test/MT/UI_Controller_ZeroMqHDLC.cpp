@@ -55,17 +55,12 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
    );
-   auto receivedFrames = hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR)
+   auto receivedFrame = hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR)
            ->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(returnCode);
-   ASSERT_TRUE(not receivedFrames.empty());
-   while (not receivedFrames.empty())
-   {
-      const auto receivedFrame = receivedFrames.front();
-      ASSERT_THAT(receivedFrame.getFrameBody()->build(), Eq(GetParam().expectedFrameBodyHexes));
-      receivedFrames.pop();
-   }
+   ASSERT_TRUE(receivedFrame);
+   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(GetParam().expectedFrameBodyHexes));
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
@@ -75,11 +70,8 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()
       },
-//      CommandsToExpectedFrame{
-//         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//          multiplyString(
-//              NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, retDeviceStrFactory->get_FrameXID_DummyScan())
-//      },  CANNOT IMPLEMENT THAT TEST AS APPLICATION IS ONE_THREADED
+//    {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+//       CANNOT IMPLEMENT THAT TEST AS APPLICATION IS ONE_THREADED
       ReceivedCommand_ExpectedFrameBodyHexes{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
          hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()

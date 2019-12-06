@@ -9,12 +9,12 @@
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
-#include <TestUtils/MatcherUtils.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 
+using testing::Eq;
 using namespace hardcodes::IOPaths;
 using namespace constraints::almag;
 
@@ -57,7 +57,7 @@ TEST_P(UI_Controller_RoundTripHDLC, ExecuteCommandAndExpectSentFrame)
        ->receive(BUFFER_TO_SEND_VAL_1);
 
    ASSERT_TRUE(returnCode);
-   ASSERT_THAT(toString(sentFrames), StrEq(GetParam().expectedHdlcFrame));
+   ASSERT_THAT(sentFrames, Eq(GetParam().expectedHdlcFrame));
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,

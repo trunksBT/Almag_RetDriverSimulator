@@ -32,11 +32,6 @@ Hexes HDLCFrame::build() const
    return retVal; 
 }
 
-std::string HDLCFrame::getFrameFromSecondary() const
-{
-   return hdlcFrameBody_->getFrameFromSecondary();
-}
-
 HDLCFrameBodyPtr HDLCFrame::getFrameBody() const
 {
    return hdlcFrameBody_;
