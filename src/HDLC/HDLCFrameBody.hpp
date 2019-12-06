@@ -23,9 +23,9 @@ public:
    boost::optional<Hex> groupIdentifier_;
    boost::optional<Hex> groupLength_;
    std::vector<HDLCParameters> parameters_;
+   
 private:
    boost::optional<std::string> frameBodyNotParsed_;
 };
 
 using HDLCFrameBodyPtr = std::shared_ptr<HDLCFrameBody>;
-using MaybeHDLCFrameBodyPtr = boost::optional<HDLCFrameBodyPtr>;
