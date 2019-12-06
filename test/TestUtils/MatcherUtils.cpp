@@ -2,9 +2,9 @@
 
 #include <sstream>
 #include <HDLC/HDLCFrame.hpp>
-#include <Utils/PrintUtils.hpp>
+#include <Utils/Functions.hpp>
 
-using namespace printUtils;
+using namespace convert;
 
 std::string toString(std::queue<HDLCFrame>& inQueue)
 {

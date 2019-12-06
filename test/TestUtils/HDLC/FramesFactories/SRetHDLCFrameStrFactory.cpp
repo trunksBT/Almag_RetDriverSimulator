@@ -2,9 +2,11 @@
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
 #include <string>
 #include <HDLC/MessagesHelpers.hpp>
+#include <Utils/Functions.hpp>
 #include <Utils/PrintUtils.hpp>
 
 using namespace std::string_literals;
+using namespace convert;
 using namespace printUtils;
 
 SRetHDLCFrameStrFactory::SRetHDLCFrameStrFactory()

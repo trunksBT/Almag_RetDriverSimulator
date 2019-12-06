@@ -8,6 +8,12 @@ struct CommandsToExpectedFrame
    const std::string expectedHdlcFrame;
 };
 
+struct ReceivedCommand_ExpectedFrameHexes
+{
+   const StringsMatrix inCommands;
+   const Hexes expectedFrameHexes;
+};
+
 struct ExpectedFrameType_ExpectedValue_ReceivedString
 {
    const FRAME_TYPE expectedFrameType;

@@ -2,23 +2,25 @@
 #include <UserInterface/CMenu.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 #include <CommandPattern/AlmagController.hpp>
+#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <HDLC/HDLCReqFrameBodyFactory.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp>
 
+using testing::Eq;
 using namespace constraints::almag;
 using namespace hardcodes::IOPaths;
 
 namespace
 {
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
-FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCFrameStrFactory>();
+IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 
 namespace mt
@@ -26,7 +28,7 @@ namespace mt
 
 class UI_Controller_ZeroMqHDLC:
    public BaseFixtureWithDBAndHDLC,
-   public ::testing::WithParamInterface<CommandsToExpectedFrame>
+   public ::testing::WithParamInterface<ReceivedCommand_ExpectedFrameHexes>
 {
 protected:
    UI_Controller_ZeroMqHDLC()
@@ -52,45 +54,42 @@ TEST_P(UI_Controller_ZeroMqHDLC, ExecuteCommandAndExpectSentFrame)
 	const auto& returnCode = ui_.runPredefinedCommands(
       GetParam().inCommands
    );
-   const auto& receivedFromSecondaryHdlcFrame = hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR)
-           ->receiveStr(ADDRESS_OF_PORT_FOR_ZERO_MQ);
+   auto receivedFrame = hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR)
+           ->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(returnCode);
-   ASSERT_TRUE(receivedFromSecondaryHdlcFrame);
-   ASSERT_THAT(receivedFromSecondaryHdlcFrame.get(), StrEq(GetParam().expectedHdlcFrame));
+   ASSERT_TRUE(receivedFrame);
+   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(GetParam().expectedFrameHexes));
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    UI_Controller_ZeroMqHDLC,
    ::testing::Values(
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L1::DUMMY_SCAN, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         retDeviceStrFactory->get_FrameXID_DummyScan()
+         hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()
       },
-//      CommandsToExpectedFrame{
-//         {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-//          multiplyString(
-//              NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, retDeviceStrFactory->get_FrameXID_DummyScan())
-//      },  CANNOT IMPLEMENT THAT TEST AS APPLICATION IS ONE_THREADED
-      CommandsToExpectedFrame{
+//    {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
+//       CANNOT IMPLEMENT THAT TEST AS APPLICATION IS ONE_THREADED
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         retDeviceStrFactory->get_FrameXID_AddressAssignment()
+         hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         retDeviceStrFactory->get_FrameSNRM_LinkEstablishment()
+         hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()->build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
+         hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()
+         hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build()
       },
-      CommandsToExpectedFrame{
+      ReceivedCommand_ExpectedFrameHexes{
          {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         retDeviceStrFactory->get_FrameI_Calibrate()
+         hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()
       }
    )
 );

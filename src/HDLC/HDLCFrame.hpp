@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <boost/optional.hpp>
 #include <HDLC/HDLCFrameBody.hpp>
 
 class HDLCFrame
@@ -9,10 +10,10 @@ public:
    explicit HDLCFrame(HDLCFrameBodyPtr inFrame);
 
    Hexes build() const;
-   std::string getFrameFromSecondary() const;
+   HDLCFrameBodyPtr getFrameBody() const;
 
 private: 
-   std::shared_ptr<HDLCFrameBody> hdlcPrimFrame_;
+   HDLCFrameBodyPtr hdlcFrameBody_;
 };
 
 using HDLCFramePtr = std::shared_ptr<HDLCFrame>;

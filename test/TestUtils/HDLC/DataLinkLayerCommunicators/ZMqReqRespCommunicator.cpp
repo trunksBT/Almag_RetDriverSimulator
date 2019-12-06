@@ -1,8 +1,9 @@
 #include "ZMqReqRespCommunicator.hpp"
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp>
-#include <Utils/PrintUtils.hpp>
+#include <HDLC/HDLCFrameBodyInterpreter.hpp>
+#include <Utils/Functions.hpp>
 
-using namespace printUtils;
+using namespace convert;
 
 namespace
 {
@@ -34,32 +35,14 @@ void ZMqReqRespCommunicator::setupReceive(const std::string& address)
 
 bool ZMqReqRespCommunicator::send(const std::string &address, HDLCFrameBodyPtr frame)
 {
-   return send(address, std::vector<HDLCFrameBodyPtr>{{frame}});
+   const std::string sentMessage = toString(frame->build());
+   LOG(debug) << "Sending on " << address << " " << sentMessage;
+   return s_send(requestSocket_, sentMessage);
 }
 
-bool ZMqReqRespCommunicator::send(
-        const std::string &address, const std::vector<HDLCFrameBodyPtr>& frames)
-{
-   bool sentState = true;
-   for (const auto& frame : frames)
-   {
-      const std::string sentMessage = toString(frame->build());
-      LOG(debug) << "Sending on " << address << " " << sentMessage;
-      sentState &= s_send(requestSocket_, sentMessage);
-   }
-   return sentState;
-}
-
-std::queue<HDLCFrame> ZMqReqRespCommunicator::receive(const std::string &address)
+HDLCFramePtr ZMqReqRespCommunicator::receive(const std::string &address)
 {
    std::string message = s_recv(responseSocket_);
-   LOG(error) << "Received Message: " << message;
-   return {};//HDLCFrame(HDLCFrameBody(message));  /// TODO
-}
-
-boost::optional<std::string> ZMqReqRespCommunicator::receiveStr(const std::string &address)
-{
-   std::string message = s_recv(responseSocket_);
-   LOG(info) << "Received Message: " << message;
-   return "7e " + message + "13 37 7e ";
+   LOG(debug) << "Received Message: " << message;
+   return std::make_shared<HDLCFrame>(HDLCFrameBodyInterpreter().apply(message));
 }
