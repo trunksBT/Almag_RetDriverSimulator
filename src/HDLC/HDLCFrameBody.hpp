@@ -15,7 +15,7 @@ public:
    virtual ~HDLCFrameBody();
 
    virtual Hexes build() const = 0;
-   virtual FRAME_TYPE getType() const = 0;
+   virtual int getType() const = 0;
 
    boost::optional<Hex> address_;
    boost::optional<Hex> ctrl_;

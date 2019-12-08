@@ -1,5 +1,5 @@
 #include "CommandPattern/Commands/LinkEstablishment.hpp"
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/ConcreteFrames/FrameSNRM.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>

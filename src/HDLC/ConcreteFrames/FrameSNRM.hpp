@@ -1,17 +1,13 @@
 #pragma once
 
-#include <HDLC/HDLCFrameBody.hpp>
+#include <HDLC/FrameTypes/FrameU.hpp>
 
-class FrameSNRM : public HDLCFrameBody
+class FrameSNRM : public FrameU
 {
 public:
    FrameSNRM();
    explicit FrameSNRM(const std::string& value);
 
-   FrameSNRM& setAddressByte(Hex value);
-   FrameSNRM& setControlByte(Hex value);
-
-   Hexes build() const;
    FRAME_TYPE getType() const override;
    static FRAME_TYPE GET_TYPE;
 };

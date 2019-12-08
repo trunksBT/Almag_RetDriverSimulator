@@ -10,6 +10,7 @@ const Hexes CRC = { 0x13, 0x37 };
 enum BYTE_CONTROL : Hex
 {
     XID = 0xBF,
+    UA = 0x73,
     SNRM = 0x93,
     RETAP = 0xFE
 };

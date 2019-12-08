@@ -2,7 +2,7 @@
 
 #include <HDLC/HDLCFrameBodyInterpreter.hpp>
 #include <HDLC/FrameTypes/FrameI.hpp>
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/ConcreteFrames/FrameSNRM.hpp>
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
