@@ -12,8 +12,8 @@ public:
    FrameU& setControlByte(Hex value);
 
    Hexes build() const;
-   FRAME_TYPE getType() const override;
+   frameType::BYTE_CTRL getType() const override;
    static FRAME_TYPE GET_TYPE;
 };
 
-using FrameUPtr = std::unique_ptr<FrameU>;
+using FrameUPtr = std::shared_ptr<FrameU>;

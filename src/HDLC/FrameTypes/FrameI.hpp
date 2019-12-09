@@ -13,11 +13,11 @@ public:
    FrameI& setProcedureCode(Hex value);
 
    Hexes build() const;
-   FRAME_TYPE getType() const override;
-   static FRAME_TYPE GET_TYPE;
+   frameType::BYTE_CTRL getType() const override;
+   static frameType::BYTE_CTRL GET_TYPE;
 
 private:
    boost::optional<Hex> procedureCode_;
 };
 
-using FrameIPtr = std::unique_ptr<FrameI>;
+using FrameIPtr = std::shared_ptr<FrameI>;

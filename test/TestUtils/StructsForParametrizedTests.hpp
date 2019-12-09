@@ -16,7 +16,7 @@ struct ReceivedCommand_ExpectedFrameHexes
 
 struct ExpectedFrameType_ExpectedValue_ReceivedString
 {
-   const FRAME_TYPE expectedFrameType;
+   const frameType::BYTE_CTRL expectedFrameType;
    const Hexes expectedHexes;
    const std::string receivedString;
 };

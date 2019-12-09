@@ -5,7 +5,7 @@
 using namespace convert;
 using namespace printUtils;
 
-FRAME_TYPE FrameSNRM::GET_TYPE=FRAME_TYPE::SNRM;
+frameType::BYTE_CTRL FrameSNRM::GET_TYPE=frameType::BYTE_CTRL::SNRM;
 
 FrameSNRM::FrameSNRM()
    : HDLCFrameBody()
@@ -51,7 +51,7 @@ Hexes FrameSNRM::build() const
    return retVal;
 }
 
-FRAME_TYPE FrameSNRM::getType() const
+frameType::BYTE_CTRL FrameSNRM::getType() const
 {
-   return FRAME_TYPE::SNRM;
+   return frameType::BYTE_CTRL::SNRM;
 }

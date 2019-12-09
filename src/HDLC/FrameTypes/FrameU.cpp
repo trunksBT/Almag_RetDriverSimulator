@@ -51,7 +51,7 @@ Hexes FrameU::build() const
    return retVal;
 }
 
-FRAME_TYPE FrameU::getType() const
+frameType::FrameU::getType() const
 {
-   return FRAME_TYPE::U;
+   return frameType::BYTE_CTRL::U;
 }
