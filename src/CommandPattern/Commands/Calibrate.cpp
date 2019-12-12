@@ -1,6 +1,4 @@
 #include <CommandPattern/Commands/Calibrate.hpp>
-#include <HDLC/FrameTypes/FrameI.hpp>
-#include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>

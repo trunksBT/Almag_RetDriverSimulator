@@ -2,7 +2,7 @@
 
 #include <HDLC/HDLCFrameBodyInterpreter.hpp>
 #include <HDLC/FrameTypes/FrameI.hpp>
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/FrameTypes/FrameU.hpp>
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
@@ -45,7 +45,7 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
           retDeviceStr->get_FrameI_Calibrate()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
-          FrameSNRM::GET_TYPE,
+          FrameU::GET_TYPE,
           hdlcFrameBodyFactory->get_FrameU_SNRM_LinkEstablishment()->build(),
           retDeviceStr->get_FrameSNRM_LinkEstablishment()
        },
