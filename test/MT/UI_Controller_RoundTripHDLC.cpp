@@ -82,7 +82,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
       },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
-         HDLCFrame(hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()).build()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameU_SNRM_LinkEstablishment()).build()
       },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},

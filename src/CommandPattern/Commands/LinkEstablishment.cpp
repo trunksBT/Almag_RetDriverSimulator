@@ -26,7 +26,7 @@ void LinkEstablishment::execute()
 
 HDLCFrameBodyPtr LinkEstablishment::getFrameBody() const
 {
-   return hdlcFrameBodyFactory_->get_FrameSNRM_LinkEstablishment();
+   return hdlcFrameBodyFactory_->get_FrameU_SNRM_LinkEstablishment();
 }
 
 void LinkEstablishment::executeImpl()

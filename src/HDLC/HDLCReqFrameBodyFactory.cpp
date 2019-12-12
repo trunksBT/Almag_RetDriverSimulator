@@ -13,7 +13,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameI_Calibrate() const
    return std::make_shared<FrameI>(retFrame);
 }
 
-HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameSNRM_LinkEstablishment() const
+HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameU_SNRM_LinkEstablishment() const
 {
    const auto retFrame = FrameSNRM()
            .setAddressByte(0x03);

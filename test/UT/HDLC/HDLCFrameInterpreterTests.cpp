@@ -46,7 +46,7 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameSNRM::GET_TYPE,
-          hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()->build(),
+          hdlcFrameBodyFactory->get_FrameU_SNRM_LinkEstablishment()->build(),
           retDeviceStr->get_FrameSNRM_LinkEstablishment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
