@@ -8,7 +8,7 @@
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
-#include <HDLC/HDLCReqFrameBodyFactory.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
 using testing::Eq;
 
@@ -46,7 +46,7 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameU::GET_TYPE,
-          hdlcFrameBodyFactory->get_FrameU_SNRM_LinkEstablishment()->build(),
+          hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build(),
           retDeviceStr->get_FrameU_SNRM_LinkEstablishment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{

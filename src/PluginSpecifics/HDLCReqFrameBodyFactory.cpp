@@ -1,4 +1,4 @@
-#include "HDLCReqFrameBodyFactory.hpp"
+#include "PluginSpecifics/HDLCReqFrameBodyFactory.hpp"
 
 #include <HDLC/FrameTypes/FrameI.hpp>
 #include <HDLC/FrameTypes/FrameU.hpp>
@@ -13,7 +13,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameI_Calibrate() const
    return std::make_shared<FrameI>(retFrame);
 }
 
-HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameU_SNRM_LinkEstablishment() const
+HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameU_LinkEstablishment() const
 {
    const auto retFrame = FrameU()
            .setControlByte(frameU::BYTE_CONTROL::SNRM)

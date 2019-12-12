@@ -10,6 +10,11 @@ std::string SRetHDLCFrameBodyStrFactory::get_FrameU_SNRM_LinkEstablishment()
    return { "3 93 " };
 }
 
+std::string SRetHDLCFrameBodyStrFactory::get_FrameU_UA_LinkEstablishment()
+{
+   return { "3 73 " };
+}
+
 std::string SRetHDLCFrameBodyStrFactory::get_FrameXID_DummyScan()
 {
    return { "ff bf 81 f0 8 1 2 33 33 3 2 ff ff " };
