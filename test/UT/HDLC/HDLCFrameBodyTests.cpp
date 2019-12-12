@@ -37,7 +37,7 @@ TEST_F(HDLCFrameBodyTests, Transceive_L2_U_SNRM_LinkEstablishment)
 {
    const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameU_SNRM_LinkEstablishment();
    ASSERT_THAT(toString(hdlcFrameBody->build()),
-       StrEq(retDeviceStrFactory->get_FrameSNRM_LinkEstablishment()));
+       StrEq(retDeviceStrFactory->get_FrameU_SNRM_LinkEstablishment()));
 }
 
 TEST_F(HDLCFrameBodyTests, Transceive_L2_XID_3GPPReleaseID)
