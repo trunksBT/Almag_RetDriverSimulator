@@ -13,7 +13,7 @@ public:
 
    Hexes build() const;
    frameType::BYTE_CTRL getType() const override;
-   static FRAME_TYPE GET_TYPE;
+   static frameType::BYTE_CTRL GET_TYPE;
 };
 
 using FrameUPtr = std::shared_ptr<FrameU>;

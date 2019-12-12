@@ -15,7 +15,7 @@ enum BYTE_CONTROL : Hex
     RETAP = 0xFE
 };
 
-namespace FrameU
+namespace frameU
 {
 enum BYTE_CONTROL : Hex
 {

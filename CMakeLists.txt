@@ -103,6 +103,8 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
 )

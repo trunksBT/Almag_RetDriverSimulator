@@ -1,7 +1,7 @@
 #include "HDLCReqFrameBodyFactory.hpp"
 
 #include <HDLC/FrameTypes/FrameI.hpp>
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/FrameTypes/FrameU.hpp>
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 
@@ -15,9 +15,10 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameI_Calibrate() const
 
 HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameU_SNRM_LinkEstablishment() const
 {
-   const auto retFrame = FrameSNRM()
+   const auto retFrame = FrameU()
+           .setControlByte(frameU::BYTE_CONTROL::SNRM)
            .setAddressByte(0x03);
-   return std::make_shared<FrameSNRM>(retFrame);
+   return std::make_shared<FrameU>(retFrame);
 }
 
 HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_DummyScan() const
