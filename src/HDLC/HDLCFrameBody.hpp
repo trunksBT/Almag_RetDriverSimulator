@@ -14,8 +14,8 @@ public:
    explicit HDLCFrameBody(const std::string& frameBodyNotParsed);
    virtual ~HDLCFrameBody();
 
-   virtual Hexes build() const {};
-   virtual frameType::BYTE_CTRL getType() const {};
+   virtual Hexes build() const = 0;
+   virtual frameType::BYTE_CTRL getType() const = 0;
 
    boost::optional<Hex> address_;
    boost::optional<Hex> ctrl_;
