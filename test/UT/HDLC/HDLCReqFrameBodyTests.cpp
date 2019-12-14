@@ -7,6 +7,7 @@
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <Utils/Functions.hpp>
 
+using testing::Eq;
 using testing::StrEq;
 using namespace convert;
 
@@ -17,40 +18,39 @@ FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCReqFrameBodySt
 }
 
 class HDLCReqFrameBodyTests :
-   public ::testing::TestWithParam<BuiltFrame_ExpectedFrameStr>
+   public ::testing::TestWithParam<BuiltFrameStr_ExpectedFrameStr>
 {};
 
 TEST_P(HDLCReqFrameBodyTests, BuiltFrame)
 {
-   const auto hdlcFrameBody = GetParam().builtFrame;
-   ASSERT_THAT(toString(hdlcFrameBody->build()),StrEq(GetParam().expectedFrameStr));
+   ASSERT_THAT(GetParam().builtFrameStr,Eq(GetParam().expectedFrameStr));
 }
 
 INSTANTIATE_TEST_CASE_P(HDLCReqFrameBodyTests,
     HDLCReqFrameBodyTests,
     ::testing::Values(
-        BuiltFrame_ExpectedFrameStr{
-            hdlcFrameBodyFactory->get_FrameXID_DummyScan(),
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()),
             retDeviceStrFactory->get_FrameXID_DummyScan()
         },
-        BuiltFrame_ExpectedFrameStr{
-            hdlcFrameBodyFactory->get_FrameXID_AddressAssignment(),
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()),
             retDeviceStrFactory->get_FrameXID_AddressAssignment()
         },
-        BuiltFrame_ExpectedFrameStr{
-            hdlcFrameBodyFactory->get_FrameU_LinkEstablishment(),
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()),
             retDeviceStrFactory->get_FrameU_LinkEstablishment()
         },
-        BuiltFrame_ExpectedFrameStr{
-            hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId(),
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()),
             retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
         },
-        BuiltFrame_ExpectedFrameStr{
-            hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion(),
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build()),
             retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()
         },
-        BuiltFrame_ExpectedFrameStr{
-            hdlcFrameBodyFactory->get_FrameI_Calibrate(),
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()),
             retDeviceStrFactory->get_FrameI_Calibrate()
         }
     )

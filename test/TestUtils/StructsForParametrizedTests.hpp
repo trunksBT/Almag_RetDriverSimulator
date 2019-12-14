@@ -2,9 +2,9 @@
 
 #include <Utils/TypeAliases.hpp>
 
-struct BuiltFrame_ExpectedFrameStr
+struct BuiltFrameStr_ExpectedFrameStr
 {
-   const HDLCFrameBodyPtr builtFrame;
+   const std::string builtFrameStr;
    const std::string expectedFrameStr;
 };
 

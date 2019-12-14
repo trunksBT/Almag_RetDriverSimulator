@@ -12,7 +12,7 @@ std::string SRetHDLCRespFrameBodyStrFactory::get_FrameU_LinkEstablishment()
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_DummyScan()
 {
-   throw std::runtime_error("Not implemented yet");
+   throw std::runtime_error("Redundant interface feed");
 }
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_AddressAssignment()
