@@ -32,41 +32,26 @@ INSTANTIATE_TEST_CASE_P(HDLCReqFrameBodyTests,
         BuiltFrame_ExpectedFrameStr{
             hdlcFrameBodyFactory->get_FrameXID_DummyScan(),
             retDeviceStrFactory->get_FrameXID_DummyScan()
+        },
+        BuiltFrame_ExpectedFrameStr{
+            hdlcFrameBodyFactory->get_FrameXID_AddressAssignment(),
+            retDeviceStrFactory->get_FrameXID_AddressAssignment()
+        },
+        BuiltFrame_ExpectedFrameStr{
+            hdlcFrameBodyFactory->get_FrameU_LinkEstablishment(),
+            retDeviceStrFactory->get_FrameU_LinkEstablishment()
+        },
+        BuiltFrame_ExpectedFrameStr{
+            hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId(),
+            retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
+        },
+        BuiltFrame_ExpectedFrameStr{
+            hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion(),
+            retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()
+        },
+        BuiltFrame_ExpectedFrameStr{
+            hdlcFrameBodyFactory->get_FrameI_Calibrate(),
+            retDeviceStrFactory->get_FrameI_Calibrate()
         }
     )
 );
-
-//TEST_F(HDLCReqFrameBodyTests, L2_XID_AddressAssignment)
-//{
-//   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameXID_AddressAssignment();
-//   ASSERT_THAT(toString(hdlcFrameBody->build()),
-//       StrEq(retDeviceStrFactory->get_FrameXID_AddressAssignment()));
-//}
-//
-//TEST_F(HDLCReqFrameBodyTests, L2_U_SNRM_LinkEstablishment)
-//{
-//   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameU_LinkEstablishment();
-//   ASSERT_THAT(toString(hdlcFrameBody->build()),
-//       StrEq(retDeviceStrFactory->get_FrameU_LinkEstablishment()));
-//}
-//
-//TEST_F(HDLCReqFrameBodyTests, L2_XID_3GPPReleaseID)
-//{
-//   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId();
-//   ASSERT_THAT(toString(hdlcFrameBody->build()),
-//       StrEq(retDeviceStrFactory->get_FrameXID_3GPPReleaseId()));
-//}
-//
-//TEST_F(HDLCReqFrameBodyTests, L2_XID_AISGProtocolVersion)
-//{
-//   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion();
-//   ASSERT_THAT(toString(hdlcFrameBody->build()),
-//       StrEq(retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()));
-//}
-//
-//TEST_F(HDLCReqFrameBodyTests, L7_Calibrate)
-//{
-//   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameI_Calibrate();
-//   ASSERT_THAT(toString(hdlcFrameBody->build()),
-//       StrEq(retDeviceStrFactory->get_FrameI_Calibrate()));
-//}
