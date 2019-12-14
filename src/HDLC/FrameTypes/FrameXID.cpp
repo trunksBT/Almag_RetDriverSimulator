@@ -5,7 +5,7 @@
 using namespace convert;
 using namespace printUtils;
 
-FRAME_TYPE FrameXID::GET_TYPE=FRAME_TYPE::XID;
+frameType::BYTE_CTRL FrameXID::GET_TYPE=frameType::BYTE_CTRL::XID;
 
 FrameXID::FrameXID()
    : HDLCFrameBody()
@@ -118,7 +118,7 @@ Hexes FrameXID::build() const
    return retVal;
 }
 
-FRAME_TYPE FrameXID::getType() const
+frameType::BYTE_CTRL FrameXID::getType() const
 {
-   return FRAME_TYPE::XID;
+   return frameType::BYTE_CTRL::XID;
 }

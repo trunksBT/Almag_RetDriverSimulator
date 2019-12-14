@@ -3,9 +3,9 @@ message(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(UT
     ${PROJECT_SOURCE_DIR}/test/UT/DB/DBTests.cpp
-    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameBodyTests.cpp
+    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCReqFrameBodyTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameTests.cpp
-    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameInterpreterTests.cpp
+    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCReqFrameInterpreterTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/Utils/UserCommandParserTest.cpp
 )
 
@@ -20,6 +20,7 @@ add_executable(${PROJECT_TESTS_NAME}
     ${TESTUTILS_HDLC_FRAMESFACTORIES}
     ${EXTERNAL_LIBRARIES_UTILS}
     ${LOGGER}
+    ${PLUGIN_SPECIFICS}
 )
 
 add_dependencies(${PROJECT_TESTS_NAME} gmock_main)

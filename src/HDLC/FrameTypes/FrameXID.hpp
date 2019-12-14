@@ -16,8 +16,8 @@ public:
    FrameXID& addParameters(HDLCParameters value);
 
    Hexes build() const;
-   FRAME_TYPE getType() const override;
-   static FRAME_TYPE GET_TYPE;
+   frameType::BYTE_CTRL getType() const override;
+   static frameType::BYTE_CTRL GET_TYPE;
 };
 
 using FrameXIDPtr = std::shared_ptr<FrameXID>;

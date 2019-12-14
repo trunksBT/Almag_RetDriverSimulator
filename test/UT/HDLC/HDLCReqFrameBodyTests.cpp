@@ -1,8 +1,8 @@
 #include <gmock/gmock.h>
 
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
-#include <HDLC/HDLCReqFrameBodyFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCReqFrameBodyStrFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 
 #include <Utils/Functions.hpp>
@@ -12,7 +12,7 @@ using namespace convert;
 
 namespace
 {
-FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCFrameBodyStrFactory>();
+FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCReqFrameBodyStrFactory>();
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 
@@ -33,11 +33,11 @@ TEST_F(HDLCFrameBodyTests, Transceive_L2_XID_AddressAssignment)
        StrEq(retDeviceStrFactory->get_FrameXID_AddressAssignment()));
 }
 
-TEST_F(HDLCFrameBodyTests, Transceive_L2_SNRM_LinkEstablishment)
+TEST_F(HDLCFrameBodyTests, Transceive_L2_U_SNRM_LinkEstablishment)
 {
-   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment();
+   const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameU_LinkEstablishment();
    ASSERT_THAT(toString(hdlcFrameBody->build()),
-       StrEq(retDeviceStrFactory->get_FrameSNRM_LinkEstablishment()));
+       StrEq(retDeviceStrFactory->get_FrameU_SNRM_LinkEstablishment()));
 }
 
 TEST_F(HDLCFrameBodyTests, Transceive_L2_XID_3GPPReleaseID)

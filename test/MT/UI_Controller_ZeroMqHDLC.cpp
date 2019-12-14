@@ -3,7 +3,7 @@
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 #include <CommandPattern/AlmagController.hpp>
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
-#include <HDLC/HDLCReqFrameBodyFactory.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
@@ -77,7 +77,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
       },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-         hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()->build()
+         hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()
       },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},

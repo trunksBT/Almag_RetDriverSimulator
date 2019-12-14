@@ -1,6 +1,6 @@
 #include "HDLCCommand.hpp"
 #include <Utils/Logger.hpp>
-#include <HDLC/HDLCReqFrameBodyFactory.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
 namespace
 {

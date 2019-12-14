@@ -1,6 +1,4 @@
 #include "CommandPattern/Commands/ThreeGPPReleaseID.hpp"
-#include <HDLC/FrameTypes/FrameXID.hpp>
-#include <HDLC/HDLCFrameBody.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>

@@ -1,37 +1,37 @@
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/FrameTypes/FrameU.hpp>
 #include <Utils/PrintUtils.hpp>
 #include <Utils/Functions.hpp>
 
 using namespace convert;
 using namespace printUtils;
 
-FRAME_TYPE FrameSNRM::GET_TYPE=FRAME_TYPE::SNRM;
+frameType::BYTE_CTRL FrameU::GET_TYPE=frameType::BYTE_CTRL::U;
 
-FrameSNRM::FrameSNRM()
+FrameU::FrameU()
    : HDLCFrameBody()
 {
-   setControlByte(BYTE_CONTROL::SNRM);
+   LOG(trace);
 }
 
-FrameSNRM::FrameSNRM(const std::string& value)
+FrameU::FrameU(const std::string& value)
    : HDLCFrameBody(value)
 {
-   setControlByte(BYTE_CONTROL::SNRM);
+   LOG(trace);
 }
 
-FrameSNRM& FrameSNRM::setAddressByte(Hex value)
+FrameU& FrameU::setAddressByte(Hex value)
 {
    address_ = value;
    return *this;
 }
 
-FrameSNRM& FrameSNRM::setControlByte(Hex value)
+FrameU& FrameU::setControlByte(Hex value)
 {
    ctrl_ = value;
    return *this;
 }
 
-Hexes FrameSNRM::build() const
+Hexes FrameU::build() const
 {
    Hexes retVal;
    LOG(trace);
@@ -51,7 +51,7 @@ Hexes FrameSNRM::build() const
    return retVal;
 }
 
-FRAME_TYPE FrameSNRM::getType() const
+frameType::BYTE_CTRL FrameU::getType() const
 {
-   return FRAME_TYPE::SNRM;
+   return frameType::BYTE_CTRL::U;
 }

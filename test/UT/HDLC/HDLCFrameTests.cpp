@@ -2,7 +2,7 @@
 
 #include <HDLC/HDLCFrame.hpp>
 #include <HDLC/MessagesHelpers.hpp>
-#include <HDLC/HDLCReqFrameBodyFactory.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
 #include <Utils/Functions.hpp>
 

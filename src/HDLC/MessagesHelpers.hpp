@@ -10,9 +10,17 @@ const Hexes CRC = { 0x13, 0x37 };
 enum BYTE_CONTROL : Hex
 {
     XID = 0xBF,
-    SNRM = 0x93,
     RETAP = 0xFE
 };
+
+namespace frameU
+{
+enum BYTE_CONTROL : Hex
+{
+   UA = 0x73,
+   SNRM = 0x93,
+};
+}
 
 enum FI : Hex
 {

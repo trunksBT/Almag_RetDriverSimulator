@@ -97,12 +97,12 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCReqFrameBodyFactory.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCReqFrameBodyFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameSNRM.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
 )
@@ -134,6 +134,8 @@ set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.hpp
 )
 
 set(USER_INTERFACE

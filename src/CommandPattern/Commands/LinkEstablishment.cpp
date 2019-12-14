@@ -1,5 +1,4 @@
 #include "CommandPattern/Commands/LinkEstablishment.hpp"
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
@@ -26,7 +25,7 @@ void LinkEstablishment::execute()
 
 HDLCFrameBodyPtr LinkEstablishment::getFrameBody() const
 {
-   return hdlcFrameBodyFactory_->get_FrameSNRM_LinkEstablishment();
+   return hdlcFrameBodyFactory_->get_FrameU_LinkEstablishment();
 }
 
 void LinkEstablishment::executeImpl()

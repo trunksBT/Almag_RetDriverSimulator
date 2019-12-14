@@ -1,7 +1,7 @@
 #include "HDLCFrameBodyInterpreter.hpp"
 #include <sstream>
 #include <HDLC/FrameTypes/FrameI.hpp>
-#include <HDLC/FrameTypes/FrameSNRM.hpp>
+#include <HDLC/FrameTypes/FrameU.hpp>
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <Utils/Logger.hpp>
@@ -91,12 +91,12 @@ HDLCFrameBodyPtr interpretBodyFrameI(const Strings& receivedPlainFrame)
    return std::make_shared<FrameI>(retFrame);
 }
 
-HDLCFrameBodyPtr interpretBodyFrameSNRM(const Strings& receivedPlainFrame)
+HDLCFrameBodyPtr interpretBodyFrameU(const Strings& receivedPlainFrame)
 {
-   const auto retFrame = FrameSNRM()
+   const auto retFrame = FrameU()
        .setAddressByte(toHexInt(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
        .setControlByte(toHexInt(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)));
-   return std::make_shared<FrameSNRM>(retFrame);
+   return std::make_shared<FrameU>(retFrame);
 }
 
 HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
@@ -122,6 +122,12 @@ HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
    return std::make_shared<FrameXID>(retFrame);
 }
 
+bool isFrameU(const HexInt& ctrlByte)
+{
+   return frameU::BYTE_CONTROL::SNRM == ctrlByte
+       || frameU::BYTE_CONTROL::UA == ctrlByte;
+}
+
 }  // namespace
 
 HDLCFrameBodyInterpreter::HDLCFrameBodyInterpreter()
@@ -140,17 +146,17 @@ HDLCFrameBodyPtr HDLCFrameBodyInterpreter::apply(const std::string& receivedPlai
    LOG(info) << "Input: " << toString(lexedInput);
    HexInt ctrlByte = toHexInt(lexedInput.at(IDX_OF_CTRL_BYTE));
 
-   if (BYTE_CONTROL::RETAP == ctrlByte)
-   {
-      return interpretBodyFrameI(lexedInput);
-   }
-   else if (BYTE_CONTROL::SNRM == ctrlByte)
-   {
-      return interpretBodyFrameSNRM(lexedInput);
-   }
-   else if (BYTE_CONTROL::XID == ctrlByte)
+   if (BYTE_CONTROL::XID == ctrlByte)
    {
       return interpretBodyFrameXID(lexedInput);
+   }
+   else if (isFrameU(ctrlByte))
+   {
+      return interpretBodyFrameU(lexedInput);
+   }
+   else if (BYTE_CONTROL::RETAP == ctrlByte)
+   {
+      return interpretBodyFrameI(lexedInput);
    }
    
    LOG(error) << "Frame of unknown type";

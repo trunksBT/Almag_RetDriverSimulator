@@ -10,11 +10,10 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
-#include <HDLC/HDLCReqFrameBodyFactory.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
 using testing::Eq;
 using namespace hardcodes::IOPaths;
@@ -82,7 +81,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
       },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
-         HDLCFrame(hdlcFrameBodyFactory->get_FrameSNRM_LinkEstablishment()).build()
+         HDLCFrame(hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()).build()
       },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
