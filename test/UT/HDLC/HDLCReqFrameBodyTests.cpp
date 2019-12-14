@@ -8,7 +8,6 @@
 #include <Utils/Functions.hpp>
 
 using testing::Eq;
-using testing::StrEq;
 using namespace convert;
 
 namespace
