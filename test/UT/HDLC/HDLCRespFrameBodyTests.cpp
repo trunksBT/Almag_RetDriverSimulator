@@ -27,10 +27,10 @@ TEST_P(HDLCRespFrameBodyTests, BuiltFrame)
 INSTANTIATE_TEST_CASE_P(HDLCRespFrameBodyTests,
     HDLCRespFrameBodyTests,
     ::testing::Values(
-//         BuiltFrameStr_ExpectedFrameStr{
-//            toString(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()),
-//            retDeviceStrFactory->get_FrameXID_AddressAssignment()
-//        },
+         BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()),
+            retDeviceStrFactory->get_FrameXID_AddressAssignment()
+        },
         BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()),
             retDeviceStrFactory->get_FrameU_LinkEstablishment()

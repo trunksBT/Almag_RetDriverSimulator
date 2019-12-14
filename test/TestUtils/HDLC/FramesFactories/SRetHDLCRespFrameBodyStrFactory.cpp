@@ -17,7 +17,9 @@ std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_DummyScan()
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_AddressAssignment()
 {
-   throw std::runtime_error("Not implemented yet");
+   return { "3 bf 81 f0 12 "
+            "1 9 4e 4b 34 36 35 30 30 30 30 "
+            "4 1 1 6 2 4e 4b "};
 }
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
