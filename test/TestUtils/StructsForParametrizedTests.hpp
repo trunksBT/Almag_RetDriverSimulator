@@ -2,6 +2,12 @@
 
 #include <Utils/TypeAliases.hpp>
 
+struct BuiltFrame_ExpectedFrameStr
+{
+   const HDLCFrameBodyPtr builtFrame;
+   const std::string expectedFrameStr;
+};
+
 struct CommandsToExpectedFrame
 {
    const StringsMatrix inCommands;
