@@ -4,6 +4,7 @@
 
 class HDLCRespFrameBodyFactory : public IHDLCFrameBodyFactory
 {
+public:
    HDLCFrameBodyPtr get_FrameI_Calibrate() const override;
    HDLCFrameBodyPtr get_FrameU_LinkEstablishment() const override;
    HDLCFrameBodyPtr get_FrameXID_DummyScan() const override;

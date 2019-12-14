@@ -47,7 +47,7 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameU::GET_TYPE,
           hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build(),
-          retDeviceStr->get_FrameU_SNRM_LinkEstablishment()
+          retDeviceStr->get_FrameU_LinkEstablishment()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
