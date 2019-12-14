@@ -24,7 +24,7 @@ std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_AddressAssignment()
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
 {
-   throw std::runtime_error("Not implemented yet");
+   return { "3 bf 81 f0 3 5 1 8 " };
 }
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()

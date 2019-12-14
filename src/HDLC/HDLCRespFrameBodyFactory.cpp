@@ -50,7 +50,17 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AddressAssignment() cons
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_3GPPReleaseId() const
 {
-   throw std::runtime_error("Not implemented yet");
+   const auto retFrame = FrameXID()
+           .setAddressByte(0x03)
+           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+           .setGroupLengthByte(0x03)
+           .addParameters(HDLCParameters::build(
+                   XID_PARAMS_ID::THREEGPP_RELEASE_ID,
+                   0x01,
+                   Hexes({ PV::THREEGPP_RELEASE_ID_VAL_8 })
+           ));
+   return std::make_shared<FrameXID>(retFrame);
 }
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AISGProtocolVersion() const

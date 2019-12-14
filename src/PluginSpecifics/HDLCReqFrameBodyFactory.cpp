@@ -75,7 +75,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_3GPPReleaseId() const
            .addParameters(HDLCParameters::build(
                    XID_PARAMS_ID::THREEGPP_RELEASE_ID,
                    0x01,
-                   Hexes({ PV::THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE })
+                   Hexes({ PV::THREEGPP_RELEASE_ID_VAL_8 })
            ));
    return std::make_shared<FrameXID>(retFrame);
 }

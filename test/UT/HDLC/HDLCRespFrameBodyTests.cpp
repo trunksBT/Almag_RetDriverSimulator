@@ -35,10 +35,10 @@ INSTANTIATE_TEST_CASE_P(HDLCRespFrameBodyTests,
             toString(hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()),
             retDeviceStrFactory->get_FrameU_LinkEstablishment()
         },
-//        BuiltFrameStr_ExpectedFrameStr{
-//            toString(hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()),
-//            retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
-//        },
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()),
+            retDeviceStrFactory->get_FrameXID_3GPPReleaseId()
+        },
         BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build()),
             retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()

@@ -34,7 +34,7 @@ enum GI : Hex
 
 enum PV : Hex
 {
-    THREEGPP_RELEASE_ID_HIGHEST_AVAILABLE = 0x0A,
+    THREEGPP_RELEASE_ID_VAL_8 = 0x08,
     AISG_2_0= 0x02
 };
 
