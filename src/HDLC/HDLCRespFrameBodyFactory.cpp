@@ -55,5 +55,15 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_3GPPReleaseId() const
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AISGProtocolVersion() const
 {
-   throw std::runtime_error("Not implemented yet");
+   const auto retFrame = FrameXID()
+           .setAddressByte(0x03)
+           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+           .setGroupLengthByte(0x03)
+           .addParameters(HDLCParameters::build(
+                   XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
+                   0x01,
+                   Hexes({ PV::AISG_2_0 })
+           ));
+   return std::make_shared<FrameXID>(retFrame);
 }
