@@ -23,7 +23,7 @@ std::string SRetHDLCReqFrameBodyStrFactory::get_FrameXID_AddressAssignment()
 
 std::string SRetHDLCReqFrameBodyStrFactory::get_FrameXID_3GPPReleaseId()
 {
-   return { "3 bf 81 f0 3 5 1 a " };
+   return { "3 bf 81 f0 3 5 1 8 " };
 }
 
 std::string SRetHDLCReqFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()
