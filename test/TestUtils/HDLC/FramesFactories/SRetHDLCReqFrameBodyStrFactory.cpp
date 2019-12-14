@@ -5,14 +5,9 @@ std::string SRetHDLCReqFrameBodyStrFactory::get_FrameI_Calibrate()
    return { "3 fe 31 " };
 }
 
-std::string SRetHDLCReqFrameBodyStrFactory::get_FrameU_SNRM_LinkEstablishment()
+std::string SRetHDLCReqFrameBodyStrFactory::get_FrameU_LinkEstablishment()
 {
    return { "3 93 " };
-}
-
-std::string SRetHDLCReqFrameBodyStrFactory::get_FrameU_UA_LinkEstablishment()
-{
-   return { "3 73 " };
 }
 
 std::string SRetHDLCReqFrameBodyStrFactory::get_FrameXID_DummyScan()

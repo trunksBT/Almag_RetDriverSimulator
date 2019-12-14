@@ -11,7 +11,6 @@ public:
    virtual HDLCFrameBodyPtr get_FrameXID_AddressAssignment() const = 0;
    virtual HDLCFrameBodyPtr get_FrameXID_3GPPReleaseId() const = 0;
    virtual HDLCFrameBodyPtr get_FrameXID_AISGProtocolVersion() const = 0;
-
    virtual ~IHDLCFrameBodyFactory() = default;
 };
 using IHDLCFrameBodyFactoryPtr = std::shared_ptr<IHDLCFrameBodyFactory>;
