@@ -6,7 +6,7 @@
 #include <HDLC/FrameTypes/FrameXID.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCReqFrameBodyStrFactory.hpp>
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
@@ -15,7 +15,7 @@ using testing::Eq;
 namespace
 {
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
-FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetHDLCFrameBodyStrFactory>();
+FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetHDLCReqFrameBodyStrFactory>();
 }
 
 

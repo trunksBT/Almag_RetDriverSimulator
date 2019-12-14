@@ -2,7 +2,7 @@
 
 #include <CommandPattern/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
-#include <TestUtils/HDLC/FramesFactories/SRetHDLCFrameBodyStrFactory.hpp>
+#include <TestUtils/HDLC/FramesFactories/SRetHDLCReqFrameBodyStrFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 
 #include <Utils/Functions.hpp>
@@ -12,7 +12,7 @@ using namespace convert;
 
 namespace
 {
-FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCFrameBodyStrFactory>();
+FrameStrFactoryPtr retDeviceStrFactory = std::make_shared<SRetHDLCReqFrameBodyStrFactory>();
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 
