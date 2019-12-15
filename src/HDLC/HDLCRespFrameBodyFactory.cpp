@@ -7,7 +7,13 @@
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameI_Calibrate() const
 {
-   throw std::runtime_error("Not implemented yet");
+   const auto retFrame = FrameI()
+           .setAddressByte(0x03)
+           .setControlByte(frameI::BYTE_CONTROL::CALIBRATE_RES)
+           .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET)
+           .setParameterLength(Hexes{0x01, ZERO})
+           .setParameterValues(Hexes{ZERO});
+   return std::make_shared<FrameI>(retFrame);
 }
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameU_LinkEstablishment() const

@@ -2,7 +2,7 @@
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameI_Calibrate()
 {
-   throw std::runtime_error("Not implemented yet");
+   return { "3 30 31 1 0 0 " };
 }
 
 std::string SRetHDLCRespFrameBodyStrFactory::get_FrameU_LinkEstablishment()
