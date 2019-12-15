@@ -11,6 +11,8 @@ public:
    FrameI& setAddressByte(Hex value);
    FrameI& setControlByte(Hex value);
    FrameI& setProcedureCode(Hex value);
+   FrameI& setParameterLength(Hexes values);
+   FrameI& setParameterValues(Hexes values);
 
    Hexes build() const;
    frameType::BYTE_CTRL getType() const override;
@@ -18,6 +20,8 @@ public:
 
 private:
    boost::optional<Hex> procedureCode_;
+   Hexes parLength_;
+   Hexes parValues_;
 };
 
 using FrameIPtr = std::shared_ptr<FrameI>;

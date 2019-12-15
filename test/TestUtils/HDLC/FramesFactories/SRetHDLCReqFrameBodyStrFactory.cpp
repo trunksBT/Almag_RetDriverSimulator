@@ -2,7 +2,7 @@
 
 std::string SRetHDLCReqFrameBodyStrFactory::get_FrameI_Calibrate()
 {
-   return { "3 fe 31 " };
+   return {"3 10 31 0 0 " };
 }
 
 std::string SRetHDLCReqFrameBodyStrFactory::get_FrameU_LinkEstablishment()

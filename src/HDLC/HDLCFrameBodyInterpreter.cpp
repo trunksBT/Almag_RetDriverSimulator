@@ -18,6 +18,9 @@ constexpr const char* SPACE = " ";
 constexpr unsigned IDX_OF_ADDR_BYTE = 0;
 constexpr unsigned IDX_OF_CTRL_BYTE = 1;
 constexpr unsigned IDX_OF_PROC_BYTE = 2;
+constexpr unsigned IDX_OF_LENGTH_BYTE_FST_BIG_END = 3;
+constexpr unsigned IDX_OF_LENGTH_BYTE_SND_BIG_END = 4;
+constexpr unsigned IDX_OF_VAL_BYTE = 5;
 constexpr unsigned IDX_OF_FORMAT_ID_BYTE = 2;
 constexpr unsigned IDX_OF_GROUP_ID_BYTE = 3;
 constexpr unsigned IDX_OF_GROUP_LENGTH_BYTE = 4;
@@ -27,6 +30,7 @@ constexpr unsigned IDX_OF_SUBGROUP_LENGTH_BYTE = 1;
 constexpr unsigned IDX_OF_SUBGROUP_VALUES_START = 2;
 constexpr unsigned OFFSET_FOR_IDX_OF_SUBGROUP_VALUES = 2;
 constexpr int HEX_BASE = 16;
+const std::string ZERO_STRING = "0";
 
 HexInt toHexInt(const std::string receivedByteStr)
 {
@@ -84,10 +88,22 @@ int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, 
 
 HDLCFrameBodyPtr interpretBodyFrameI(const Strings& receivedPlainFrame)
 {
-   const auto retFrame = FrameI()
+   auto retFrame = FrameI()
        .setAddressByte(toHexInt(receivedPlainFrame.at(IDX_OF_ADDR_BYTE)))
        .setControlByte(toHexInt(receivedPlainFrame.at(IDX_OF_CTRL_BYTE)))
-       .setProcedureCode(toHexInt(receivedPlainFrame.at(IDX_OF_PROC_BYTE)));
+       .setProcedureCode(toHexInt(receivedPlainFrame.at(IDX_OF_PROC_BYTE)))
+       .setParameterLength(toHexes(toHexesInt({
+           receivedPlainFrame.at(IDX_OF_LENGTH_BYTE_FST_BIG_END),
+           receivedPlainFrame.at(IDX_OF_LENGTH_BYTE_SND_BIG_END)
+       })));
+
+   if (ZERO_STRING != receivedPlainFrame.at(IDX_OF_LENGTH_BYTE_FST_BIG_END))
+   {
+      retFrame.setParameterValues(toHexes(toHexesInt({
+          receivedPlainFrame.at(IDX_OF_VAL_BYTE)
+      })));
+   }
+
    return std::make_shared<FrameI>(retFrame);
 }
 
@@ -128,6 +144,12 @@ bool isFrameU(const HexInt& ctrlByte)
        || frameU::BYTE_CONTROL::UA == ctrlByte;
 }
 
+bool isFrameI(const HexInt& ctrlByte)
+{
+   return frameI::BYTE_CONTROL::CALIBRATE_REQ == ctrlByte
+       || frameI::BYTE_CONTROL::CALIBRATE_RES == ctrlByte;
+}
+
 }  // namespace
 
 HDLCFrameBodyInterpreter::HDLCFrameBodyInterpreter()
@@ -154,7 +176,7 @@ HDLCFrameBodyPtr HDLCFrameBodyInterpreter::apply(const std::string& receivedPlai
    {
       return interpretBodyFrameU(lexedInput);
    }
-   else if (BYTE_CONTROL::RETAP == ctrlByte)
+   else if (isFrameI(ctrlByte))
    {
       return interpretBodyFrameI(lexedInput);
    }

@@ -35,6 +35,18 @@ FrameI& FrameI::setProcedureCode(Hex value)
    return *this;
 }
 
+FrameI& FrameI::setParameterLength(Hexes values)
+{
+   parLength_ = values;
+   return *this;
+}
+
+FrameI& FrameI::setParameterValues(Hexes values)
+{
+   parValues_ = values;
+   return *this;
+}
+
 Hexes FrameI::build() const
 {
    Hexes retVal;
@@ -63,6 +75,22 @@ Hexes FrameI::build() const
    }
    retVal.push_back(*procedureCode_);
    printHex("PROC: ", *procedureCode_);
+
+   for (const auto& it : parLength_)
+   {
+      retVal.push_back(it);
+   }
+   printFrame("PAR LENGTH: ", parLength_);
+
+   if (not parValues_.empty())
+   {
+      for (const auto &it : parValues_)
+      {
+         retVal.push_back(it);
+      }
+
+      printFrame("PAR VALUES: ", parValues_);
+   }
 
    LOG(info) << "HDLC': " << toString(retVal);
    return retVal;
