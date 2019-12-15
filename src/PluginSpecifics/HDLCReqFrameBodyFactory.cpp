@@ -9,7 +9,9 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameI_Calibrate() const
 {
    const auto retFrame = FrameI()
            .setAddressByte(0x03)
-           .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET);
+           .setControlByte(0x10)
+           .setProcedureCode(PROCEDURE_CODE::CALIBRATE_SRET)
+           .setParameterLength(Hexes{ZERO, ZERO});
    return std::make_shared<FrameI>(retFrame);
 }
 

@@ -22,6 +22,15 @@ enum BYTE_CONTROL : Hex
 };
 }
 
+namespace frameI
+{
+enum BYTE_CONTROL : Hex
+{
+   CALIBRATE_REQ = 0x10,
+   CALIBRATE_RES = 0x30
+};
+}
+
 enum FI : Hex
 {
     ADDR_ASSIGNMENT = 0x81
