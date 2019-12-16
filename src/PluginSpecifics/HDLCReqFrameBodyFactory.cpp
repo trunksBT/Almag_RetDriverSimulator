@@ -25,7 +25,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameU_LinkEstablishment() const
 
 HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_DummyScan() const
 {
-   auto retFrame = FrameXID()
+   const auto retFrame = FrameXID()
            .setAddressByte(ADDR_ALLSTATIONS)
            .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
            .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
@@ -38,6 +38,24 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_DummyScan() const
                    XID_PARAMS_ID::BIT_MASK,
                    0x02,
                    Hexes{{ 0xFF, 0xFF }}));
+   return std::make_shared<FrameXID>(retFrame);
+}
+
+HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_DeviceScan() const
+{
+   const auto retFrame = FrameXID()
+           .setAddressByte(ADDR_ALLSTATIONS)
+           .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
+           .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
+           .setGroupLengthByte(0x08)
+           .addParameters(HDLCParameters::build(
+                   XID_PARAMS_ID::UNIQUE_ID,
+                   0x02,
+                   Hexes({ 0x00, 0x00 })))
+           .addParameters(HDLCParameters::build(
+                   XID_PARAMS_ID::BIT_MASK,
+                   0x02,
+                   Hexes{{ 0x00, 0x00 }}));
    return std::make_shared<FrameXID>(retFrame);
 }
 
@@ -62,8 +80,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_AddressAssignment() const
            .addParameters(HDLCParameters::build(
                    XID_PARAMS_ID::DEVICE_TYPE,
                    0x01,
-                   Hexes{{ DEVICE_TYPE::SRET }}
-           ));
+                   Hexes{{ DEVICE_TYPE::SRET }}));
    return std::make_shared<FrameXID>(retFrame);
 }
 
@@ -77,8 +94,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_3GPPReleaseId() const
            .addParameters(HDLCParameters::build(
                    XID_PARAMS_ID::THREEGPP_RELEASE_ID,
                    0x01,
-                   Hexes({ PV::THREEGPP_RELEASE_ID_VAL_8 })
-           ));
+                   Hexes({ PV::THREEGPP_RELEASE_ID_VAL_8 })));
    return std::make_shared<FrameXID>(retFrame);
 }
 
@@ -92,8 +108,7 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_AISGProtocolVersion() con
            .addParameters(HDLCParameters::build(
                    XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
                    0x01,
-                   Hexes({ PV::AISG_2_0 })
-           ));
+                   Hexes({ PV::AISG_2_0 })));
    return std::make_shared<FrameXID>(retFrame);
 }
 
@@ -122,7 +137,6 @@ HDLCFrameBodyPtr HDLCReqFrameBodyFactory::get_FrameXID_HDLCParameters() const
            .addParameters(HDLCParameters::build(
                    PI::WINDOW_SIZE_RECEIVE,
                    PL::WINDOW_SIZE,
-                   Hexes({ 0x01 })
-           ));
+                   Hexes({ 0x01 })));
    return std::make_shared<FrameXID>(retFrame);
 }

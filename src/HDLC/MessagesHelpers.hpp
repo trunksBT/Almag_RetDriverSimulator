@@ -5,6 +5,7 @@
 const Hex START_STOP_FLAG = 0x7E;
 const Hex ZERO = 0x00;
 const Hex ADDR_ALLSTATIONS = 0xFF;
+const Hex NO_ADDRESS = 0x00;
 const Hexes CRC = { 0x13, 0x37 };
 
 enum BYTE_CONTROL : Hex
