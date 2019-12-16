@@ -52,12 +52,20 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
          multiplyString(NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS, L1::DUMMY_SCAN + DELIMITER)
       },
       CommandsToExpectedFrame{
+         {{ L2::DEVICE_SCAN, BUFFER_TO_SEND_VAL_1 }},
+         L2::DEVICE_SCAN + DELIMITER
+      },
+      CommandsToExpectedFrame{
 	      {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
          L2::ADDRESS_ASSIGNMENT + DELIMITER
       },
       CommandsToExpectedFrame{
 	      {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
          L2::LINK_ESTABLISHMENT + DELIMITER
+      },
+      CommandsToExpectedFrame{
+         {{ L2::HDLC_PARAMETERS, BUFFER_TO_SEND_VAL_1 }},
+         L2::HDLC_PARAMETERS + DELIMITER
       },
       CommandsToExpectedFrame{
 	      {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},

@@ -19,6 +19,8 @@ RoundTripHDLCCommunicatorStub::~RoundTripHDLCCommunicatorStub()
 bool RoundTripHDLCCommunicatorStub::send(const std::string &address, HDLCFrameBodyPtr frame)
 {
    hdlcFrameBody_ = frame;
+   const std::string sentMessage = toString(hdlcFrameBody_->build());
+   LOG(info) << "Sending on " << address << " " << sentMessage;
    return true;
 }
 

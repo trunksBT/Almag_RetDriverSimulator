@@ -43,7 +43,7 @@ FrameXID& FrameXID::setGroupLengthByte(Hex value)
    return *this;
 }
 
-FrameXID& FrameXID::addParameters(HDLCParameters value)
+FrameXID& FrameXID::addParameters(HDLCParametersValues value)
 {
    parameters_.emplace_back(value);
    return *this;

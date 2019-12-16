@@ -36,21 +36,21 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_DeviceScan() const
            .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
            .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
            .setGroupLengthByte(0x15)
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::UNIQUE_ID,
                    0x09,
                    Hexes{{
                                  0x4E, 0x4B, 0x34, 0x36, 0x35,
                                  0x30, 0x30, 0x30, 0x30 }}))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::DEVICE_TYPE,
                    0x01,
                    Hexes{{ DEVICE_TYPE::SRET }}))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::VENDOR_CODE,
                    0x02,
                    Hexes{{ 0x4E, 0x4B }}))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
                    0x01,
                    Hexes{{ 0x02 }}));
@@ -64,17 +64,17 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AddressAssignment() cons
            .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
            .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
            .setGroupLengthByte(0x12)
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::UNIQUE_ID,
                    0x09,
                    Hexes({0x4E, 0x4B, 0x34, 0x36, 0x35, 0x30, 0x30 ,0x30 ,0x30}))
                    )
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::DEVICE_TYPE,
                    0x01,
                    Hexes{{ DEVICE_TYPE::SRET }}
            ))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::VENDOR_CODE,
                    0x02,
                    Hexes{{ 0x4E, 0x4B }}
@@ -89,7 +89,7 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_3GPPReleaseId() const
            .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
            .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
            .setGroupLengthByte(0x03)
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::THREEGPP_RELEASE_ID,
                    0x01,
                    Hexes({ PV::THREEGPP_RELEASE_ID_VAL_8 })
@@ -104,7 +104,7 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AISGProtocolVersion() co
            .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
            .setGroupIdentifierByte(GI::ADDRESS_ASSIGNMENT)
            .setGroupLengthByte(0x03)
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    XID_PARAMS_ID::AISG_PROTOCOL_VERSION,
                    0x01,
                    Hexes({ PV::AISG_2_0 })
@@ -119,22 +119,22 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_HDLCParameters() const
            .setFormatIdentifierByte(FI::FI_HDLC_PARAMETERS)
            .setGroupIdentifierByte(GI::GI_HDLC_PARAMETERS)
            .setGroupLengthByte(0x12)
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    PI::MAX_INF_FIELD_LEN_TRANSMIT,
                    PL::MAX_INF_FIELD_LEN,
                    Hexes({ 0x00, 0x00, 0x02, 0x50 })
            ))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    PI::MAX_INF_FIELD_LEN_RECEIVE,
                    PL::MAX_INF_FIELD_LEN,
                    Hexes({ 0x00, 0x00, 0x02, 0x50 })
            ))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    PI::WINDOW_SIZE_TRANSMIT,
                    PL::WINDOW_SIZE,
                    Hexes({ 0x01 })
            ))
-           .addParameters(HDLCParameters::build(
+           .addParameters(HDLCParametersValues::build(
                    PI::WINDOW_SIZE_RECEIVE,
                    PL::WINDOW_SIZE,
                    Hexes({ 0x01 })

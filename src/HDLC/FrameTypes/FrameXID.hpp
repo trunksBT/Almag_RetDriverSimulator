@@ -12,7 +12,7 @@ public:
    FrameXID& setFormatIdentifierByte(Hex value);
    FrameXID& setGroupIdentifierByte(Hex value);
    FrameXID& setGroupLengthByte(Hex value);
-   FrameXID& addParameters(HDLCParameters value);
+   FrameXID& addParameters(HDLCParametersValues value);
 
    Hexes build() const;
    frameType::BYTE_CTRL getType() const override;

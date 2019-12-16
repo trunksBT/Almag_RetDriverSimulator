@@ -2,11 +2,11 @@
 
 #include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class AddressAssignment : public HDLCCommand
+class DeviceScan : public HDLCCommand
 {
 public:
-   AddressAssignment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
-   virtual ~AddressAssignment() = default;
+   DeviceScan(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
+   virtual ~DeviceScan() = default;
 
    virtual void execute() override;
    virtual std::string handleResponse() override;

@@ -69,6 +69,10 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DeviceScan.cpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DeviceScan.hpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCParameters.cpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCParameters.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.cpp
@@ -88,8 +92,8 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParameters.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParameters.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp

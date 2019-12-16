@@ -2,11 +2,11 @@
 
 #include <CommandPattern/Commands/HDLCCommand.hpp>
 
-class AddressAssignment : public HDLCCommand
+class HDLCParameters : public HDLCCommand
 {
 public:
-   AddressAssignment(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
-   virtual ~AddressAssignment() = default;
+   HDLCParameters(IHDLCCommunicatorPtr hdlcCommunicator, Strings userInput);
+   virtual ~HDLCParameters() = default;
 
    virtual void execute() override;
    virtual std::string handleResponse() override;

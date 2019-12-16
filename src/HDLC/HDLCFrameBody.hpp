@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 #include <HDLC/FrameBase.hpp>
-#include <HDLC/HDLCParameters.hpp>
+#include <HDLC/HDLCParametersValues.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 
 class HDLCFrameBody
@@ -22,7 +22,7 @@ protected:
    boost::optional<Hex> formatIdentifier_;
    boost::optional<Hex> groupIdentifier_;
    boost::optional<Hex> groupLength_;
-   std::vector<HDLCParameters> parameters_;
+   std::vector<HDLCParametersValues> parameters_;
 };
 
 using HDLCFrameBodyPtr = std::shared_ptr<HDLCFrameBody>;

@@ -1,22 +1,21 @@
-#include <HDLC/HDLCParameters.hpp>
+#include <HDLC/HDLCParametersValues.hpp>
 
-HDLCParameters::HDLCParameters()
+HDLCParametersValues::HDLCParametersValues()
     : parId(ZERO), parLength(ZERO), parValue({})
 {}
 
-HDLCParameters::HDLCParameters(Hex inParId, Hex inParLength, Hexes inParValue)
+HDLCParametersValues::HDLCParametersValues(Hex inParId, Hex inParLength, Hexes inParValue)
     : parId(inParId), parLength(inParLength), parValue(inParValue)
 {}
 
-HDLCParameters HDLCParameters::build(Hex inParId, Hex inParLength, Hexes inParValue)
+HDLCParametersValues HDLCParametersValues::build(Hex inParId, Hex inParLength, Hexes inParValue)
 {
    if (inParLength != inParValue.size())
    {
       LOG(error) << "PL: " << static_cast<int>(inParLength)
                  << ", PV size: " << inParValue.size()
                  << ", returning empty parameters struct";
-      return HDLCParameters();
+      return HDLCParametersValues();
    }
    return {inParId, inParLength, inParValue};
 }
-
