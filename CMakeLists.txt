@@ -63,7 +63,7 @@ set(COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/IController.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AISGProtocolVersion.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AISGProtocolVersion.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AddressAssignment.gcpp
+    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AddressAssignment.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AddressAssignment.hpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.cpp
     ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.hpp
