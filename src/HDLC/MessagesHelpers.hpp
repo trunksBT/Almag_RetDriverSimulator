@@ -31,15 +31,32 @@ enum BYTE_CONTROL : Hex
 };
 }
 
+
 enum FI : Hex
 {
-    ADDR_ASSIGNMENT = 0x81
+   ADDR_ASSIGNMENT = 0x81,
+   FI_HDLC_PARAMETERS = 0x81
 };
 
 enum GI : Hex
 {
-    ADDRESS_ASSIGNMENT = 0xF0
+   ADDRESS_ASSIGNMENT = 0xF0,
+   GI_HDLC_PARAMETERS = 0x80
 };
+
+enum PI : Hex
+{
+   MAX_INF_FIELD_LEN_TRANSMIT = 0x05,
+   MAX_INF_FIELD_LEN_RECEIVE = 0x06,
+   WINDOW_SIZE_TRANSMIT = 0x07,
+   WINDOW_SIZE_RECEIVE = 0x08,
+};  // TS_25_462
+
+enum PL : Hex
+{
+   MAX_INF_FIELD_LEN = 0x04,
+   WINDOW_SIZE = 0x01
+};  // TS_25_462
 
 enum PV : Hex
 {

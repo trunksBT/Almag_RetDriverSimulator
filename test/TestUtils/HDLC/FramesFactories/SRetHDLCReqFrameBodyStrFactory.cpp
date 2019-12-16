@@ -30,3 +30,8 @@ std::string SRetHDLCReqFrameBodyStrFactory::get_FrameXID_AISGProtocolVersion()
 {
    return { "3 bf 81 f0 3 14 1 2 " };
 }
+
+std::string SRetHDLCReqFrameBodyStrFactory::get_FrameXID_HDLCParameters()
+{
+   return { "3 bf 81 80 12 5 4 f0 2d 0 0 6 4 f0 2d 0 0 7 1 1 8 1 1 "};
+}
