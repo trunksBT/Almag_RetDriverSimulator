@@ -4,6 +4,7 @@
 #include <CommandPattern/Commands/Calibrate.hpp>
 #include <CommandPattern/Commands/DummyScan.hpp>
 #include <CommandPattern/Commands/DeviceScan.hpp>
+#include <CommandPattern/Commands/HDLCParameters.hpp>
 #include <CommandPattern/Commands/LinkEstablishment.hpp>
 #include <CommandPattern/Commands/ThreeGPPReleaseID.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
@@ -62,6 +63,11 @@ ICommandPtr RetDriverCommandFactory::interpretAndCreateCommand(std::vector<std::
    else if (L2::LINK_ESTABLISHMENT == commandName)
    {
       return std::make_shared<LinkEstablishment>(
+              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
+   }
+   else if (L2::HDLC_PARAMETERS == commandName)
+   {
+      return std::make_shared<HDLCParameters>(
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::THREEGPP_RELEASE_ID == commandName)

@@ -72,7 +72,7 @@ Hexes toHexes(const HexesInt& plainFrames)
    return retVal;
 }
 
-int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, const Strings &slicedVector, int i)
+int addHdlcParametersAndReturnPosition(std::vector<HDLCParametersValues> &parameters, const Strings &slicedVector, int i)
 {
    auto parId = toHexInt(slicedVector.at(i + IDX_OF_SUBGROUP_PAR_ID));
    auto parLen = toInt(slicedVector.at(i + IDX_OF_SUBGROUP_LENGTH_BYTE));
@@ -82,7 +82,7 @@ int addHdlcParametersAndReturnPosition(std::vector<HDLCParameters> &parameters, 
    LOG(debug) << "ParVals: ";
    printStrings(parVals);
    i+=(parLen+OFFSET_FOR_IDX_OF_SUBGROUP_VALUES);
-   parameters.push_back(HDLCParameters::build(parId, parLen, toHexes(toHexesInt(parVals))));
+   parameters.push_back(HDLCParametersValues::build(parId, parLen, toHexes(toHexesInt(parVals))));
    return i;
 }
 
@@ -124,7 +124,7 @@ HDLCFrameBodyPtr interpretBodyFrameXID(const Strings& receivedPlainFrame)
        .setGroupIdentifierByte(toHexInt(receivedPlainFrame.at(IDX_OF_GROUP_ID_BYTE)))
        .setGroupLengthByte(toHexInt(receivedPlainFrame.at(IDX_OF_GROUP_LENGTH_BYTE)));
 
-   std::vector<HDLCParameters> parameters;
+   std::vector<HDLCParametersValues> parameters;
    const auto groupLength = toInt(receivedPlainFrame.at(IDX_OF_GROUP_LENGTH_BYTE));
    const auto slicedVector = slice(receivedPlainFrame, IDX_OF_HDLC_PARAMETERS_START, groupLength);
    unsigned int idxOfSubgroupStart = 0;

@@ -64,6 +64,10 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
          L2::LINK_ESTABLISHMENT + DELIMITER
       },
       CommandsToExpectedFrame{
+         {{ L2::HDLC_PARAMETERS, BUFFER_TO_SEND_VAL_1 }},
+         L2::HDLC_PARAMETERS + DELIMITER
+      },
+      CommandsToExpectedFrame{
 	      {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
          L2::THREEGPP_RELEASE_ID + DELIMITER
       },
