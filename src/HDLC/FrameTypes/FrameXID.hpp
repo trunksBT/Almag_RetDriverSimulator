@@ -6,7 +6,6 @@ class FrameXID : public HDLCFrameBody
 {
 public:
    FrameXID();
-   explicit FrameXID(const std::string& value);
 
    FrameXID& setAddressByte(Hex value);
    FrameXID& setControlByte(Hex value);
