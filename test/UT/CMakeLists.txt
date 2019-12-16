@@ -6,7 +6,7 @@ set(UT
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCReqFrameBodyTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCRespFrameBodyTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameTests.cpp
-    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCReqFrameInterpreterTests.cpp
+    ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCReqFrameBodyInterpreterTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/Utils/UserCommandParserTest.cpp
 )
 

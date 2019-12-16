@@ -31,7 +31,6 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_DummyScan() const
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_DeviceScan() const
 {
-
    const auto retFrame = FrameXID()
            .setAddressByte(NO_ADDRESS)
            .setFormatIdentifierByte(FI::ADDR_ASSIGNMENT)
