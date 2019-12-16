@@ -11,5 +11,6 @@ public:
    std::string get_FrameXID_AddressAssignment() override;
    std::string get_FrameXID_3GPPReleaseId() override;
    std::string get_FrameXID_AISGProtocolVersion() override;
+   std::string get_FrameXID_HDLCParameters() override;
    virtual ~SRetHDLCRespFrameBodyStrFactory() = default;
 };

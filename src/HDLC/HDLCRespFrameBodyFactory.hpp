@@ -11,6 +11,7 @@ public:
    HDLCFrameBodyPtr get_FrameXID_AddressAssignment() const override;
    HDLCFrameBodyPtr get_FrameXID_3GPPReleaseId() const override;
    HDLCFrameBodyPtr get_FrameXID_AISGProtocolVersion() const override;
+   HDLCFrameBodyPtr get_FrameXID_HDLCParameters() const override;
    virtual ~HDLCRespFrameBodyFactory() = default;
 };
 using HDLCRespFrameBodyFactoryPtr = std::shared_ptr<HDLCRespFrameBodyFactory>;

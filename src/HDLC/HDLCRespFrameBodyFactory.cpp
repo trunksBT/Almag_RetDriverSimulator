@@ -83,3 +83,8 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AISGProtocolVersion() co
            ));
    return std::make_shared<FrameXID>(retFrame);
 }
+
+HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_HDLCParameters() const
+{
+   throw std::runtime_error("Not implemented yet");
+}
