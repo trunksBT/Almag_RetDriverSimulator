@@ -33,12 +33,16 @@ INSTANTIATE_TEST_CASE_P(HDLCReqFrameBodyTests,
             retDeviceStrFactory->get_FrameXID_DummyScan()
         },
         BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_DeviceScan()->build()),
+            retDeviceStrFactory->get_FrameXID_DeviceScan()
+        },
+        BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()),
             retDeviceStrFactory->get_FrameXID_AddressAssignment()
         },
         BuiltFrameStr_ExpectedFrameStr{
-            toString(hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()),
-            retDeviceStrFactory->get_FrameU_LinkEstablishment()
+            toString(hdlcFrameBodyFactory->get_FrameXID_DeviceScan()->build()),
+            retDeviceStrFactory->get_FrameXID_DeviceScan()
         },
         BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()),
@@ -49,12 +53,16 @@ INSTANTIATE_TEST_CASE_P(HDLCReqFrameBodyTests,
             retDeviceStrFactory->get_FrameXID_AISGProtocolVersion()
         },
         BuiltFrameStr_ExpectedFrameStr{
-            toString(hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()),
-            retDeviceStrFactory->get_FrameI_Calibrate()
-        },
-        BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameXID_HDLCParameters()->build()),
             retDeviceStrFactory->get_FrameXID_HDLCParameters()
+        },
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()),
+            retDeviceStrFactory->get_FrameU_LinkEstablishment()
+        },
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()),
+            retDeviceStrFactory->get_FrameI_Calibrate()
         }
     )
 );
