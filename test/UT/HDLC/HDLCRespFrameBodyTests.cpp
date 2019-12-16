@@ -46,10 +46,10 @@ INSTANTIATE_TEST_CASE_P(HDLCRespFrameBodyTests,
         BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()),
             retDeviceStrFactory->get_FrameI_Calibrate()
+        },
+        BuiltFrameStr_ExpectedFrameStr{
+            toString(hdlcFrameBodyFactory->get_FrameXID_HDLCParameters()->build()),
+            retDeviceStrFactory->get_FrameXID_HDLCParameters()
         }
-//        BuiltFrameStr_ExpectedFrameStr{
-//            toString(hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()),
-//            retDeviceStrFactory->get_FrameI_Calibrate()
-//        }
     )
 );

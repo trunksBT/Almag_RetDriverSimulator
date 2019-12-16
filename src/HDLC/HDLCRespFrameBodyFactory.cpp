@@ -86,5 +86,30 @@ HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_AISGProtocolVersion() co
 
 HDLCFrameBodyPtr HDLCRespFrameBodyFactory::get_FrameXID_HDLCParameters() const
 {
-   throw std::runtime_error("Not implemented yet");
+   const auto retFrame = FrameXID()
+           .setAddressByte(0x03)
+           .setFormatIdentifierByte(FI::FI_HDLC_PARAMETERS)
+           .setGroupIdentifierByte(GI::GI_HDLC_PARAMETERS)
+           .setGroupLengthByte(0x12)
+           .addParameters(HDLCParameters::build(
+                   PI::MAX_INF_FIELD_LEN_TRANSMIT,
+                   PL::MAX_INF_FIELD_LEN,
+                   Hexes({ 0x00, 0x00, 0x02, 0x50 })
+           ))
+           .addParameters(HDLCParameters::build(
+                   PI::MAX_INF_FIELD_LEN_RECEIVE,
+                   PL::MAX_INF_FIELD_LEN,
+                   Hexes({ 0x00, 0x00, 0x02, 0x50 })
+           ))
+           .addParameters(HDLCParameters::build(
+                   PI::WINDOW_SIZE_TRANSMIT,
+                   PL::WINDOW_SIZE,
+                   Hexes({ 0x01 })
+           ))
+           .addParameters(HDLCParameters::build(
+                   PI::WINDOW_SIZE_RECEIVE,
+                   PL::WINDOW_SIZE,
+                   Hexes({ 0x01 })
+           ));
+   return std::make_shared<FrameXID>(retFrame);
 }
