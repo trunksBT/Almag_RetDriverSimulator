@@ -18,7 +18,6 @@ IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBod
 FrameStrFactoryPtr retDeviceStr = std::make_shared<SRetHDLCReqFrameBodyStrFactory>();
 }
 
-
 class HDLCFrameInterpreterTests:
     public ::testing::TestWithParam<ExpectedFrameType_ExpectedValue_ReceivedString>
 {
@@ -40,19 +39,14 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
    HDLCFrameInterpreterTests,
    ::testing::Values(
        ExpectedFrameType_ExpectedValue_ReceivedString{
-          FrameI::GET_TYPE,
-          hdlcFrameBodyFactory->get_FrameI_Calibrate()->build(),
-          retDeviceStr->get_FrameI_Calibrate()
-       },
-       ExpectedFrameType_ExpectedValue_ReceivedString{
-          FrameU::GET_TYPE,
-          hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build(),
-          retDeviceStr->get_FrameU_LinkEstablishment()
-       },
-       ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
           hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build(),
           retDeviceStr->get_FrameXID_DummyScan()
+       },
+       ExpectedFrameType_ExpectedValue_ReceivedString{
+          FrameXID::GET_TYPE,
+          hdlcFrameBodyFactory->get_FrameXID_DeviceScan()->build(),
+          retDeviceStr->get_FrameXID_DeviceScan()
        },
        ExpectedFrameType_ExpectedValue_ReceivedString{
           FrameXID::GET_TYPE,
@@ -68,6 +62,21 @@ INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,
           FrameXID::GET_TYPE,
           hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build(),
           retDeviceStr->get_FrameXID_AISGProtocolVersion()
+       },
+       ExpectedFrameType_ExpectedValue_ReceivedString{
+          FrameXID::GET_TYPE,
+          hdlcFrameBodyFactory->get_FrameXID_HDLCParameters()->build(),
+          retDeviceStr->get_FrameXID_HDLCParameters()
+       },
+       ExpectedFrameType_ExpectedValue_ReceivedString{
+          FrameI::GET_TYPE,
+          hdlcFrameBodyFactory->get_FrameI_Calibrate()->build(),
+          retDeviceStr->get_FrameI_Calibrate()
+       },
+       ExpectedFrameType_ExpectedValue_ReceivedString{
+          FrameU::GET_TYPE,
+          hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build(),
+          retDeviceStr->get_FrameU_LinkEstablishment()
        }
    )
 );

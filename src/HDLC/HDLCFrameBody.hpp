@@ -10,22 +10,19 @@
 class HDLCFrameBody
 {
 public:
-   HDLCFrameBody() = default;
-   explicit HDLCFrameBody(const std::string& frameBodyNotParsed);
+   HDLCFrameBody();
    virtual ~HDLCFrameBody();
 
    virtual Hexes build() const = 0;
    virtual frameType::BYTE_CTRL getType() const = 0;
 
+protected:
    boost::optional<Hex> address_;
    boost::optional<Hex> ctrl_;
    boost::optional<Hex> formatIdentifier_;
    boost::optional<Hex> groupIdentifier_;
    boost::optional<Hex> groupLength_;
    std::vector<HDLCParameters> parameters_;
-   
-private:
-   boost::optional<std::string> frameBodyNotParsed_;
 };
 
 using HDLCFrameBodyPtr = std::shared_ptr<HDLCFrameBody>;

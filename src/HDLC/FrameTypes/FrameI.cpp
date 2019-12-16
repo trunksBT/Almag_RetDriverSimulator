@@ -13,10 +13,6 @@ FrameI::FrameI()
    setControlByte(BYTE_CONTROL::RETAP);
 }
 
-FrameI::FrameI(const std::string& value)
-   : HDLCFrameBody(value)
-{}
-
 FrameI& FrameI::setAddressByte(Hex value)
 {
    address_ = value;

@@ -13,12 +13,6 @@ FrameXID::FrameXID()
    setControlByte(BYTE_CONTROL::XID);
 }
 
-FrameXID::FrameXID(const std::string& value)
-   : HDLCFrameBody(value)
-{
-   setControlByte(BYTE_CONTROL::XID);
-}
-
 FrameXID& FrameXID::setAddressByte(Hex value)
 {
    address_ = value;

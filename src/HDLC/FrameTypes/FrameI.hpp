@@ -6,7 +6,6 @@ class FrameI : public HDLCFrameBody
 {
 public:
    FrameI();
-   explicit FrameI(const std::string& value);
 
    FrameI& setAddressByte(Hex value);
    FrameI& setControlByte(Hex value);

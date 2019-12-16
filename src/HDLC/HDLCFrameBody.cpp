@@ -2,8 +2,7 @@
 
 #include <Utils/Logger.hpp>
 
-HDLCFrameBody::HDLCFrameBody(const std::string& frameBodyNotParsed)
-   : frameBodyNotParsed_(frameBodyNotParsed)
+HDLCFrameBody::HDLCFrameBody()
 {
    LOG(trace);
 }

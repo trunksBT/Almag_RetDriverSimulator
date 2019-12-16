@@ -13,12 +13,6 @@ FrameU::FrameU()
    LOG(trace);
 }
 
-FrameU::FrameU(const std::string& value)
-   : HDLCFrameBody(value)
-{
-   LOG(trace);
-}
-
 FrameU& FrameU::setAddressByte(Hex value)
 {
    address_ = value;
