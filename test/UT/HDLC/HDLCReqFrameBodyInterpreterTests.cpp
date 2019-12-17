@@ -7,7 +7,7 @@
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCReqFrameBodyStrFactory.hpp>
-#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
 using testing::Eq;

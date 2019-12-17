@@ -1,6 +1,6 @@
 #pragma once
 
-#include <CommandPattern/ICommandFactory.hpp>
+#include <Controller/ICommandFactory.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
 class RetDriverCommandFactory final : public ICommandFactory

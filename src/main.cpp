@@ -1,4 +1,4 @@
-#include <CommandPattern/AlmagController.hpp>
+#include <Controller/AlmagController.hpp>
 #include <Database/Database.hpp>
 #include <HDLC/HDLCCommunicator.hpp>
 #include <UserInterface/CMenu.hpp>

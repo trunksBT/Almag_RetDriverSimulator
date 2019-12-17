@@ -55,34 +55,34 @@ set(DATABASE
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
 )
 
-set(COMMAND_PATTERN
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagController.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagController.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagControllerNull.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/AlmagControllerNull.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IController.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AISGProtocolVersion.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AISGProtocolVersion.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AddressAssignment.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/AddressAssignment.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/Calibrate.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DummyScan.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DeviceScan.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/DeviceScan.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCParameters.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCParameters.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommand.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/HDLCCommand.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/IHDLCFrameBodyFactory.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/ICommandFactory.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/LinkEstablishment.hpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ThreeGPPReleaseID.cpp
-    ${PROJECT_SOURCE_DIR}/src/CommandPattern/Commands/ThreeGPPReleaseID.hpp
+set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagController.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagController.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagControllerNull.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagControllerNull.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/IController.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/AISGProtocolVersion.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/AISGProtocolVersion.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/AddressAssignment.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/AddressAssignment.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/Calibrate.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/Calibrate.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/DummyScan.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/DummyScan.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/DeviceScan.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/DeviceScan.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/HDLCParameters.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/HDLCParameters.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/ICommand.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/ICommand.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/HDLCCommand.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/HDLCCommand.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/IHDLCFrameBodyFactory.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/ICommandFactory.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/LinkEstablishment.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/LinkEstablishment.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/ThreeGPPReleaseID.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/ThreeGPPReleaseID.hpp
 )
 
 set(HDLC

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <Controller/IHDLCFrameBodyFactory.hpp>
 
 class HDLCRespFrameBodyFactory : public IHDLCFrameBodyFactory
 {

@@ -18,7 +18,7 @@ namespace L2
 const std::string ADDRESS_ASSIGNMENT = "AddressAssignment";
 const std::string DEVICE_SCAN = "DeviceScan";
 const std::string LINK_ESTABLISHMENT = "LinkEstablishment";
-const std::string HDLC_PARAMETERS = "HDLCParametersValues";
+const std::string HDLC_PARAMETERS = "HDLCParameters";
 const std::string THREEGPP_RELEASE_ID = "3GPPReleaseID";
 const std::string AISG_PROTOCOL_VERSION = "AISGProtocolVersion";
 }

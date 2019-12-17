@@ -2,7 +2,7 @@ message("AlmagRetDriver ReleaseCMakeLists")
 
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/src/main.cpp
-    ${COMMAND_PATTERN}
+    ${EXTERNAL_LIBRARIES_COMMAND_PATTERN}
     ${DATABASE}
     ${UTILS}
     ${EXTERNAL_LIBRARIES_UTILS}
