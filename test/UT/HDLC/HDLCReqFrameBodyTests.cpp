@@ -1,6 +1,6 @@
 #include <gmock/gmock.h>
 
-#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/SRetHDLCReqFrameBodyStrFactory.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>

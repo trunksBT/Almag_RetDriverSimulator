@@ -1,18 +1,17 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 #include <UserInterface/CMenu.hpp>
-#include <CommandPattern/AlmagController.hpp>
+#include <Controller/AlmagController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
-#include <Utils/Utils.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
-#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
 using testing::Eq;

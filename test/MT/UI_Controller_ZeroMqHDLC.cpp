@@ -1,8 +1,8 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 #include <UserInterface/CMenu.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
-#include <CommandPattern/AlmagController.hpp>
-#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <Controller/AlmagController.hpp>
+#include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>

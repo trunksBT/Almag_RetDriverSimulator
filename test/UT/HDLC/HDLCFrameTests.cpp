@@ -3,7 +3,7 @@
 #include <HDLC/HDLCFrame.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
-#include <CommandPattern/IHDLCFrameBodyFactory.hpp>
+#include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <Utils/Functions.hpp>
 
 using testing::Eq;

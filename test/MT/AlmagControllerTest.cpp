@@ -1,7 +1,7 @@
 #include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 
-#include <CommandPattern/AlmagController.hpp>
-#include <CommandPattern/IController.hpp>
+#include <Controller/AlmagController.hpp>
+#include <Controller/IController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>

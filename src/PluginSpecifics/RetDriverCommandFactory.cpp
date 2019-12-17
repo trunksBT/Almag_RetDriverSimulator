@@ -1,12 +1,12 @@
 #include "RetDriverCommandFactory.hpp"
-#include <CommandPattern/Commands/AISGProtocolVersion.hpp>
-#include <CommandPattern/Commands/AddressAssignment.hpp>
-#include <CommandPattern/Commands/Calibrate.hpp>
-#include <CommandPattern/Commands/DummyScan.hpp>
-#include <CommandPattern/Commands/DeviceScan.hpp>
-#include <CommandPattern/Commands/HDLCParameters.hpp>
-#include <CommandPattern/Commands/LinkEstablishment.hpp>
-#include <CommandPattern/Commands/ThreeGPPReleaseID.hpp>
+#include <Controller/Commands/AISGProtocolVersion.hpp>
+#include <Controller/Commands/AddressAssignment.hpp>
+#include <Controller/Commands/Calibrate.hpp>
+#include <Controller/Commands/DummyScan.hpp>
+#include <Controller/Commands/DeviceScan.hpp>
+#include <Controller/Commands/HDLCParameters.hpp>
+#include <Controller/Commands/LinkEstablishment.hpp>
+#include <Controller/Commands/ThreeGPPReleaseID.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <Utils/Logger.hpp>
 
@@ -14,7 +14,6 @@ using namespace constraints::almag;
 
 namespace
 {
-const std::string START_POOLING = "StartPooling";
 constexpr int IDX_OF_COMMAND_OR_ACTION_NAME = 0;
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 constexpr int IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR = 1;
