@@ -44,7 +44,6 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 link_directories(${Boost_LIBRARY_DIRS})
 add_definitions( -DBOOST_ALL_DYN_LINK)
 
-
 set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
@@ -56,27 +55,27 @@ set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.hpp
 )
 
-set(HDLC
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
+set(EXTERNAL_LIBRARIES_HDLC
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrame.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrame.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCParametersValues.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCParametersValues.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrameBody.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrameBody.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/IHDLCCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/MessagesHelpers.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrameBodyInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrameBodyInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCRespFrameBodyFactory.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCRespFrameBodyFactory.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameI.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameI.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameU.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameU.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameXID.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameXID.hpp
 )
 
 # External libraries
