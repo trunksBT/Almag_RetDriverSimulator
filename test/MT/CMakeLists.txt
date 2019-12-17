@@ -1,17 +1,17 @@
 set(PROJECT_TESTS_NAME Almag_RetDriver_MT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
-set(TESTUTILS_COMMUNICATORS
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
-    ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
+set(EXTERNAL_LIBRARIES_TESTUTILS_COMMUNICATORS
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
 )
 
 set(MT
@@ -23,14 +23,14 @@ set(MT
 
 add_executable(${PROJECT_TESTS_NAME}
     ${PROJECT_SOURCE_DIR}/test/main.cpp
-    ${PLUGIN_SPECIFICS}
 
     ${MT}
-    ${FIXTURES}
-    ${TESTUTILS}
-    ${TESTUTILS_COMMUNICATORS}
-    ${TESTUTILS_HDLC_FRAMESFACTORIES}
+    ${EXTERNAL_LIBRARIES_TESTUTILS}
+    ${EXTERNAL_LIBRARIES_TESTUTILS_COMMUNICATORS}
+    ${EXTERNAL_LIBRARIES_TESTUTILS_FIXTURES}
+    ${EXTERNAL_LIBRARIES_TESTUTILS_HDLC_FRAMESFACTORIES}
 
+    ${PLUGIN_SPECIFICS}
     ${EXTERNAL_LIBRARIES_COMMAND_PATTERN}
     ${EXTERNAL_LIBRARIES_DATABASE}
     ${EXTERNAL_LIBRARIES_HDLC}
