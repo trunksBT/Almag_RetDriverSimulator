@@ -8,6 +8,7 @@
 #include <Controller/Commands/LinkEstablishment.hpp>
 #include <Controller/Commands/ThreeGPPReleaseID.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 #include <Utils/Logger.hpp>
 
 using namespace constraints::almag;
@@ -39,49 +40,49 @@ ICommandPtr RetDriverCommandFactory::interpretAndCreateCommand(std::vector<std::
 
    if (L1::DUMMY_SCAN == commandName)
    {
-      return std::make_shared<DummyScan>(
+      return std::make_shared<DummyScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
               validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND);
    }
    else if (L1::SET_LINK_SPEED == commandName)
    {
-      return std::make_shared<DummyScan>(
+      return std::make_shared<DummyScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
               validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS);
    }
    else if (L2::DEVICE_SCAN == commandName)
    {
-      return std::make_shared<DeviceScan>(
+      return std::make_shared<DeviceScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::ADDRESS_ASSIGNMENT == commandName)
    {
-      return std::make_shared<AddressAssignment>(
+      return std::make_shared<AddressAssignment>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::LINK_ESTABLISHMENT == commandName)
    {
-      return std::make_shared<LinkEstablishment>(
+      return std::make_shared<LinkEstablishment>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::HDLC_PARAMETERS == commandName)
    {
-      return std::make_shared<HDLCParameters>(
+      return std::make_shared<HDLCParameters>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::THREEGPP_RELEASE_ID == commandName)
    {
-      return std::make_shared<ThreeGPPReleaseID>(
+      return std::make_shared<ThreeGPPReleaseID>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L2::AISG_PROTOCOL_VERSION == commandName)
    {
-      return std::make_shared<AISGProtocolVersion>(
+      return std::make_shared<AISGProtocolVersion>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else if (L7::CALIBRATE == commandName)
    {
-      return std::make_shared<Calibrate>(
+      return std::make_shared<Calibrate>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR), validatedInput);
    }
    else
