@@ -4,7 +4,7 @@
 #include <Database/Objects/IOPaths.hpp>
 #include <Controller/AlmagControllerNull.hpp>
 
-#include <PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp>
+#include <Database/DatabaseConstraints.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
 

@@ -1,12 +1,12 @@
 #include <Controller/AlmagController.hpp>
 #include <Database/Database.hpp>
+#include <Database/DatabaseConstraints.hpp>
 #include <HDLC/HDLCCommunicator.hpp>
+
 #include <UserInterface/CMenu.hpp>
 
 #include <Utils/Logger.hpp>
-
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
-#include <PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
 #include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>

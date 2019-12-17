@@ -46,7 +46,6 @@ add_definitions( -DBOOST_ALL_DYN_LINK)
 
 set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
@@ -87,6 +86,7 @@ set(EXTERNAL_LIBRARIES_DATABASE
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/DatabaseConstraints.hpp
 )
 
 set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
