@@ -44,16 +44,6 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 link_directories(${Boost_LIBRARY_DIRS})
 add_definitions( -DBOOST_ALL_DYN_LINK)
 
-# External libraries
-include_directories(${PROJECT_SOURCE_DIR}/externalLibraries)
-
-set(EXTERNAL_LIBRARIES_DATABASE
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
-)
 
 set(PLUGIN_SPECIFICS
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
@@ -87,6 +77,17 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
+)
+
+# External libraries
+include_directories(${PROJECT_SOURCE_DIR}/externalLibraries)
+
+set(EXTERNAL_LIBRARIES_DATABASE
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
 )
 
 set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
@@ -154,4 +155,3 @@ set(EXTERNAL_LIBRARIES_USER_INTERFACE
 add_subdirectory(3rdparty/googletest/googlemock)
 add_subdirectory(test)
 add_subdirectory(src)
-
