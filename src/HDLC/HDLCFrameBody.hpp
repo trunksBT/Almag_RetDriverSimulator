@@ -1,9 +1,8 @@
 #pragma once
 
-#include <string>
 #include <memory>
+#include <string>
 #include <vector>
-#include <HDLC/FrameBase.hpp>
 #include <HDLC/HDLCParametersValues.hpp>
 #include <HDLC/MessagesHelpers.hpp>
 

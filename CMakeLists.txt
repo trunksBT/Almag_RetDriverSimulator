@@ -86,8 +86,6 @@ set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
 )
 
 set(HDLC
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameBase.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameBase.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.cpp
@@ -97,7 +95,6 @@ set(HDLC
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
     ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
