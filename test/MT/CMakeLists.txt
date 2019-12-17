@@ -14,7 +14,7 @@ set(TESTUTILS_COMMUNICATORS
     ${PROJECT_SOURCE_DIR}/test/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
 )
 
-set(MT_HappyPath
+set(MT
     ${PROJECT_SOURCE_DIR}/test/MT/AlmagControllerTest.cpp
     ${PROJECT_SOURCE_DIR}/test/MT/UIAndDBIntegration/UIAndDBIntegrationTests.cpp
     ${PROJECT_SOURCE_DIR}/test/MT/UI_Controller_RoundTripHDLC.cpp
@@ -23,20 +23,19 @@ set(MT_HappyPath
 
 add_executable(${PROJECT_TESTS_NAME}
     ${PROJECT_SOURCE_DIR}/test/main.cpp
+    ${HDLC}
+    ${PLUGIN_SPECIFICS}
+
+    ${MT}
     ${FIXTURES}
-    ${MT_HappyPath}
     ${TESTUTILS}
     ${TESTUTILS_COMMUNICATORS}
     ${TESTUTILS_HDLC_FRAMESFACTORIES}
 
+    ${EXTERNAL_LIBRARIES_DATABASE}
     ${EXTERNAL_LIBRARIES_COMMAND_PATTERN}
-    ${DATABASE}
-    ${HDLC}
-    ${UTILS}
+    ${EXTERNAL_LIBRARIES_USER_INTERFACE}
     ${EXTERNAL_LIBRARIES_UTILS}
-    ${LOGGER}
-    ${USER_INTERFACE}
-    ${PLUGIN_SPECIFICS}
 )
 
 add_dependencies(${PROJECT_TESTS_NAME} gmock_main)

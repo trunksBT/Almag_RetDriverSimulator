@@ -47,12 +47,46 @@ add_definitions( -DBOOST_ALL_DYN_LINK)
 # External libraries
 include_directories(${PROJECT_SOURCE_DIR}/externalLibraries)
 
-set(DATABASE
+set(EXTERNAL_LIBRARIES_DATABASE
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Database.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Objects/IOPaths.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Database/Utils/KeyWithValue.hpp
+)
+
+set(PLUGIN_SPECIFICS
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.hpp
+)
+
+set(HDLC
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.hpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.cpp
+    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
 )
 
 set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
@@ -85,39 +119,6 @@ set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/ThreeGPPReleaseID.hpp
 )
 
-set(HDLC
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrame.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCParametersValues.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBody.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/IHDLCCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/MessagesHelpers.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCFrameBodyInterpreter.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/HDLCRespFrameBodyFactory.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameI.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameU.hpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.cpp
-    ${PROJECT_SOURCE_DIR}/src/HDLC/FrameTypes/FrameXID.hpp
-)
-
-set(LOGGER
-    ${PROJECT_SOURCE_DIR}/src/Utils/Logger.cpp
-    ${PROJECT_SOURCE_DIR}/src/Utils/Logger.hpp
-)
-
-set(UTILS
-    ${PROJECT_SOURCE_DIR}/src/Utils/UserCommandParser.cpp
-    ${PROJECT_SOURCE_DIR}/src/Utils/UserCommandParser.hpp
-)
-
 set(EXTERNAL_LIBRARIES_UTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.cpp
@@ -126,20 +127,13 @@ set(EXTERNAL_LIBRARIES_UTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Functions.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/PrintUtils.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/PrintUtils.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/UserCommandParser.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/UserCommandParser.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Logger.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Logger.hpp
 )
 
-set(PLUGIN_SPECIFICS
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/DatabaseConstraints.hpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.cpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.hpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.cpp
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.hpp
-)
-
-set(USER_INTERFACE
+set(EXTERNAL_LIBRARIES_USER_INTERFACE
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CMenu.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/CMenu.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/UserInterface/Database/CDatabaseCommand.cpp

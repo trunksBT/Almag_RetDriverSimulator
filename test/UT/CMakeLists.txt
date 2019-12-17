@@ -12,17 +12,15 @@ set(UT
 
 add_executable(${PROJECT_TESTS_NAME}
     ${PROJECT_SOURCE_DIR}/test/main.cpp
-    ${UT} 
-    ${FIXTURES}
-
-    ${DATABASE}
     ${HDLC}
-    ${UTILS}
-    ${TESTUTILS_HDLC_FRAMESFACTORIES}
-    ${EXTERNAL_LIBRARIES_UTILS}
-    ${LOGGER}
     ${PLUGIN_SPECIFICS}
-)
+
+    ${UT}
+    ${FIXTURES}
+    ${TESTUTILS_HDLC_FRAMESFACTORIES}
+    ${EXTERNAL_LIBRARIES_DATABASE}
+    ${EXTERNAL_LIBRARIES_UTILS}
+    )
 
 add_dependencies(${PROJECT_TESTS_NAME} gmock_main)
 
