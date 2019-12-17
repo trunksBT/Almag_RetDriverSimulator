@@ -3,8 +3,8 @@
 #include <Controller/AlmagController.hpp>
 
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
-#include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
-#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>

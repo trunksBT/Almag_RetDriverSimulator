@@ -8,8 +8,8 @@
 #include <Utils/Logger.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
-#include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
-#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <Utils/UserCommandParser.hpp>
 

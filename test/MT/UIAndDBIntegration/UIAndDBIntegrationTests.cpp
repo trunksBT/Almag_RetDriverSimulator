@@ -5,8 +5,8 @@
 #include <Controller/AlmagControllerNull.hpp>
 
 #include <Database/DatabaseConstraints.hpp>
-#include <PluginSpecifics/UICmdValidators/AlmagCommandValidationManager.hpp>
-#include <UserInterface/CtrlCommandsValidators/DatabaseCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
