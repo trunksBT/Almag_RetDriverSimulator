@@ -1,4 +1,4 @@
-#include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
+#include <TestUtils/Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 
 #include <UserInterface/CMenu.hpp>
 #include <Database/Objects/IOPaths.hpp>

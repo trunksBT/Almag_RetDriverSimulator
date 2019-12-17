@@ -65,8 +65,6 @@ set(EXTERNAL_LIBRARIES_HDLC
     ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/MessagesHelpers.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrameBodyInterpreter.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCFrameBodyInterpreter.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCRespFrameBodyFactory.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/HDLCRespFrameBodyFactory.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameI.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameI.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/HDLC/FrameTypes/FrameU.cpp

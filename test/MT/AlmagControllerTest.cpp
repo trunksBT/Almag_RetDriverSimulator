@@ -1,4 +1,4 @@
-#include <Fixtures/BaseFixtureWithDBAndHDLC.hpp>
+#include <TestUtils/Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 
 #include <Controller/AlmagController.hpp>
 #include <Controller/IController.hpp>

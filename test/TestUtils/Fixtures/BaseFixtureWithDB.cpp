@@ -1,4 +1,4 @@
-#include <Fixtures/BaseFixtureWithDB.hpp>
+#include <TestUtils/Fixtures/BaseFixtureWithDB.hpp>
 
 BaseFixtureWithDB::BaseFixtureWithDB(const Database::ValueType inDB)
    : db_(inDB)

@@ -1,4 +1,4 @@
-#include <Fixtures/BaseFixtureWithDB.hpp>
+#include <TestUtils/Fixtures/BaseFixtureWithDB.hpp>
 
 #include <Database/Objects/IOPaths.hpp>
 #include <TestUtils/Hardcodes.hpp>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <Fixtures/BaseFixtureWithDB.hpp>
+#include <TestUtils/Fixtures/BaseFixtureWithDB.hpp>
 #include <HDLC/IHDLCCommunicator.hpp>
 
 class BaseFixtureWithDBAndHDLC : public BaseFixtureWithDB
