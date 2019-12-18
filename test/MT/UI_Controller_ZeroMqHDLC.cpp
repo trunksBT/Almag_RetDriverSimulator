@@ -33,8 +33,8 @@ class UI_Controller_ZeroMqHDLC:
 protected:
    UI_Controller_ZeroMqHDLC()
       : BaseFixtureWithDBAndHDLC({}, {
-         std::make_shared<ZMqReqRespCommunicator>(),
-         std::make_shared<ZMqPubSubCommunicator>()})
+         std::make_shared<ZMqReqRespCommunicator>(zmq::socket_type::req),
+         std::make_shared<ZMqPubSubCommunicator>(zmq::socket_type::pub)})
       , ctrl_{std::make_shared<AlmagController>(
               db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_))}
       , ui_{"AlmagRetDriverUI", "_", db_, ctrl_,

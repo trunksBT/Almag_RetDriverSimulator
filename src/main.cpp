@@ -10,10 +10,9 @@
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
 
 #include <Utils/UserCommandParser.hpp>
-
-using namespace std;
 
 int main()
 {
@@ -23,7 +22,8 @@ int main()
    LOG(trace) << "BEGIN";
    Database db({});
    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators {{
-      std::make_shared<HDLCCommunicator>(),
+//      std::make_shared<ZMqReqRespCommunicator>(zmq::socket_type::req),  // release mode
+       std::make_shared<HDLCCommunicator>(),  // debug mode
    }};
    ICommandFactoryPtr commandFactory = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFactory);
