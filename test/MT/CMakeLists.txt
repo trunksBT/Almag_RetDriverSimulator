@@ -18,7 +18,6 @@ set(MT
     ${PROJECT_SOURCE_DIR}/test/MT/AlmagControllerTest.cpp
     ${PROJECT_SOURCE_DIR}/test/MT/UIAndDBIntegration/UIAndDBIntegrationTests.cpp
     ${PROJECT_SOURCE_DIR}/test/MT/UI_Controller_RoundTripHDLC.cpp
-    ${PROJECT_SOURCE_DIR}/test/MT/UI_Controller_ZeroMqHDLC.cpp
 )
 
 add_executable(${PROJECT_TESTS_NAME}

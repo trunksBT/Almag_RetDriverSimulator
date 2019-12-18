@@ -2,6 +2,7 @@ set(PROJECT_TESTS_NAME Almag_RetDriver_UT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(UT
+    ${PROJECT_SOURCE_DIR}/test/UT/Communication/ZmqReqRespCommunicatorTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/DB/DBTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCReqFrameBodyTests.cpp
     ${PROJECT_SOURCE_DIR}/test/UT/HDLC/HDLCFrameTests.cpp
