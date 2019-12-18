@@ -22,8 +22,8 @@ int main()
    LOG(trace) << "BEGIN";
    Database db({});
    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators {{
-//      std::make_shared<ZMqReqRespCommunicator>(zmq::socket_type::req),  // release mode
-       std::make_shared<HDLCCommunicator>(),  // debug mode
+      std::make_shared<ZMqReqRespCommunicator>(zmq::socket_type::req),  // release mode
+//       std::make_shared<HDLCCommunicator>(),  // debug mode
    }};
    ICommandFactoryPtr commandFactory = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFactory);
