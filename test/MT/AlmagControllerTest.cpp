@@ -83,4 +83,3 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
 );
 
 }  // namespace mt
-
