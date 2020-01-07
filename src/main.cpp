@@ -10,7 +10,7 @@
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
-#include <TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp>
+#include <MessagingPattern/ZMqReqRespCommunicator.hpp>
 
 #include <Utils/UserCommandParser.hpp>
 

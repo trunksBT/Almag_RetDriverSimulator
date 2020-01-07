@@ -18,9 +18,15 @@ namespace mt
 {
 class ZmqReqRespCommunicatorTests : public testing::Test
 {
+public:
+   ZmqReqRespCommunicatorTests()
+   : hdlcCommunicator{ std::make_shared<ZMqReqRespTestCommunicator>() }
+   {
+      hdlcCommunicator->setupSend(ADDRESS_OF_PORT_FOR_ZERO_MQ);
+      hdlcCommunicator->setupReceive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
+   }
 protected:
-   IHDLCCommunicatorPtr hdlcCommunicator{
-      std::make_shared<ZMqReqRespTestCommunicator>() };
+   IHDLCCommunicatorPtr hdlcCommunicator;
 };
 
 TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_DummyScan)
@@ -82,35 +88,5 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameI_Calibrate)
    ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
            hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()));
 }
-////INSTANTIATE_TEST_CASE_P(ZmqReqRespCommunicatorTests,
-////    ZmqReqRespCommunicatorTests,
-////    ::testing::Values(
-////         SentFrame_ExpectedFrameHexes{
-////             hdlcFrameBodyFactory->get_FrameXID_DummyScan(),
-////             hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()
-////      }
-////    {{ L1::SET_LINK_SPEED, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-////       CANNOT IMPLEMENT THAT TEST AS APPLICATION IS ONE_THREADED
-////      ReceivedCommand_ExpectedFrameHexes{
-////         {{ L2::ADDRESS_ASSIGNMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-////         hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()
-////      },
-////      ReceivedCommand_ExpectedFrameHexes{
-////         {{ L2::LINK_ESTABLISHMENT, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-////         hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()
-////      },
-////      ReceivedCommand_ExpectedFrameHexes{
-////         {{ L2::THREEGPP_RELEASE_ID, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-////         hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()
-////      },
-////      ReceivedCommand_ExpectedFrameHexes{
-////         {{ L2::AISG_PROTOCOL_VERSION, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-////         hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build()
-////      },
-////      ReceivedCommand_ExpectedFrameHexes{
-////         {{ L7::CALIBRATE, ADDRESS_OF_PORT_FOR_ZERO_MQ }},
-////         hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()
-////      }
-//   )
-//);
+
 }

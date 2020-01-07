@@ -11,7 +11,7 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/ObjectTypes.hpp>
 #include <TestUtils/UniqueKeys.hpp>
-#include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCTestCommunicatorStub.hpp>
 
 using namespace hardcodes::IOPaths;
 using namespace constraints::database;
@@ -23,7 +23,7 @@ class UIAndDatabaseIntegrationShould : public BaseFixtureWithDBAndHDLC
 {
 protected:
    UIAndDatabaseIntegrationShould()
-      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
+      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()})
       , ui_(std::make_unique<CMenu>(
          "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>(),
          std::make_shared<AlmagCommandValidationManager>(db_),

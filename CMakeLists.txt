@@ -126,6 +126,17 @@ set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/NullValidationStrategy.hpp
 )
 
+set(EXTERNAL_LIBRARIES_MESSAGING_PATTERN
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZeroMqUtils.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZeroMqUtils.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZMqCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZMqCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZMqPubSubCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZMqPubSubCommunicator.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZMqReqRespCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/MessagingPattern/ZMqReqRespCommunicator.hpp
+)
+
 set(EXTERNAL_LIBRARIES_UTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Utils/Utils.cpp
@@ -149,29 +160,13 @@ set(EXTERNAL_LIBRARIES_TESTUTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HexesUtils.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/MatcherUtils.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/MatcherUtils.hpp
-
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
-
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespTestCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespTestCommunicator.cpp
 )
 
 set(EXTERNAL_LIBRARIES_TESTUTILS_COMMUNICATORS
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqPubSubCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespCommunicator.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZeroMqUtils.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCTestCommunicatorStub.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCTestCommunicatorStub.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespTestCommunicator.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/HDLC/DataLinkLayerCommunicators/ZMqReqRespTestCommunicator.hpp
 )
 
 set(EXTERNAL_LIBRARIES_TESTUTILS_HDLC_FRAMESFACTORIES

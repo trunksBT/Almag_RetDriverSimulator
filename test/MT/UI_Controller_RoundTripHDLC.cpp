@@ -9,7 +9,7 @@
 #include <TestUtils/Hardcodes.hpp>
 #include <TestUtils/StructsForParametrizedTests.hpp>
 #include <TestUtils/HDLC/FramesFactories/FrameStrFactory.hpp>
-#include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCCommunicatorStub.hpp>
+#include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCTestCommunicatorStub.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
@@ -33,7 +33,7 @@ class UI_Controller_RoundTripHDLC:
 {
 protected:
    UI_Controller_RoundTripHDLC()
-      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCCommunicatorStub>()})
+      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()})
       , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
