@@ -10,7 +10,7 @@
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
-#include <MessagingPattern/ZMqReqRepSecondaryStrategy.hpp>
+#include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
 
 #include <Utils/UserCommandParser.hpp>
 
@@ -37,6 +37,9 @@ int main()
       constraints::almag::values.begin(), constraints::almag::values.end()});
    ui.setDatabaseCommandsConstraints({
       constraints::database::values.begin(), constraints::database::values.end()});
+
+   const std::string hardcodedPort = "5555";
+   hdlcCommunicators.at(0)->setupSend(hardcodedPort);
 
    ui.run({});
 
