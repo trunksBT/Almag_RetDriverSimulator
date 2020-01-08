@@ -18,8 +18,9 @@ namespace
 constexpr int IDX_OF_COMMAND_OR_ACTION_NAME = 0;
 constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 constexpr int IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR = 1;
-constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
-constexpr uint8_t NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND = 1;
+constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
+constexpr int NUMBER_FOR_SINGLE_DUMMY_SCAN = 1;
+constexpr int DIRTY_HACK_FOR_NOT_FULLY_KNOWN_ZMQ = 1;
 }
 
 RetDriverCommandFactory::RetDriverCommandFactory(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
@@ -42,13 +43,13 @@ ICommandPtr RetDriverCommandFactory::interpretAndCreateCommand(std::vector<std::
    {
       return std::make_shared<DummyScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
-              validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_SINGLE_COMMAND);
+              validatedInput, (NUMBER_FOR_SINGLE_DUMMY_SCAN + DIRTY_HACK_FOR_NOT_FULLY_KNOWN_ZMQ));
    }
    else if (L1::SET_LINK_SPEED == commandName)
    {
       return std::make_shared<DummyScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
-              validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS);
+              hdlcCommunicators_.at(IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR),
+              validatedInput, NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS + DIRTY_HACK_FOR_NOT_FULLY_KNOWN_ZMQ);
    }
    else if (L2::DEVICE_SCAN == commandName)
    {
