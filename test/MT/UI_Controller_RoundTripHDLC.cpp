@@ -68,12 +68,6 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
          HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build()
       },
-//      ReceivedCommand_ExpectedFrameHexes{
-//         {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
-//         multiplyString(
-//                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS,
-//                 HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build())
-//      },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
          HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()).build()
