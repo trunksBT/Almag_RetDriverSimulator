@@ -25,7 +25,10 @@ class AlmagControllerShouldPar:
 {
 protected:
     AlmagControllerShouldPar()
-      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()})
+      : BaseFixtureWithDBAndHDLC({}, {
+         std::make_shared<test::RoundTripHDLCTestCommunicatorStub>(),
+         std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()
+      })
       , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
     {};
 

@@ -20,8 +20,6 @@ using namespace constraints::almag;
 
 namespace
 {
-constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
-constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 
@@ -33,7 +31,10 @@ class UI_Controller_RoundTripHDLC:
 {
 protected:
    UI_Controller_RoundTripHDLC()
-      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()})
+      : BaseFixtureWithDBAndHDLC({}, {
+         std::make_shared<test::RoundTripHDLCTestCommunicatorStub>(),
+         std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()
+      })
       , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
