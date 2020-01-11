@@ -2,8 +2,7 @@
 
 #include <Database/Objects/IOPaths.hpp>
 #include <TestUtils/Hardcodes.hpp>
-#include <TestUtils/ObjectTypes.hpp>
-#include <TestUtils/UniqueKeys.hpp>
+#include <TestUtils/DatabaseUtils.hpp>
 
 using namespace hardcodes::IOPaths;
 

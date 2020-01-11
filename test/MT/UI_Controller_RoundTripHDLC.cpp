@@ -20,6 +20,7 @@ using namespace constraints::almag;
 
 namespace
 {
+constexpr unsigned IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 

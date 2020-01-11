@@ -1,18 +1,15 @@
 #include <Controller/AlmagController.hpp>
+#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 #include <Database/Database.hpp>
 #include <Database/DatabaseConstraints.hpp>
 #include <HDLC/HDLCCommunicator.hpp>
-
-#include <UserInterface/CMenu.hpp>
-
-#include <Utils/Logger.hpp>
+#include <MessagingPattern/ZMqPubSubPrimaryStrategy.hpp>
+#include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
-#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
-#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
-#include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
-#include <MessagingPattern/ZMqPubSubPrimaryStrategy.hpp>
-
+#include <UserInterface/CMenu.hpp>
+#include <Utils/Logger.hpp>
 #include <Utils/UserCommandParser.hpp>
 
 int main()

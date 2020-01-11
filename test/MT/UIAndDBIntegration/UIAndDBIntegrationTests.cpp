@@ -9,12 +9,11 @@
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
-#include <TestUtils/ObjectTypes.hpp>
-#include <TestUtils/UniqueKeys.hpp>
+#include <TestUtils/DatabaseUtils.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCTestCommunicatorStub.hpp>
 
-using namespace hardcodes::IOPaths;
 using namespace constraints::database;
+using namespace hardcodes::IOPaths;
 
 namespace mt
 {
