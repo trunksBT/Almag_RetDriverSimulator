@@ -20,8 +20,6 @@ using namespace constraints::almag;
 
 namespace
 {
-constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
-constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
 }
 
@@ -33,7 +31,10 @@ class UI_Controller_RoundTripHDLC:
 {
 protected:
    UI_Controller_RoundTripHDLC()
-      : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()})
+      : BaseFixtureWithDBAndHDLC({}, {
+         std::make_shared<test::RoundTripHDLCTestCommunicatorStub>(),
+         std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()
+      })
       , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
       , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
             std::make_shared<AlmagCommandValidationManager>(db_),
@@ -68,12 +69,6 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
          {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
          HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build()
       },
-//      ReceivedCommand_ExpectedFrameHexes{
-//         {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
-//         multiplyString(
-//                 NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS,
-//                 HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build())
-//      },
       ReceivedCommand_ExpectedFrameHexes{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
          HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()).build()

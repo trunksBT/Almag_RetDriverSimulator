@@ -11,19 +11,20 @@
 #include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 #include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
+#include <MessagingPattern/ZMqPubSubPrimaryStrategy.hpp>
 
 #include <Utils/UserCommandParser.hpp>
 
 int main()
 {
    init_logger(IS_LOG_TO_FILE, IS_LOG_ON_STD_OUT,
-               boost::log::trivial::trace);
+               boost::log::trivial::debug);
 
    LOG(trace) << "BEGIN";
    Database db({});
    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators {{
-      std::make_shared<ZMqReqRepPrimaryStrategy>(zmq::socket_type::req),  // release mode
-//       std::make_shared<HDLCCommunicator>(),  // debug mode
+      std::make_shared<ZMqReqRepPrimaryStrategy>(zmq::socket_type::req),
+      std::make_shared<ZMqPubSubPrimaryStrategy>(zmq::socket_type::pub),
    }};
    ICommandFactoryPtr commandFactory = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
    AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFactory);
