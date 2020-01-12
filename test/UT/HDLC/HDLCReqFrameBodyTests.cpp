@@ -25,8 +25,7 @@ TEST_P(HDLCReqFrameBodyTests, BuiltFrame)
    ASSERT_THAT(GetParam().builtFrameStr,Eq(GetParam().expectedFrameStr));
 }
 
-INSTANTIATE_TEST_CASE_P(HDLCReqFrameBodyTests,
-    HDLCReqFrameBodyTests,
+INSTANTIATE_TEST_CASE_P(HDLCReqFrameBodyTests, HDLCReqFrameBodyTests,
     ::testing::Values(
         BuiltFrameStr_ExpectedFrameStr{
             toString(hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()),
