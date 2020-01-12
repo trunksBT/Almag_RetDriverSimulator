@@ -46,9 +46,9 @@ TEST_F(UIAndDatabaseIntegrationShould, Put_IOPaths_ByOT_BufferToSend_Once)
    ASSERT_TRUE(returnCode);
    ASSERT_TRUE(received);
    ASSERT_TRUE(received->bufferToSend);
-   ASSERT_THAT(
+   ASSERT_EQ(
       received->bufferToSend.value(),
-      StrEq(BUFFER_TO_SEND_VAL_1));
+      BUFFER_TO_SEND_VAL_1);
 }
 
 TEST_F(UIAndDatabaseIntegrationShould, Put_IOPaths_ByOT_BufferToSend_Twice)

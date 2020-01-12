@@ -7,8 +7,6 @@
 #include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
-using testing::Eq;
-
 namespace
 {
 IHDLCFrameBodyFactoryPtr hdlcFrameBodyFactory = std::make_shared<HDLCReqFrameBodyFactory>();
@@ -25,9 +23,7 @@ protected:
 TEST_P(HDLCFrameInterpreterTests, InterpretFrame)
 {
    const auto interpretedFrame = frameInterpreter.apply(GetParam().receivedString);
-
-   ASSERT_EQ(GetParam().expectedHexes,
-             interpretedFrame->build());
+   ASSERT_EQ(GetParam().expectedHexes, interpretedFrame->build());
 }
 
 INSTANTIATE_TEST_CASE_P(HDLCFrameInterpreterTests,

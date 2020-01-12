@@ -3,7 +3,6 @@
 #include <Utils/UserCommandParser.hpp>
 #include <Utils/Utils.hpp>
 
-using testing::StrEq;
 using namespace std::string_literals;
 
 class UserCommandParserShould : public testing::Test
@@ -14,22 +13,22 @@ protected:
 
 TEST_F(UserCommandParserShould, Accept_OnInput_StartPooling)
 {
-   ASSERT_THAT(
+   ASSERT_EQ(
       userCommandParser_.validate({"StartPooling"s, "3"s}),
-      StrEq(validation::ACCEPTED));
+      validation::ACCEPTED);
 }
 
 TEST_F(UserCommandParserShould, RejectUnknownCommand_OnInput_startPooling)
 {
-   ASSERT_THAT(
+   ASSERT_EQ(
       userCommandParser_.validate({"startPooling"s, "3"s}),
-      StrEq(validation::REJECTED_UNKNOWN_COMMAND));
+      validation::REJECTED_UNKNOWN_COMMAND);
 }
 
 TEST_F(UserCommandParserShould, Shutdown_OnInput_Shutdown)
 {
-   ASSERT_THAT(
+   ASSERT_EQ(
       userCommandParser_.validate({"Shutdown"s, "3"s}),
-      StrEq(validation::SHUTDOWN));
+      validation::SHUTDOWN);
 }
 

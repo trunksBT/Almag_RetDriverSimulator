@@ -35,8 +35,8 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_DummyScan)
    auto receivedFrame = hdlcCommunicator->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
-           hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build()));
+   ASSERT_EQ(receivedFrame->getFrameBody()->build(), 
+           hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build());
 }
 
 TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_AddressAssignment)
@@ -45,8 +45,8 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_AddressAssignment)
    auto receivedFrame = hdlcCommunicator->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
-           hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build()));
+   ASSERT_EQ(receivedFrame->getFrameBody()->build(), 
+           hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()->build());
 }
 
 TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameU_LinkEstablishment)
@@ -55,8 +55,8 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameU_LinkEstablishment)
    auto receivedFrame = hdlcCommunicator->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
-           hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build()));
+   ASSERT_EQ(receivedFrame->getFrameBody()->build(), 
+           hdlcFrameBodyFactory->get_FrameU_LinkEstablishment()->build());
 }
 
 TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_3GPPReleaseId)
@@ -65,8 +65,8 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_3GPPReleaseId)
    auto receivedFrame = hdlcCommunicator->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
-           hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build()));
+   ASSERT_EQ(receivedFrame->getFrameBody()->build(), 
+           hdlcFrameBodyFactory->get_FrameXID_3GPPReleaseId()->build());
 }
 
 TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_AISGProtocolVersion)
@@ -75,8 +75,8 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameXID_AISGProtocolVersion)
    auto receivedFrame = hdlcCommunicator->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
-           hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build()));
+   ASSERT_EQ(receivedFrame->getFrameBody()->build(), 
+           hdlcFrameBodyFactory->get_FrameXID_AISGProtocolVersion()->build());
 }
 
 TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameI_Calibrate)
@@ -85,11 +85,11 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameI_Calibrate)
    auto receivedFrame = hdlcCommunicator->receive(ADDRESS_OF_PORT_FOR_ZERO_MQ);
 
    ASSERT_TRUE(receivedFrame);
-   ASSERT_THAT(receivedFrame->getFrameBody()->build(), Eq(
-           hdlcFrameBodyFactory->get_FrameI_Calibrate()->build()));
+   ASSERT_EQ(receivedFrame->getFrameBody()->build(), 
+           hdlcFrameBodyFactory->get_FrameI_Calibrate()->build());
 }
 
 }
-/// TODO I want to parametrize that test but it looks like there cannot be pased pointer as a test parameter
+/// TODO I wanted to parametrize that test but it looks like there cannot be pased pointer as a test parameter
 //terminate called after throwing an instance of 'boost::wrapexcept<boost::log::v2_mt_posix::system_error>'
 //what():  Failed to set TLS value: Invalid argument

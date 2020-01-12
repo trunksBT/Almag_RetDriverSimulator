@@ -14,7 +14,6 @@
 #include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
-using testing::Eq;
 using namespace hardcodes::IOPaths;
 using namespace constraints::almag;
 
@@ -60,7 +59,7 @@ TEST_P(UI_Controller_RoundTripHDLC, ExecuteCommandAndExpectSentFrame)
 
    ASSERT_TRUE(returnCode);
    ASSERT_TRUE(sentFrames);
-   ASSERT_THAT(sentFrames->build(), Eq(GetParam().expectedFrameHexes));
+   ASSERT_EQ(sentFrames->build(), GetParam().expectedFrameHexes);
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,

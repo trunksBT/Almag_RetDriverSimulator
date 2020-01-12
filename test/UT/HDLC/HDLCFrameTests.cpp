@@ -6,7 +6,6 @@
 #include <Controller/IHDLCFrameBodyFactory.hpp>
 #include <Utils/Functions.hpp>
 
-using testing::Eq;
 using namespace funs;
 
 namespace
@@ -21,7 +20,7 @@ TEST_F(HDLCFrameTests, Transceive_XID_DummyScan)
 {
    const auto hdlcFrameBody = hdlcFrameBodyFactory->get_FrameXID_DummyScan();
    const auto hdlcFrame = HDLCFrame(hdlcFrameBody);
-   ASSERT_THAT(hdlcFrame.build(), Eq(
+   ASSERT_EQ(hdlcFrame.build(),
          merge(START_STOP_FLAG, hdlcFrameBodyFactory->get_FrameXID_DummyScan()->build(),
-               {CRC.at(0), CRC.at(1)}, START_STOP_FLAG)));
+               {CRC.at(0), CRC.at(1)}, START_STOP_FLAG));
 }
