@@ -9,7 +9,6 @@
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
-#include <TestUtils/DatabaseUtils.hpp>
 #include <TestUtils/HDLC/DataLinkLayerCommunicators/RoundTripHDLCTestCommunicatorStub.hpp>
 
 using namespace constraints::database;

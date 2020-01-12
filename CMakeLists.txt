@@ -158,7 +158,6 @@ set(EXTERNAL_LIBRARIES_UTILS
 set(EXTERNAL_LIBRARIES_TESTUTILS
     ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/Hardcodes.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/StructsForParametrizedTests.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/TestUtils/DatabaseUtils.hpp
     )
 
 set(EXTERNAL_LIBRARIES_TESTUTILS_COMMUNICATORS
