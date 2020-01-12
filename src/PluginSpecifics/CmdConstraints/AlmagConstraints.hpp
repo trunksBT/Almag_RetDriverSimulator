@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
 #include <array>
+#include <string>
 
 namespace constraints
 {
@@ -33,12 +33,12 @@ constexpr std::size_t NUMBER_OF_CONSTRAINTS = 9;
 static const std::array<std::string, NUMBER_OF_CONSTRAINTS> values {{
         L1::DUMMY_SCAN,
         L1::SET_LINK_SPEED,
-        L2::DEVICE_SCAN,
         L2::ADDRESS_ASSIGNMENT,
-        L2::LINK_ESTABLISHMENT,
-        L2::HDLC_PARAMETERS,
-        L2::THREEGPP_RELEASE_ID,
         L2::AISG_PROTOCOL_VERSION,
+        L2::DEVICE_SCAN,
+        L2::HDLC_PARAMETERS,
+        L2::LINK_ESTABLISHMENT,
+        L2::THREEGPP_RELEASE_ID,
         L7::CALIBRATE,
 }};
 }

@@ -1,26 +1,26 @@
 #include <Controller/AlmagController.hpp>
+#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 #include <Database/Database.hpp>
 #include <Database/DatabaseConstraints.hpp>
 #include <HDLC/HDLCCommunicator.hpp>
-
-#include <UserInterface/CMenu.hpp>
-
-#include <Utils/Logger.hpp>
+#include <MessagingPattern/ZMqPubSubPrimaryStrategy.hpp>
+#include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
 #include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
-#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
-#include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
-#include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
-#include <MessagingPattern/ZMqPubSubPrimaryStrategy.hpp>
-
+#include <UserInterface/CMenu.hpp>
+#include <Utils/Logger.hpp>
 #include <Utils/UserCommandParser.hpp>
+#include <Utils/Utils.hpp>
+
+using namespace defaultVals;
 
 int main()
 {
    init_logger(IS_LOG_TO_FILE, IS_LOG_ON_STD_OUT,
                boost::log::trivial::debug);
 
-   LOG(trace) << "BEGIN";
+   LOG(trace) << BEGIN;
    Database db({});
    std::vector<IHDLCCommunicatorPtr> hdlcCommunicators {{
       std::make_shared<ZMqReqRepPrimaryStrategy>(zmq::socket_type::req),
@@ -44,6 +44,6 @@ int main()
 
    ui.run({});
 
-   LOG(trace) << "END";
+   LOG(trace) << END;
    return 0;
 }

@@ -61,28 +61,28 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
          L2::DEVICE_SCAN + DELIMITER
       },
       CommandsToExpectedFrame{
-              {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
-              L2::ADDRESS_ASSIGNMENT + DELIMITER
+         {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
+         L2::ADDRESS_ASSIGNMENT + DELIMITER
       },
       CommandsToExpectedFrame{
-              {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
-              L2::LINK_ESTABLISHMENT + DELIMITER
+         {{ L2::LINK_ESTABLISHMENT, BUFFER_TO_SEND_VAL_1 }},
+         L2::LINK_ESTABLISHMENT + DELIMITER
       },
       CommandsToExpectedFrame{
-              {{ L2::HDLC_PARAMETERS, BUFFER_TO_SEND_VAL_1 }},
-              L2::HDLC_PARAMETERS + DELIMITER
+         {{ L2::HDLC_PARAMETERS, BUFFER_TO_SEND_VAL_1 }},
+         L2::HDLC_PARAMETERS + DELIMITER
       },
       CommandsToExpectedFrame{
-              {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
-              L2::THREEGPP_RELEASE_ID + DELIMITER
+         {{ L2::THREEGPP_RELEASE_ID, BUFFER_TO_SEND_VAL_1 }},
+         L2::THREEGPP_RELEASE_ID + DELIMITER
       },
       CommandsToExpectedFrame{
-              {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
-              L2::AISG_PROTOCOL_VERSION + DELIMITER
+         {{ L2::AISG_PROTOCOL_VERSION, BUFFER_TO_SEND_VAL_1 }},
+         L2::AISG_PROTOCOL_VERSION + DELIMITER
       },
       CommandsToExpectedFrame{
-              {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
-              L7::CALIBRATE + DELIMITER
+         {{ L7::CALIBRATE, BUFFER_TO_SEND_VAL_1 }},
+         L7::CALIBRATE + DELIMITER
       }
    )
 );

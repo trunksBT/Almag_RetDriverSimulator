@@ -90,3 +90,6 @@ TEST_F(ZmqReqRespCommunicatorTests, Should_get_FrameI_Calibrate)
 }
 
 }
+/// TODO I want to parametrize that test but it looks like there cannot be pased pointer as a test parameter
+//terminate called after throwing an instance of 'boost::wrapexcept<boost::log::v2_mt_posix::system_error>'
+//what():  Failed to set TLS value: Invalid argument

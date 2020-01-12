@@ -1,9 +1,9 @@
 #include "RetDriverCommandFactory.hpp"
-#include <Controller/Commands/AISGProtocolVersion.hpp>
 #include <Controller/Commands/AddressAssignment.hpp>
+#include <Controller/Commands/AISGProtocolVersion.hpp>
 #include <Controller/Commands/Calibrate.hpp>
-#include <Controller/Commands/DummyScan.hpp>
 #include <Controller/Commands/DeviceScan.hpp>
+#include <Controller/Commands/DummyScan.hpp>
 #include <Controller/Commands/HDLCParameters.hpp>
 #include <Controller/Commands/LinkEstablishment.hpp>
 #include <Controller/Commands/ThreeGPPReleaseID.hpp>
@@ -15,12 +15,12 @@ using namespace constraints::almag;
 
 namespace
 {
-constexpr int IDX_OF_COMMAND_OR_ACTION_NAME = 0;
-constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
-constexpr int IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR = 1;
-constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
-constexpr int NUMBER_FOR_SINGLE_DUMMY_SCAN = 1;
 constexpr int DIRTY_HACK_FOR_NOT_FULLY_KNOWN_ZMQ = 1;
+constexpr int IDX_OF_COMMAND_OR_ACTION_NAME = 0;
+constexpr int IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR = 1;
+constexpr int IDX_OF_REQUEST_RESPONSE_COMMUNICATOR = 0;
+constexpr int NUMBER_FOR_SINGLE_DUMMY_SCAN = 1;
+constexpr int NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS = 6;
 }
 
 RetDriverCommandFactory::RetDriverCommandFactory(std::vector<IHDLCCommunicatorPtr>& hdlcCommunicators)
