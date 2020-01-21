@@ -1,5 +1,5 @@
-message("AlmagRetDriver TestCMakeLists")
-set(PROJECT_TESTS_NAME Almag_RetDriver_Test)
+message("KorytkoMRetDriver TestCMakeLists")
+set(PROJECT_TESTS_NAME Korytko_RetDriver_Test)
 
 include_directories(${PROJECT_SOURCE_DIR}/test)
 
