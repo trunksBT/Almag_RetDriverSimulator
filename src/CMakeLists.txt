@@ -1,4 +1,4 @@
-message("AlmagRetDriver ReleaseCMakeLists")
+message("KorytkoMagRetDriver ReleaseCMakeLists")
 
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/src/main.cpp
