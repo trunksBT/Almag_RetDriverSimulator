@@ -1,8 +1,8 @@
 # This is simulator for AISG 2.0 RetDriver
 
 # Checkout command  
-- SSH: git clone git@github.com:trunksBT/Almag_RetDriverSimulator.git --recursive  
-- HTTPS: git clone https://github.com/trunksBT/Almag_RetDriverSimulator.git --recursive  
+- SSH: git clone git@github.com:trunksBT/KorytkoMag_RetDriverSimulator.git --recursive  
+- HTTPS: git clone https://github.com/trunksBT/KorytkoMag_RetDriverSimulator.git --recursive  
 
 # KorytkoMag_RetDriver
 UNBLOCKED_SCENARIOS > QUALITY  
