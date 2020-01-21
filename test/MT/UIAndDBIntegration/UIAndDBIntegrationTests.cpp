@@ -2,10 +2,10 @@
 
 #include <UserInterface/CMenu.hpp>
 #include <Database/Objects/IOPaths.hpp>
-#include <Controller/AlmagControllerNull.hpp>
+#include <Controller/KorytkoMagControllerNull.hpp>
 
 #include <Database/DatabaseConstraints.hpp>
-#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/CmdValidationRules/KorytkoMagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
@@ -23,8 +23,8 @@ protected:
    UIAndDatabaseIntegrationShould()
       : BaseFixtureWithDBAndHDLC({}, {std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()})
       , ui_(std::make_unique<CMenu>(
-         "AlmagRetDriverUI", "_", db_, std::make_shared<AlmagControllerNull>(),
-         std::make_shared<AlmagCommandValidationManager>(db_),
+         "KorytkoMagRetDriverUI", "_", db_, std::make_shared<KorytkoMagControllerNull>(),
+         std::make_shared<KorytkoMagCommandValidationManager>(db_),
          std::make_unique<DatabaseCommandValidationManager>(db_))
       )
    {

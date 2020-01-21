@@ -1,4 +1,4 @@
-set(PROJECT_TESTS_NAME Almag_RetDriver_UT)
+set(PROJECT_TESTS_NAME KorytkoMag_RetDriver_UT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(UT

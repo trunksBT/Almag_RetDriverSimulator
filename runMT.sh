@@ -1,1 +1,1 @@
-make -j4 Almag_RetDriver_MT && ./test/MT/Almag_RetDriver_MT
+make -j4 KorytkoMag_RetDriver_MT && ./test/MT/KorytkoMag_RetDriver_MT

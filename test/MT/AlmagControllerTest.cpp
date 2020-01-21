@@ -1,9 +1,9 @@
 #include <TestUtils/Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 
-#include <Controller/AlmagController.hpp>
+#include <Controller/KorytkoMagController.hpp>
 #include <Controller/IController.hpp>
 
-#include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/CmdConstraints/KorytkoMagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
@@ -13,29 +13,29 @@
 
 using namespace command;
 using namespace defaultVals;
-using namespace constraints::almag;
+using namespace constraints::korytkomag;
 using namespace hardcodes::IOPaths;
 
 namespace mt
 {
 
-class AlmagControllerShouldPar:
+class KorytkoMagControllerShouldPar:
    public BaseFixtureWithDBAndHDLC,
    public ::testing::WithParamInterface<CommandsToExpectedFrame>
 {
 protected:
-    AlmagControllerShouldPar()
+    KorytkoMagControllerShouldPar()
       : BaseFixtureWithDBAndHDLC({}, {
          std::make_shared<test::RoundTripHDLCTestCommunicatorStub>(),
          std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()
       })
-      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
+      , ctrl_(std::make_shared<KorytkoMagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
     {};
 
-    IAlmagControllerPtr ctrl_;
+    IKorytkoMagControllerPtr ctrl_;
 };
 
-TEST_P(AlmagControllerShouldPar, Execute_Command_Expect_ResultCode)
+TEST_P(KorytkoMagControllerShouldPar, Execute_Command_Expect_ResultCode)
 {
 	ctrl_->addCommands(GetParam().inCommands);
    ctrl_->executeCommand();
@@ -44,7 +44,7 @@ TEST_P(AlmagControllerShouldPar, Execute_Command_Expect_ResultCode)
 }
 
 INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
-   AlmagControllerShouldPar,
+   KorytkoMagControllerShouldPar,
    ::testing::Values(
       CommandsToExpectedFrame{
 	      {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},

@@ -1,9 +1,9 @@
-set(PROJECT_TESTS_NAME Almag_RetDriver_MT)
+set(PROJECT_TESTS_NAME KorytkoMag_RetDriver_MT)
 message(${CMAKE_CURRENT_SOURCE_DIR})
 
 
 set(MT
-    ${PROJECT_SOURCE_DIR}/test/MT/AlmagControllerTest.cpp
+    ${PROJECT_SOURCE_DIR}/test/MT/KorytkoMagControllerTest.cpp
     ${PROJECT_SOURCE_DIR}/test/MT/UIAndDBIntegration/UIAndDBIntegrationTests.cpp
     ${PROJECT_SOURCE_DIR}/test/MT/UI_Controller_RoundTripHDLC.cpp
 )

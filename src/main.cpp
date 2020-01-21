@@ -1,12 +1,12 @@
-#include <Controller/AlmagController.hpp>
-#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <Controller/KorytkoMagController.hpp>
+#include <Controller/CmdValidationRules/KorytkoMagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 #include <Database/Database.hpp>
 #include <Database/DatabaseConstraints.hpp>
 #include <HDLC/HDLCCommunicator.hpp>
 #include <MessagingPattern/ZMqPubSubPrimaryStrategy.hpp>
 #include <MessagingPattern/ZMqReqRepPrimaryStrategy.hpp>
-#include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
+#include <PluginSpecifics/CmdConstraints/KorytkoMagConstraints.hpp>
 #include <PluginSpecifics/RetDriverCommandFactory.hpp>
 #include <UserInterface/CMenu.hpp>
 #include <Utils/Logger.hpp>
@@ -27,15 +27,15 @@ int main()
       std::make_shared<ZMqPubSubPrimaryStrategy>(zmq::socket_type::pub),
    }};
    ICommandFactoryPtr commandFactory = std::make_shared<RetDriverCommandFactory>(hdlcCommunicators);
-   AlmagControllerPtr ctrl = std::make_shared<AlmagController>(db, commandFactory);
+   KorytkoMagControllerPtr ctrl = std::make_shared<KorytkoMagController>(db, commandFactory);
 
-   CMenu ui{"AlmagRetDriverUI", "_", db, ctrl,
-      std::make_shared<AlmagCommandValidationManager>(db),
+   CMenu ui{"KorytkoMagRetDriverUI", "_", db, ctrl,
+      std::make_shared<KorytkoMagCommandValidationManager>(db),
       std::make_unique<DatabaseCommandValidationManager>(db)
    };
 
-   ui.setAlmagCommandsConstraints({
-      constraints::almag::values.begin(), constraints::almag::values.end()});
+   ui.setKorytkoMagCommandsConstraints({
+      constraints::korytkomag::values.begin(), constraints::korytkomag::values.end()});
    ui.setDatabaseCommandsConstraints({
       constraints::database::values.begin(), constraints::database::values.end()});
 

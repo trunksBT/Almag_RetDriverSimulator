@@ -1,9 +1,9 @@
 #include <TestUtils/Fixtures/BaseFixtureWithDBAndHDLC.hpp>
 #include <UserInterface/CMenu.hpp>
-#include <Controller/AlmagController.hpp>
+#include <Controller/KorytkoMagController.hpp>
 
-#include <PluginSpecifics/CmdConstraints/AlmagConstraints.hpp>
-#include <Controller/CmdValidationRules/AlmagCommandValidationManager.hpp>
+#include <PluginSpecifics/CmdConstraints/KorytkoMagConstraints.hpp>
+#include <Controller/CmdValidationRules/KorytkoMagCommandValidationManager.hpp>
 #include <Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp>
 
 #include <TestUtils/Hardcodes.hpp>
@@ -15,7 +15,7 @@
 #include <PluginSpecifics/HDLCReqFrameBodyFactory.hpp>
 
 using namespace hardcodes::IOPaths;
-using namespace constraints::almag;
+using namespace constraints::korytkomag;
 
 namespace
 {
@@ -35,17 +35,17 @@ protected:
          std::make_shared<test::RoundTripHDLCTestCommunicatorStub>(),
          std::make_shared<test::RoundTripHDLCTestCommunicatorStub>()
       })
-      , ctrl_(std::make_shared<AlmagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
-      , ui_("AlmagRetDriverUI", "_", db_, ctrl_,
-            std::make_shared<AlmagCommandValidationManager>(db_),
+      , ctrl_(std::make_shared<KorytkoMagController>(db_, std::make_shared<RetDriverCommandFactory>(hdlcCommunicators_)))
+      , ui_("KorytkoMagRetDriverUI", "_", db_, ctrl_,
+            std::make_shared<KorytkoMagCommandValidationManager>(db_),
             std::make_unique<DatabaseCommandValidationManager>(db_)
       )
    {
-      ui_.setAlmagCommandsConstraints({
-         constraints::almag::values.begin(), constraints::almag::values.end()});
+      ui_.setKorytkoMagCommandsConstraints({
+         constraints::korytkomag::values.begin(), constraints::korytkomag::values.end()});
    };
 
-   AlmagControllerPtr ctrl_;
+   KorytkoMagControllerPtr ctrl_;
    CMenu ui_;
 };
 

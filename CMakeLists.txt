@@ -45,7 +45,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 add_definitions( -DBOOST_ALL_DYN_LINK)
 
 set(PLUGIN_SPECIFICS
-    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/AlmagConstraints.hpp
+    ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/CmdConstraints/KorytkoMagConstraints.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.cpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/RetDriverCommandFactory.hpp
     ${PROJECT_SOURCE_DIR}/src/PluginSpecifics/HDLCReqFrameBodyFactory.cpp
@@ -86,10 +86,10 @@ set(EXTERNAL_LIBRARIES_DATABASE
 )
 
 set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagController.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagController.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagControllerNull.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/AlmagControllerNull.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/KorytkoMagController.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/KorytkoMagController.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/KorytkoMagControllerNull.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/KorytkoMagControllerNull.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/IController.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/AISGProtocolVersion.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/AISGProtocolVersion.hpp
@@ -113,8 +113,8 @@ set(EXTERNAL_LIBRARIES_COMMAND_PATTERN
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/LinkEstablishment.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/ThreeGPPReleaseID.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/Commands/ThreeGPPReleaseID.hpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/AlmagCommandValidationManager.cpp
-    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/AlmagCommandValidationManager.hpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/KorytkoMagCommandValidationManager.cpp
+    ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/KorytkoMagCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/DatabaseCommandValidationManager.cpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/DatabaseCommandValidationManager.hpp
     ${PROJECT_SOURCE_DIR}/externalLibraries/Controller/CmdValidationRules/DummyScanValidationStrategy.cpp
