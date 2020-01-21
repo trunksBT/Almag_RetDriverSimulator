@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.8)
 
-project (Almag_RetDriver)
-message(status "AlmagRetDriver MainCMakeLists")
+project (KorytkoMag_RetDriver)
+message(status "KorytkoMagRetDriver MainCMakeLists")
 
 find_package(Boost 1.71.0 REQUIRED COMPONENTS log date_time)
 
