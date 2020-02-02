@@ -66,10 +66,6 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDB,
    UI_Controller_RoundTripHDLC,
    ::testing::Values(
       ReceivedCommand_ExpectedFrameHexes{
-         {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
-         HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_DummyScan()).build()
-      },
-      ReceivedCommand_ExpectedFrameHexes{
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
          HDLCFrame(hdlcFrameBodyFactory->get_FrameXID_AddressAssignment()).build()
       },

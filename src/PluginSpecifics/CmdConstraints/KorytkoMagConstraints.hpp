@@ -28,10 +28,9 @@ namespace L7
 const std::string CALIBRATE = "Calibrate";
 }
 
-constexpr std::size_t NUMBER_OF_CONSTRAINTS = 9;
+constexpr std::size_t NUMBER_OF_CONSTRAINTS = 8;
 
 static const std::array<std::string, NUMBER_OF_CONSTRAINTS> values {{
-        L1::DUMMY_SCAN,
         L1::SET_LINK_SPEED,
         L2::ADDRESS_ASSIGNMENT,
         L2::AISG_PROTOCOL_VERSION,

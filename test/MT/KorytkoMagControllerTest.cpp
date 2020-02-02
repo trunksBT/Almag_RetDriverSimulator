@@ -47,11 +47,6 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
    KorytkoMagControllerShouldPar,
    ::testing::Values(
       CommandsToExpectedFrame{
-	      {{ L1::DUMMY_SCAN, BUFFER_TO_SEND_VAL_1 }},
-         multiplyString(ONE_DUMMY_SCAN + DIRTY_HACK_FOR_PUB_SUB_ZMQ_LOST_MESSAGE,
-                 L1::DUMMY_SCAN + DELIMITER)
-      },
-      CommandsToExpectedFrame{
          {{ L1::SET_LINK_SPEED, BUFFER_TO_SEND_VAL_1 }},
          multiplyString(NUMBER_OF_DUMMY_SCANS_FOR_9_6_KBPS + DIRTY_HACK_FOR_PUB_SUB_ZMQ_LOST_MESSAGE
                  , L1::DUMMY_SCAN + DELIMITER)
@@ -60,7 +55,7 @@ INSTANTIATE_TEST_CASE_P(BaseFixtureWithDBAndHDLC,
          {{ L2::DEVICE_SCAN, BUFFER_TO_SEND_VAL_1 }},
          L2::DEVICE_SCAN + DELIMITER
       },
-      CommandsToExpectedFrame{
+      CommandsToExpectedFrame{0
          {{ L2::ADDRESS_ASSIGNMENT, BUFFER_TO_SEND_VAL_1 }},
          L2::ADDRESS_ASSIGNMENT + DELIMITER
       },

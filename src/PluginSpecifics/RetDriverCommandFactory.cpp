@@ -39,13 +39,7 @@ ICommandPtr RetDriverCommandFactory::interpretAndCreateCommand(std::vector<std::
 {
    const auto& commandName = validatedInput[IDX_OF_COMMAND_OR_ACTION_NAME];
 
-   if (L1::DUMMY_SCAN == commandName)
-   {
-      return std::make_shared<DummyScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
-              hdlcCommunicators_.at(IDX_OF_REQUEST_RESPONSE_COMMUNICATOR),
-              validatedInput, (NUMBER_FOR_SINGLE_DUMMY_SCAN + DIRTY_HACK_FOR_NOT_FULLY_KNOWN_ZMQ));
-   }
-   else if (L1::SET_LINK_SPEED == commandName)
+   if (L1::SET_LINK_SPEED == commandName)
    {
       return std::make_shared<DummyScan>(std::make_shared<HDLCReqFrameBodyFactory>(),
               hdlcCommunicators_.at(IDX_OF_PUBLISH_SUBSCRIBE_COMMUNICATOR),
