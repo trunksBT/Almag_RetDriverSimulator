@@ -18,7 +18,7 @@ using namespace defaultVals;
 int main()
 {
    init_logger(IS_LOG_TO_FILE, IS_LOG_ON_STD_OUT,
-               boost::log::trivial::trace);
+               boost::log::trivial::info);
 
    LOG(trace) << BEGIN;
    Database db({});
@@ -39,8 +39,10 @@ int main()
    ui.setDatabaseCommandsConstraints({
       constraints::database::values.begin(), constraints::database::values.end()});
 
-   const std::string hardcodedPort = "5555";
-   hdlcCommunicators.at(0)->setupSend(hardcodedPort);
+   const std::string hardcodedPortForPubSub = "6666";
+   const std::string hardcodedPortForReqRep = "5555";
+   hdlcCommunicators.at(1)->setupSend(hardcodedPortForPubSub);
+   hdlcCommunicators.at(0)->setupSend(hardcodedPortForReqRep);
 
    ui.run({});
 
