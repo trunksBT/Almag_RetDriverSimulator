@@ -24,7 +24,7 @@
 	url = https://github.com/trunksBT/KorytkoMag_HDLC.git
 [submodule "externalLibraries/TestUtils"]
 	path = externalLibraries/TestUtils
-	url = https://github.com/trunksBT/KorytkoMag_Utils.git
+	url = https://github.com/trunksBT/KorytkoMag_TestUtils.git
 [submodule "externalLibraries/MessagingPattern"]
 	path = externalLibraries/MessagingPattern
 	url = https://github.com/trunksBT/KorytkoMag_MessagingPattern.git
