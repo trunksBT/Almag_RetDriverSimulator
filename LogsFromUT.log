@@ -1,0 +1,80 @@
+[  3%] Built target gtest
+[  6%] Built target gmock
+[ 13%] Built target gmock_main
+[100%] Built target KorytkoMag_RetDriver_UT
+[==========] Running 28 tests from 5 test suites.
+[----------] Global test environment set-up.
+[----------] 7 tests from DBShould
+[ RUN      ] DBShould.getObj_NotExisting_IOPaths2_template
+[       OK ] DBShould.getObj_NotExisting_IOPaths2_template (1 ms)
+[ RUN      ] DBShould.updateObj_NotExisting_IOPaths2
+[       OK ] DBShould.updateObj_NotExisting_IOPaths2 (1 ms)
+[ RUN      ] DBShould.createObj_WithGenerationOfUK_FromUK
+[       OK ] DBShould.createObj_WithGenerationOfUK_FromUK (4 ms)
+[ RUN      ] DBShould.createObj_WithGenerationOfUK_ThreeTimes
+[       OK ] DBShould.createObj_WithGenerationOfUK_ThreeTimes (1 ms)
+[ RUN      ] DBShould.updateObj_Existing_IOPaths2
+[       OK ] DBShould.updateObj_Existing_IOPaths2 (1 ms)
+[ RUN      ] DBShould.delete_Existing_IOPaths1
+[       OK ] DBShould.delete_Existing_IOPaths1 (2 ms)
+[ RUN      ] DBShould.delete_NotExisting_IOPaths2
+[       OK ] DBShould.delete_NotExisting_IOPaths2 (1 ms)
+[----------] 7 tests from DBShould (11 ms total)
+
+[----------] 1 test from HDLCFrameTests
+[ RUN      ] HDLCFrameTests.Transceive_XID_DummyScan
+[       OK ] HDLCFrameTests.Transceive_XID_DummyScan (0 ms)
+[----------] 1 test from HDLCFrameTests (0 ms total)
+
+[----------] 3 tests from UserCommandParserShould
+[ RUN      ] UserCommandParserShould.Accept_OnInput_StartPooling
+[       OK ] UserCommandParserShould.Accept_OnInput_StartPooling (0 ms)
+[ RUN      ] UserCommandParserShould.RejectUnknownCommand_OnInput_startPooling
+[       OK ] UserCommandParserShould.RejectUnknownCommand_OnInput_startPooling (0 ms)
+[ RUN      ] UserCommandParserShould.Shutdown_OnInput_Shutdown
+[       OK ] UserCommandParserShould.Shutdown_OnInput_Shutdown (0 ms)
+[----------] 3 tests from UserCommandParserShould (0 ms total)
+
+[----------] 9 tests from HDLCReqFrameBodyTests/HDLCReqFrameBodyTests
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/0
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/0 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/1
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/1 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/2
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/2 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/3
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/3 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/4
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/4 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/5
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/5 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/6
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/6 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/7
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/7 (0 ms)
+[ RUN      ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/8
+[       OK ] HDLCReqFrameBodyTests/HDLCReqFrameBodyTests.BuiltFrame/8 (0 ms)
+[----------] 9 tests from HDLCReqFrameBodyTests/HDLCReqFrameBodyTests (1 ms total)
+
+[----------] 8 tests from HDLCFrameInterpreterTests/HDLCFrameInterpreterTests
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/0
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/0 (0 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/1
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/1 (0 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/2
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/2 (0 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/3
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/3 (0 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/4
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/4 (0 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/5
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/5 (1 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/6
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/6 (0 ms)
+[ RUN      ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/7
+[       OK ] HDLCFrameInterpreterTests/HDLCFrameInterpreterTests.InterpretFrame/7 (0 ms)
+[----------] 8 tests from HDLCFrameInterpreterTests/HDLCFrameInterpreterTests (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 28 tests from 5 test suites ran. (14 ms total)
+[  PASSED  ] 28 tests.

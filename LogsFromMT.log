@@ -1,0 +1,54 @@
+[  2%] Built target gtest
+[  4%] Built target gmock
+[  9%] Built target gmock_main
+[100%] Built target KorytkoMag_RetDriver_MT
+[==========] Running 18 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from UIAndDatabaseIntegrationShould
+[ RUN      ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByOT_BufferToSend_Once
+[       OK ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByOT_BufferToSend_Once (5 ms)
+[ RUN      ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByOT_BufferToSend_Twice
+[       OK ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByOT_BufferToSend_Twice (2 ms)
+[ RUN      ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByUK_BufferToSend
+[       OK ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByUK_BufferToSend (2 ms)
+[ RUN      ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByUK_BufferToSend_Twice_EqualKey
+[       OK ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByUK_BufferToSend_Twice_EqualKey (1 ms)
+[ RUN      ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByUK_BufferToSend_Twice_DifferentKey
+[       OK ] UIAndDatabaseIntegrationShould.Put_IOPaths_ByUK_BufferToSend_Twice_DifferentKey (2 ms)
+[----------] 5 tests from UIAndDatabaseIntegrationShould (12 ms total)
+
+[----------] 8 tests from BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/0
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/0 (2104 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/1
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/1 (2 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/2
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/2 (2 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/3
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/3 (2 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/4
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/4 (2 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/5
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/5 (4 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/6
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/6 (1 ms)
+[ RUN      ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/7
+[       OK ] BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar.Execute_Command_Expect_ResultCode/7 (2 ms)
+[----------] 8 tests from BaseFixtureWithDBAndHDLC/KorytkoMagControllerShouldPar (2119 ms total)
+
+[----------] 5 tests from BaseFixtureWithDB/UI_Controller_RoundTripHDLC
+[ RUN      ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/0
+[       OK ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/0 (2 ms)
+[ RUN      ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/1
+[       OK ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/1 (1 ms)
+[ RUN      ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/2
+[       OK ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/2 (2 ms)
+[ RUN      ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/3
+[       OK ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/3 (8 ms)
+[ RUN      ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/4
+[       OK ] BaseFixtureWithDB/UI_Controller_RoundTripHDLC.ExecuteCommandAndExpectSentFrame/4 (2 ms)
+[----------] 5 tests from BaseFixtureWithDB/UI_Controller_RoundTripHDLC (15 ms total)
+
+[----------] Global test environment tear-down
+[==========] 18 tests from 3 test suites ran. (2146 ms total)
+[  PASSED  ] 18 tests.
