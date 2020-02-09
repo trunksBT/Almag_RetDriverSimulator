@@ -1,0 +1,8 @@
+<23:16:54.980834> info [ZMqPubSubPrimaryStrategy::setupSend:22] on tcp://127.0.0.1:6666
+<23:16:54.981190> info [ZMqReqRepPrimaryStrategy::setupSend:25] on tcp://127.0.0.1:5555
+<23:16:54.981269> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:16:56.427925> info [CMenu::runImpl:75] dupa - not supported, please check command constraints, paste 'help' or 'exit'
+<23:16:56.428011> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:16:59.783176> error [DummyScanValidationStrategy::validateInputCorrectness:8] Requires path of port as second argument
+<23:16:59.783264> warning [CMenu::interpretControllerCommand:87] Validation rejected the command
+<23:16:59.783339> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )

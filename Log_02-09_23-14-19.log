@@ -1,0 +1,57 @@
+<23:14:19.498531> info [ZMqPubSubPrimaryStrategy::setupSend:22] on tcp://127.0.0.1:6666
+<23:14:19.498859> info [ZMqReqRepPrimaryStrategy::setupSend:25] on tcp://127.0.0.1:5555
+<23:14:19.498923> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:14:26.501229> info [DummyScan::execute:27] 
+<23:14:26.501378> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:26.812975> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:27.113751> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:27.415036> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:27.716261> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:28.022041> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:28.324300> info [ZMqPubSubPrimaryStrategy::send:35] 7e ff bf 81 f0 8 1 2 33 33 3 2 ff ff 13 37 7e 
+<23:14:28.631228> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:05.546352> info [DeviceScan::execute:23] 
+<23:15:05.546552> info [ZMqReqRepPrimaryStrategy::send:37] 7e ff bf 81 f0 8 1 2 0 0 3 2 0 0 13 37 7e 
+<23:15:06.557544> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 0 bf 81 f0 12 1 9 4e 4b 34 36 35 30 30 30 30 4 1 1 6 2 4e 4b 13 37 7e 
+<23:15:06.558102> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:15.679933> info [AddressAssignment::execute:21] 
+<23:15:15.680244> info [ZMqReqRepPrimaryStrategy::send:37] 7e ff bf 81 f0 11 1 9 4e 4b 34 36 35 30 30 30 30 2 1 3 4 1 1 13 37 7e 
+<23:15:16.684906> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 3 bf 81 f0 12 1 9 4e 4b 34 36 35 30 30 30 30 4 1 1 6 2 4e 4b 13 37 7e 
+<23:15:16.685376> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:23.994520> info [DeviceScan::execute:23] 
+<23:15:23.994727> info [ZMqReqRepPrimaryStrategy::send:37] 7e ff bf 81 f0 8 1 2 0 0 3 2 0 0 13 37 7e 
+<23:15:25.000678> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 0 bf 81 f0 12 1 9 4e 4b 34 36 35 30 30 30 30 4 1 1 6 2 4e 4b 13 37 7e 
+<23:15:25.000883> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:31.159221> info [HDLCParameters::execute:21] 
+<23:15:31.159425> info [ZMqReqRepPrimaryStrategy::send:37] 7e 3 bf 81 80 12 5 4 f0 2d 0 0 6 4 f0 2d 0 0 7 1 1 8 1 1 13 37 7e 
+<23:15:32.168583> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 3 bf 81 80 12 5 4 50 2 0 0 6 4 50 2 0 0 7 1 1 8 1 1 13 37 7e 
+<23:15:32.168977> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:38.008670> info [LinkEstablishment::execute:20] 
+<23:15:38.008757> info [ZMqReqRepPrimaryStrategy::send:37] 7e 3 93 13 37 7e 
+<23:15:39.017392> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 3 73 13 37 7e 
+<23:15:39.017504> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:46.348743> info [ThreeGPPReleaseID::execute:20] 
+<23:15:46.348923> info [ZMqReqRepPrimaryStrategy::send:37] 7e 3 bf 81 f0 3 5 1 8 13 37 7e 
+<23:15:47.407710> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 3 bf 81 f0 3 5 1 8 13 37 7e 
+<23:15:47.407985> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:15:55.034999> info [CMenu::runImpl:75] AisgProtocolVersion - not supported, please check command constraints, paste 'help' or 'exit'
+<23:15:55.035056> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:16:01.246151> info [AISGProtocolVersion::execute:22] 
+<23:16:01.246295> info [ZMqReqRepPrimaryStrategy::send:37] 7e 3 bf 81 f0 3 14 1 2 13 37 7e 
+<23:16:02.265720> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 3 bf 81 f0 3 14 1 2 13 37 7e 
+<23:16:02.266551> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:16:03.940640> info [CMenu::runImpl:68] { 
+SetLinkSpeed
+AddressAssignment
+AISGProtocolVersion
+DeviceScan
+HDLCParameters
+LinkEstablishment
+3GPPReleaseID
+Calibrate
+ }
+<23:16:03.940712> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
+<23:16:09.586609> info [Calibrate::execute:20] 
+<23:16:09.586733> info [ZMqReqRepPrimaryStrategy::send:37] 7e 3 10 31 0 0 13 37 7e 
+<23:16:10.592517> debug [ZMqReqRepPrimaryStrategy::receive:46] 7e 3 30 31 1 0 0 13 37 7e 
+<23:16:10.592664> info [UserCommandParser::receiveAndLex:34] Please pass your command ( Pascal Case )
